@@ -1,32 +1,532 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <nu-block responsive="980px|600px" display="flow-root"
+            :style="previewProps">
+    <nu-theme
+      :hue="hue" :pastel="pastel" :saturation="saturation"></nu-theme>
+    <nu-theme
+      name="content" :hue="hue" :pastel="pastel" :saturation="saturation"
+      :mod="themeType === 'main' ? '' : themeType"></nu-theme>
+
+    <nu-grid
+      place="fixed left"
+      height="100% + 1b"
+      columns="10 17"
+      :fill="showMenu ? 'subtle|bg 70%' : 'subtle'"
+      filter="backdrop-blur(1rem)"
+      z="front"
+      shadow="0|1"
+      :move="showMenu ? '0 0' : '0 0|-100% 0'"
+      transition="move ease-out"
+    >
+      <nu-flow padding="1x" gap border="right" text="center" overflow="auto">
+        <nu-block id="logo" padding="2x 4x 0" theme="special" color="bg">
+          <nu-svg width="100%" height src="/img/icon.svg"></nu-svg>
+        </nu-block>
+        <nu-block text="nowrap monospace w7" size="xs">
+          numl@{{ version }}
+        </nu-block>
+        <nu-line></nu-line>
+        <nu-btngroup
+          text="w7" size="md" flow="column" gap
+          :value="$route.path.match(/[a-z-]+/i) && $route.path.match(/[a-z-]+/i)[0]">
+          <nu-attrs
+            for="nu-btn"
+            border="0"
+            theme=":pressed[special]"
+            fill=":pressed[bg] clear"
+            toggle="0 :active:focusable[.75em] :pressed[0]"
+          ></nu-attrs>
+          <nu-btn value="storybook" to="/storybook">Storybook</nu-btn>
+          <nu-btn value="reference" to="/reference/element/nu-el">Reference</nu-btn>
+          <nu-btn value="framework" to="/framework">Framework</nu-btn>
+        </nu-btngroup>
+      </nu-flow>
+
+      <nu-flow padding="0 2x" gap="1x" border="right" overflow="auto">
+        <nu-attrs
+          for="nu-heading" padding="1x 2x"
+          level="4" place="sticky top" space="-1 1" fill="subtle"
+          z="above" border="bottom" fade="top"></nu-attrs>
+        <nu-attrs
+          for="nu-link" display="block" text="w6" border="0"
+          padding=".25x 1x"></nu-attrs>
+        <template
+          v-for="(item, i) in subMenu">
+          <nu-link
+            v-if="item.type === 'link'"
+            :key="`${item.label}:${i}`"
+            :to="item.to"
+            :theme="item.to === $route.path ? 'special' : null"
+            :fill="item.to === $route.path ? 'bg' : 'clear'"
+            :text="`w6 no-decoration`">
+            {{ item.label }}
+          </nu-link>
+          <nu-heading v-if="item.type === 'heading'" :key="item.label">
+            {{ item.label }}
+          </nu-heading>
+          <nu-block v-if="item.type === 'text'" :key="item.label">
+            {{ item.label }}
+          </nu-block>
+        </template>
+      </nu-flow>
+    </nu-grid>
+
+    <nu-block
+      place="fixed right"
+      height="100% + 1b"
+      width="20"
+      border="left"
+      fill="subtle|bg 70%"
+      filter="backdrop-blur(1rem)"
+      z="front"
+      shadow="1"
+      :move="showSettings ? '0 0' : '100% 0'"
+      transition="move ease-out"
+      padding
+      overflow="auto"
+    >
+      <nu-props
+        gap=".5rem"
+        border-width="1px"
+        radius=".5rem"
+        animation-time="0.08s"></nu-props>
+
+      <nu-flex flow="column" gap>
+        <nu-card>
+          <nu-flow gap>
+            <nu-pane>
+              <nu-heading level="6">Global Theme</nu-heading>
+              <nu-flex gap items="center">
+                <nu-checkbox
+                  :checked="pastel"
+                  @input="pastel = $event.detail"
+                  labelledby=":next"></nu-checkbox>
+                <nu-label>Pastel palette</nu-label>
+              </nu-flex>
+            </nu-pane>
+            <nu-grid gap="1x 2x" items="center stretch" columns="auto 1fr 4x">
+              <nu-el place="center end">Hue</nu-el>
+              <nu-rail>
+                <nu-slider
+                  :value="hue" @input="hue = $event.detail" type="int"
+                  min="0" max="359"></nu-slider>
+              </nu-rail>
+              <nu-el>{{ hue }}</nu-el>
+
+              <nu-el place="center end">Saturation</nu-el>
+              <nu-rail>
+                <nu-slider
+                  :value="saturation" @input="saturation = $event.detail" type="int"
+                  min="0" max="100"></nu-slider>
+              </nu-rail>
+              <nu-el>{{ saturation }}</nu-el>
+            </nu-grid>
+          </nu-flow>
+        </nu-card>
+
+        <nu-card>
+          <nu-heading level="6" padding="bottom">Content theme type</nu-heading>
+
+          <nu-btngroup
+            :value="themeType" @input="themeType = $event.detail" size="xs" items-padding>
+            <nu-btn value="main">Main</nu-btn>
+            <nu-btn value="tint">Tint</nu-btn>
+            <nu-btn value="tone">Tone</nu-btn>
+            <nu-btn value="swap">Swap</nu-btn>
+            <nu-btn value="special">Special</nu-btn>
+          </nu-btngroup>
+        </nu-card>
+
+        <nu-card>
+          <nu-heading level="6" padding="bottom">Preview props</nu-heading>
+          <nu-grid gap="1x 2x" items="center stretch" columns="auto 1fr 4.5">
+            <nu-el place="center end">Gap</nu-el>
+            <nu-rail>
+              <nu-slider
+                :value="gap" @input="gap = $event.detail"
+                min=".125" max="1" step=".125" type="float"></nu-slider>
+            </nu-rail>
+            <nu-el>{{ gap }}rem</nu-el>
+
+            <nu-el place="center end">Border</nu-el>
+            <nu-rail>
+              <nu-slider
+                :value="borderWidth" @input="borderWidth = $event.detail"
+                min="1" max="4" type="int"></nu-slider>
+            </nu-rail>
+            <nu-el>{{ borderWidth }}px</nu-el>
+
+            <nu-el place="center end">Radius</nu-el>
+            <nu-rail>
+              <nu-slider
+                :value="radius" @input="radius = $event.detail"
+                min="0.0625" max="1.5" step="0.0625" precision="3" type="float"></nu-slider>
+            </nu-rail>
+            <nu-el>{{ radius }}rem</nu-el>
+
+            <nu-el place="center end">Anim. time</nu-el>
+            <nu-rail>
+              <nu-slider
+                :value="animationTime" @input="animationTime = $event.detail"
+                min="0.01" max="0.2" step="0.01" precision="2" type="float"></nu-slider>
+            </nu-rail>
+            <nu-el>{{ animationTime }}s</nu-el>
+          </nu-grid>
+        </nu-card>
+
+        <nu-card>
+          <nu-heading level="6" padding="bottom">Scheme</nu-heading>
+          <nu-radiogroup
+            :value="scheme" @input="scheme = $event.detail"
+            display="flex" flow="column" gap>
+            <nu-flex gap items="center">
+              <nu-radio value="auto" labelledby=":next"></nu-radio>
+              <nu-label>Auto</nu-label>
+            </nu-flex>
+            <nu-flex gap items="center">
+              <nu-radio value="light" labelledby=":next"></nu-radio>
+              <nu-label>Light</nu-label>
+            </nu-flex>
+            <nu-flex gap items="center">
+              <nu-radio value="dark" labelledby=":next"></nu-radio>
+              <nu-label>Dark</nu-label>
+            </nu-flex>
+          </nu-radiogroup>
+        </nu-card>
+
+        <nu-card>
+          <nu-heading level="6" padding="bottom">Contrast</nu-heading>
+
+          <nu-radiogroup
+            :value="contrast" @input="contrast = $event.detail"
+            display="flex" flow="column" gap>
+            <nu-flex gap items="center">
+              <nu-radio value="auto" labelledby=":next"></nu-radio>
+              <nu-label>Auto</nu-label>
+            </nu-flex>
+            <nu-flex gap items="center">
+              <nu-radio value="high" labelledby=":next"></nu-radio>
+              <nu-label>High</nu-label>
+            </nu-flex>
+            <nu-flex gap items="center">
+              <nu-radio value="normal" labelledby=":next"></nu-radio>
+              <nu-label>Normal</nu-label>
+            </nu-flex>
+          </nu-radiogroup>
+        </nu-card>
+
+        <nu-card padding="1x 2x">
+          <nu-heading level="6" padding="bottom">Reduce motion</nu-heading>
+
+          <nu-radiogroup
+            :value="reducedMotion" @input="reducedMotion = $event.detail"
+            display="flex" flow="column" gap>
+            <nu-flex gap items="center">
+              <nu-radio value="auto" labelledby=":next"></nu-radio>
+              <nu-label>Auto</nu-label>
+            </nu-flex>
+            <nu-flex gap items="center">
+              <nu-radio value="yes" labelledby=":next"></nu-radio>
+              <nu-label>Yes</nu-label>
+            </nu-flex>
+            <nu-flex gap items="center">
+              <nu-radio value="no" labelledby=":next"></nu-radio>
+              <nu-label>No</nu-label>
+            </nu-flex>
+          </nu-radiogroup>
+        </nu-card>
+
+        <nu-block>
+          <nu-btn
+            :disabled="!customized"
+            special @tap="resetOptions">
+            Reset settings
+          </nu-btn>
+        </nu-block>
+      </nu-flex>
+    </nu-block>
+
+    <nu-flex
+      id="content"
+      @click="focusContent"
+      padding="0 0 0 27|0" height="min(100vh)" fill="bg" items="center start" flow="column"
+      :opacity="showMenu ? '1|.66' : 1" transition="opacity" theme="content">
+      <nu-theme name="red" hue="1"></nu-theme>
+      <nu-theme name="purple" hue="298"></nu-theme>
+      <nu-theme name="violet" hue="277"></nu-theme>
+      <nu-theme name="blue" hue="262"></nu-theme>
+      <nu-theme name="cyan" hue="242"></nu-theme>
+      <nu-theme name="green" hue="152"></nu-theme>
+      <nu-theme name="yellow" hue="27"></nu-theme>
+      <nu-theme name="orange" hue="18"></nu-theme>
+
+      <nu-attrs for="nu-heading" padding=".5em top"></nu-attrs>
+
+      <nu-block
+        width="clamp(100wv, 100%, 54)" padding="2||1"
+        :interactive="showMenu ? 'y|n' : 'y'">
+        <router-view/>
+      </nu-block>
+    </nu-flex>
+
+
+    <nu-btn
+      role="checkbox"
+      :checked="showMenu"
+      show="n|y"
+      @input="toggleMenu($event.detail)"
+      special size="xl" place="fixed left bottom 1" z="front" padding shadow=".5">
+      <nu-icon name="^:pressed[x] menu"></nu-icon>
+    </nu-btn>
+
+    <nu-btn
+      role="checkbox"
+      :checked="showSettings"
+      @input="toggleSettings($event.detail)"
+      special size="xl" place="fixed right bottom 1" z="front" padding shadow=".5">
+      <nu-icon name="sliders"></nu-icon>
+    </nu-btn>
+  </nu-block>
 </template>
 
+<script>
+import Lockr from 'lockr';
+import Numl from '@/services/numl';
+import { setContrast, setReducedMotion, setScheme } from './services/global';
+
+function handleElement(el) {
+  return {
+    type: 'link',
+    label: `<${el.tag}/>`,
+    to: `/reference/element/${el.tag}`,
+  };
+}
+
+function handleAttribute(attr) {
+  return {
+    type: 'link',
+    label: `[${attr}]`,
+    to: `/reference/attribute/${attr}`,
+  };
+}
+
+const REFERENCE_MENU = [
+  {
+    type: 'heading',
+    label: 'Base Elements',
+  },
+  ...Numl.baseElements.map(handleElement),
+  {
+    type: 'heading',
+    label: 'Layout Elements',
+  },
+  ...Numl.layoutElements.map(handleElement),
+  {
+    type: 'heading',
+    label: 'Widget Elements',
+  },
+  ...Numl.widgetElements.map(handleElement),
+  {
+    type: 'heading',
+    label: 'Converters',
+  },
+  ...Numl.converters.map(handleElement),
+  {
+    type: 'heading',
+    label: 'Decorators',
+  },
+  ...Numl.decorators.map(handleElement),
+  {
+    type: 'heading',
+    label: 'Style Attributes',
+  },
+  ...Numl.styleAttributes.map(handleAttribute),
+  {
+    type: 'heading',
+    label: 'Utility Attributes',
+  },
+  ...Numl.utilityAttributes.map(handleAttribute),
+  {
+    type: 'heading',
+    label: 'Aria Attributes',
+  },
+  // ...Numl.ariaAttributes.map(handleAttribute),
+  {
+    type: 'text',
+    label: 'Coming soon',
+  },
+  {
+    type: 'heading',
+    label: 'Modifier Attributes',
+  },
+  ...Numl.modifierAttributes.map(handleAttribute),
+];
+
+const STORYBOOK_MENU = [
+  {
+    type: 'heading',
+    label: 'Introduction',
+  },
+  {
+    type: 'link',
+    label: 'What is NuML?',
+    to: '/storybook',
+  },
+  {
+    type: 'link',
+    label: 'Getting started',
+    to: '/storybook/getting-started',
+  },
+  {
+    type: 'link',
+    label: 'Markup System',
+    to: '/storybook/markup',
+  },
+  {
+    type: 'link',
+    label: 'Layout System',
+    to: '/storybook/layout',
+  },
+  {
+    type: 'link',
+    label: 'Theme System',
+    to: '/storybook/themes',
+  },
+];
+
+function setGlobalSettings({
+  scheme, contrast, reducedMotion,
+} = {}) {
+  setScheme(scheme || Lockr.get('numl:scheme') || 'auto');
+  setContrast(contrast || Lockr.get('numl:contrast') || 'auto');
+  setReducedMotion(reducedMotion || Lockr.get('numl:reducedMotion') || 'auto');
+}
+
+const DEFAULT_OPTIONS = {
+  themeType: 'main',
+  hue: 272,
+  pastel: false,
+  saturation: 80,
+  gap: 0.5,
+  borderWidth: 1,
+  radius: 0.5,
+  animationTime: 0.08,
+  scheme: 'auto',
+  contrast: 'auto',
+  reducedMotion: 'auto',
+};
+
+export default {
+  name: 'app',
+  data() {
+    return {
+      version: window.Nude.version,
+      numl: Numl,
+      showMenu: false,
+      showSettings: false,
+      ...(Object.keys(DEFAULT_OPTIONS)
+        .reduce((params, key) => {
+          params[key] = Lockr.get(`numl:${key}`) || DEFAULT_OPTIONS[key];
+
+          return params;
+        }, {})),
+    };
+  },
+  watch: {
+    $route() {
+      this.showMenu = false;
+    },
+    scheme(val) {
+      setGlobalSettings({ scheme: val });
+    },
+    contrast(val) {
+      setGlobalSettings({ contrast: val });
+    },
+    reducedMotion(val) {
+      setGlobalSettings({ reducedMotion: val });
+    },
+    ...(Object.keys(DEFAULT_OPTIONS)
+      .reduce((params, key) => {
+        params[key] = function onParamChange(val) {
+          Lockr.set(`numl:${key}`, val);
+
+          setGlobalSettings({
+            scheme: this.scheme,
+            contrast: this.contrast,
+            reducedMotion: this.reducedMotion,
+          });
+        };
+
+        return params;
+      }, {})),
+  },
+  mounted() {
+    setGlobalSettings();
+  },
+  methods: {
+    toggleMenu(bool) {
+      this.showMenu = bool;
+
+      if (bool) {
+        this.showSettings = false;
+      }
+    },
+    toggleSettings(bool) {
+      this.showSettings = bool;
+
+      if (bool) {
+        this.showMenu = false;
+      }
+    },
+    focusContent() {
+      this.showMenu = false;
+      this.showSettings = false;
+    },
+    resetOptions() {
+      Object.assign(this, DEFAULT_OPTIONS);
+    },
+  },
+  computed: {
+    customized() {
+      const current = Object.keys(DEFAULT_OPTIONS)
+        .reduce((obj, key) => {
+          obj[key] = this[key];
+
+          return obj;
+        }, {});
+
+      return JSON.stringify(current) !== JSON.stringify(DEFAULT_OPTIONS);
+    },
+    subMenu() {
+      const { path } = this.$route;
+
+      if (path.startsWith('/reference')) {
+        return REFERENCE_MENU;
+      }
+
+      if (path.startsWith('/storybook')) {
+        return STORYBOOK_MENU;
+      }
+
+      return [];
+    },
+    previewProps() {
+      return {
+        '--nu-preview-gap': `${this.gap}rem`,
+        '--nu-preview-radius': `${this.radius}rem`,
+        '--nu-preview-border-width': `${this.borderWidth}px`,
+        '--nu-preview-animation-time': `${this.animationTime}s`,
+      };
+    },
+  },
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+[nu-id="preview"] > nu-flex {
+  --nu-gap: var(--nu-preview-gap);
+  --nu-radius: var(--nu-preview-radius);
+  --nu-border-width: var(--nu-preview-border-width);
+  --nu-animation-time: var(--nu-preview-animation-time);
 }
 </style>

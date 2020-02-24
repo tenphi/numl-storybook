@@ -52,18 +52,19 @@ If you want archive consistent saturation over themes you can use pastel palette
 <nu-theme hue="1" saturation="100" pastel></nu-theme>
 ```
 
-```preview
+```nu-preview
 <nu-grid flow="row" gap columns="1fr 1fr 1fr" text="w6">
-    <nu-card>
-        <nu-theme hue="250" saturation="100" pastel mod="special"></nu-theme>
+    <nu-theme name="red" hue="1"></nu-theme>
+    <nu-theme name="blue" hue="262"></nu-theme>
+    <nu-theme name="green" hue="152"></nu-theme>
+
+    <nu-card theme="blue special">
         BLUE
     </nu-card>
-    <nu-card>
-        <nu-theme hue="1" saturation="100" pastel mod="special"></nu-theme>
+    <nu-card theme="red special">
         RED
     </nu-card>
-    <nu-card>
-        <nu-theme hue="135" saturation="100" pastel mod="special"></nu-theme>
+    <nu-card theme="green special">
         GREEN
     </nu-card>
 </nu-flex>
@@ -117,7 +118,7 @@ or use named `red` theme:
 
 Let's see all possible variants:
 
-```preview
+```nu-preview
 <nu-flex flow="row wrap" gap="2x" content="space-around">
   <nu-card gap="1x" theme>
     <nu-heading level="3" size="h5" inline>Blue - Main theme</nu-heading>

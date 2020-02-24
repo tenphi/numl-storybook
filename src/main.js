@@ -3,6 +3,7 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import './services/numl';
+import './elements/nu-preview';
 
 Vue.config.productionTip = false;
 
@@ -18,6 +19,8 @@ Nude.elements.NuActiveElement.nuNavigate = (url, openNewTab) => {
 
   return false;
 };
+
+Vue.config.ignoredElements = [/^nu-/];
 
 new Vue({
   router,

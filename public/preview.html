@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico">
+  <title>NuML Preview</title>
+  <script src="/numl/numl.dev.js"></script>
+</head>
+<body>
+<nu-block>
+  <nu-theme hue="272"></nu-theme>
+  <nu-props></nu-props>
+  <nu-block id="content" padding="2x" fill="subtle">
+
+  </nu-block>
+</nu-block>
+<script>
+let hash;
+let scale;
+let markup;
+let timerId;
+
+const root = document.querySelector('[nu-id="content"]');
+const theme = document.querySelector('nu-theme');
+const props = document.querySelector('nu-props');
+
+const DEFAULT_OPTIONS = {
+  themeType: 'main',
+  hue: 272,
+  pastel: false,
+  saturation: 80,
+  gap: 0.5,
+  borderWidth: 1,
+  radius: 0.5,
+  animationTime: 0.08,
+  scheme: 'auto',
+  contrast: 'auto',
+  reducedMotion: 'auto',
+};
+
+function getStored(key, defaults) {
+  let data;
+
+  try {
+    data = JSON.parse(localStorage.getItem(key)).data;
+  } catch (e) {
+    data = defaults;
+  }
+
+  return data;
+}
+
+const html = document.querySelector('html');
+const LIGHT_SCHEME = 'nu-scheme-light';
+const DARK_SCHEME = 'nu-scheme-dark';
+const HIGH_CONTRAST = 'nu-contrast-high';
+const LOW_CONTRAST = 'nu-contrast-low';
+const REDUCE_MOTION = 'nu-reduce-motion';
+
+function clearSchemeSwitch() {
+  [LIGHT_SCHEME, DARK_SCHEME]
+    .forEach((cls) => html.classList.remove(cls));
+}
+
+function clearContrastSwitch() {
+  [HIGH_CONTRAST, LOW_CONTRAST]
+    .forEach((cls) => html.classList.remove(cls));
+}
+
+function clearReducedMotionSwitch() {
+  [REDUCE_MOTION]
+    .forEach((cls) => html.classList.remove(cls));
+}
+
+function setScheme(type) {
+  clearSchemeSwitch();
+
+  switch (type) {
+    case 'light':
+      html.classList.add(LIGHT_SCHEME);
+      break;
+    case 'dark':
+      html.classList.add(DARK_SCHEME);
+      break;
+    default:
+  }
+}
+
+function setContrast(type) {
+  clearContrastSwitch();
+
+  switch (type) {
+    case 'high':
+      html.classList.add(HIGH_CONTRAST);
+      break;
+    case 'normal':
+      html.classList.add(LOW_CONTRAST);
+      break;
+    default:
+  }
+}
+
+function setReducedMotion(type) {
+  clearReducedMotionSwitch();
+
+  switch (type) {
+    case 'yes':
+      html.classList.add(REDUCE_MOTION);
+      break;
+    default:
+  }
+}
+
+function preview() {
+  const currentHash = window.location.hash.slice(1);
+
+  if (currentHash === hash) return;
+
+  let data = {};
+
+  try {
+    data = JSON.parse(decodeURIComponent(currentHash));
+  } catch (e) {
+    // do nothing
+  }
+
+  scale = data.scale || 2;
+  markup = data.markup || '';
+
+  const { body } = document;
+
+  body.style.width = `${100 / data.scale}%`;
+  body.style.transform = `scale(${data.scale}, ${data.scale})`;
+  body.style.transformOrigin = 'left top';
+  root.innerHTML = markup;
+
+  hash = currentHash;
+
+  applyOptions(data.options);
+}
+
+function applyOptions(options) {
+  theme.setAttribute('hue', options.hue);
+  theme.setAttribute('saturation', options.saturation);
+
+  if (options.themeType !== 'main') {
+    theme.setAttribute('mod', options.themeType);
+  }
+
+  if (options.pastel) {
+    theme.setAttribute('pastel', '');
+  } else {
+    theme.removeAttribute('pastel');
+  }
+
+  props.setAttribute('gap', `${options.gap}rem`);
+  props.setAttribute('radius', `${options.radius}rem`);
+  props.setAttribute('border-width', `${options.borderWidth}px`);
+  props.setAttribute('animation-time', `${options.animationTime}s`);
+
+  setScheme(options.scheme);
+  setContrast(options.contrast);
+  setReducedMotion(options.reducedMotion);
+}
+
+timerId = setInterval(() => {
+  this.preview();
+}, 500);
+
+preview();
+
+</script>
+</body>
+</html>

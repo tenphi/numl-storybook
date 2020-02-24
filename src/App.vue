@@ -269,7 +269,6 @@
       </nu-block>
     </nu-flex>
 
-
     <nu-btn
       role="checkbox"
       :checked="showMenu"
@@ -292,7 +291,8 @@
 <script>
 import Lockr from 'lockr';
 import Numl from '@/services/numl';
-import { setContrast, setReducedMotion, setScheme } from './services/global';
+import GlobalEvents from './services/global-events';
+import Options, { DEFAULT_OPTIONS, setGlobalSettings } from './services/options';
 
 function handleElement(el) {
   return {
@@ -378,9 +378,13 @@ const STORYBOOK_MENU = [
     to: '/storybook/getting-started',
   },
   {
+    type: 'heading',
+    label: 'Markup system',
+  },
+  {
     type: 'link',
-    label: 'Markup System',
-    to: '/storybook/markup',
+    label: 'Basic markup',
+    to: '/storybook/markup/basics',
   },
   {
     type: 'link',
@@ -389,32 +393,14 @@ const STORYBOOK_MENU = [
   },
   {
     type: 'link',
-    label: 'Theme System',
+    label: 'Theming',
     to: '/storybook/themes',
   },
+  {
+    type: 'heading',
+    label: 'Advanced',
+  },
 ];
-
-function setGlobalSettings({
-  scheme, contrast, reducedMotion,
-} = {}) {
-  setScheme(scheme || Lockr.get('numl:scheme') || 'auto');
-  setContrast(contrast || Lockr.get('numl:contrast') || 'auto');
-  setReducedMotion(reducedMotion || Lockr.get('numl:reducedMotion') || 'auto');
-}
-
-const DEFAULT_OPTIONS = {
-  themeType: 'main',
-  hue: 272,
-  pastel: false,
-  saturation: 80,
-  gap: 0.5,
-  borderWidth: 1,
-  radius: 0.5,
-  animationTime: 0.08,
-  scheme: 'auto',
-  contrast: 'auto',
-  reducedMotion: 'auto',
-};
 
 export default {
   name: 'app',
@@ -424,12 +410,8 @@ export default {
       numl: Numl,
       showMenu: false,
       showSettings: false,
-      ...(Object.keys(DEFAULT_OPTIONS)
-        .reduce((params, key) => {
-          params[key] = Lockr.get(`numl:${key}`) || DEFAULT_OPTIONS[key];
-
-          return params;
-        }, {})),
+      ...Options.get(),
+      previewChecked: false,
     };
   },
   watch: {
@@ -455,6 +437,8 @@ export default {
             contrast: this.contrast,
             reducedMotion: this.reducedMotion,
           });
+
+          GlobalEvents.$emit('options:change', Options.get());
         };
 
         return params;

@@ -165,9 +165,7 @@ function applyOptions(options) {
   setReducedMotion(options.reducedMotion);
 }
 
-timerId = setInterval(() => {
-  this.preview();
-}, 500);
+window.addEventListener('hashchange', preview);
 
 preview();
 

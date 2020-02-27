@@ -1,75 +1,115 @@
 <template>
-  <nu-block responsive="980px|600px" display="flow-root"
-            :style="previewProps">
+  <nu-block
+    responsive="980px|600px" display="flow-root"
+    :style="previewProps" v-show="mounted" width="100%" overflow="no">
     <nu-theme
       :hue="hue" :pastel="pastel" :saturation="saturation"></nu-theme>
     <nu-theme
       name="content" :hue="hue" :pastel="pastel" :saturation="saturation"
       :mod="themeType === 'main' ? '' : themeType"></nu-theme>
 
-    <nu-grid
-      place="fixed left"
-      height="100% + 1b"
-      columns="10 17"
-      :fill="showMenu ? 'subtle|bg 70%' : 'subtle'"
-      filter="backdrop-blur(1rem)"
-      z="front"
-      shadow="0|1"
-      :move="showMenu ? '0 0' : '0 0|-100% 0'"
-      transition="move ease-out"
-    >
-      <nu-flow padding="1x" gap border="right" text="center" overflow="auto">
-        <nu-block id="logo" padding="2x 4x 0" theme="special" color="bg">
-          <nu-svg width="100%" height src="/img/icon.svg"></nu-svg>
-        </nu-block>
-        <nu-block text="nowrap monospace w7" size="xs">
-          numl@{{ version }}
-        </nu-block>
-        <nu-line></nu-line>
-        <nu-btngroup
-          text="w7" size="md" flow="column" gap
-          :value="$route.path.match(/[a-z-]+/i) && $route.path.match(/[a-z-]+/i)[0]">
-          <nu-attrs
-            for="nu-btn"
-            border="0"
-            theme=":pressed[special]"
-            fill=":pressed[bg] clear"
-            toggle="0 :active:focusable[.75em] :pressed[0]"
-          ></nu-attrs>
-          <nu-btn value="storybook" to="/storybook">Storybook</nu-btn>
-          <nu-btn value="reference" to="/reference/element/nu-el">Reference</nu-btn>
-          <nu-btn value="framework" to="/framework">Framework</nu-btn>
-        </nu-btngroup>
-      </nu-flow>
-
-      <nu-flow padding="0 2x" gap="1x" border="right" overflow="auto">
-        <nu-attrs
-          for="nu-heading" padding="1x 2x"
-          level="4" place="sticky top" space="-1 1" fill="subtle"
-          z="above" border="bottom" fade="top"></nu-attrs>
-        <nu-attrs
-          for="nu-link" display="block" text="w6" border="0"
-          padding=".25x 1x"></nu-attrs>
-        <template
-          v-for="(item, i) in subMenu">
-          <nu-link
-            v-if="item.type === 'link'"
-            :key="`${item.label}:${i}`"
-            :to="item.to"
-            :theme="item.to === $route.path ? 'special' : null"
-            :fill="item.to === $route.path ? 'bg' : 'clear'"
-            :text="`w6 no-decoration`">
-            {{ item.label }}
-          </nu-link>
-          <nu-heading v-if="item.type === 'heading'" :key="item.label">
-            {{ item.label }}
-          </nu-heading>
-          <nu-block v-if="item.type === 'text'" :key="item.label">
-            {{ item.label }}
+    <template v-if="$route.path !== '/repl'">
+      <nu-grid
+        place="fixed left"
+        height="100% + 1b"
+        columns="10 17"
+        :fill="showMenu ? 'subtle|bg 70%' : 'subtle'"
+        filter="backdrop-blur(1rem)"
+        z="front"
+        shadow="0|1"
+        :move="showMenu ? '0 0' : '0 0|-100% 0'"
+        transition="move ease-out"
+      >
+        <nu-flow padding="1x" gap border="right" text="center" overflow="auto">
+          <nu-block id="logo" padding="2x 4x 0" theme="special" color="bg">
+            <nu-svg width="100%" height src="/img/icon.svg"></nu-svg>
           </nu-block>
-        </template>
-      </nu-flow>
-    </nu-grid>
+          <nu-block text="nowrap monospace w7" size="xs">
+            numl@{{ version }}
+          </nu-block>
+          <nu-line></nu-line>
+          <nu-btngroup
+            text="w7" size="md" flow="column" gap
+            :value="$route.path.match(/[a-z-]+/i) && $route.path.match(/[a-z-]+/i)[0]">
+            <nu-attrs
+              for="nu-btn"
+              border="0"
+              theme=":pressed[special]"
+              fill=":pressed[bg] clear"
+              toggle="0 :active:focusable[.75em] :pressed[0]"
+            ></nu-attrs>
+            <nu-btn value="storybook" to="/storybook">Storybook</nu-btn>
+            <nu-btn value="reference" to="/reference/element/nu-el">Reference</nu-btn>
+            <nu-btn value="framework" to="/framework">Framework</nu-btn>
+            <nu-btn value="framework" to="/repl">REPL</nu-btn>
+          </nu-btngroup>
+        </nu-flow>
+
+        <nu-flow padding="0 2x" gap="1x" border="right" overflow="auto">
+          <nu-attrs
+            for="nu-heading" padding="1x 2x"
+            level="4" place="sticky top" space="-1 1" fill="subtle"
+            z="above" border="bottom" fade="top"></nu-attrs>
+          <nu-attrs
+            for="nu-link" display="block" text="w6" border="0"
+            padding=".25x 1x"></nu-attrs>
+          <template
+            v-for="(item, i) in subMenu">
+            <nu-link
+              v-if="item.type === 'link'"
+              :key="`${item.label}:${i}`"
+              :to="item.to"
+              :theme="item.to === $route.path ? 'special' : null"
+              :fill="item.to === $route.path ? 'bg' : 'clear'"
+              :text="`w6 no-decoration`">
+              {{ item.label }}
+            </nu-link>
+            <nu-heading v-if="item.type === 'heading'" :key="item.label">
+              {{ item.label }}
+            </nu-heading>
+            <nu-block v-if="item.type === 'text'" :key="item.label">
+              {{ item.label }}
+            </nu-block>
+          </template>
+        </nu-flow>
+      </nu-grid>
+
+      <nu-flex
+        id="content"
+        @click="focusContent"
+        padding="0 0 0 27|0" height="min(100vh)" fill="bg" items="center start" flow="column"
+        :opacity="showMenu ? '1|.66' : 1" transition="opacity" theme="content">
+        <nu-theme name="red" hue="1"></nu-theme>
+        <nu-theme name="purple" hue="298"></nu-theme>
+        <nu-theme name="violet" hue="277"></nu-theme>
+        <nu-theme name="blue" hue="262"></nu-theme>
+        <nu-theme name="cyan" hue="242"></nu-theme>
+        <nu-theme name="green" hue="152"></nu-theme>
+        <nu-theme name="yellow" hue="27"></nu-theme>
+        <nu-theme name="orange" hue="18"></nu-theme>
+
+        <nu-attrs for="nu-heading" padding=".5em top"></nu-attrs>
+
+        <nu-block
+          width="clamp(100wv, 100%, 54)" padding="2||1"
+          :interactive="showMenu ? 'y|n' : 'y'">
+          <router-view/>
+        </nu-block>
+      </nu-flex>
+
+      <nu-btn
+        role="checkbox"
+        :checked="showMenu"
+        show="n|y"
+        @input="toggleMenu($event.detail)"
+        special size="xl" place="fixed left bottom 1" z="front" padding shadow=".5">
+        <nu-icon name="^:pressed[x] menu"></nu-icon>
+      </nu-btn>
+    </template>
+
+    <template v-else>
+      <router-view/>
+    </template>
 
     <nu-block
       place="fixed right"
@@ -246,38 +286,6 @@
       </nu-flex>
     </nu-block>
 
-    <nu-flex
-      id="content"
-      @click="focusContent"
-      padding="0 0 0 27|0" height="min(100vh)" fill="bg" items="center start" flow="column"
-      :opacity="showMenu ? '1|.66' : 1" transition="opacity" theme="content">
-      <nu-theme name="red" hue="1"></nu-theme>
-      <nu-theme name="purple" hue="298"></nu-theme>
-      <nu-theme name="violet" hue="277"></nu-theme>
-      <nu-theme name="blue" hue="262"></nu-theme>
-      <nu-theme name="cyan" hue="242"></nu-theme>
-      <nu-theme name="green" hue="152"></nu-theme>
-      <nu-theme name="yellow" hue="27"></nu-theme>
-      <nu-theme name="orange" hue="18"></nu-theme>
-
-      <nu-attrs for="nu-heading" padding=".5em top"></nu-attrs>
-
-      <nu-block
-        width="clamp(100wv, 100%, 54)" padding="2||1"
-        :interactive="showMenu ? 'y|n' : 'y'">
-        <router-view/>
-      </nu-block>
-    </nu-flex>
-
-    <nu-btn
-      role="checkbox"
-      :checked="showMenu"
-      show="n|y"
-      @input="toggleMenu($event.detail)"
-      special size="xl" place="fixed left bottom 1" z="front" padding shadow=".5">
-      <nu-icon name="^:pressed[x] menu"></nu-icon>
-    </nu-btn>
-
     <nu-btn
       role="checkbox"
       :checked="showSettings"
@@ -397,6 +405,11 @@ const STORYBOOK_MENU = [
     to: '/storybook/themes',
   },
   {
+    type: 'link',
+    label: 'Popups & Dropdowns',
+    to: '/storybook/markup/popups-and-dropdowns',
+  },
+  {
     type: 'heading',
     label: 'Advanced',
   },
@@ -412,6 +425,7 @@ export default {
       showSettings: false,
       ...Options.get(),
       previewChecked: false,
+      mounted: false,
     };
   },
   watch: {
@@ -446,6 +460,10 @@ export default {
   },
   mounted() {
     setGlobalSettings();
+
+    setTimeout(() => {
+      this.mounted = true;
+    }, 0);
   },
   methods: {
     toggleMenu(bool) {

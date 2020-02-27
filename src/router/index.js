@@ -17,6 +17,11 @@ const routes = [
     component: MarkdownPageView,
   },
   {
+    path: '/repl',
+    name: 'ReplPage',
+    component: () => import(/* webpackChunkName: "repl-view" */ '../views/Repl'),
+  },
+  {
     path: '/reference/element/:tag',
     name: 'ElementPage',
     component: () => import(/* webpackChunkName: "element-view" */ '../views/Element'),

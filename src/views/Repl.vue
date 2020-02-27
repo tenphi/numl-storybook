@@ -72,7 +72,12 @@ import Vue from 'vue';
 import codemirror from 'vue-codemirror';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/cobalt.css';
+import 'codemirror/addon/hint/show-hint.css';
+import 'codemirror/addon/hint/xml-hint';
 import 'codemirror/mode/htmlmixed/htmlmixed';
+// import 'codemirror/addon/edit/closetag';
+import 'codemirror/addon/hint/show-hint';
+import '@/other/numl-hint';
 import Preview from '../components/Preview.vue';
 import GlobalEvents from '../services/global-events';
 import Options from '../services/options';
@@ -90,6 +95,10 @@ export default {
         lineNumbers: true,
         autoCloseTags: true,
         styleActiveLine: true,
+        extraKeys: {
+          'Ctrl-E': 'autocomplete',
+          'Cmd-E': 'autocomplete',
+        },
       },
       valid: true,
       timerId: null,

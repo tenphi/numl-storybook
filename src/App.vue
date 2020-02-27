@@ -91,7 +91,7 @@
         <nu-attrs for="nu-heading" padding=".5em top"></nu-attrs>
 
         <nu-block
-          width="clamp(100wv, 100%, 54)" padding="2||1"
+          width="clamp(100vw, 100%, 54)" padding="2||1"
           :interactive="showMenu ? 'y|n' : 'y'">
           <router-view/>
         </nu-block>

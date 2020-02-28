@@ -3,9 +3,11 @@
     responsive="980px|600px" display="flow-root"
     :style="previewProps" v-show="mounted" width="100%" overflow="no">
     <nu-theme
-      :hue="hue" :pastel="pastel" :saturation="saturation"></nu-theme>
+      :hue="hue" :pastel="pastel"
+      :saturation="saturationType === 'auto' ? null : saturation"></nu-theme>
     <nu-theme
-      name="content" :hue="hue" :pastel="pastel" :saturation="saturation"
+      name="content" :hue="hue" :pastel="pastel"
+      :saturation="saturationType === 'auto' ? null : saturation"
       :mod="themeType === 'main' ? '' : themeType"></nu-theme>
 
     <template v-if="$route.path !== '/repl'">
@@ -41,7 +43,7 @@
             <nu-btn value="storybook" to="/storybook">Storybook</nu-btn>
             <nu-btn value="reference" to="/reference/element/nu-el">Reference</nu-btn>
             <nu-btn value="framework" to="/framework">Framework</nu-btn>
-            <nu-btn value="framework" to="/repl">REPL</nu-btn>
+            <nu-btn value="repl" to="/repl">REPL</nu-btn>
           </nu-btngroup>
         </nu-flow>
 
@@ -91,7 +93,7 @@
         <nu-attrs for="nu-heading" padding=".5em top"></nu-attrs>
 
         <nu-block
-          width="clamp(100vw, 100%, 54)" padding="2||1"
+          width="clamp(initial, 100%, 54)" padding="2||1"
           :interactive="showMenu ? 'y|n' : 'y'">
           <router-view/>
         </nu-block>
@@ -154,12 +156,28 @@
               <nu-el>{{ hue }}</nu-el>
 
               <nu-el place="center end">Saturation</nu-el>
-              <nu-rail>
+              <nu-rail
+                :disabled="saturationType === 'auto'">
                 <nu-slider
                   :value="saturation" @input="saturation = $event.detail" type="int"
                   min="0" max="100"></nu-slider>
               </nu-rail>
               <nu-el>{{ saturation }}</nu-el>
+              <nu-el></nu-el>
+              <nu-block column="auto / span 2">
+                <nu-radiogroup
+                  :value="saturationType" @input="saturationType = $event.detail"
+                  display="flex" gap="2x">
+                  <nu-flex gap items="center">
+                    <nu-radio value="auto" labelledby=":next"></nu-radio>
+                    <nu-label>Auto</nu-label>
+                  </nu-flex>
+                  <nu-flex gap items="center">
+                    <nu-radio value="yes" labelledby=":next"></nu-radio>
+                    <nu-label>Custom</nu-label>
+                  </nu-flex>
+                </nu-radiogroup>
+              </nu-block>
             </nu-grid>
           </nu-flow>
         </nu-card>
@@ -218,7 +236,7 @@
           <nu-heading level="6" padding="bottom">Scheme</nu-heading>
           <nu-radiogroup
             :value="scheme" @input="scheme = $event.detail"
-            display="flex" flow="column" gap>
+            display="flex" gap="2x">
             <nu-flex gap items="center">
               <nu-radio value="auto" labelledby=":next"></nu-radio>
               <nu-label>Auto</nu-label>
@@ -239,7 +257,7 @@
 
           <nu-radiogroup
             :value="contrast" @input="contrast = $event.detail"
-            display="flex" flow="column" gap>
+            display="flex" gap="2x">
             <nu-flex gap items="center">
               <nu-radio value="auto" labelledby=":next"></nu-radio>
               <nu-label>Auto</nu-label>
@@ -260,7 +278,7 @@
 
           <nu-radiogroup
             :value="reducedMotion" @input="reducedMotion = $event.detail"
-            display="flex" flow="column" gap>
+            display="flex" gap="2x">
             <nu-flex gap items="center">
               <nu-radio value="auto" labelledby=":next"></nu-radio>
               <nu-label>Auto</nu-label>

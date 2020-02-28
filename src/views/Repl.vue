@@ -58,6 +58,13 @@
           v-model="markup"
           :options="editorOptions"></codemirror>
       </nu-block>
+
+      <nu-block padding theme="tint" fill="subtle" border="top">
+        Press
+        <nu-el v-if="isMac" text="w6">Cmd+E</nu-el>
+        <nu-el v-else text="w6">Ctrl+E</nu-el>
+        to see suggestions.
+      </nu-block>
     </nu-flex>
     <Preview
       width="50%"
@@ -106,6 +113,7 @@ export default {
       version: window.Nude.version,
       copied: false,
       saved: false,
+      isMac: navigator.appVersion.includes('Mac'),
     };
   },
   watch: {
@@ -337,5 +345,34 @@ export default {
 
 .CodeMirror-guttermarker-subtle {
   color: #999;
+}
+
+.CodeMirror-selected {
+  background: var(--nu-main-focus-color);
+}
+
+.CodeMirror-focused .CodeMirror-selected {
+  background: var(--nu-main-focus-color);
+}
+
+.CodeMirror-crosshair {
+  cursor: crosshair;
+}
+
+.CodeMirror-line::selection
+, .CodeMirror-line > span::selection
+, .CodeMirror-line > span > span::selection {
+  background: var(--nu-main-focus-color);
+}
+
+.CodeMirror-line::-moz-selection
+, .CodeMirror-line > span::-moz-selection
+, .CodeMirror-line > span > span::-moz-selection {
+  background: var(--nu-main-focus-color);
+}
+
+.CodeMirror-cursor {
+  background: var(--nu-main-hover-color);
+  border-left: 1px solid var(--nu-main-text-color);
 }
 </style>

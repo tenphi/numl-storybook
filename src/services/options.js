@@ -6,6 +6,7 @@ export const DEFAULT_OPTIONS = {
   hue: 272,
   pastel: false,
   saturation: 80,
+  saturationType: 'auto',
   gap: 0.5,
   borderWidth: 1,
   radius: 0.5,

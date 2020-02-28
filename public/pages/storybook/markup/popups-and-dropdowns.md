@@ -57,7 +57,7 @@ It's possible to position popup as you like.
 
 ## Parent overflow
 
-You can use **Fixate Mixin** instead of [place](/reference/attribute/place) attribute for Popups so they can ignore `overflow: hidden` on parent elements.
+You can use [drop](/reference/attribute/drop) attribute (which activates **Fixate Mixin**) instead of [place](/reference/attribute/place) attribute for Popups so they can ignore `overflow: hidden` on parent elements.
 
 ```nu-preview
 <nu-attrs

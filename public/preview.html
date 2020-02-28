@@ -31,6 +31,7 @@ const DEFAULT_OPTIONS = {
   hue: 272,
   pastel: false,
   saturation: 80,
+  saturationType: 'auto',
   gap: 0.5,
   borderWidth: 1,
   radius: 0.5,
@@ -143,7 +144,12 @@ function preview() {
 
 function applyOptions(options) {
   theme.setAttribute('hue', options.hue);
-  theme.setAttribute('saturation', options.saturation);
+
+  if (options.saturationType === 'auto') {
+    theme.removeAttribute('saturation');
+  } else {
+    theme.setAttribute('saturation', options.saturation);
+  }
 
   if (options.themeType !== 'main') {
     theme.setAttribute('mod', options.themeType);

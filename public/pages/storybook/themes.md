@@ -21,13 +21,14 @@ Well, that's all! NUDE automatically find the best saturation for that hue and g
 * **text-strong** `--nu-strong-color` – Color of text and icons with high contrast. You can use it to highlight some parts of the text.
 * **bg** `--nu-bg-color` – Base background color.
 * **border** `--nu-border-color` – Border color.
-* **hover** `--nu-hover-color` – Background color for hover effect.
+* **hover** `--nu-hover-color` – Overlay background color for hover effect.
 * **focus** `--nu-focus-color` – Color for focus outline.
 * **subtle** `--nu-subtle-color` – Color that is slightly differs from background to differentiate similar blocks.
 * **intensity** `--nu-intensity` – A number from 0 to 1 that indicates shadow intensity
 * **special** `--nu-special-color` – Text color to highlight special parts of the content.
 * **special-text** `--nu-special-text-color` – Text color for special elements that are also have special background color applied.
 * **special-bg** `--nu-special-bg-color` – Background color for special elements that are also have special text color applied.
+* **special-hover** `--nu-special-hover-color` – Overlay background color for hover effect on special elements.
 * **input** `--nu-input-color` – Background color of inputs and some active elements like Dropdown.
 * **special-intensity** `--nu-special-intensity` – Shadow intensity for elements with `special-bg` background color.
 
@@ -225,7 +226,7 @@ There are some classes that you should add to the `html` tag for the following s
 
 * Add `nu-scheme-light` to activate Light Theme.
 * Add `nu-scheme-dark` to activate Dark Theme.
-* Do nothing to activate auto-switching depending on system preference. 
+* Do nothing to activate auto-switching depending on system preference.
 
 ## Prefers contrast
 

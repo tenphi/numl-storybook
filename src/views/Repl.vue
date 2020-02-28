@@ -1,6 +1,8 @@
 <template>
-  <nu-flex height="100%" overflow="hidden">
-    <nu-flex fill="bg" height="max(100vh)" flow="column" width="50%">
+  <nu-flex height="100%" overflow="hidden" responsive="760px|600px">
+    <nu-flex
+      :show="mode === 'editor' ? 'y' : 'y|n'"
+      fill="bg" height="100vh" flow="column" width="50%|100%">
       <nu-theme name="header" hue="#00f" mod="tint"></nu-theme>
       <nu-theme name="quote" hue="#090" mod="tint"></nu-theme>
       <nu-theme name="negative" hue="#d44" mod="tint"></nu-theme>
@@ -23,7 +25,7 @@
       <nu-theme name="link" hue="#00c" mod="tint"></nu-theme>
       <nu-theme name="error" hue="#f00" mod="tint"></nu-theme>
 
-      <nu-pane border="bottom" fill="subtle" padding="right">
+      <nu-pane border="bottom" fill="subtle" padding="right" text="nowrap">
         <nu-attrs
           for="nu-tooltip" text="nowrap" width="max(min-content)"
           place="outside-bottom"></nu-attrs>
@@ -33,7 +35,7 @@
               theme="tint" fill="text"
               src="/img/icon.svg" place="stretch" height="2.5" width="2.5"></nu-svg>
           </nu-blocklink>
-          <nu-el text="w6 monospace" padding>REPL for numl@{{ version }}</nu-el>
+          <nu-el text="w6 monospace" padding>REPL numl@{{ version }}</nu-el>
         </nu-flex>
         <nu-flex size="xs" gap items="center">
           <nu-el v-if="!valid" theme="error" text="w6">INVALID MARKUP</nu-el>
@@ -44,7 +46,7 @@
           <nu-btn padding @tap="save" special>
             Save
           </nu-btn>
-          <nu-btn padding @tap="copyReplLink">
+          <nu-btn padding @tap="copyReplLink" height="2" width="2">
             <nu-tooltip>
               {{ copied ? 'Copied!' : 'Copy REPL Link' }}
             </nu-tooltip>
@@ -59,7 +61,7 @@
           :options="editorOptions"></codemirror>
       </nu-block>
 
-      <nu-block padding theme="tint" fill="subtle" border="top">
+      <nu-block show="y|n" padding theme="tint" fill="subtle" border="top" size="xs">
         Press
         <nu-el v-if="isMac" text="w6">Cmd+E</nu-el>
         <nu-el v-else text="w6">Ctrl+E</nu-el>
@@ -67,9 +69,17 @@
       </nu-block>
     </nu-flex>
     <Preview
-      width="50%"
+      :show="mode === 'preview' ? 'y' : 'y|n'"
+      width="50%|100%"
       ref="preview" repl
       :markup="previewMarkup" height="100vh" fill="subtle" border="left"></Preview>
+
+    <nu-btn
+      show="n|y"
+      @tap="toggleMode"
+      special size="xl" place="fixed left bottom 1" z="front" padding shadow=".5">
+      <nu-icon :name="mode === 'editor' ? 'eye' : 'edit-2'"></nu-icon>
+    </nu-btn>
   </nu-flex>
 </template>
 
@@ -95,7 +105,8 @@ export default {
   name: 'repl',
   data() {
     return {
-      markup: '<nu-btn>Something</nu-btn>',
+      mode: 'editor',
+      markup: '',
       editorOptions: {
         mode: 'text/html',
         tabSize: 2,
@@ -138,6 +149,9 @@ export default {
     },
   },
   methods: {
+    toggleMode() {
+      this.mode = (this.mode === 'editor' ? 'preview' : 'editor');
+    },
     checkMarkup() {
       // @TODO: replace with working code
       return true;

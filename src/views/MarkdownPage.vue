@@ -1,10 +1,11 @@
 <template>
-  <nu-markdown>
+  <nu-markdown ref="root">
     <textarea v-html="content"></textarea>
   </nu-markdown>
 </template>
 
 <script>
+import Window from '@/services/window';
 import MarkdownLoader from '@/services/markdown-loader';
 
 async function loader(to, from, next) {
@@ -29,10 +30,28 @@ export default {
       content: '',
     };
   },
+  watch: {
+    content() {
+      this.updateTitle();
+    },
+  },
   mounted() {
     if (!this.content) {
       loader.call(this, this.$route);
+
+      this.updateTitle();
     }
+  },
+  methods: {
+    updateTitle() {
+      setTimeout(() => {
+        const header = this.$refs.root.querySelector('nu-heading[aria-level="1"]');
+
+        if (header) {
+          Window.setTitle(header.innerText);
+        }
+      });
+    },
   },
   beforeRouteEnter: loader,
   beforeRouteUpdate: loader,

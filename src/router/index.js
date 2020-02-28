@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Window from '@/services/window';
 
 Vue.use(VueRouter);
 
@@ -10,6 +11,9 @@ const routes = [
     path: '/',
     name: 'Home',
     redirect: '/storybook',
+    meta: {
+      title: '',
+    },
   },
   {
     path: '/storybook*',
@@ -20,6 +24,9 @@ const routes = [
     path: '/repl',
     name: 'ReplPage',
     component: () => import(/* webpackChunkName: "repl-view" */ '../views/Repl'),
+    meta: {
+      title: 'REPL',
+    },
   },
   {
     path: '/reference/element/:tag',
@@ -42,6 +49,12 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.afterEach((to) => {
+  if (to.meta.title != null) {
+    Window.setTitle(to.meta.title);
+  }
 });
 
 export default router;

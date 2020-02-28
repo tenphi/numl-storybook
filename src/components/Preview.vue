@@ -4,6 +4,8 @@
       for="nu-tooltip" text="nowrap" width="max(min-content)"
       :place="repl ? 'outside-bottom' : null"></nu-attrs>
     <nu-pane border="bottom" padding="2x left right">
+      <nu-attrs for="nu-btn" height="2" width="2"></nu-attrs>
+
       <nu-tablist value="preview" v-if="!repl">
         <nu-tab controls="preview">
           Preview

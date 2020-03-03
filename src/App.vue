@@ -23,9 +23,11 @@
         transition="move ease-out"
       >
         <nu-flow padding="1x" gap border="right" text="center" overflow="auto">
-          <nu-block id="logo" padding="2x 4x 0" theme="special" color="bg">
+          <nu-blocklink
+            to="/"
+            id="logo" padding="2x 4x 0" theme="special" color="bg">
             <nu-svg width="100%" height src="/img/icon.svg"></nu-svg>
-          </nu-block>
+          </nu-blocklink>
           <nu-block text="nowrap monospace w7" size="xs">
             numl@{{ version }}
           </nu-block>

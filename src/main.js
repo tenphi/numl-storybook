@@ -11,7 +11,7 @@ const { Nude } = window;
 
 Nude.elements.NuActiveElement.nuNavigate = (url, openNewTab) => {
   // skip outside links and links that open in new tabs
-  if (openNewTab || url.startsWith('https://') || url.includes('//') || url.startsWith('mailto:') || url.includes('/api/')) {
+  if (url === '/' || openNewTab || url.startsWith('https://') || url.includes('//') || url.startsWith('mailto:') || url.includes('/api/')) {
     return true;
   }
 

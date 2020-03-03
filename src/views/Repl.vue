@@ -35,7 +35,7 @@
               theme="tint" fill="text"
               src="/img/icon.svg" place="stretch" height="2.5" width="2.5"></nu-svg>
           </nu-blocklink>
-          <nu-el text="w6 monospace" padding>REPL numl@{{ version }}</nu-el>
+          <nu-el text="w6 monospace" padding>REPL</nu-el>
         </nu-flex>
         <nu-flex size="xs" gap items="center">
           <nu-el v-if="!valid" theme="error" text="w6">INVALID MARKUP</nu-el>

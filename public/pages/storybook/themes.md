@@ -68,7 +68,7 @@ If you want archive consistent saturation over themes you can use pastel palette
     <nu-card theme="green special">
         GREEN
     </nu-card>
-</nu-flex>
+</nu-grid>
 ```
 
 ### Generate colors from color

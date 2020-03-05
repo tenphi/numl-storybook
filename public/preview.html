@@ -12,7 +12,7 @@
 <nu-block>
   <nu-theme hue="272"></nu-theme>
   <nu-props></nu-props>
-  <nu-block id="content" padding="2x" fill="subtle">
+  <nu-block id="content" padding="2x" fill="subtle" height="100vh">
 
   </nu-block>
 </nu-block>
@@ -35,7 +35,7 @@ const DEFAULT_OPTIONS = {
   gap: 0.5,
   borderWidth: 1,
   radius: 0.5,
-  animationTime: 0.08,
+  animationTime: 80,
   scheme: 'auto',
   contrast: 'auto',
   reducedMotion: 'auto',
@@ -164,7 +164,7 @@ function applyOptions(options) {
   props.setAttribute('gap', `${options.gap}rem`);
   props.setAttribute('radius', `${options.radius}rem`);
   props.setAttribute('border-width', `${options.borderWidth}px`);
-  props.setAttribute('animation-time', `${options.animationTime}s`);
+  props.setAttribute('animation-time', `${options.animationTime}ms`);
 
   setScheme(options.scheme);
   setContrast(options.contrast);

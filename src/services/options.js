@@ -10,7 +10,7 @@ export const DEFAULT_OPTIONS = {
   gap: 0.5,
   borderWidth: 1,
   radius: 0.5,
-  animationTime: 0.08,
+  animationTime: 80,
   scheme: 'auto',
   contrast: 'auto',
   reducedMotion: 'auto',

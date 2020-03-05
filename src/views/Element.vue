@@ -123,7 +123,7 @@ export default {
   beforeRouteUpdate: beforeLoad,
   computed: {
     ownDefaults() {
-      return Object.keys(this.element.ownDefaults)
+      return Object.keys(this.element.ownDefaults || {})
         .reduce((list, attr) => {
           list.push({
             name: attr,
@@ -136,7 +136,7 @@ export default {
     },
     defaults() {
       return [
-        ...Object.keys(this.element.ownDefaults)
+        ...Object.keys(this.element.ownDefaults || {})
           .reduce((list, attr) => {
             list.push({
               name: attr,
@@ -146,7 +146,7 @@ export default {
 
             return list;
           }, []),
-        ...Object.keys(this.element.defaults)
+        ...Object.keys(this.element.defaults || {})
           .reduce((list, attr) => {
             if (!this.element.ownDefaults[attr]) {
               list.push({

@@ -133,7 +133,7 @@
         gap=".5rem"
         border-width="1px"
         radius=".5rem"
-        animation-time="0.08s"></nu-props>
+        animation-time="80ms"></nu-props>
 
       <nu-flex flow="column" gap>
         <nu-card>
@@ -228,7 +228,7 @@
             <nu-rail>
               <nu-slider
                 :value="animationTime" @input="animationTime = $event.detail"
-                min="0.01" max="0.2" step="0.01" precision="2" type="float"></nu-slider>
+                min="10" max="250" step="10" precision="0" type="int"></nu-slider>
             </nu-rail>
             <nu-el>{{ animationTime }}s</nu-el>
           </nu-grid>
@@ -537,7 +537,7 @@ export default {
         '--nu-preview-gap': `${this.gap}rem`,
         '--nu-preview-radius': `${this.radius}rem`,
         '--nu-preview-border-width': `${this.borderWidth}px`,
-        '--nu-preview-animation-time': `${this.animationTime}s`,
+        '--nu-preview-animation-time': `${this.animationTime}ms`,
       };
     },
   },

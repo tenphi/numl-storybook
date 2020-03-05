@@ -56,10 +56,10 @@
     <nu-block v-if="frame" id="preview" v-html="markup" padding="2x"></nu-block>
     <nu-block
       v-else id="preview"
-      :height="repl ? '100%' : null" overflow="auto" fill="main-subtle">
+      :height="repl ? '100vh - 5x - 1b' : null" fill="main-subtle">
       <iframe
         ref="frame" :src="`/preview.html#${encodedData}`" frameborder="0"
-        scrolling="no" width="100%" @load="resizeIframe(this)"
+        :scrolling="repl ? 'yes' : 'no'" width="100%" @load="resizeIframe(this)"
         :style="repl ? 'height: 100%;' : null"></iframe>
     </nu-block>
 
@@ -103,7 +103,9 @@ export default {
       const { frame } = this.$refs;
 
       if (frame && val.includes('<script')) {
-        frame.reload();
+        setTimeout(() => {
+          frame.contentWindow.location.reload();
+        }, 100);
       }
     },
   },
@@ -174,6 +176,7 @@ export default {
 
 <style scoped>
 iframe {
+  display: block;
   height: 58px;
   transition: height var(--nu-animation-time) linear;
 }

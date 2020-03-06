@@ -30,11 +30,15 @@
           for="nu-tooltip" text="nowrap" width="max(min-content)"
           place="outside-bottom"></nu-attrs>
         <nu-flex>
-          <nu-blocklink to="/" display="flex">
+          <nu-blocklink v-if="!embed" to="/" display="flex">
             <nu-svg
               theme="tint" fill="text"
               src="/img/icon.svg" place="stretch" height="2.5" width="2.5"></nu-svg>
           </nu-blocklink>
+          <nu-svg
+            v-else
+            theme="tint" fill="text"
+            src="/img/icon.svg" place="stretch" height="2.5" width="2.5"></nu-svg>
           <nu-el text="w6 monospace" padding>REPL</nu-el>
         </nu-flex>
         <nu-flex size="xs" gap items="center">
@@ -43,7 +47,7 @@
             <nu-icon name="check"></nu-icon>
             Saved
           </nu-el>
-          <nu-btn padding @tap="save" special>
+          <nu-btn v-if="!embed" padding @tap="save" special>
             Save
           </nu-btn>
           <nu-btn padding @tap="copyReplLink" height="2" width="2">
@@ -61,7 +65,9 @@
           :options="editorOptions"></codemirror>
       </nu-block>
 
-      <nu-block show="y|n" padding theme="tint" fill="subtle" border="top" size="xs">
+      <nu-block
+        v-if="!embed"
+        show="y|n" padding theme="tint" fill="subtle" border="top" size="xs">
         Press
         <nu-el v-if="isMac" text="w6">Cmd+E</nu-el>
         <nu-el v-else text="w6">Ctrl+E</nu-el>
@@ -125,6 +131,7 @@ export default {
       version: window.Nude.version,
       copied: false,
       saved: false,
+      embed: false,
       isMac: navigator.appVersion.includes('Mac'),
     };
   },
@@ -190,7 +197,9 @@ export default {
 
     if (hash) {
       try {
-        this.markup = JSON.parse(decodeURIComponent(hash)).markup;
+        const data = JSON.parse(decodeURIComponent(hash));
+        this.markup = data.markup;
+        this.embed = data.embed || false;
       } catch (e) {
         // do nothing
       }

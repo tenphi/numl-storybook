@@ -167,6 +167,8 @@ function applyOptions(options) {
 
   if (options.themeType !== 'main') {
     theme.setAttribute('mod', options.themeType);
+  } else {
+    theme.removeAttribute('mod');
   }
 
   if (options.pastel) {

@@ -19,7 +19,7 @@
         filter="backdrop-blur(1rem)"
         z="front"
         shadow="0|1"
-        :move="showMenu ? '0 0' : '0 0|-100% 0'"
+        :move="showMenu ? '0 0' : '0 0|(-100% - 1x) 0'"
         transition="move ease-out"
       >
         <nu-flow padding="1x" gap border="right" text="center" overflow="auto">
@@ -124,7 +124,7 @@
       filter="backdrop-blur(1rem)"
       z="front"
       shadow="1"
-      :move="showSettings ? '0 0' : '100% 0'"
+      :move="showSettings ? '0 0' : '(100% + 1x) 0'"
       transition="move ease-out"
       padding
       overflow="auto"

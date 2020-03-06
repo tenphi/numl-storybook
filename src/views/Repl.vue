@@ -110,6 +110,7 @@ export default {
       editorOptions: {
         mode: 'text/html',
         tabSize: 2,
+        indentUnit: 2,
         lineNumbers: true,
         autoCloseTags: true,
         styleActiveLine: true,

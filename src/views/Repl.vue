@@ -2,7 +2,7 @@
   <nu-flex height="100%" overflow="hidden" responsive="760px|600px">
     <nu-flex
       :show="mode === 'editor' ? 'y' : 'y|n'"
-      fill="bg" height="100vh" flow="column" width="50%|100%">
+      fill="bg" height="100vh" flow="column" :width="`${split}%|100%`">
       <nu-theme name="header" hue="#00f" mod="tint"></nu-theme>
       <nu-theme name="quote" hue="#090" mod="tint"></nu-theme>
       <nu-theme name="negative" hue="#d44" mod="tint"></nu-theme>
@@ -59,11 +59,11 @@
         </nu-flex>
       </nu-pane>
 
-      <nu-block grow="1" overflow="auto" scrollbar>
+      <nu-flex grow="1" overflow="auto" scrollbar>
         <codemirror
           v-model="markup"
           :options="editorOptions"></codemirror>
-      </nu-block>
+      </nu-flex>
 
       <nu-block
         v-if="!embed"
@@ -76,9 +76,9 @@
     </nu-flex>
     <Preview
       :show="mode === 'preview' ? 'y' : 'y|n'"
-      width="50%|100%"
+      :width="`${100 - split}%|100%`"
       ref="preview" repl
-      :markup="previewMarkup" height="100vh" fill="subtle" border="left"></Preview>
+      :markup="previewMarkup" height="100vh" fill="subtle" border="left color(special)|0"></Preview>
 
     <nu-btn
       show="n|y"
@@ -86,6 +86,8 @@
       special size="xl" place="fixed left bottom 1" z="front" padding shadow=".5">
       <nu-icon :name="mode === 'editor' ? 'eye' : 'edit-2'"></nu-icon>
     </nu-btn>
+
+    <Splitter v-model="split"></Splitter>
   </nu-flex>
 </template>
 
@@ -104,8 +106,22 @@ import '@/other/numl-hint';
 import Preview from '../components/Preview.vue';
 import GlobalEvents from '../services/global-events';
 import Options from '../services/options';
+import Splitter from '../components/Splitter.vue';
 
 Vue.use(codemirror);
+
+window.Repl = {
+  convertToEmbedded() {
+    const hash = window.location.hash.slice(1);
+    const obj = JSON.parse(decodeURIComponent(hash));
+
+    obj.embed = true;
+
+    const data = encodeURIComponent(JSON.stringify(obj));
+
+    return `https://numl.design/repl#${data}`;
+  },
+};
 
 export default {
   name: 'repl',
@@ -133,6 +149,7 @@ export default {
       saved: false,
       embed: false,
       isMac: navigator.appVersion.includes('Mac'),
+      split: 50,
     };
   },
   watch: {
@@ -213,13 +230,14 @@ export default {
   },
   components: {
     Preview,
+    Splitter,
   },
 };
 </script>
 
 <style>
 .vue-codemirror {
-  height: 100%;
+  width: 100%;
 }
 
 .CodeMirror {

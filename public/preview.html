@@ -114,8 +114,6 @@ function setReducedMotion(type) {
   }
 }
 
-console.log('#####');
-
 function preview() {
   const currentHash = window.location.hash.slice(1);
 
@@ -133,9 +131,14 @@ function preview() {
   scale = data.scale || 2;
   markup = data.markup || '';
 
+  markup = markup
+    .replace(/responsive="[^"]+?"/, (str) => str
+      .replace(/[\d.]+/, n => String(Number(n) * scale)) );
+
   const { body } = document;
 
   body.style.width = `${100 / data.scale}%`;
+  body.style.height = `${100 / data.scale}%`;
   body.style.transform = `scale(${data.scale}, ${data.scale})`;
   body.style.transformOrigin = 'left top';
 
@@ -143,8 +146,6 @@ function preview() {
     .replace(/<script>[^]+?<\/script>/gm,
       (s) => {
         eval(s.slice(8, -9));
-
-        console.log('?', s, markup);
 
         return '';
       });

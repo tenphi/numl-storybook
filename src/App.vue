@@ -133,7 +133,7 @@
         gap=".5rem"
         border-width="1px"
         radius=".5rem"
-        animation-time="80ms"></nu-props>
+        transition-time="80ms"></nu-props>
 
       <nu-flex flow="column" gap>
         <nu-card>
@@ -227,10 +227,10 @@
             <nu-el place="center end">Anim. time</nu-el>
             <nu-rail>
               <nu-slider
-                :value="animationTime" @input="animationTime = $event.detail"
+                :value="transitionTime" @input="transitionTime = $event.detail"
                 min="10" max="250" step="10" precision="0" type="int"></nu-slider>
             </nu-rail>
-            <nu-el>{{ animationTime }}s</nu-el>
+            <nu-el>{{ transitionTime }}s</nu-el>
           </nu-grid>
         </nu-card>
 
@@ -426,6 +426,11 @@ const STORYBOOK_MENU = [
   },
   {
     type: 'link',
+    label: 'Images & Icons',
+    to: '/storybook/markup/images-and-icons',
+  },
+  {
+    type: 'link',
     label: 'Popups & Dropdowns',
     to: '/storybook/markup/popups-and-dropdowns',
   },
@@ -537,7 +542,7 @@ export default {
         '--nu-preview-gap': `${this.gap}rem`,
         '--nu-preview-radius': `${this.radius}rem`,
         '--nu-preview-border-width': `${this.borderWidth}px`,
-        '--nu-preview-animation-time': `${this.animationTime}ms`,
+        '--nu-preview-transition-time': `${this.transitionTime}ms`,
       };
     },
   },
@@ -549,6 +554,6 @@ export default {
   --nu-gap: var(--nu-preview-gap);
   --nu-radius: var(--nu-preview-radius);
   --nu-border-width: var(--nu-preview-border-width);
-  --nu-animation-time: var(--nu-preview-animation-time);
+  --nu-transition-time: var(--nu-preview-transition-time);
 }
 </style>

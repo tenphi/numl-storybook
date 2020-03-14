@@ -1,7 +1,7 @@
 const { Nude } = window;
 
 const LIST = Object.values(Nude.elements);
-const { NuDecorator } = Nude.elements;
+const { NuDecorator, NuElement } = Nude.elements;
 
 const DATA = {
   elements: [],
@@ -33,8 +33,11 @@ LIST.forEach((el) => {
     }, {});
   const attrs = Object.keys(el.nuAllAttrs)
     .reduce((map, attr) => {
-      if (!ownAttrs.includes(attr)) {
-        map.push(attr);
+      if (el.nuAllAttrs[attr] !== NuElement.nuAllAttrs[attr]) {
+        map.push({
+          name: attr,
+          defaultValue: el.nuAllDefaults[attr],
+        });
       }
 
       return map;

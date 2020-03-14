@@ -95,7 +95,7 @@ export default {
     scale() {
       clearTimeout(this.timerId);
 
-      this.timerId = setTimeout(() => this.resizeIframe(), 50);
+      this.timerId = setTimeout(() => this.resizeIframe(), 0);
     },
     markup(val) {
       const { frame } = this.$refs;
@@ -176,6 +176,7 @@ export default {
 iframe {
   display: block;
   height: 58px;
-  transition: height var(--nu-animation-time) linear;
+  transition: height var(--nu-transition-time) linear;
+  max-width: 100%;
 }
 </style>

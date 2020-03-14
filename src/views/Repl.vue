@@ -31,12 +31,11 @@
           place="outside-bottom"></nu-attrs>
         <nu-flex>
           <nu-blocklink v-if="!embed" to="/" display="flex" theme="special">
-            <nu-svg fill="bg"
-              src="/img/icon.svg" place="stretch" height="2.5" width="2.5"></nu-svg>
+            <nu-svg
+              fill="bg" src="/img/icon.svg" place="stretch" height="2.5" width="2.5"></nu-svg>
           </nu-blocklink>
           <nu-svg
-            v-else
-            theme="tint" fill="text"
+            v-else fill theme="special"
             src="/img/icon.svg" place="stretch" height="2.5" width="2.5"></nu-svg>
           <nu-el text="w6 monospace" padding>REPL</nu-el>
         </nu-flex>

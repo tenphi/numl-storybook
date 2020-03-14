@@ -5,9 +5,12 @@
     :place="`left (${value}% - 1x)`"
     z="front" width="1" height="100vh"
     cursor="col-resize">
-    <nu-block place="cover" :fill="dragging ? 'hover' : ':hover[hover] clear'">
+    <nu-block
+      place="cover"
+      :fill="dragging ? 'hover' : ':hover[hover] clear'"
+      transition="fill">
       <nu-block
-        radius="round" fill="special-bg" border shadow
+        radius="round" fill="special-bg" border shadow=".5"
         width="1.25 + 2b" height="1.75" place="inside" move=".5b 0">
         <nu-attrs for="nu-icon" place="inside" color="special-text" scale="1 1.5"></nu-attrs>
         <nu-icon name="chevron-left" move="-.5x 0"></nu-icon>

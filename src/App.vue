@@ -25,7 +25,7 @@
         <nu-flow padding="1x" gap border="right" text="center" overflow="auto">
           <nu-blocklink
             to="/"
-            id="logo" padding="2x 4x 0" theme="special" color="bg">
+            id="logo" padding="2x 4x 0" theme="special">
             <nu-svg width="100%" height src="/img/icon.svg"></nu-svg>
           </nu-blocklink>
           <nu-block text="nowrap monospace w7" size="xs">

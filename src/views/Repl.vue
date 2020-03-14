@@ -25,14 +25,13 @@
       <nu-theme name="link" hue="#00c" mod="tint"></nu-theme>
       <nu-theme name="error" hue="#f00" mod="tint"></nu-theme>
 
-      <nu-pane border="bottom" fill="subtle" padding="right" text="nowrap">
+      <nu-pane border="bottom" fill="subtle" padding="right" text="nowrap" height="min(2.5)">
         <nu-attrs
           for="nu-tooltip" text="nowrap" width="max(min-content)"
           place="outside-bottom"></nu-attrs>
         <nu-flex>
-          <nu-blocklink v-if="!embed" to="/" display="flex">
-            <nu-svg
-              theme="tint" fill="text"
+          <nu-blocklink v-if="!embed" to="/" display="flex" theme="special">
+            <nu-svg fill="bg"
               src="/img/icon.svg" place="stretch" height="2.5" width="2.5"></nu-svg>
           </nu-blocklink>
           <nu-svg
@@ -50,7 +49,7 @@
           <nu-btn v-if="!embed" padding @tap="save" special>
             Save
           </nu-btn>
-          <nu-btn padding @tap="copyReplLink" height="2" width="2">
+          <nu-btn padding @tap="copyReplLink">
             <nu-tooltip>
               {{ copied ? 'Copied!' : 'Copy REPL Link' }}
             </nu-tooltip>
@@ -59,7 +58,7 @@
         </nu-flex>
       </nu-pane>
 
-      <nu-flex grow="1" overflow="auto" scrollbar>
+      <nu-flex grow="1" overflow="auto" scrollbar flow="column">
         <codemirror
           v-model="markup"
           :options="editorOptions"></codemirror>
@@ -222,8 +221,6 @@ export default {
       }
     }
 
-    // window.location.hash = '';
-
     if (!this.checkMarkup()) return;
 
     this.previewMarkup = this.markup;
@@ -237,13 +234,16 @@ export default {
 
 <style>
 .vue-codemirror {
+  display: flex;
+  flex-flow: column;
   width: 100%;
+  flex-grow: 1;
 }
 
 .CodeMirror {
-  height: 100%;
   background: var(--nu-main-bg-color);
   color: var(--nu-main-text-color);
+  flex-grow: 1;
 }
 
 .cm-s-default .cm-header {

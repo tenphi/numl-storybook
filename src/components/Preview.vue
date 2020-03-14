@@ -3,9 +3,7 @@
     <nu-attrs
       for="nu-tooltip" text="nowrap" width="max(min-content)"
       :place="repl ? 'outside-bottom' : null"></nu-attrs>
-    <nu-pane border="bottom" padding="2x left right">
-      <nu-attrs for="nu-btn" height="2" width="2"></nu-attrs>
-
+    <nu-pane border="bottom" padding="2x left right" height="min(2.5)">
       <nu-tablist value="preview" v-if="!repl">
         <nu-tab controls="preview">
           Preview
@@ -17,7 +15,7 @@
 <!--          Runtime-->
 <!--        </nu-tab>-->
       </nu-tablist>
-      <nu-block v-else height="2.5"></nu-block>
+      <nu-block v-else></nu-block>
       <nu-flex gap items="center" size="xs" text="w7">
         <nu-el id="scale">{{parseInt(scale * 100)}}%</nu-el>
         <nu-group radius>

@@ -14,7 +14,7 @@ Use `src` attribute to specify URL to the image.
 
 ### Image fit
 
-Using `fit` attribute you can specify fit strategy of the image. This attribute has the same specification as `object-fit` CSS style but has an additional option: `auto`. Which means that image is trying to take as much space as needed for full size but limited to the container width.
+Using `fit` attribute you can specify fit strategy of the image. This attribute has the same specification as `object-fit` CSS style. If `fit="none"` which is default value then the image is trying to take as much space as needed for full size but no more than container width.
 
 ```html
 <nu-flow gap text="monospace">
@@ -32,10 +32,10 @@ Using `fit` attribute you can specify fit strategy of the image. This attribute 
       fit="fill"></nu-img>
   </nu-card>
   <nu-card>
-    <nu-block>fit="auto"</nu-block>
+    <nu-block>fit="none"</nu-block>
     <nu-img
       src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/san-francisco-bay-area_web-f17b1f60e6.jpg"
-      fit="auto"></nu-img>
+      fit="none"></nu-img>
   </nu-card>
 </nu-flow>
 ```

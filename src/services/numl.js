@@ -1,3 +1,6 @@
+import BASE_ATTRIBUTES from '../other/base-attributes';
+import ATTR_VALUES from '../other/attr-values';
+
 const { Nude } = window;
 
 const LIST = Object.values(Nude.elements);
@@ -33,7 +36,7 @@ LIST.forEach((el) => {
     }, {});
   const attrs = Object.keys(el.nuAllAttrs)
     .reduce((map, attr) => {
-      if (el.nuAllAttrs[attr] !== NuElement.nuAllAttrs[attr]) {
+      if (NuElement.nuAllAttrs[attr] == null) {
         map.push({
           name: attr,
           defaultValue: el.nuAllDefaults[attr],
@@ -298,3 +301,48 @@ export default {
     return MODIFIER_ATTRIBUTES;
   },
 };
+
+const customData = {
+  version: 1.1,
+  tags: DATA.elements.reduce((list, element) => {
+    list.push({
+      name: element.tag,
+      description: '',
+      attributes: element.attrs
+        .filter((attr) => !(attr.name in BASE_ATTRIBUTES))
+        .map((attr) => ({
+          name: attr.name,
+          description: '',
+          values: ((ATTR_VALUES[element.tag] && ATTR_VALUES[element.tag][attr.name]) || [])
+            .reduce((values, value) => {
+              values.push({
+                name: value,
+              });
+
+              return values;
+            }, []),
+        })),
+    });
+
+    return list;
+  }, []),
+  globalAttributes: Object.keys(BASE_ATTRIBUTES)
+    .reduce((list, attr) => {
+      list.push({
+        name: attr,
+        description: '',
+        values: (BASE_ATTRIBUTES[attr] || []).reduce((values, value) => {
+          values.push({
+            name: value,
+          });
+
+          return values;
+        }, []),
+      });
+
+      return list;
+    }, []),
+};
+
+Nude.customData = customData;
+Nude.rawData = DATA;

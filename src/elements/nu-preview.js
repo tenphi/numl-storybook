@@ -15,6 +15,7 @@ export default class NuPreview extends NuElement {
       gap: '1x',
       fill: 'subtle',
       radius: '1r',
+      shadow: '1',
     };
   }
 

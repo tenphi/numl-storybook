@@ -1,6 +1,6 @@
 <template>
   <nu-flow gap>
-    <nu-heading>
+    <nu-heading level="1">
       Attribute [{{ attribute }}]
     </nu-heading>
 

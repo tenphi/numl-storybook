@@ -5,8 +5,8 @@ export const DEFAULT_OPTIONS = {
   themeType: 'main',
   hue: 272,
   pastel: false,
-  saturation: 80,
-  saturationType: 'auto',
+  saturation: 50,
+  saturationType: 'custom',
   gap: 0.5,
   borderWidth: 1,
   radius: 0.5,
@@ -20,7 +20,9 @@ export default {
   get() {
     return Object.keys(DEFAULT_OPTIONS)
       .reduce((params, key) => {
-        params[key] = Lockr.get(`numl:${key}`) || DEFAULT_OPTIONS[key];
+        const val = Lockr.get(`numl:${key}`);
+
+        params[key] = val != null ? val : DEFAULT_OPTIONS[key];
 
         return params;
       }, {});

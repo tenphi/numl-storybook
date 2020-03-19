@@ -7,7 +7,9 @@ export default {
           throw new Error('incorrect content');
         }
 
-        return content.replace(/```html\n/g, '```nu-preview\n');
+        return content
+          .replace(/```html\n/g, '```nu-preview\n')
+          .replace(/\.md\)/g, ')');
       })
       .catch(() => `## ${name}.md\n\nYet to be documented`);
   },

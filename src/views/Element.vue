@@ -5,7 +5,7 @@
     <nu-theme name="type-own" hue="type-own" mod="tint"></nu-theme>
     <nu-theme name="type-inherited" hue="type-inherited" mod="tint"></nu-theme>
 
-    <nu-heading>
+    <nu-heading level="1">
       Element
       <nu-el text="monospace">&lt;{{ element.tag }}/&gt;</nu-el>
     </nu-heading>
@@ -73,9 +73,11 @@
       Default CSS (generated)
     </nu-heading>
 
-    <nu-code>
+    <nu-code v-if="showCSS">
       <textarea v-html="element.css"></textarea>
     </nu-code>
+
+    <nu-btn v-else special @tap="showCSS = true">Show CSS</nu-btn>
   </nu-flow>
 </template>
 
@@ -95,6 +97,7 @@ async function beforeLoad(to, from, next) {
   if (typeof this !== 'undefined') {
     this.description = description;
     this.element = Numl.getElement(to.params.tag);
+    this.showCSS = false;
     if (next) {
       next();
     }
@@ -112,6 +115,7 @@ export default {
     return {
       description: '',
       element: {},
+      showCSS: false,
     };
   },
   mounted() {

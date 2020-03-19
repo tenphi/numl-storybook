@@ -16,6 +16,11 @@ const routes = [
     },
   },
   {
+    path: '/guide*',
+    name: 'GuidePage',
+    component: MarkdownPageView,
+  },
+  {
     path: '/storybook*',
     name: 'StoryBookPage',
     component: MarkdownPageView,
@@ -55,6 +60,14 @@ router.afterEach((to) => {
   if (to.meta.title != null) {
     Window.setTitle(to.meta.title);
   }
+
+  setTimeout(() => {
+    const navItem = document.querySelector('#subnav nu-link[theme="special"]');
+
+    if (navItem) {
+      navItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
 });
 
 export default router;

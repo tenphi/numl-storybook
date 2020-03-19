@@ -53,7 +53,7 @@ You can inline any SVG using [nu-svg](/reference/element/nu-svg) element.
 It's useful if you want to use some colors from your application to color an SVG.
 
 ```html
-<nu-attrs for="nu-svg" width="4" height="4"></nu-attrs>
+<nu-attrs for="nu-svg" width="4" height="4" border radius="1.25" overflow="no"></nu-attrs>
 <nu-flex flow="row wrap" gap="2x">
   <nu-svg theme="tint" src="/img/icon.svg"></nu-svg>
   <nu-svg theme="swap" src="/img/icon.svg"></nu-svg>

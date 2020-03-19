@@ -22,10 +22,13 @@
         :move="showMenu ? '0 0' : '0 0|(-100% - 1x) 0'"
         transition="move ease-out"
       >
-        <nu-flow padding="1x" gap border="right" text="center" overflow="auto">
+        <nu-flow
+          id="nav" padding="1x" gap border="right" text="center" overflow="auto" scrollbar>
           <nu-blocklink
             to="/"
-            id="logo" padding="2x 4x 0" theme="special">
+            hoverable="no"
+            id="logo" padding="2x 4x 0" theme="special :hover[special strong]"
+            transition="shadow">
             <nu-svg width="100%" height src="/img/icon.svg"></nu-svg>
           </nu-blocklink>
           <nu-block text="nowrap monospace w7" size="xs">
@@ -42,14 +45,16 @@
               fill=":pressed[bg] clear"
               toggle="0 :active:focusable[.75em] :pressed[0]"
             ></nu-attrs>
+            <nu-btn value="guide" to="/guide/what-is-numl">Guide</nu-btn>
             <nu-btn value="storybook" to="/storybook">Storybook</nu-btn>
             <nu-btn value="reference" to="/reference/element/nu-el">Reference</nu-btn>
-            <nu-btn value="framework" to="/framework">Framework</nu-btn>
+            <nu-btn value="framework" to="/framework/what-is-nude">Framework</nu-btn>
             <nu-btn value="repl" to="/repl">REPL</nu-btn>
           </nu-btngroup>
         </nu-flow>
 
-        <nu-flow padding="0 2x" gap="1x" border="right" overflow="auto">
+        <nu-flow
+          id="subnav" padding="0 2x" gap="1x" border="right" overflow="auto" scrollbar>
           <nu-attrs
             for="nu-heading" padding="1x 2x"
             level="4" place="sticky top" space="-1 1" fill="subtle"
@@ -128,6 +133,7 @@
       transition="move ease-out"
       padding
       overflow="auto"
+      scrollbar
     >
       <nu-props
         gap=".5rem"
@@ -175,7 +181,7 @@
                     <nu-label>Auto</nu-label>
                   </nu-flex>
                   <nu-flex gap items="center">
-                    <nu-radio value="yes" labelledby=":next"></nu-radio>
+                    <nu-radio value="custom" labelledby=":next"></nu-radio>
                     <nu-label>Custom</nu-label>
                   </nu-flex>
                 </nu-radiogroup>
@@ -338,6 +344,23 @@ function handleAttribute(attr) {
   };
 }
 
+const GUIDE_MENU = [
+  {
+    type: 'heading',
+    label: 'Introduction',
+  },
+  {
+    type: 'link',
+    label: 'What is NuML?',
+    to: '/guide/what-is-numl',
+  },
+  {
+    type: 'link',
+    label: 'Getting started',
+    to: '/guide/getting-started',
+  },
+];
+
 const REFERENCE_MENU = [
   {
     type: 'heading',
@@ -393,20 +416,6 @@ const REFERENCE_MENU = [
 const STORYBOOK_MENU = [
   {
     type: 'heading',
-    label: 'Introduction',
-  },
-  {
-    type: 'link',
-    label: 'What is NuML?',
-    to: '/storybook',
-  },
-  {
-    type: 'link',
-    label: 'Getting started',
-    to: '/storybook/getting-started',
-  },
-  {
-    type: 'heading',
     label: 'Markup system',
   },
   {
@@ -421,8 +430,13 @@ const STORYBOOK_MENU = [
   },
   {
     type: 'link',
+    label: 'Responsiveness',
+    to: '/storybook/markup/responsiveness',
+  },
+  {
+    type: 'link',
     label: 'Theming',
-    to: '/storybook/themes',
+    to: '/storybook/markup/themes',
   },
   {
     type: 'link',
@@ -438,6 +452,23 @@ const STORYBOOK_MENU = [
     type: 'heading',
     label: 'Advanced',
   },
+];
+
+const FRAMEWORK_MENU = [
+  {
+    type: 'heading',
+    label: 'Introduction',
+  },
+  {
+    type: 'link',
+    label: 'What is NUDE Framework?',
+    to: '/framework/what-is-nude',
+  },
+  // {
+  //   type: 'link',
+  //   label: 'Getting started',
+  //   to: '/framework/getting-started',
+  // },
 ];
 
 export default {
@@ -533,6 +564,14 @@ export default {
 
       if (path.startsWith('/storybook')) {
         return STORYBOOK_MENU;
+      }
+
+      if (path.startsWith('/guide')) {
+        return GUIDE_MENU;
+      }
+
+      if (path.startsWith('/framework')) {
+        return FRAMEWORK_MENU;
       }
 
       return [];

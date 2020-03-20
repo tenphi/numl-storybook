@@ -57,7 +57,7 @@ It's possible to position popup as you like.
 
 ## Parent overflow
 
-You can use [drop](/reference/attribute/drop) attribute (which activates **Fixate Mixin**) instead of [place](/reference/attribute/place) attribute for Popups so they can ignore `overflow: hidden` on parent elements.
+You can use [drop](/reference/attributes/drop.md) attribute (which activates **Fixate Mixin**) instead of [place](/reference/attributes/place) attribute for Popups so they can ignore `overflow: hidden` on parent elements.
 
 ```nu-preview
 <nu-attrs
@@ -93,7 +93,7 @@ You can use [drop](/reference/attribute/drop) attribute (which activates **Fixat
 
 ## Window overflow
 
-Popups uses horizontal corrections to make sure they fit into the window. It works the same for [drop](/reference/mixin/fixate) and [place](/reference/attribute/place) positioning.
+Popups uses horizontal corrections to make sure they fit into the window. It works the same for [drop](/reference/mixin/fixate) and [place](/reference/attributes/place.md) positioning.
 
 ```nu-preview
 <nu-attrs
@@ -123,7 +123,7 @@ Popups uses horizontal corrections to make sure they fit into the window. It wor
 
 You can even create dropdown menu that works exactly like you expected: The dropdown will be closed after you choose an item.
 
-Note that Submenu's popup can't have [drop](/reference/mixin/fixate) attribute. Use [place](/reference/attribute/place) attribute instead.
+Note that Submenu's popup can't have [drop](/reference/mixin/fixate) attribute. Use [place](/reference/attributes/place.md) attribute instead.
 
 ```nu-preview
 <nu-attrs

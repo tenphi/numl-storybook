@@ -1,6 +1,6 @@
 # Images and icons
 
-There are several elements in NuML that you can use to insert images and icons: [nu-img](/reference/element/nu-img), [nu-svg](/reference/element/nu-svg) and [nu-icon](/reference/element/nu-icon).
+There are several elements in NuML that you can use to insert images and icons: [nu-img](/reference/elements/nu-img.md), [nu-svg](/reference/element/nu-svg) and [nu-icon](/reference/element/nu-icon).
 
 ## Images
 
@@ -42,13 +42,13 @@ Using `fit` attribute you can specify fit strategy of the image. This attribute 
 
 ### Accessibility
 
-[nu-img](/reference/element/nu-img) uses native `img` element under-the-hood. So you can be sure that all images will be accessible. Don't forget to specify `label` attribute to describe image.
+[nu-img](/reference/elements/nu-img.md) uses native `img` element under-the-hood. So you can be sure that all images will be accessible. Don't forget to specify `label` attribute to describe image.
 
 Be aware that in Dark Scheme every image is slightly dimmed.
 
 ## Inline SVG
 
-You can inline any SVG using [nu-svg](/reference/element/nu-svg) element.
+You can inline any SVG using [nu-svg](/reference/elements/nu-svg.md) element.
 
 It's useful if you want to use some colors from your application to color an SVG.
 

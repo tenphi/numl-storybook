@@ -57,7 +57,7 @@
         </nu-flex>
       </nu-pane>
 
-      <nu-flex grow="1" overflow="auto" scrollbar flow="column">
+      <nu-flex grow="1" overflow="no" scrollbar flow="column">
         <codemirror
           v-model="markup"
           :options="editorOptions"></codemirror>

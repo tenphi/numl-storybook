@@ -1,6 +1,6 @@
 # Responsive system
 
-To make your site responsive with NuML is very simple. Any element has [responsive](../../reference/attribute/responsive.md) attribute that can be used to declare responsive points in its context. Every responsive point split a set of screen width values into two zones. So `N` responsive points will split that set into `N + 1` zones. Let's take a look at the example:
+To make your site responsive with NuML is very simple. Any element has [responsive](../../reference/attributes/responsive.md) attribute that can be used to declare responsive points in its context. Every responsive point split a set of screen width values into two zones. So `N` responsive points will split that set into `N + 1` zones. Let's take a look at the example:
 
 ```
 <nu-block responsive="980px|640px">

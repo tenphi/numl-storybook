@@ -34,12 +34,12 @@ const routes = [
     },
   },
   {
-    path: '/reference/element/:tag',
+    path: '/reference/elements/:tag',
     name: 'ElementPage',
     component: () => import(/* webpackChunkName: "element-view" */ '../views/Element'),
   },
   {
-    path: '/reference/attribute/:attr',
+    path: '/reference/attributes/:attr',
     name: 'AttributePage',
     component: () => import(/* webpackChunkName: "attribute-view" */ '../views/Attribute'),
   },

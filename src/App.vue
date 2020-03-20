@@ -47,7 +47,7 @@
             ></nu-attrs>
             <nu-btn value="guide" to="/guide/what-is-numl">Guide</nu-btn>
             <nu-btn value="storybook" to="/storybook">Storybook</nu-btn>
-            <nu-btn value="reference" to="/reference/element/nu-el">Reference</nu-btn>
+            <nu-btn value="reference" to="/reference/elements/nu-el">Reference</nu-btn>
             <nu-btn value="framework" to="/framework/what-is-nude">Framework</nu-btn>
             <nu-btn value="repl" to="/repl">REPL</nu-btn>
           </nu-btngroup>
@@ -332,7 +332,7 @@ function handleElement(el) {
   return {
     type: 'link',
     label: `<${el.tag}/>`,
-    to: `/reference/element/${el.tag}`,
+    to: `/reference/elements/${el.tag}`,
   };
 }
 
@@ -340,7 +340,7 @@ function handleAttribute(attr) {
   return {
     type: 'link',
     label: `[${attr}]`,
-    to: `/reference/attribute/${attr}`,
+    to: `/reference/attributes/${attr}`,
   };
 }
 
@@ -358,6 +358,25 @@ const GUIDE_MENU = [
     type: 'link',
     label: 'Getting started',
     to: '/guide/getting-started',
+  },
+  {
+    type: 'heading',
+    label: 'Core features',
+  },
+  {
+    type: 'link',
+    label: 'Customization',
+    to: '/guide/features/customization',
+  },
+  {
+    type: 'link',
+    label: 'Responsiveness',
+    to: '/guide/features/responsiveness',
+  },
+  {
+    type: 'link',
+    label: 'Theming',
+    to: '/guide/features/themes',
   },
 ];
 
@@ -416,6 +435,15 @@ const REFERENCE_MENU = [
 const STORYBOOK_MENU = [
   {
     type: 'heading',
+    label: 'Welcome',
+  },
+  {
+    type: 'link',
+    label: 'Introduction',
+    to: '/storybook',
+  },
+  {
+    type: 'heading',
     label: 'Markup system',
   },
   {
@@ -425,23 +453,32 @@ const STORYBOOK_MENU = [
   },
   {
     type: 'link',
-    label: 'Layout System',
-    to: '/storybook/layout',
+    label: 'Typography',
+    to: '/storybook/markup/typography',
   },
   {
     type: 'link',
-    label: 'Responsiveness',
-    to: '/storybook/markup/responsiveness',
+    label: 'Badges and Marks',
+    to: '/storybook/markup/badges-and-marks',
   },
   {
     type: 'link',
-    label: 'Theming',
-    to: '/storybook/markup/themes',
+    label: 'Links',
+    to: '/storybook/markup/links',
+  },
+  {
+    type: 'link',
+    label: 'Layout',
+    to: '/storybook/markup/layout',
   },
   {
     type: 'link',
     label: 'Images & Icons',
     to: '/storybook/markup/images-and-icons',
+  },
+  {
+    type: 'heading',
+    label: 'Widgets',
   },
   {
     type: 'link',

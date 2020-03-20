@@ -189,7 +189,7 @@ export default {
       // return check;
     },
     copyReplLink() {
-      copy(`https:/numl.design/repl#${this.encodedData}`);
+      copy(`https://numl.design/repl#${this.encodedData}`);
 
       this.copied = true;
 

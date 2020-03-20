@@ -501,6 +501,11 @@ const FRAMEWORK_MENU = [
     label: 'What is NUDE Framework?',
     to: '/framework/what-is-nude',
   },
+  {
+    type: 'link',
+    label: 'Creating element',
+    to: '/framework/creating-element',
+  },
   // {
   //   type: 'link',
   //   label: 'Getting started',

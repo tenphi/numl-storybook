@@ -15,43 +15,53 @@
         place="fixed left"
         height="100% + 1b"
         columns="10 17"
-        :fill="showMenu ? 'subtle|bg 70%' : 'subtle'"
-        filter="backdrop-blur(1rem)"
+        :fill="showMenu ? 'subtle|bg 70% backdrop-blur' : 'subtle'"
         z="front"
         shadow="0|1"
         :move="showMenu ? '0 0' : '0 0|(-100% - 1x) 0'"
         transition="move ease-out"
       >
-        <nu-flow
-          id="nav" padding="1x" gap border="right" text="center" overflow="auto" scrollbar>
-          <nu-blocklink
-            to="/"
-            hoverable="no"
-            id="logo" padding="2x 4x 0" theme="special :hover[special strong]"
-            transition="shadow">
-            <nu-svg width="100%" height src="/img/icon.svg"></nu-svg>
-          </nu-blocklink>
-          <nu-block text="nowrap monospace w7" size="xs">
-            numl@{{ version }}
-          </nu-block>
-          <nu-line></nu-line>
-          <nu-btngroup
-            text="w7" size="md" flow="column" gap
-            :value="$route.path.match(/[a-z-]+/i) && $route.path.match(/[a-z-]+/i)[0]">
-            <nu-attrs
-              for="nu-btn"
-              border="0"
-              theme=":pressed[special]"
-              fill=":pressed[bg] clear"
-              toggle="0 :active:focusable[.75em] :pressed[0]"
-            ></nu-attrs>
-            <nu-btn value="guide" to="/guide/what-is-numl">Guide</nu-btn>
-            <nu-btn value="storybook" to="/storybook">Storybook</nu-btn>
-            <nu-btn value="reference" to="/reference/elements/nu-el">Reference</nu-btn>
-            <nu-btn value="framework" to="/framework/what-is-nude">Framework</nu-btn>
-            <nu-btn value="repl" to="/repl">REPL</nu-btn>
-          </nu-btngroup>
-        </nu-flow>
+        <nu-block
+          ref="nav" id="nav" padding="1x" border="right" text="center" overflow="auto" scrollbar>
+          <nu-flex gap height="100%| " flow="column" padding="0|4 bottom">
+            <nu-blocklink
+              to="/"
+              hoverable="no"
+              id="logo" padding="2x 4x 0" theme="special :hover[special strong]"
+              transition="shadow">
+              <nu-svg width="100%" height src="/img/icon.svg"></nu-svg>
+            </nu-blocklink>
+            <nu-block text="nowrap monospace w7" size="xs">
+              numl@{{ version }}
+            </nu-block>
+            <nu-line></nu-line>
+            <nu-block grow="1">
+              <nu-btngroup
+                text="w7" size="md" flow="column" gap
+                :value="$route.path.match(/[a-z-]+/i) && $route.path.match(/[a-z-]+/i)[0]">
+                <nu-attrs
+                  for="nu-btn"
+                  border="0"
+                  theme=":pressed[special]"
+                  fill=":pressed[bg] clear"
+                  toggle="0 :active:focusable[.75em] :pressed[0]"
+                ></nu-attrs>
+                <nu-btn value="guide" to="/guide/what-is-numl">Guide</nu-btn>
+                <nu-btn value="storybook" to="/storybook">Storybook</nu-btn>
+                <nu-btn value="reference" to="/reference/elements/nu-el">Reference</nu-btn>
+                <nu-btn value="framework" to="/framework/what-is-nude">Framework</nu-btn>
+                <nu-btn value="repl" to="/repl">REPL</nu-btn>
+              </nu-btngroup>
+            </nu-block>
+            <nu-line></nu-line>
+            <nu-btn
+              special
+              to="!https://gitter.im/tenphi/numl?utm_source=share-link&utm_medium=link&utm_campaign=share-link">
+              <nu-icon name="message-circle"></nu-icon>
+              Join Chat
+            </nu-btn>
+          </nu-flex>
+        </nu-block>
 
         <nu-flow
           id="subnav" padding="0 2x" gap="1x" border="right" overflow="auto" scrollbar>
@@ -121,12 +131,12 @@
     </template>
 
     <nu-block
+      ref="settings"
       place="fixed right"
       height="100% + 1b"
       width="20"
       border="left"
-      fill="subtle|bg 70%"
-      filter="backdrop-blur(1rem)"
+      fill="bg 70% backdrop-blur"
       z="front"
       shadow="1"
       :move="showSettings ? '0 0' : '(100% + 1x) 0'"
@@ -535,6 +545,25 @@ export default {
     },
     contrast(val) {
       setGlobalSettings({ contrast: val });
+    },
+    showMenu(bool) {
+      this.$refs.nav.nuResetScroll(true);
+
+      if (bool) {
+        setTimeout(() => {
+          const navItem = document.querySelector('#subnav nu-link[theme="special"]');
+
+          if (navItem) {
+            navItem.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',
+            });
+          }
+        }, 200);
+      }
+    },
+    showSettings() {
+      this.$refs.settings.nuResetScroll(true);
     },
     reducedMotion(val) {
       setGlobalSettings({ reducedMotion: val });

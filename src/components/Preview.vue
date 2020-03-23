@@ -3,21 +3,25 @@
     <nu-attrs
       for="nu-tooltip" text="nowrap" width="max(min-content)"
       :place="repl ? 'outside-bottom' : null"></nu-attrs>
-    <nu-pane border="bottom" padding="2x left right" height="min(2.5)">
-      <nu-tablist value="preview" v-if="!repl">
-        <nu-tab controls="preview">
-          Preview
+    <nu-pane
+      border="bottom" padding="2x left right|1x left right"
+      height="min(2.5)" responsive="500px">
+      <nu-tablist value="preview" v-if="!repl" gap="2x|1x">
+        <nu-tab controls="preview" padding="1x 0|1x">
+          <nu-el show="y|n">Preview</nu-el>
+          <nu-icon name="eye" show="n|y" height="1.5"></nu-icon>
         </nu-tab>
-        <nu-tab controls="source">
-          Source
+        <nu-tab controls="source" padding="1x 0|1x">
+          <nu-el show="y|n">Source</nu-el>
+          <nu-icon name="code" show="n|y" height="1.5"></nu-icon>
         </nu-tab>
-<!--        <nu-tab controls="runtime" disabled>-->
-<!--          Runtime-->
-<!--        </nu-tab>-->
+        <!--        <nu-tab controls="runtime" disabled>-->
+        <!--          Runtime-->
+        <!--        </nu-tab>-->
       </nu-tablist>
       <nu-block v-else></nu-block>
       <nu-flex gap items="center" size="xs" text="w7">
-        <nu-el id="scale">{{parseInt(scale * 100)}}%</nu-el>
+        <nu-el id="scale" show="y|n">{{parseInt(scale * 100)}}%</nu-el>
         <nu-group radius>
           <nu-btn
             id="zoom-out" padding move="1b 0" :disabled="!zoomInEnabled"
@@ -32,16 +36,35 @@
             <nu-icon name="zoom-in"></nu-icon>
           </nu-btn>
         </nu-group>
-        <nu-btn padding @tap="copySourceCode" v-if="!repl">
-          <nu-tooltip>
-            {{ copied ? 'Copied!' : 'Copy source code' }}
-          </nu-tooltip>
-          <nu-icon name="copy"></nu-icon>
-        </nu-btn>
-        <nu-btn padding :to="`!/repl#${encodedData}`" v-if="!repl">
-          <nu-tooltip>Open in REPL</nu-tooltip>
-          <nu-icon name="edit-2"></nu-icon>
-        </nu-btn>
+        <template v-if="!repl">
+          <nu-btn padding=".75x 1x" width="2">
+            {{ size }}
+            <nu-popupmenu padding="0">
+              <nu-flex>
+                <nu-el padding="1x 1x" text="w7 center">ROOT SIZE</nu-el>
+                <nu-line orient="y" height="3"></nu-line>
+                <nu-menuitem
+                  v-for="option in sizes"
+                  :key="option"
+                  :size="option"
+                  @tap="setSize(option)"
+                  :theme="size === option ? 'tone' : null">
+                  {{ option }}
+                </nu-menuitem>
+              </nu-flex>
+            </nu-popupmenu>
+          </nu-btn>
+          <nu-btn padding @tap="copySourceCode">
+            <nu-tooltip>
+              {{ copied ? 'Copied!' : 'Copy source code' }}
+            </nu-tooltip>
+            <nu-icon name="copy"></nu-icon>
+          </nu-btn>
+          <nu-btn padding :to="`!/repl#${encodedData}`">
+            <nu-tooltip>Open in REPL</nu-tooltip>
+            <nu-icon name="edit-2"></nu-icon>
+          </nu-btn>
+        </template>
         <nu-btn padding :to="`!/preview.html#${encodedData}`">
           <nu-tooltip>
             {{ repl ? 'Open preview in separate tab' : 'Open in the new tab' }}
@@ -70,6 +93,7 @@
 </template>
 
 <script>
+import LZString from 'lz-string';
 import copy from 'clipboard-copy';
 import Lockr from 'lockr';
 import Options from '@/services/options';
@@ -89,6 +113,8 @@ export default {
       timerId: null,
       options: Options.get(),
       copied: false,
+      size: 'md',
+      sizes: ['xs', 'sm', 'md', 'lg', 'xl'],
     };
   },
   watch: {
@@ -115,10 +141,11 @@ export default {
       return this.zoomLevels.indexOf(this.scale) > 0;
     },
     encodedData() {
-      return encodeURIComponent(JSON.stringify({
+      return LZString.compressToEncodedURIComponent(JSON.stringify({
         scale: this.scale,
         markup: this.markup,
         options: this.options,
+        size: this.size,
       }));
     },
   },
@@ -167,6 +194,11 @@ export default {
       setTimeout(() => {
         this.copied = false;
       }, 2000);
+    },
+    setSize(size) {
+      this.size = size;
+
+      this.resizeIframe();
     },
   },
 };

@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="/favicon.ico">
   <title>NuML Preview</title>
-  <script src="/numl/numl.dev.js"></script>
+  <script src="/numl/numl.js"></script>
+  <script src="/lzstring/lzstring.js"></script>
 </head>
 <body style="background-color: transparent">
 <nu-block>
   <nu-theme hue="272"></nu-theme>
   <nu-props></nu-props>
-  <nu-block id="content" padding="2x" fill="subtle">
+  <nu-block id="content" padding="2x" fill="subtle" size="md">
 
   </nu-block>
 </nu-block>
@@ -20,6 +21,7 @@
 let hash;
 let scale;
 let markup;
+let size;
 
 const root = document.querySelector('[nu-id="content"]');
 const theme = document.querySelector('nu-theme');
@@ -124,9 +126,17 @@ function preview() {
     data = JSON.parse(decodeURIComponent(currentHash));
   } catch (e) {
     // do nothing
-    return;
+
+    try {
+      data = JSON.parse(window.LZString.decompressFromEncodedURIComponent(currentHash));
+    } catch (e) {
+      // do nothing
+
+      return;
+    }
   }
 
+  size = data.size || 'md';
   scale = data.scale || 2;
   markup = data.markup || '';
 
@@ -150,6 +160,8 @@ function preview() {
       });
 
   root.innerHTML = markup;
+
+  root.setAttribute('size', size);
 
   hash = currentHash;
 

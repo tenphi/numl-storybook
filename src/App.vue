@@ -12,10 +12,11 @@
 
     <template v-if="$route.path !== '/repl'">
       <nu-grid
+        width="clamp(initial, 27, 100vw)"
         place="fixed left"
         height="100% + 1b"
-        columns="10 17"
-        :fill="showMenu ? 'subtle|bg 70% backdrop-blur' : 'subtle'"
+        columns="10 1fr"
+        :fill="showMenu ? 'subtle|subtle 70% backdrop-blur' : 'subtle'"
         z="front"
         shadow="0|1"
         :move="showMenu ? '0 0' : '0 0|(-100% - 1x) 0'"
@@ -64,11 +65,11 @@
         </nu-block>
 
         <nu-flow
-          id="subnav" padding="0 2x" gap="1x" border="right" overflow="auto" scrollbar>
+          id="subnav" padding="0 2x||0 1x" gap="1x" border="right" overflow="auto" scrollbar>
           <nu-attrs
             for="nu-heading" padding="1x 2x"
-            level="4" place="sticky top" space="-1 1" fill="subtle"
-            z="above" border="bottom" fade="top"></nu-attrs>
+            level="4" place="sticky top" space="-2x 2x||-2x 1x" fill="subtle"
+            z="above" border="bottom" fade="top" size="h4||h"></nu-attrs>
           <nu-attrs
             for="nu-link" display="block" text="w6" border="0"
             padding=".25x 1x"></nu-attrs>
@@ -80,7 +81,7 @@
               :to="item.to"
               :theme="item.to === $route.path ? 'special' : null"
               :fill="item.to === $route.path ? 'bg' : 'clear'"
-              :text="`w6 no-decoration`">
+              :text="`w6 no-decoration ellipsis`">
               {{ item.label }}
             </nu-link>
             <nu-heading v-if="item.type === 'heading'" :key="item.label">
@@ -492,8 +493,23 @@ const STORYBOOK_MENU = [
   },
   {
     type: 'link',
+    label: 'Buttons',
+    to: '/storybook/widgets/buttons',
+  },
+  {
+    type: 'link',
+    label: 'Inputs',
+    to: '/storybook/widgets/inputs',
+  },
+  {
+    type: 'link',
+    label: 'Button groups and tabs',
+    to: '/storybook/widgets/button-groups-and-tabs',
+  },
+  {
+    type: 'link',
     label: 'Popups & Dropdowns',
-    to: '/storybook/markup/popups-and-dropdowns',
+    to: '/storybook/widgets/popups-and-dropdowns',
   },
   {
     type: 'heading',
@@ -515,6 +531,11 @@ const FRAMEWORK_MENU = [
     type: 'link',
     label: 'Creating element',
     to: '/framework/creating-element',
+  },
+  {
+    type: 'link',
+    label: 'Shadow DOM',
+    to: '/framework/shadow-dom',
   },
   // {
   //   type: 'link',

@@ -1,5 +1,5 @@
 <template>
-  <nu-markdown ref="root">
+  <nu-markdown ref="root" padding="4 bottom">
     <textarea v-html="content"></textarea>
   </nu-markdown>
 </template>

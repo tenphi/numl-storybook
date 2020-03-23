@@ -1,3 +1,4 @@
+import LZString from 'lz-string';
 import Vue from 'vue';
 import Preview from '@/components/Preview.vue';
 
@@ -63,7 +64,7 @@ export default class NuPreview extends NuElement {
   }
 
   get nuEncodedData() {
-    return encodeURIComponent(JSON.stringify(this.nuData));
+    return LZString.compressToEncodedURIComponent(JSON.stringify(this.nuData));
   }
 
   nuChanged(name, oldValue, value) {

@@ -90,6 +90,7 @@
 </template>
 
 <script>
+import LZString from 'lz-string';
 import copy from 'clipboard-copy';
 import Vue from 'vue';
 import codemirror from 'vue-codemirror';
@@ -111,11 +112,11 @@ Vue.use(codemirror);
 window.Repl = {
   convertToEmbedded() {
     const hash = window.location.hash.slice(1);
-    const obj = JSON.parse(decodeURIComponent(hash));
+    const obj = JSON.parse(LZString.decompressFromEncodedURIComponent(hash));
 
     obj.embed = true;
 
-    const data = encodeURIComponent(JSON.stringify(obj));
+    const data = LZString.compressToEncodedURIComponent(JSON.stringify(obj));
 
     return `https://numl.design/repl#${data}`;
   },
@@ -210,14 +211,22 @@ export default {
   mounted() {
     const hash = window.location.hash.slice(1);
 
+    let data;
+
     if (hash) {
       try {
-        const data = JSON.parse(decodeURIComponent(hash));
-        this.markup = data.markup;
-        this.embed = data.embed || false;
+        data = JSON.parse(decodeURIComponent(hash));
       } catch (e) {
+        try {
+          data = JSON.parse(LZString.decompressFromEncodedURIComponent(hash));
+        } catch (e2) {
+          // do nothing
+        }
         // do nothing
       }
+
+      this.markup = data.markup;
+      this.embed = data.embed || false;
     }
 
     if (!this.checkMarkup()) return;

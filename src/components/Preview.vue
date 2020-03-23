@@ -119,9 +119,7 @@ export default {
   },
   watch: {
     scale() {
-      clearTimeout(this.timerId);
-
-      this.timerId = setTimeout(() => this.resizeIframe(), 0);
+      this.onViewportChange();
     },
     markup(val) {
       const { frame } = this.$refs;
@@ -155,8 +153,18 @@ export default {
 
       setTimeout(this.resizeIframe, 100);
     });
+
+    window.addEventListener('resize', this.onViewportChange, { passive: true });
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.onViewportChange);
   },
   methods: {
+    onViewportChange() {
+      clearTimeout(this.timerId);
+
+      this.timerId = setTimeout(() => this.resizeIframe(), 0);
+    },
     resizeIframe() {
       if (this.repl) return;
 

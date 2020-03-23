@@ -2,6 +2,17 @@
 
 Currently there is only two attributes to handle typography in NuML: [size](../../reference/attributes/size.md) and [text](../../reference/attributes/text.md). It's because NuML is more focused on interface creation, not typography (as classic HTML). But don't worry, there are many options to style your text.
 
+## Heading
+
+```html
+<nu-heading level="1">Level 1 heading</nu-heading>
+<nu-heading level="2">Level 2 heading</nu-heading>
+<nu-heading level="3">Level 3 heading</nu-heading>
+<nu-heading level="4">Level 4 heading</nu-heading>
+<nu-heading level="5">Level 5 heading</nu-heading>
+<nu-heading level="6">Level 6 heading</nu-heading>
+```
+
 ## Text sizing
 
 ```html
@@ -12,6 +23,12 @@ Currently there is only two attributes to handle typography in NuML: [size](../.
   <nu-block size="h4">Text with heading level 1 size</nu-block>
   <nu-block size="h5">Text with heading level 1 size</nu-block>
   <nu-block size="h6">Text with heading level 1 size</nu-block>
+  <nu-block size="xl">XL text size</nu-block>
+  <nu-block size="lg">Large text size</nu-block>
+  <nu-block size="md">Medium text size</nu-block>
+  <nu-block size="sm">Small text size</nu-block>
+  <nu-block size="xs">XS text size</nu-block>
+  <nu-block size="2 3">Custom text size and line height</nu-block>
 </nu-flow>
 ```
 

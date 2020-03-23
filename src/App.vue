@@ -389,6 +389,11 @@ const GUIDE_MENU = [
     label: 'Theming',
     to: '/guide/features/themes',
   },
+  {
+    type: 'link',
+    label: 'States',
+    to: '/guide/features/states',
+  },
 ];
 
 const REFERENCE_MENU = [

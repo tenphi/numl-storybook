@@ -13,13 +13,13 @@ NuML makes usage of Shadow DOM transparent as possible. It means you can use any
       const shadow = this.attachShadow({ mode: 'open' });
 
       shadow.innerHTML = `
-				Shadow icon
+        Shadow icon
 
-				<nu-icon
-					size="3"
-					color=":hover[special]"
-					name="user"></nu-icon>
-			`;
+        <nu-icon
+          size="3"
+          color=":hover[special]"
+		  name="user"></nu-icon>
+	  `;
     }
   }
 

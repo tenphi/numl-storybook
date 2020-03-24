@@ -241,7 +241,7 @@
             </nu-rail>
             <nu-el>{{ radius }}rem</nu-el>
 
-            <nu-el place="center end">Anim. time</nu-el>
+            <nu-el place="center end">Trans. time</nu-el>
             <nu-rail>
               <nu-slider
                 :value="transitionTime" @input="transitionTime = $event.detail"

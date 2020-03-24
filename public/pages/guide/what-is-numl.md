@@ -4,7 +4,7 @@
 
 You can consider this a replacement (at least partial) for HTML and CSS.
 
-It also falls within the following definitions:
+It also fits the following definitions:
 
 * Multi-purpose [HTML Framework](!https://paulbakaus.com/tutorials/css/where-to-start-if-you-want-to-become-a-web-developer/#2_Start_building_your_first_pages_and_sites_with_an_HTML_framework)
 * [CSS Framework](!https://en.wikipedia.org/wiki/CSS_framework) with unmatched set of features.

@@ -27,7 +27,7 @@
 
       <nu-pane border="bottom" fill="subtle" padding="right" text="nowrap" height="min(2.5)">
         <nu-attrs
-          for="nu-tooltip" text="nowrap" width="max(min-content)"
+          for="nu-tooltip" text="nowrap"
           place="outside-bottom"></nu-attrs>
         <nu-flex>
           <nu-blocklink v-if="!embed" to="/" display="flex" theme="special">

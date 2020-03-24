@@ -516,10 +516,6 @@ const STORYBOOK_MENU = [
     label: 'Popups & Dropdowns',
     to: '/storybook/widgets/popups-and-dropdowns',
   },
-  {
-    type: 'heading',
-    label: 'Advanced',
-  },
 ];
 
 const FRAMEWORK_MENU = [

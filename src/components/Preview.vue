@@ -1,7 +1,7 @@
 <template>
   <nu-block :height="repl ? '100vh' : 'min(5)'">
     <nu-attrs
-      for="nu-tooltip" text="nowrap" width="max(min-content)"
+      for="nu-tooltip" text="nowrap"
       :place="repl ? 'outside-bottom' : null"></nu-attrs>
     <nu-pane
       border="bottom" padding="2x left right|1x left right"

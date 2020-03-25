@@ -13,4 +13,17 @@ It also fits the following definitions:
 * Comprehensive [Design System](!https://uxmisfit.com/2019/03/26/what-is-a-design-system-everything-you-need-to-know/) out-of-the-box.
 * A decent sized set of reusable **UI Components**.
 
+## Benefits of usage
+
+There are many benefits of using NuML in your projects. You can get:
+
+* Highly-customizable Design System.
+* Convenient theming system for developers.
+* Much faster prototyping speed. (don't require project ENV)
+* Best CSS practices under-the-hood.
+* Automatic Dark Mode and High Contrast Mode.
+* Transferable markup. Use it in projects with different frontend stack.
+
+All it means you can save your time and money for your company a lot.
+
 `@TODO`

@@ -21,6 +21,11 @@
       </nu-tablist>
       <nu-block v-else></nu-block>
       <nu-flex gap items="center" size="xs" text="w7">
+        <nu-props
+          gap="--preview-gap"
+          radius="--preview-radius"
+          border-width="--preview-border-width"
+          transition-time="--preview-transition-time"></nu-props>
         <nu-el id="scale" show="y|n">{{parseInt(scale * 100)}}%</nu-el>
         <nu-group radius>
           <nu-btn
@@ -81,7 +86,7 @@
       <iframe
         ref="frame" :src="`/preview.html#${encodedData}`" frameborder="0"
         :scrolling="repl ? 'yes' : 'no'" width="100%" @load="resizeIframe(this)"
-        :style="repl ? 'height: 100%;' : null"></iframe>
+        :style="iframeStyles"></iframe>
     </nu-block>
 
     <nu-block id="source" padding hidden overflow="auto" fill="main-subtle">
@@ -145,6 +150,14 @@ export default {
         options: this.options,
         size: this.size,
       }));
+    },
+    iframeStyles() {
+      return {
+        display: 'block',
+        transition: 'height var(--nu-transition-time) linear',
+        'max-width': '100%',
+        height: this.repl ? '100%' : '58px',
+      };
     },
   },
   mounted() {
@@ -211,12 +224,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-iframe {
-  display: block;
-  height: 58px;
-  transition: height var(--nu-transition-time) linear;
-  max-width: 100%;
-}
-</style>

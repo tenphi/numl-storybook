@@ -680,12 +680,3 @@ export default {
   },
 };
 </script>
-
-<style>
-[nu-id="preview"] > nu-flex {
-  --nu-gap: var(--nu-preview-gap);
-  --nu-radius: var(--nu-preview-radius);
-  --nu-border-width: var(--nu-preview-border-width);
-  --nu-transition-time: var(--nu-preview-transition-time);
-}
-</style>

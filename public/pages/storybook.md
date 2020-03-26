@@ -23,4 +23,4 @@ Follow us to see latest news about NuML:
 You can ask any questions here:
 
 * [Gitter Chat](!https://gitter.im/tenphi/numl?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
-* [Telegram Chat](!https://tele.click/nudeml)
+* [Telegram Chat](!https://tele.click/numldesign)

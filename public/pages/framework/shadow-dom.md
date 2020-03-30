@@ -3,6 +3,7 @@
 NuML makes usage of Shadow DOM transparent as possible. It means you can use any NuML elements in the Shadow DOM as you usually do it.
 
 ```html
+<preview/>
 <script>
   class MyDropdown extends Nude.elements.NuBtn {
     static get nuTag() {

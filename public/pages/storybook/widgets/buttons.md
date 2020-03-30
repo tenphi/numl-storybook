@@ -3,6 +3,7 @@
 ## Button types
 
 ```html
+<preview/>
 <nu-flex flow="row wrap" gap>
   <nu-btn>
     Base button
@@ -25,6 +26,7 @@
 ## Big buttons
 
 ```html
+<preview/>
 <nu-flex flow="row wrap" gap>
   <nu-btn special flow="row">
     <nu-heading level="4">Big Button</nu-heading>

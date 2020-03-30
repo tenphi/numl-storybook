@@ -5,6 +5,7 @@
 Framework automatically generates CSS based on states without style overlapping.
 
 ```html
+<preview/>
 <nu-btn
   width="16"
   role="checkbox"
@@ -15,6 +16,7 @@ Framework automatically generates CSS based on states without style overlapping.
 ## Styling based on parent state
 
 ```html
+<preview/>
 <nu-btn
   width="10"
   role="checkbox"
@@ -28,6 +30,7 @@ Framework automatically generates CSS based on states without style overlapping.
 ## Styling based on state of element in the context
 
 ```html
+<preview/>
 <nu-block padding="5 bottom">
   <nu-btn
     id="tile"

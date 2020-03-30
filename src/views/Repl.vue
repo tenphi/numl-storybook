@@ -1,8 +1,10 @@
 <template>
-  <nu-flex height="100%" overflow="hidden" responsive="760px|600px">
+  <nu-flex
+    height="100%" responsive="760px|600px" place="relative"
+    :radius="markup ? '1r' : null" :border="markup ? '1b' : null">
     <nu-flex
       :show="mode === 'editor' ? 'y' : 'y|n'"
-      fill="bg" height="100vh" flow="column" :width="`${split}%|100%`">
+      fill="bg" height="100%" flow="column" :width="`${split}%|100%`">
       <nu-theme name="header" hue="#00f" mod="tint"></nu-theme>
       <nu-theme name="quote" hue="#090" mod="tint"></nu-theme>
       <nu-theme name="negative" hue="#d44" mod="tint"></nu-theme>
@@ -30,12 +32,14 @@
           for="nu-tooltip" text="nowrap"
           place="outside-bottom"></nu-attrs>
         <nu-flex>
-          <nu-blocklink v-if="!embed" to="/" display="flex" theme="special">
+          <nu-blocklink
+            v-if="!currentEmbed" to="/" display="flex" theme="special">
             <nu-svg
               fill="bg" src="/img/icon.svg" place="stretch" height="2.5" width="2.5"></nu-svg>
           </nu-blocklink>
           <nu-svg
             v-else fill theme="special"
+            overflow="no" radius="1r 0 0 0"
             src="/img/icon.svg" place="stretch" height="2.5" width="2.5"></nu-svg>
           <nu-el text="w6 monospace" padding>REPL</nu-el>
         </nu-flex>
@@ -45,7 +49,7 @@
             <nu-icon name="check"></nu-icon>
             Saved
           </nu-el>
-          <nu-btn v-if="!embed" padding @tap="save" special>
+          <nu-btn v-if="!currentEmbed" padding @tap="save" special>
             Save
           </nu-btn>
           <nu-btn padding @tap="copyReplLink">
@@ -59,12 +63,13 @@
 
       <nu-flex grow="1" overflow="no" scrollbar flow="column">
         <codemirror
-          v-model="markup"
+          ref="editor"
+          v-model="currentMarkup"
           :options="editorOptions"></codemirror>
       </nu-flex>
 
       <nu-block
-        v-if="!embed"
+        v-if="!currentEmbed"
         show="y|n" padding theme="tint" fill="subtle" border="top" size="xs">
         Press
         <nu-el v-if="isMac" text="w6">Cmd+E</nu-el>
@@ -76,7 +81,8 @@
       :show="mode === 'preview' ? 'y' : 'y|n'"
       :width="`${100 - split}%|100%`"
       ref="preview" repl
-      :markup="previewMarkup" height="100vh" fill="subtle" border="left color(special)|0"></Preview>
+      :markup="previewMarkup" fill="subtle" border="left color(special)|0"
+      place="right" height="100%"></Preview>
 
     <nu-btn
       show="n|y"
@@ -124,10 +130,17 @@ window.Repl = {
 
 export default {
   name: 'repl',
+  props: {
+    markup: {
+      type: String,
+      required: false,
+    },
+    embed: Boolean,
+  },
   data() {
     return {
       mode: 'editor',
-      markup: '',
+      currentMarkup: '',
       editorOptions: {
         mode: 'text/html',
         tabSize: 2,
@@ -146,19 +159,19 @@ export default {
       version: window.Nude.version,
       copied: false,
       saved: false,
-      embed: false,
+      currentEmbed: false,
       isMac: navigator.appVersion.includes('Mac'),
       split: 50,
     };
   },
   watch: {
-    markup() {
+    currentMarkup() {
       clearTimeout(this.timerId);
 
       this.timerId = setTimeout(() => {
         if (!this.checkMarkup()) return;
 
-        this.previewMarkup = this.markup;
+        this.previewMarkup = this.currentMarkup;
         GlobalEvents.$emit('options:change', Options.get());
       }, 1000);
     },
@@ -209,29 +222,38 @@ export default {
     },
   },
   mounted() {
-    const hash = window.location.hash.slice(1);
+    if (this.markup) {
+      this.currentMarkup = this.markup;
+      this.currentEmbed = !!this.embed;
+    } else {
+      const hash = window.location.hash.slice(1);
 
-    let data;
+      let data;
 
-    if (hash) {
-      try {
-        data = JSON.parse(decodeURIComponent(hash));
-      } catch (e) {
+      if (hash) {
         try {
-          data = JSON.parse(LZString.decompressFromEncodedURIComponent(hash));
-        } catch (e2) {
+          data = JSON.parse(decodeURIComponent(hash));
+        } catch (e) {
+          try {
+            data = JSON.parse(LZString.decompressFromEncodedURIComponent(hash));
+          } catch (e2) {
+            // do nothing
+          }
           // do nothing
         }
-        // do nothing
+
+        this.currentMarkup = data.markup;
+        this.currentEmbed = data.embed || false;
       }
 
-      this.markup = data.markup;
-      this.embed = data.embed || false;
+      if (!this.checkMarkup()) return;
+
+      this.previewMarkup = this.markup;
     }
 
-    if (!this.checkMarkup()) return;
-
-    this.previewMarkup = this.markup;
+    setTimeout(() => {
+      this.$refs.editor.codemirror.refresh();
+    }, 500);
   },
   components: {
     Preview,

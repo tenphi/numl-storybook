@@ -1,6 +1,6 @@
 It's basic attribute to tell what layout element has.
 
-```
+```html
 <nu-block display="grid">...</nu-block>
 ```
 

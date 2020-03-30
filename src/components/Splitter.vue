@@ -3,7 +3,7 @@
     ref="root"
     show="y|n"
     :place="`left (${value}% - 1x)`"
-    z="front" width="1" height="100vh"
+    z="front" width="1" height="100%"
     cursor="col-resize">
     <nu-block
       place="cover"
@@ -62,7 +62,9 @@ export default {
       this.$emit('input', 50);
     },
     getLimit() {
-      return Math.min(0.5, 320 / window.innerWidth) * 100;
+      const rect = this.$refs.root.parentNode.getBoundingClientRect();
+
+      return Math.min(0.5, 320 / rect.width) * 100;
     },
     onWindowResize() {
       const limit = this.getLimit();
@@ -83,7 +85,9 @@ export default {
       const limit = this.getLimit();
       const pageX = (evt.pageX || (evt.touches && evt.touches.length && evt.touches[0].pageX))
         - window.scrollX;
-      let value = Math.max(limit, Math.min(100 - limit, (pageX * 100) / window.innerWidth));
+      const rect = this.$refs.root.parentNode.getBoundingClientRect();
+      const xValue = pageX - rect.x;
+      let value = Math.max(limit, Math.min(100 - limit, (xValue * 100) / rect.width));
 
       if (Math.abs(50 - value) < 2) {
         value = 50;

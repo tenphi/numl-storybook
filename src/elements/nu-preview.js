@@ -66,10 +66,6 @@ export default class NuPreview extends NuElement {
   get nuEncodedData() {
     return LZString.compressToEncodedURIComponent(JSON.stringify(this.nuData));
   }
-
-  nuChanged(name, oldValue, value) {
-    super.nuChanged(name, oldValue, value);
-  }
 }
 
 Nude.init(NuPreview);

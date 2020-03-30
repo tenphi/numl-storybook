@@ -113,6 +113,11 @@ export const BASE_ELEMENTS = [
   'nu-label',
 ].sort();
 
+export const FORMATTER_ELEMENTS = [
+  'nu-num',
+  'nu-datetime',
+];
+
 export const LAYOUT_ELEMENTS = [
   'nu-block',
   'nu-root',
@@ -272,6 +277,9 @@ export default {
   },
   get baseElements() {
     return this.getElements(BASE_ELEMENTS);
+  },
+  get formatterElements() {
+    return this.getElements(FORMATTER_ELEMENTS);
   },
   get layoutElements() {
     return this.getElements(LAYOUT_ELEMENTS);

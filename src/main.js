@@ -1,10 +1,11 @@
-import '../public/numl/numl';
+import '../public/numl/numl.dev';
 import Vue from 'vue';
 import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import './services/numl';
 import './elements/nu-preview';
+import './elements/nu-repl';
 
 Vue.config.productionTip = false;
 

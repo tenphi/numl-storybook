@@ -5,6 +5,7 @@ Currently there is only two attributes to handle typography in NuML: [size](../.
 ## Heading
 
 ```html
+<preview/>
 <nu-heading level="1">Level 1 heading</nu-heading>
 <nu-heading level="2">Level 2 heading</nu-heading>
 <nu-heading level="3">Level 3 heading</nu-heading>
@@ -16,6 +17,7 @@ Currently there is only two attributes to handle typography in NuML: [size](../.
 ## Text sizing
 
 ```html
+<preview/>
 <nu-flow gap>
   <nu-block size="h1">Text with heading level 1 size</nu-block>
   <nu-block size="h2">Text with heading level 1 size</nu-block>
@@ -35,6 +37,7 @@ Currently there is only two attributes to handle typography in NuML: [size](../.
 ## Text modifiers
 
 ```html
+<preview/>
 <nu-flow gap>
   <nu-block>Typical paragraph text</nu-block>
   <nu-block text="w1">Font weight 100</nu-block>

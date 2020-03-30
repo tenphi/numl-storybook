@@ -1,7 +1,8 @@
 <template>
   <nu-block
     responsive="980px|600px" display="flow-root"
-    :style="previewProps" v-show="mounted" width="100%" overflow="no">
+    :style="previewProps" v-show="mounted" width="100%" overflow="no"
+    :height="$route.path.startsWith('/repl') ? '100vh' : null">
     <nu-theme
       :hue="hue" :pastel="pastel"
       :saturation="saturationType === 'auto' ? null : saturation"></nu-theme>
@@ -99,15 +100,6 @@
         @click="focusContent"
         padding="0 0 0 27|0" height="min(100vh)" fill="bg" items="center start" flow="column"
         :opacity="showMenu ? '1|.66' : 1" transition="opacity" theme="content">
-        <nu-theme name="red" hue="1"></nu-theme>
-        <nu-theme name="purple" hue="298"></nu-theme>
-        <nu-theme name="violet" hue="277"></nu-theme>
-        <nu-theme name="blue" hue="262"></nu-theme>
-        <nu-theme name="cyan" hue="242"></nu-theme>
-        <nu-theme name="green" hue="152"></nu-theme>
-        <nu-theme name="yellow" hue="27"></nu-theme>
-        <nu-theme name="orange" hue="18"></nu-theme>
-
         <nu-attrs for="nu-heading" padding=".5em top"></nu-attrs>
 
         <nu-block
@@ -404,6 +396,11 @@ const REFERENCE_MENU = [
   ...Numl.baseElements.map(handleElement),
   {
     type: 'heading',
+    label: 'Formatter Elements',
+  },
+  ...Numl.formatterElements.map(handleElement),
+  {
+    type: 'heading',
     label: 'Layout Elements',
   },
   ...Numl.layoutElements.map(handleElement),
@@ -515,6 +512,20 @@ const STORYBOOK_MENU = [
     type: 'link',
     label: 'Popups & Dropdowns',
     to: '/storybook/widgets/popups-and-dropdowns',
+  },
+  {
+    type: 'heading',
+    label: 'Formatting',
+  },
+  {
+    type: 'link',
+    label: 'Numbers',
+    to: '/storybook/formatting/numbers',
+  },
+  {
+    type: 'link',
+    label: 'Date and Time',
+    to: '/storybook/formatting/date-and-time',
   },
 ];
 

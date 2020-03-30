@@ -7,7 +7,7 @@ With **nu-props** use can customize built-in properties and declare your own:
 
 Example of declaration:
 
-```
+```html
 <nu-props
   gap=".5"
   radius=".5"
@@ -20,7 +20,7 @@ Custom properties will be declared in parent element context.
 
 You can also use state and responsive operators to declare dynamic property:
 
-```
+```html
 <nu-props
   radius="1|.5"
   transition-time="0.08s :hover[0.2s]"></nu-props>

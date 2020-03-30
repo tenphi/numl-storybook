@@ -1,5 +1,5 @@
 <template>
-  <nu-block :height="repl ? '100vh' : 'min(5)'">
+  <nu-block :height="repl ? '100%' : 'min(5)'">
     <nu-attrs
       for="nu-tooltip" text="nowrap"
       :place="repl ? 'outside-bottom' : null"></nu-attrs>
@@ -41,24 +41,24 @@
             <nu-icon name="zoom-in"></nu-icon>
           </nu-btn>
         </nu-group>
+        <nu-btn padding=".75x 1x" width="2">
+          {{ size }}
+          <nu-popupmenu padding="0">
+            <nu-flex>
+              <nu-el padding="1x 1x" text="w7 center">ROOT SIZE</nu-el>
+              <nu-line orient="y" height="3"></nu-line>
+              <nu-menuitem
+                v-for="option in sizes"
+                :key="option"
+                :size="option"
+                @tap="setSize(option)"
+                :theme="size === option ? 'tone' : null">
+                {{ option }}
+              </nu-menuitem>
+            </nu-flex>
+          </nu-popupmenu>
+        </nu-btn>
         <template v-if="!repl">
-          <nu-btn padding=".75x 1x" width="2">
-            {{ size }}
-            <nu-popupmenu padding="0">
-              <nu-flex>
-                <nu-el padding="1x 1x" text="w7 center">ROOT SIZE</nu-el>
-                <nu-line orient="y" height="3"></nu-line>
-                <nu-menuitem
-                  v-for="option in sizes"
-                  :key="option"
-                  :size="option"
-                  @tap="setSize(option)"
-                  :theme="size === option ? 'tone' : null">
-                  {{ option }}
-                </nu-menuitem>
-              </nu-flex>
-            </nu-popupmenu>
-          </nu-btn>
           <nu-btn padding @tap="copySourceCode">
             <nu-tooltip>
               {{ copied ? 'Copied!' : 'Copy source code' }}
@@ -82,7 +82,7 @@
     <nu-block v-if="frame" id="preview" v-html="markup" padding="2x"></nu-block>
     <nu-block
       v-else id="preview"
-      :height="repl ? '100vh - 5x - 1b' : null" fill="main-subtle">
+      :height="repl ? '100% - 5x - 1b' : null" fill="main-subtle">
       <iframe
         ref="frame" :src="`/preview.html#${encodedData}`" frameborder="0"
         :scrolling="repl ? 'yes' : 'no'" width="100%" @load="resizeIframe(this)"
@@ -127,6 +127,8 @@ export default {
       this.onViewportChange();
     },
     markup(val) {
+      if (!val) return;
+
       const { frame } = this.$refs;
 
       if (frame && val.includes('<script')) {

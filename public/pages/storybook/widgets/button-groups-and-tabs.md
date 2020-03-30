@@ -3,6 +3,7 @@
 ## Button group
 
 ```html
+<preview/>
 <nu-flow gap>
   <nu-block>
     <nu-btngroup value="second">
@@ -25,6 +26,7 @@
 ## Tabs
 
 ```html
+<preview/>
 <nu-flow gap>
   <nu-card gap>
     <nu-tablist border="bottom" value="third">

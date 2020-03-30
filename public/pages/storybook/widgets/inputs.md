@@ -5,6 +5,7 @@
 Simple input:
 
 ```html
+<preview/>
 <nu-flex flow="row wrap" gap>
   <nu-input width="15" label="Simple input">
   </nu-input>
@@ -17,6 +18,7 @@ Simple input:
 Input with icon and button:
 
 ```html
+<preview/>
 <nu-group border radius width="15em" fill="input">
   <nu-icon name="user" width="2.5em"></nu-icon>
   <nu-input border="0" grow="1" label="Input with icon">
@@ -33,6 +35,7 @@ Input with icon and button:
 Currency input:
 
 ```html
+<preview/>
 <nu-numinput
   prefix="$" value="12032" width="8" precision="2"
   label="Number input"></nu-numinput>
@@ -41,6 +44,7 @@ Currency input:
 Percent input:
 
 ```html
+<preview/>
 <nu-numinput
   suffix="%" value="0" min="0" max="100" precision="0" width="8"
   label="Percents input"></nu-numinput>
@@ -49,6 +53,7 @@ Percent input:
 ## Checkboxes
 
 ```html
+<preview/>
 <nu-grid
   display="inline-grid" columns="auto auto" rows="auto auto" flow="column" gap="1x 2x">
   <nu-flex gap="1x" items="center">
@@ -76,6 +81,7 @@ Percent input:
 ## Radio groups
 
 ```html
+<preview/>
 <nu-grid
   display="inline-grid" columns="auto auto" gap="1x 2x">
   <nu-radiogroup flow="column" gap value="second">
@@ -117,6 +123,7 @@ Percent input:
 ## Switch
 
 ```html
+<preview/>
 <nu-switch></nu-switch>
 <nu-switch checked></nu-switch>
 <nu-switch disabled></nu-switch>
@@ -128,6 +135,7 @@ Percent input:
 Horizontal & vertical and disabled sliders:
 
 ```html
+<preview/>
 <nu-flow gap>
   <nu-block>
     <nu-rail width="clamp(initial, 20, 100%)">
@@ -150,6 +158,7 @@ Horizontal & vertical and disabled sliders:
 Sliders with min, max and step attributes:
 
 ```html
+<preview/>
 <nu-flow gap>
   <nu-block>
     <nu-rail width="clamp(initial, 20, 100%)">
@@ -169,6 +178,7 @@ Sliders with min, max and step attributes:
 ## Menus
 
 ```html
+<preview/>
 <nu-menu width="20" radius border padding="1x 0" fill="bg">
   <nu-menuitem>Menu item 1</nu-menuitem>
   <nu-menuitem>Menu item 2</nu-menuitem>

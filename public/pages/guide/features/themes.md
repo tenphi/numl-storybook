@@ -8,7 +8,7 @@ It's very difficult to manage colors in a modern web application. There are many
 
 At first, let's define a theme for the element. This theme will be applied to the element and all inside elements by default.
 
-```
+```html
 <nu-card>
   <nu-theme hue="250"></nu-theme>
 </nu-card>
@@ -40,7 +40,7 @@ As you see in NUDE we **name colors by their role**, not by their visual charact
 
 If you want you can provide exact **saturation** you need:
 
-```
+```html
 <nu-theme hue="250" saturation="20"></nu-theme>
 ```
 
@@ -48,12 +48,13 @@ If you want you can provide exact **saturation** you need:
 
 If you want archive consistent saturation over themes you can use pastel palette:
 
-```
+```html
 <nu-theme hue="250" saturation="100" pastel></nu-theme>
 <nu-theme hue="1" saturation="100" pastel></nu-theme>
 ```
 
 ```html
+<preview/>
 <nu-grid flow="row" gap columns="1fr 1fr 1fr" text="w6">
     <nu-theme name="red" hue="1"></nu-theme>
     <nu-theme name="blue" hue="262"></nu-theme>
@@ -75,7 +76,7 @@ If you want archive consistent saturation over themes you can use pastel palette
 
 Also you can use any hex/rgb/rgba/hsl declaration to provide base color:
 
-```
+```html
 <nu-theme from="#3366ee"></nu-theme>
 ```
 
@@ -86,14 +87,14 @@ If you need custom **saturation** you can set `[saturation]` attribute to specif
 ## Named themes
 You can name each theme:
 
-```
+```html
 <nu-theme name="red" hue="8"></nu-theme>
 ```
 
 ## Apply theme
 To apply theme use `[theme]` attribute:
 
-```
+```html
 <nu-card theme="red"></nu-card>
 ```
 
@@ -107,19 +108,20 @@ You can use a lot of modifiers to tweak your theme:
 * **Intensity modifiers**: `dim`, `bold` – Change visual intensity of theme.
 
 Use modifiers in `[theme]` attribute:
-```
+```html
 <nu-card theme="toned soft"></nu-card>
 ```
 
 or use named `red` theme:
 
-```
+```html
 <nu-card theme="red strong dim"></nu-card>
 ```
 
 Let's see all possible variants:
 
 ```html
+<preview/>
 <nu-flex flow="row wrap" gap="2x" content="space-around">
   <nu-card gap="1x" theme>
     <nu-heading level="3" size="h5" inline>Blue - Main theme</nu-heading>

@@ -5,6 +5,7 @@ There are two elements to highlight some parts of the text or interface: [nu-bad
 ## Marks
 
 ```html
+<preview/>
 <nu-card>
   You can mark some
   <nu-mark>parts</nu-mark>
@@ -23,6 +24,7 @@ There are two elements to highlight some parts of the text or interface: [nu-bad
 ## Badges
 
 ```html
+<preview/>
 <nu-flow gap>
   <nu-heading level="4">Normal badges</nu-heading>
   <nu-block>

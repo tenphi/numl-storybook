@@ -5,6 +5,7 @@ In NuML every active element can be a link.
 ## Simple links
 
 ```html
+<preview/>
 <nu-flex gap flow="row wrap">
   <nu-link>Simple link</nu-link>
   <nu-link to="mailto:tenphi@gmail.com?subject=NUDE%20Elements%20feedback">Email link</nu-link>
@@ -16,6 +17,7 @@ In NuML every active element can be a link.
 ## Button as link
 
 ```html
+<preview/>
 <nu-flex gap flow="row wrap">
   <nu-btn>Simple link</nu-btn>
   <nu-btn to="mailto:tenphi@gmail.com?subject=NUDE%20Elements%20feedback">Email link</nu-btn>

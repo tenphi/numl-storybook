@@ -3,6 +3,7 @@
 Let's make dropdown-icon ;)
 
 ```html
+<preview/>
 <script>
   class MyDropdownIcon extends Nude.elements.NuIcon {
     static get nuTag() {

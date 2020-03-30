@@ -9,6 +9,7 @@ There are several elements in NuML that you can use to insert images and icons: 
 Use `src` attribute to specify URL to the image.
 
 ```html
+<preview/>
 <nu-img src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/san-francisco-bay-area_web-f17b1f60e6.jpg"></nu-img>
 ```
 
@@ -17,6 +18,7 @@ Use `src` attribute to specify URL to the image.
 Using `fit` attribute you can specify fit strategy of the image. This attribute has the same specification as `object-fit` CSS style. If `fit="none"` which is default value then the image is trying to take as much space as needed for full size but no more than container width.
 
 ```html
+<preview/>
 <nu-flow gap text="monospace">
   <nu-attrs
     for="nu-card"
@@ -53,6 +55,7 @@ You can inline any SVG using [nu-svg](/reference/elements/nu-svg.md) element.
 It's useful if you want to use some colors from your application to color an SVG.
 
 ```html
+<preview/>
 <nu-attrs for="nu-svg" width="4" height="4" border radius="1.25" overflow="no"></nu-attrs>
 <nu-flex flow="row wrap" gap="2x">
   <nu-svg theme="tint" src="/img/icon.svg"></nu-svg>
@@ -66,6 +69,7 @@ It's useful if you want to use some colors from your application to color an SVG
 By default NuML uses [Feather Icons](https://github.com/feathericons/feather) for icons.
 
 ```html
+<preview/>
 <nu-block>
   <nu-icon name="user"></nu-icon>
   <nu-icon name="dollar-sign"></nu-icon>
@@ -78,6 +82,7 @@ By default NuML uses [Feather Icons](https://github.com/feathericons/feather) fo
 You can change icon (with transition) depending on the element state like:
 
 ```html
+<preview/>
 <nu-props transition-time=".2s"></nu-props>
 <nu-flex gap="2x" flow="row wrap">
   <nu-btn padding size="xl">

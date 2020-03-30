@@ -77,7 +77,7 @@
 <nu-flow gap>
   <nu-block>
     <nu-num
-      unit="kilometer long"
+      unit="kilometer short"
       value="1234"></nu-num>
   </nu-block>
   <nu-block>

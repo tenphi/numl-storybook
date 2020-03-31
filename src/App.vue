@@ -363,6 +363,11 @@ const GUIDE_MENU = [
     to: '/guide/getting-started',
   },
   {
+    type: 'link',
+    label: 'Solved problems',
+    to: '/guide/solved-problems',
+  },
+  {
     type: 'heading',
     label: 'Core features',
   },

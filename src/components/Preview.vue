@@ -90,7 +90,7 @@
     </nu-block>
 
     <nu-block id="source" padding hidden overflow="auto" fill="main-subtle">
-      <nu-code enumerate fill="main-subtle">
+      <nu-code enumerate fill="main-subtle" shadow="0">
         <textarea v-html="repl ? '' : markup"></textarea>
       </nu-code>
     </nu-block>

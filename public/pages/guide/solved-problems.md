@@ -25,6 +25,9 @@ It means you don't have to spend your time solving them. You don't even have to 
 * Accessible colors
 * Various theme types
 * Unified color naming for any case **#unique**
+* Automatic shadow intensity **#unique**
+* Context-sensitive text coloring **#unique**
+* Custom color transparency for main colors **#unique**
 
 ### Styling
 

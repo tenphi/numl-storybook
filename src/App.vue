@@ -391,6 +391,15 @@ const GUIDE_MENU = [
     label: 'States',
     to: '/guide/features/states',
   },
+  {
+    type: 'heading',
+    label: 'Related information',
+  },
+  {
+    type: 'link',
+    label: 'Changelog',
+    to: '/guide/changelog',
+  },
 ];
 
 const REFERENCE_MENU = [

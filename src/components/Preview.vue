@@ -5,72 +5,82 @@
       :place="repl ? 'outside-bottom' : null"></nu-attrs>
     <nu-pane
       border="bottom" padding="2x left right|1x left right"
+      content="space-between"
       height="min(2.5)" responsive="500px">
-      <nu-tablist value="preview" v-if="!repl" gap="2x|1x">
-        <nu-tab controls="preview" padding="1x 0|1x">
+      <nu-attrs for="icon" size="1em"></nu-attrs>
+      <nu-attrs for="btn" padding=".75x 1x"></nu-attrs>
+
+      <nu-tablist value="preview" v-if="!repl" gap="2x|1x" @input="tab = $event.detail">
+        <nu-tab control="preview" value="preview" padding="1x 0|1x" trigger>
           <nu-el show="y|n">Preview</nu-el>
           <nu-icon name="eye" show="n|y" height="1.5"></nu-icon>
         </nu-tab>
-        <nu-tab controls="source" padding="1x 0|1x">
+        <nu-tab control="source" value="source" padding="1x 0|1x" trigger>
           <nu-el show="y|n">Source</nu-el>
           <nu-icon name="code" show="n|y" height="1.5"></nu-icon>
         </nu-tab>
-        <!--        <nu-tab controls="runtime" disabled>-->
+        <!--        <nu-tab control="runtime" disabled trigger>-->
         <!--          Runtime-->
         <!--        </nu-tab>-->
       </nu-tablist>
       <nu-block v-else></nu-block>
-      <nu-flex gap items="center" size="xs" text="w7">
+      <nu-flex gap items="center" size="xs" text="w7" padding="(.5x + 1bw) 1x">
         <nu-props
           gap="--preview-gap"
           radius="--preview-radius"
           border-width="--preview-border-width"
           transition-time="--preview-transition-time"></nu-props>
-        <nu-el id="scale" show="y|n">{{parseInt(scale * 100)}}%</nu-el>
-        <nu-group radius>
-          <nu-btn
-            id="zoom-out" padding move="1b 0" :disabled="!zoomInEnabled"
-            @tap="zoomOut">
-            <nu-tooltip>Zoom out</nu-tooltip>
-            <nu-icon name="zoom-out"></nu-icon>
+
+        <template v-if="tab === 'preview'">
+          <nu-el id="scale" show="y|n">{{parseInt(scale * 100)}}%</nu-el>
+          <nu-group radius border="0">
+            <nu-btn
+              id="zoom-out" move="1bw 0" :disabled="!zoomInEnabled"
+              @tap="zoomOut">
+              <nu-tooltip>Zoom out</nu-tooltip>
+              <nu-icon name="zoom-out"></nu-icon>
+            </nu-btn>
+            <nu-btn
+              id="zoom-in" :disabled="!zoomOutEnabled"
+              @tap="zoomIn">
+              <nu-tooltip>Zoom in</nu-tooltip>
+              <nu-icon name="zoom-in"></nu-icon>
+            </nu-btn>
+          </nu-group>
+          <nu-btn width="5x" text="center">
+            {{ size }}
+            <nu-popuplistbox
+              padding="0"
+              @input="(e) => setSize(e.detail)" :value="size">
+              <nu-flex>
+                <nu-el padding="1x 1x" text="w7 center">ROOT SIZE</nu-el>
+                <nu-line orient="y" height="3"></nu-line>
+                <nu-option
+                  v-for="option in sizes"
+                  :key="option"
+                  :size="option"
+                  :value="option"
+                  border=":current[1sw bottom inside color(special)] 0">
+                  {{ option }}
+                </nu-option>
+              </nu-flex>
+            </nu-popuplistbox>
           </nu-btn>
-          <nu-btn
-            id="zoom-in" padding :disabled="!zoomOutEnabled"
-            @tap="zoomIn">
-            <nu-tooltip>Zoom in</nu-tooltip>
-            <nu-icon name="zoom-in"></nu-icon>
-          </nu-btn>
-        </nu-group>
-        <nu-btn padding=".75x 1x" width="2">
-          {{ size }}
-          <nu-popupmenu padding="0">
-            <nu-flex>
-              <nu-el padding="1x 1x" text="w7 center">ROOT SIZE</nu-el>
-              <nu-line orient="y" height="3"></nu-line>
-              <nu-menuitem
-                v-for="option in sizes"
-                :key="option"
-                :size="option"
-                @tap="setSize(option)"
-                :theme="size === option ? 'tone' : null">
-                {{ option }}
-              </nu-menuitem>
-            </nu-flex>
-          </nu-popupmenu>
-        </nu-btn>
+        </template>
+
         <template v-if="!repl">
-          <nu-btn padding @tap="copySourceCode">
+          <nu-btn @tap="copySourceCode">
             <nu-tooltip>
               {{ copied ? 'Copied!' : 'Copy source code' }}
             </nu-tooltip>
             <nu-icon name="copy"></nu-icon>
           </nu-btn>
-          <nu-btn padding :to="`!/repl#${encodedData}`">
+          <nu-btn :to="`!/repl#${encodedData}`">
             <nu-tooltip>Open in REPL</nu-tooltip>
             <nu-icon name="edit-2"></nu-icon>
           </nu-btn>
         </template>
-        <nu-btn padding :to="`!/preview.html#${encodedData}`">
+        <nu-btn :to="`!/preview.html#${encodedData}`">
           <nu-tooltip>
             {{ repl ? 'Open preview in separate tab' : 'Open in the new tab' }}
           </nu-tooltip>
@@ -82,7 +92,7 @@
     <nu-block v-if="frame" id="preview" v-html="markup" padding="2x"></nu-block>
     <nu-block
       v-else id="preview"
-      :height="repl ? '100% - 5x - 1b' : null" fill="main-subtle">
+      :height="repl ? '100% - 5x - 1bw' : null" fill="main-subtle">
       <iframe
         ref="frame" :src="`/preview.html#${encodedData}`" frameborder="0"
         :scrolling="repl ? 'yes' : 'no'" width="100%" @load="resizeIframe(this)"
@@ -120,6 +130,8 @@ export default {
       copied: false,
       size: 'md',
       sizes: ['xs', 'sm', 'md', 'lg', 'xl'],
+      tab: 'preview',
+      contentWindow: null,
     };
   },
   watch: {
@@ -169,6 +181,11 @@ export default {
       setTimeout(this.resizeIframe, 100);
     });
 
+    if (!window.resizeIframe2) {
+      window.resizeIframe2 = this.resizeIframe.bind(this);
+      window.resizeEl2 = this;
+    }
+
     window.addEventListener('resize', this.onViewportChange, { passive: true });
   },
   destroyed() {
@@ -187,11 +204,19 @@ export default {
 
       if (!frame) return;
 
-      setTimeout(() => {
-        const newHeight = Math.round(frame.contentWindow.document.querySelector('nu-block').scrollHeight * this.scale);
+      const applyHeight = (secondCall) => {
+        if (frame.contentWindow && !secondCall) {
+          setTimeout(() => {
+            applyHeight(true);
+          }, 100);
+        }
+
+        const newHeight = Math.round((frame.contentWindow || this.contentWindow).document.querySelector('nu-block').scrollHeight * this.scale);
 
         frame.style.height = `${newHeight}px`;
-      });
+      };
+
+      setTimeout(applyHeight, 0);
     },
     zoomIn() {
       const { scale, zoomLevels } = this;

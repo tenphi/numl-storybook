@@ -22,7 +22,7 @@ Let's make dropdown-icon ;)
     }
   }
 
-  Nude.init(MyDropdownIcon);
+  customElements.define(MyDropdownIcon.nuTag, MyDropdownIcon);
 </script>
 
 <nu-btn role="checkbox">

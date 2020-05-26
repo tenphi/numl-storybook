@@ -1,29 +1,94 @@
 # Changelog
 
-## v0.11 UPCOMING
+## v0.12 UPCOMING
 
 ### New features
 
-* New Control System!
-* Improved support for Shadow DOM.
+* RTL support
+
+## v0.11 STABLE RELEASE
+
+A major update focused on brand new Behavior System that allows simplifying development of complex compositions and rich components. It adds dynamic imports that reduces base bundle size.
+
+### New features
+
+* Behaviors
+* Control system
+* Actions
+* Settings
+* Global context
+* Global locale inheritance
+* Forms
+* Form validation
+* Improved support for Shadow DOM
+* Listbox ARIA compliance
+* Rich components
+* Real ==flex gap== detection
+* Style selections
+* Sticky detection
+* Link state detection (for active navigation)
+* Outline mode
+
+### Attributes
+* ==focus==: inside & outside modifiers
+
+### New elements
+
+* ==nu-listbox==
+* ==nu-popuplistbox==
+* ==nu-option==
+* ==nu-field==
+* ==nu-check==
+* ==nu-form==
+* ==nu-debug==
+* ==nu-topbar==
+* ==nu-dropdownicon==
+* format elements: ==nu-b==, ==nu-i==, ==nu-u==, ==nu-s==
+
+### New components
+
+* ==nu-dateinput==
+* ==nu-datepicker==
+
+### Breaking change
+
+* Custom units
+    * Default border width: ==bw==
+    * Default selection width: ==sw==
+* Attributes:
+    * ==focusable== -> ==focus==
+    * ==width== & ==height==: new syntax
+* Elements:
+    * ==nu-label==: is no longer inline
+* Decorators -> Definitions
+* New routing API
+* New icons API
+* New define API
+* ==is-== prefix for modifiers instead of ==nu-==
+* New settings API for scheme, contrast and reduce-motion
 
 ### Minor or internal features
 
-* [nu-popup](/reference/elements/nu-popup) - linking rework.
-* Add $suffix and $prefix splitting via `,` symbol.
-* Optimize theme generation.
-* Set polite focus via CP.
+* [nu-popup](/reference/elements/nu-popup) - linking rework
+* Add $suffix and $prefix splitting via `,` symbol
+* Optimize theme generation
+* Set polite focus via CP
+* Disable CSS transition
+* Optimized event binding
+* Allow to prevent Nude.init()
 
 ### Bug fixes
 
-* **nu-popup** linking is not working in Shadow DOM.
-* Focus is not working in Shadow DOM.
+* ==nu-popup== linking is not working in Shadow DOM
+* Focus is not working in Shadow DOM
+* Fix scroll corner for Dark Scheme
+* ==nu-tooltip== fix margins in layouts
+* Incorrect styling of `font-weight` in ==text== attribute.
 
-## v0.10 STABLE RELEASE
+## v0.10
 
 ### New features
 * Full rework of attribute parsing. More features, more stable and much faster.
-
 * Automatic **calc** insertion.
 * New **color()** function for some style attributes.
 * Custom states for **nu-** modifiers and **role** attribute.
@@ -57,7 +122,7 @@
 * [move](/reference/attributes/move) - to move element (via `transform:translate(...)`).
 * [show](/reference/attributes/show) - to conditionally show elements. Hide them by default.
 * [hoverable](/reference/attributes/hoverable) - to activate hover effect on background for active elements.
-* [focusable](/reference/attributes/focusable) - to activate focus effect on active elements. 
+* [focusable](/reference/attributes/focusable) - to activate focus effect on active elements.
 * [toggle](/reference/attributes/toggle) - to activate toggle effect on active elements.
 * [expand](/reference/attributes/expand) - to increase active region.
 * [drop](/reference/attributes/drop) - to statically fix element position based on parent element (using `position: fixed`).

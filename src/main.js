@@ -1,5 +1,5 @@
-import '../public/numl/numl';
 import Vue from 'vue';
+import { routing } from './numl';
 import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
@@ -9,9 +9,7 @@ import './elements/nu-repl';
 
 Vue.config.productionTip = false;
 
-const { Nude } = window;
-
-Nude.elements.NuActiveElement.nuNavigate = (url, openNewTab) => {
+routing.setRouter((url, openNewTab) => {
   // skip outside links and links that open in new tabs
   if (url === '/' || openNewTab || url.startsWith('https://') || url.includes('//') || url.startsWith('mailto:') || url.includes('/api/')) {
     return true;
@@ -20,7 +18,7 @@ Nude.elements.NuActiveElement.nuNavigate = (url, openNewTab) => {
   router.push(url);
 
   return false;
-};
+});
 
 Vue.config.ignoredElements = [/^nu-/];
 

@@ -1,8 +1,8 @@
 import LZString from 'lz-string';
 import Vue from 'vue';
 import Preview from '@/components/Preview.vue';
+import { Nude } from '../numl';
 
-const { Nude } = window;
 const { NuElement } = Nude.elements;
 
 export default class NuPreview extends NuElement {
@@ -10,13 +10,14 @@ export default class NuPreview extends NuElement {
     return 'nu-preview';
   }
 
-  static get nuDefaults() {
+  static get nuStyles() {
     return {
       display: 'block',
       gap: '1x',
       fill: 'subtle',
       radius: '1r',
       shadow: '1',
+      width: 'max 100%',
     };
   }
 
@@ -68,4 +69,6 @@ export default class NuPreview extends NuElement {
   }
 }
 
-Nude.init(NuPreview);
+customElements.define(NuPreview.nuTag, NuPreview);
+
+window.NuPreview = NuPreview;

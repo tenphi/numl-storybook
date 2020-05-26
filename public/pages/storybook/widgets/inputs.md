@@ -138,19 +138,13 @@ Horizontal & vertical and disabled sliders:
 <preview/>
 <nu-flow gap>
   <nu-block>
-    <nu-rail width="clamp(initial, 20, 100%)">
-      <nu-slider value="20"></nu-slider>
-    </nu-rail>
+    <nu-slider value="20" width="initial 20 100%"></nu-slider>
   </nu-block>
   <nu-block>
-    <nu-rail height="6" orient="v">
-      <nu-slider value="40"></nu-slider>
-    </nu-rail>
+    <nu-slider value="40" height="6" orient="v"></nu-slider>
   </nu-block>
   <nu-block>
-    <nu-rail width="clamp(initial, 20, 100%)" disabled>
-      <nu-slider value="20"></nu-slider>
-    </nu-rail>
+    <nu-slider value="20" width="initial 20 100%" disabled></nu-slider>
   </nu-block>
 </nu-flow>
 ```
@@ -161,27 +155,48 @@ Sliders with min, max and step attributes:
 <preview/>
 <nu-flow gap>
   <nu-block>
-    <nu-rail width="clamp(initial, 20, 100%)">
+    <nu-rail width="initial 20 100%">
       <nu-slider value="15" min="10" max="20"></nu-slider>
     </nu-rail>
     <nu-label>Slider</nu-label>
   </nu-block>
 
   <nu-block>
-    <nu-rail width="clamp(initial, 20, 100%)">
+    <nu-rail width="initial 20 100%">
       <nu-slider value="15" step="10"></nu-slider>
     </nu-rail>
   </nu-block>
 </nu-flow>
 ```
 
-## Menus
+## Listbox
+
+### Plain listbox
 
 ```html
 <preview/>
-<nu-menu width="20" radius border padding="1x 0" fill="bg">
-  <nu-menuitem>Menu item 1</nu-menuitem>
-  <nu-menuitem>Menu item 2</nu-menuitem>
-  <nu-menuitem>...</nu-menuitem>
-</nu-menu>
+<nu-listbox value="one">
+<nu-option value="one">One</nu-option>
+<nu-option value="two">Two</nu-option>
+<nu-option value="three">Three</nu-option>
+</nu-listbox>
+```
+
+### Select: Popup listbox
+
+```html
+<preview/>
+<nu-btn width="10" columns="1fr auto" value="six">
+  <nu-value list></nu-value>
+  <nu-dropdownicon></nu-dropdownicon>
+  <nu-popuplistbox nx-debug="debug-1">
+    <nu-option value="one" nx-debug="debug-2">One</nu-option>
+    <nu-option value="two">Two</nu-option>
+    <nu-option value="three">Three</nu-option>
+    <nu-option value="four">Four</nu-option>
+    <nu-option value="five">Five</nu-option>
+    <nu-option value="six">Six</nu-option>
+    <nu-option value="seven">Seven</nu-option>
+  </nu-popuplistbox>
+</nu-btn>
 ```

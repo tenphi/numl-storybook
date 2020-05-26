@@ -13,8 +13,9 @@
     "codemirror": "^5.52.0",
     "core-js": "^3.6.4",
     "lockr": "^0.8.5",
-    "register-service-worker": "^1.6.2",
     "lz-string": "^1.4.4",
+    "numl": "^0.10.10",
+    "register-service-worker": "^1.6.2",
     "vue": "^2.6.11",
     "vue-codemirror": "^4.0.6",
     "vue-router": "^3.1.5"

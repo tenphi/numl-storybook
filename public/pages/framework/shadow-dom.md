@@ -24,7 +24,7 @@ NuML makes usage of Shadow DOM transparent as possible. It means you can use any
 </nu-popup>`;
     }
   }
-  Nude.init(MyDropdown);
+  customElements.define('my-dropdown', MyDropdown);
 </script>
 <nu-block padding="3.5 bottom">
   <nu-attrs for="$icon" color="special"></nu-attrs>

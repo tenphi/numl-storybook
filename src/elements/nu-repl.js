@@ -2,8 +2,6 @@ import Vue from 'vue';
 import Repl from '@/views/Repl.vue';
 import NuPreview from './nu-preview';
 
-const { Nude } = window;
-
 export default class NuRepl extends NuPreview {
   static get nuTag() {
     return 'nu-repl';
@@ -16,4 +14,4 @@ export default class NuRepl extends NuPreview {
   }
 }
 
-Nude.init(NuRepl);
+customElements.define(NuRepl.nuTag, NuRepl);

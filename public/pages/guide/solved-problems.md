@@ -32,7 +32,7 @@ It means you don't have to spend your time solving them. You don't even have to 
 ### Styling
 
 * Custom units in styles (for examples: `x` for default padding size) **#unique**
-* `clamp()`, `min()`, `max()` and `minmax()` style functions for `height` and `width` **#unique**
+* `clamp()` and `minmax()` style functions for `height` and `width` **#unique**
 * Comprehensible placing of elements (via `place` attribute) **#unique**
 * Popups and tooltips are always in viewport (aflat)
 * `move`/`scale`/`rotate`/`transform` independent styling **#unique**

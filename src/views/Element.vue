@@ -1,6 +1,6 @@
 <template>
   <nu-flow gap="2x">
-    <nu-attrs for="nu-code" padding radius fill="main-subtle" overflow="auto"></nu-attrs>
+    <nu-attrs for="code" padding radius fill="main-subtle" overflow="auto"></nu-attrs>
 
     <nu-theme name="type-own" hue="type-own" mod="tint"></nu-theme>
     <nu-theme name="type-inherited" hue="type-inherited" mod="tint"></nu-theme>
@@ -46,34 +46,78 @@
       <textarea v-html="description"></textarea>
     </nu-markdown>
 
+    <template v-if="hasBehaviors">
+      <nu-heading level="2">
+        Behaviors
+      </nu-heading>
+
+      <nu-gridtable
+        columns="auto auto" display="inline-grid" border radius>
+        <nu-columnheader fill="subtle">Attribute</nu-columnheader>
+        <nu-columnheader fill="subtle">Options</nu-columnheader>
+        <template v-for="behavior in behaviors">
+          <nu-rowheader :key="`${behavior.name}:name`">
+            {{ behavior.name }}
+          </nu-rowheader>
+          <nu-cell :key="`${behavior.name}:value`" text="monospace">
+            {{ typeof behavior.value === 'string' ? `"${behavior.value}"` : '-' }}
+          </nu-cell>
+        </template>
+      </nu-gridtable>
+    </template>
+
+    <template v-if="hasAttrs">
+      <nu-heading level="2">
+        Attributes
+      </nu-heading>
+
+      <nu-gridtable
+        columns="auto auto" display="inline-grid" border radius>
+        <nu-columnheader fill="subtle">Attribute</nu-columnheader>
+        <nu-columnheader fill="subtle">Value</nu-columnheader>
+        <template v-for="attr in attrs">
+          <nu-rowheader :key="`${attr.name}:name`">
+            {{ attr.name }}
+          </nu-rowheader>
+          <nu-cell :key="`${attr.name}:value`" text="monospace">
+            "{{ attr.value }}"
+          </nu-cell>
+        </template>
+      </nu-gridtable>
+    </template>
+
     <nu-heading level="2">
-      Default attributes
+      Styles
     </nu-heading>
 
-    <nu-gridtable columns="auto auto auto" display="inline-grid" border radius>
+    <nu-gridtable columns="auto auto" display="inline-grid" border radius>
       <nu-columnheader fill="subtle">Attribute</nu-columnheader>
       <nu-columnheader fill="subtle">Value</nu-columnheader>
-      <nu-columnheader fill="subtle">Type</nu-columnheader>
-      <template v-for="attr in defaults">
-        <nu-rowheader :key="`${attr.name}:name`">
-          {{ attr.name }}
+<!--      <nu-columnheader fill="subtle">Type</nu-columnheader>-->
+      <template v-for="style in styles">
+        <nu-rowheader :key="`${style.name}:name`">
+          {{ style.name }}
         </nu-rowheader>
-        <nu-cell :key="`${attr.name}:value`" text="monospace">
-          "{{ attr.value }}"
+        <nu-cell :key="`${style.name}:value`" text="monospace">
+          "{{ style.value }}"
         </nu-cell>
-        <nu-cell :key="`${attr.name}:type`">
-          <nu-el :theme="`type-${attr.type}`">
-            {{attr.type}}
-          </nu-el>
-        </nu-cell>
+<!--        <nu-cell :key="`${style.name}:type`">-->
+<!--          <nu-el :theme="`type-${style.type}`">-->
+<!--            {{style.type}}-->
+<!--          </nu-el>-->
+<!--        </nu-cell>-->
       </template>
     </nu-gridtable>
 
     <nu-heading level="2">
-      Default CSS (generated)
+      Generated CSS
     </nu-heading>
 
-    <nu-code v-if="showCSS">
+    <nu-block>
+      This block is for debugging purposes.
+    </nu-block>
+
+    <nu-code v-if="showCSS" padding="1x 2x" shadow overflow="auto" scrollbar>
       <textarea v-html="element.css"></textarea>
     </nu-code>
 
@@ -138,7 +182,35 @@ export default {
           return list;
         }, []);
     },
-    defaults() {
+    hasAttrs() {
+      return Object.keys(this.attrs).length;
+    },
+    hasBehaviors() {
+      return Object.keys(this.behaviors).length;
+    },
+    behaviors() {
+      return Object.keys(this.element.allBehaviors || {})
+        .reduce((list, attr) => {
+          list.push({
+            name: attr,
+            value: this.element.allBehaviors[attr],
+          });
+
+          return list;
+        }, []);
+    },
+    attrs() {
+      return Object.keys(this.element.allAttrs || {})
+        .reduce((list, attr) => {
+          list.push({
+            name: attr,
+            value: this.element.allAttrs[attr],
+          });
+
+          return list;
+        }, []);
+    },
+    styles() {
       return [
         ...Object.keys(this.element.ownDefaults || {})
           .reduce((list, attr) => {

@@ -1,7 +1,7 @@
 <template>
   <nu-flex
     height="100%" responsive="760px|600px" place="relative"
-    :radius="markup ? '1r' : null" :border="markup ? '1b' : null">
+    :radius="markup ? '1r' : null" :border="markup ? '1bw' : null">
     <nu-flex
       :show="mode === 'editor' ? 'y' : 'y|n'"
       fill="bg" height="100%" flow="column" :width="`${split}%|100%`">

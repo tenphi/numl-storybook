@@ -1,7 +1,6 @@
+import { Nude } from '../numl';
 import BASE_ATTRIBUTES from '../other/base-attributes';
 import ATTR_VALUES from '../other/attr-values';
-
-const { Nude } = window;
 
 const LIST = Object.values(Nude.elements);
 const { NuDecorator, NuElement } = Nude.elements;
@@ -20,26 +19,28 @@ LIST.forEach((el) => {
   const type = el.nuParent === NuDecorator || el === NuDecorator
     ? 'decorator' : 'element';
   const data = {};
-  const ownDefaults = hasOwnProperty(el, 'nuDefaults')
-    ? el.nuDefaults
+  const ownStyles = hasOwnProperty(el, 'nuStyles')
+    ? el.nuStyles
     : {};
-  const ownAttrs = hasOwnProperty(el, 'nuAttrs')
+  const ownGenerators = hasOwnProperty(el, 'nuGenerators')
     ? Object.keys(el.nuAttrs)
     : [];
-  const defaults = Object.keys(el.nuAllDefaults)
+  const allAttrs = el.nuAllAttrs;
+  const allBehaviors = el.nuAllBehaviors;
+  const defaults = Object.keys(el.nuAllStyles)
     .reduce((map, attr) => {
-      if (!hasOwnProperty(ownDefaults, attr)) {
-        map[attr] = el.nuAllDefaults[attr];
+      if (!hasOwnProperty(ownStyles, attr)) {
+        map[attr] = el.nuAllStyles[attr];
       }
 
       return map;
     }, {});
-  const attrs = Object.keys(el.nuAllAttrs)
+  const attrs = Object.keys(el.nuAllGenerators)
     .reduce((map, attr) => {
-      if (NuElement.nuAllAttrs[attr] == null) {
+      if (NuElement.nuAllGenerators[attr] == null) {
         map.push({
           name: attr,
-          defaultValue: el.nuAllDefaults[attr],
+          defaultValue: el.nuAllStyles[attr],
         });
       }
 
@@ -49,15 +50,17 @@ LIST.forEach((el) => {
   let flag = false;
 
   data.tag = tag;
-  data.parent = el.nuParent && el.nuParent.nuTag;
+  data.parent = el.nuParentClass && el.nuParentClass.nuTag;
   data.type = type;
   data.role = el.nuRole;
   data.id = el.nuId;
   data.defaults = defaults;
-  data.ownDefaults = ownDefaults;
+  data.ownDefaults = ownStyles;
+  data.allAttrs = allAttrs;
+  data.allBehaviors = allBehaviors;
   data.attrs = attrs;
-  data.ownAttrs = ownAttrs;
-  data.css = el.nuGenerateDefaultStyle(el, true)
+  data.ownGenerators = ownGenerators;
+  data.css = el.nuGenerateDefaultStyle(false, true)
     .replace(/[{;}](?!$)/g, (s) => `${s}\n`)
     .split(/\n/g)
     .map((s) => s.trim())
@@ -82,7 +85,7 @@ LIST.forEach((el) => {
     })
     .join('\n');
 
-  ownAttrs.forEach((attr) => {
+  ownGenerators.forEach((attr) => {
     if (tag !== 'nu-el' && tag !== 'nu-base') return;
 
     if (!DATA.attributes.includes(attr)) {
@@ -144,21 +147,20 @@ export const WIDGET_ELEMENTS = [
   'nu-btn',
   'nu-switch',
   'nu-slider',
-  'nu-rail',
   'nu-btngroup',
-  'nu-menu',
-  'nu-menuitem',
+  'nu-listbox',
+  'nu-option',
   'nu-popup',
   'nu-tablist',
   'nu-tab',
-  'nu-popupmenu',
   'nu-checkbox',
   'nu-radio',
   'nu-input',
   'nu-numinput',
+  'nu-popuplistbox',
 ].sort();
 
-export const DECORATORS = [
+export const DEFINITIONS = [
   'nu-theme',
   'nu-attrs',
   'nu-props',
@@ -170,6 +172,11 @@ export const CONVERTERS = [
   'nu-md',
   'nu-code',
 ].sort();
+
+export const COMPONENTS = [
+  'nu-dateinput',
+  'nu-datepicker',
+];
 
 export const STYLE_ATTRIBUTES = [
   'width',
@@ -273,7 +280,7 @@ export default {
     return DATA.elements.find((el) => el.tag === tag);
   },
   getElements(arr) {
-    return arr.map((tag) => this.getElement(tag));
+    return arr.map((tag) => this.getElement(tag)).filter((el) => el);
   },
   get baseElements() {
     return this.getElements(BASE_ELEMENTS);
@@ -293,8 +300,11 @@ export default {
   get converters() {
     return this.getElements(CONVERTERS);
   },
-  get decorators() {
-    return this.getElements(DECORATORS);
+  get definitions() {
+    return this.getElements(DEFINITIONS);
+  },
+  get components() {
+    return this.getElements(COMPONENTS);
   },
   get styleAttributes() {
     return STYLE_ATTRIBUTES;

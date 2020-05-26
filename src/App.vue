@@ -1,7 +1,8 @@
 <template>
   <nu-block
     responsive="980px|600px" display="flow-root"
-    :style="previewProps" v-show="mounted" width="100%" overflow="no"
+    :style="previewProps" v-show="mounted" width="100%"
+    :overflow="$route.path.startsWith('/repl') ? 'no' : 'auto'"
     :height="$route.path.startsWith('/repl') ? '100vh' : null">
     <nu-theme
       :hue="hue" :pastel="pastel"
@@ -13,16 +14,16 @@
 
     <template v-if="$route.path !== '/repl'">
       <nu-grid
-        width="clamp(initial, 27, 100vw)"
+        width="initial 27 100vw"
         place="fixed left"
-        height="100% + 1b"
+        height="100%"
         columns="10 1fr"
         :fill="showMenu ? 'subtle|subtle 70% backdrop-blur' : 'subtle'"
         z="front"
         shadow="0|1"
+        overflow="no"
         :move="showMenu ? '0 0' : '0 0|(-100% - 1x) 0'"
-        transition="move ease-out"
-      >
+        transition="move ease-out">
         <nu-block
           ref="nav" id="nav" padding="1x" border="right" text="center" overflow="auto" scrollbar>
           <nu-flex gap height="100%| " flow="column" padding="0|4 bottom">
@@ -98,12 +99,11 @@
       <nu-flex
         id="content"
         @click="focusContent"
-        padding="0 0 0 27|0" height="min(100vh)" fill="bg" items="center start" flow="column"
-        :opacity="showMenu ? '1|.66' : 1" transition="opacity" theme="content">
-        <nu-attrs for="nu-heading" padding=".5em top"></nu-attrs>
+        padding="0 0 0 27|0" height="min 100vh" fill="bg" items="center start" flow="column"
+        :opacity="showMenu ? '1|.66' : 1" transition="opacity" theme="content" overflow="no">
 
         <nu-block
-          width="clamp(initial, 100%, 54)" padding="2||1"
+          width="initial 100% 54" padding="2||1"
           :interactive="showMenu ? 'y|n' : 'y'">
           <router-view/>
         </nu-block>
@@ -114,7 +114,7 @@
         :checked="showMenu"
         show="n|y"
         @input="toggleMenu($event.detail)"
-        special size="xl" place="fixed left bottom 1" z="front" padding shadow=".5">
+        special place="fixed left bottom 1" z="front" padding shadow=".5">
         <nu-icon name="^:pressed[x] menu"></nu-icon>
       </nu-btn>
     </template>
@@ -126,7 +126,7 @@
     <nu-block
       ref="settings"
       place="fixed right"
-      height="100% + 1b"
+      height="100% + 1bw"
       width="20"
       border="left"
       fill="bg 70% backdrop-blur"
@@ -159,20 +159,16 @@
             </nu-pane>
             <nu-grid gap="1x 2x" items="center stretch" columns="auto 1fr 4x">
               <nu-el place="center end">Hue</nu-el>
-              <nu-rail>
-                <nu-slider
-                  :value="hue" @input="hue = $event.detail" type="int"
-                  min="0" max="359"></nu-slider>
-              </nu-rail>
+              <nu-slider
+                :value="hue" @input="hue = $event.detail" type="int"
+                min="0" max="359"></nu-slider>
               <nu-el>{{ hue }}</nu-el>
 
               <nu-el place="center end">Saturation</nu-el>
-              <nu-rail
-                :disabled="saturationType === 'auto'">
-                <nu-slider
-                  :value="saturation" @input="saturation = $event.detail" type="int"
-                  min="0" max="100"></nu-slider>
-              </nu-rail>
+              <nu-slider
+                :disabled="saturationType === 'auto'"
+                :value="saturation" @input="saturation = $event.detail" type="int"
+                min="0" max="100"></nu-slider>
               <nu-el>{{ saturation }}</nu-el>
               <nu-el></nu-el>
               <nu-block column="auto / span 2">
@@ -210,35 +206,27 @@
           <nu-heading level="6" padding="bottom">Preview props</nu-heading>
           <nu-grid gap="1x 2x" items="center stretch" columns="auto 1fr 4.5">
             <nu-el place="center end">Gap</nu-el>
-            <nu-rail>
-              <nu-slider
-                :value="gap" @input="gap = $event.detail"
-                min=".125" max="1" step=".125" type="float"></nu-slider>
-            </nu-rail>
+            <nu-slider
+              :value="gap" @input="gap = $event.detail"
+              min=".125" max="1" step=".125" type="float"></nu-slider>
             <nu-el>{{ gap }}rem</nu-el>
 
             <nu-el place="center end">Border</nu-el>
-            <nu-rail>
-              <nu-slider
-                :value="borderWidth" @input="borderWidth = $event.detail"
-                min="1" max="4" type="int"></nu-slider>
-            </nu-rail>
+            <nu-slider
+              :value="borderWidth" @input="borderWidth = $event.detail"
+              min="1" max="4" type="int"></nu-slider>
             <nu-el>{{ borderWidth }}px</nu-el>
 
             <nu-el place="center end">Radius</nu-el>
-            <nu-rail>
-              <nu-slider
-                :value="radius" @input="radius = $event.detail"
-                min="0.0625" max="1.5" step="0.0625" precision="3" type="float"></nu-slider>
-            </nu-rail>
+            <nu-slider
+              :value="radius" @input="radius = $event.detail"
+              min="0.0625" max="1.5" step="0.0625" precision="3" type="float"></nu-slider>
             <nu-el>{{ radius }}rem</nu-el>
 
             <nu-el place="center end">Trans. time</nu-el>
-            <nu-rail>
-              <nu-slider
-                :value="transitionTime" @input="transitionTime = $event.detail"
-                min="10" max="250" step="10" precision="0" type="int"></nu-slider>
-            </nu-rail>
+            <nu-slider
+              :value="transitionTime" @input="transitionTime = $event.detail"
+              min="10" max="250" step="10" precision="0" type="int"></nu-slider>
             <nu-el>{{ transitionTime }}s</nu-el>
           </nu-grid>
         </nu-card>
@@ -319,7 +307,7 @@
       role="checkbox"
       :checked="showSettings"
       @input="toggleSettings($event.detail)"
-      special size="xl" place="fixed right bottom 1" z="front" padding shadow=".5">
+      special place="fixed right bottom 1" z="front" padding shadow=".5">
       <nu-icon name="sliders"></nu-icon>
     </nu-btn>
   </nu-block>
@@ -328,8 +316,12 @@
 <script>
 import Lockr from 'lockr';
 import Numl from '@/services/numl';
+import { helpers } from '../public/numl/index';
 import GlobalEvents from './services/global-events';
 import Options, { DEFAULT_OPTIONS, setGlobalSettings } from './services/options';
+// import Router from './router/index';
+
+const { resetScroll } = helpers;
 
 function handleElement(el) {
   return {
@@ -361,11 +353,6 @@ const GUIDE_MENU = [
     type: 'link',
     label: 'Getting started',
     to: '/guide/getting-started',
-  },
-  {
-    type: 'link',
-    label: 'Solved problems',
-    to: '/guide/solved-problems',
   },
   {
     type: 'heading',
@@ -400,6 +387,11 @@ const GUIDE_MENU = [
     label: 'Changelog',
     to: '/guide/changelog',
   },
+  {
+    type: 'link',
+    label: 'Solved problems',
+    to: '/guide/solved-problems',
+  },
 ];
 
 const REFERENCE_MENU = [
@@ -430,9 +422,14 @@ const REFERENCE_MENU = [
   ...Numl.converters.map(handleElement),
   {
     type: 'heading',
-    label: 'Decorators',
+    label: 'Components',
   },
-  ...Numl.decorators.map(handleElement),
+  ...Numl.components.map(handleElement),
+  {
+    type: 'heading',
+    label: 'Definition Elements',
+  },
+  ...Numl.definitions.map(handleElement),
   {
     type: 'heading',
     label: 'Style Attributes',
@@ -594,7 +591,7 @@ export default {
       setGlobalSettings({ contrast: val });
     },
     showMenu(bool) {
-      this.$refs.nav.nuResetScroll(true);
+      resetScroll(this.$refs.nav, true);
 
       if (bool) {
         setTimeout(() => {
@@ -610,7 +607,7 @@ export default {
       }
     },
     showSettings() {
-      this.$refs.settings.nuResetScroll(true);
+      resetScroll(this.$refs.settings, true);
     },
     reducedMotion(val) {
       setGlobalSettings({ reducedMotion: val });
@@ -634,6 +631,11 @@ export default {
   },
   mounted() {
     setGlobalSettings();
+
+    // Router.afterEach(() => {
+    //   this.showMenu = false;
+    //   this.showSettings = false;
+    // });
 
     setTimeout(() => {
       this.mounted = true;

@@ -1,61 +1,40 @@
 const html = document.querySelector('html');
-
-const LIGHT_SCHEME = 'nu-scheme-light';
-const DARK_SCHEME = 'nu-scheme-dark';
-const HIGH_CONTRAST = 'nu-contrast-high';
-const LOW_CONTRAST = 'nu-contrast-low';
-const REDUCE_MOTION = 'nu-reduce-motion';
-
-export function clearSchemeSwitch() {
-  [LIGHT_SCHEME, DARK_SCHEME]
-    .forEach((cls) => html.classList.remove(cls));
-}
-
-export function clearContrastSwitch() {
-  [HIGH_CONTRAST, LOW_CONTRAST]
-    .forEach((cls) => html.classList.remove(cls));
-}
-
-export function clearReducedMotionSwitch() {
-  [REDUCE_MOTION]
-    .forEach((cls) => html.classList.remove(cls));
-}
+const { dataset } = html;
 
 export function setScheme(type) {
-  clearSchemeSwitch();
-
   switch (type) {
     case 'light':
-      html.classList.add(LIGHT_SCHEME);
+      dataset.nuScheme = 'light';
       break;
     case 'dark':
-      html.classList.add(DARK_SCHEME);
+      dataset.nuScheme = 'dark';
       break;
     default:
+      delete dataset.nuScheme;
   }
 }
 
 export function setContrast(type) {
-  clearContrastSwitch();
-
   switch (type) {
     case 'high':
-      html.classList.add(HIGH_CONTRAST);
+      dataset.nuContrast = 'high';
       break;
     case 'normal':
-      html.classList.add(LOW_CONTRAST);
+      dataset.nuContrast = 'normal';
       break;
     default:
+      delete dataset.nuContrast;
   }
 }
 
 export function setReducedMotion(type) {
-  clearReducedMotionSwitch();
+  delete dataset.nuReduceMotion;
 
   switch (type) {
     case 'yes':
-      html.classList.add(REDUCE_MOTION);
+      dataset.nuReduceMotion = '';
       break;
     default:
+      delete dataset.nuReduceMotion;
   }
 }

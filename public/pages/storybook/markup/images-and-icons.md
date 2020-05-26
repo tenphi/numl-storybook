@@ -6,7 +6,7 @@ There are several elements in NuML that you can use to insert images and icons: 
 
 ### Usage
 
-Use `src` attribute to specify URL to the image.
+Use ==src== attribute to specify URL to the image.
 
 ```html
 <preview/>
@@ -15,7 +15,7 @@ Use `src` attribute to specify URL to the image.
 
 ### Image fit
 
-Using `fit` attribute you can specify fit strategy of the image. This attribute has the same specification as `object-fit` CSS style. If `fit="none"` which is default value then the image is trying to take as much space as needed for full size but no more than container width.
+Using ==fit== attribute you can specify fit strategy of the image. This attribute has the same specification as `object-fit` CSS style. If `fit="none"` which is default value then the image is trying to take as much space as needed for full size but no more than container width.
 
 ```html
 <preview/>
@@ -85,12 +85,12 @@ You can change icon (with transition) depending on the element state like:
 <preview/>
 <nu-props transition-time=".2s"></nu-props>
 <nu-flex gap="2x" flow="row wrap">
-  <nu-btn padding size="xl">
+  <nu-btn padding>
     <nu-icon name="box ^:hover[package]"></nu-icon>
     Package
   </nu-btn>
 
-  <nu-btn padding size="xl" role="checkbox">
+  <nu-btn padding role="checkbox">
     Dropdown
     <nu-icon name="chevron-down ^:pressed[chevron-up]"></nu-icon>
   </nu-btn>

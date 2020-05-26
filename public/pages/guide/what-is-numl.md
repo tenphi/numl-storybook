@@ -1,8 +1,8 @@
 # What is NuML?
 
-**NuML** is the **alternative markup language** for the modern and future web whose goal is to create a future-proof abstraction over modern web-technology with simplified API and predictable unified behavior across all the browsers and platforms.
+**NuML** is the **alternative markup language** for the modern and future web whose goal is to create a future-proof abstraction over modern web-technology with simplified **API** based on web standards (**HTML**, **CSS**, **ARIA** specifications) and predictable unified behavior across all the browsers and platforms.
 
-You can consider this a replacement (at least partial) for HTML and CSS.
+You can consider this a replacement (at least partial) for **HTML**, **CSS** and even **JavaScript** in some cases.
 
 It also fits the following definitions:
 
@@ -19,7 +19,7 @@ There are many benefits of using NuML in your projects. You can get:
 
 * Highly-customizable Design System.
 * Convenient theming system for developers.
-* Much faster prototyping speed. (don't require project ENV)
+* Much faster prototyping speed. (don't even require build step)
 * Best CSS practices under-the-hood.
 * Automatic Dark Mode and High Contrast Mode.
 * Transferable markup. Use it in projects with different frontend stack.

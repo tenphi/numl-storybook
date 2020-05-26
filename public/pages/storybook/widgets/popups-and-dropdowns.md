@@ -158,7 +158,7 @@ Note that Submenu's popup can't have [drop](/reference/mixin/fixate) attribute. 
 
 ## Popup closing
 
-Use button with `action="submit"` to close parent dropdown. Any other button won't have the same effect unless it's a menu.
+Use button with `action="close"` to close parent popup. Any other button won't have the same effect unless it's a menu.
 
 ```nu-preview
 <nu-attrs
@@ -170,7 +170,7 @@ Use button with `action="submit"` to close parent dropdown. Any other button won
   <nu-btn special>
     <nu-el text="w6">Open popup</nu-el>
     <nu-icon as="dropdown-icon"></nu-icon>
-    <nu-popup gap="1x" fixate="bottom" width="clamp(initial, 24, 100vw)">
+    <nu-popup gap="1x" fixate="bottom" width="initial 24 100vw">
       <nu-block>
         Button that don't close popup.
       </nu-block>
@@ -180,7 +180,7 @@ Use button with `action="submit"` to close parent dropdown. Any other button won
       <nu-block>
         Button that closes popup.
       </nu-block>
-      <nu-btn action="submit">
+      <nu-btn action="close">
         Submit button
       </nu-btn>
     </nu-popup>

@@ -104,9 +104,11 @@
 
         <nu-flow
           responsive="1280px|980px|600px"
-          width="initial 100% 54" padding="2 2 6|2 1 6|2 2 6|2 1 6" gap="2x"
+          width="initial 100% 54" gap="2x"
           :interactive="showMenu ? 'y|n' : 'y'">
-          <router-view/>
+          <nu-block padding="2 2 6|2 1 6|2 2 6|2 1 6">
+            <router-view/>
+          </nu-block>
 
           <nu-line></nu-line>
 

@@ -1,5 +1,5 @@
 <template>
-  <nu-block :height="repl ? '100%' : 'min(5)'">
+  <nu-block :height="repl ? '20 100% 100%' : 'min(5)'">
     <nu-attrs
       for="nu-tooltip" text="nowrap"
       :place="repl ? 'outside-bottom' : null"></nu-attrs>
@@ -89,9 +89,9 @@
       </nu-flex>
     </nu-pane>
 
-    <nu-block v-if="frame" id="preview" v-html="markup" padding="2x"></nu-block>
+    <nu-block v-if="frame" id="preview" v-html="markup" padding="2x" hidden></nu-block>
     <nu-block
-      v-else id="preview"
+      v-else id="preview" :hidden="tab !== 'preview'"
       :height="repl ? '100% - 5x - 1bw' : null" fill="main-subtle">
       <iframe
         ref="frame" :src="`/preview.html#${encodedData}`" frameborder="0"
@@ -204,11 +204,13 @@ export default {
 
       if (!frame) return;
 
-      const applyHeight = (secondCall) => {
-        if (frame.contentWindow && !secondCall) {
+      const applyHeight = () => {
+        if (!frame.contentWindow) {
           setTimeout(() => {
             applyHeight(true);
-          }, 100);
+          }, 200);
+
+          return;
         }
 
         const newHeight = Math.round((frame.contentWindow || this.contentWindow).document.querySelector('nu-block').scrollHeight * this.scale);

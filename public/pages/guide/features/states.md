@@ -8,7 +8,7 @@ Framework automatically generates CSS based on states without style overlapping.
 <preview/>
 <nu-btn
   width="16"
-  role="checkbox"
+  toggle
   t="'DEFAULT' :pressed['PRESSED'] :hover['HOVERED'] :hover:pressed['PRESSED & HOVERED']">
 </nu-btn>
 ```
@@ -19,7 +19,7 @@ Framework automatically generates CSS based on states without style overlapping.
 <preview/>
 <nu-btn
   width="10"
-  role="checkbox"
+  toggle
   text="left :pressed[right]"
   display="flex" flow="row :pressed[row-reverse]">
   <nu-icon name="^ align-left :pressed[align-right]"></nu-icon>
@@ -36,7 +36,7 @@ Framework automatically generates CSS based on states without style overlapping.
     id="tile"
     width="12"
     flow="row"
-    role="checkbox"
+    toggle
     content="stretch">
     <nu-pane>
       <nu-heading level="6">Total sales</nu-heading>

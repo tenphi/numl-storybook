@@ -10,6 +10,8 @@
 
 A major update focused on brand new Behavior System that allows simplifying development of complex compositions and rich components. It adds dynamic imports that reduces base bundle size.
 
+Also, update introduces more semantic elements and combinations of elements with ARIA compliance.
+
 ### New features
 
 * Behaviors
@@ -28,6 +30,7 @@ A major update focused on brand new Behavior System that allows simplifying deve
 * Sticky detection
 * Link state detection (for active navigation)
 * Outline mode
+* Strict-size columns for Grid with `pr` unit.
 
 ### Attributes
 * ==focus==: inside & outside modifiers
@@ -43,7 +46,18 @@ A major update focused on brand new Behavior System that allows simplifying deve
 * ==nu-debug==
 * ==nu-topbar==
 * ==nu-dropdownicon==
-* format elements: ==nu-b==, ==nu-i==, ==nu-u==, ==nu-s==
+* format elements:
+    * ==nu-b==
+    * ==nu-i==
+    * ==nu-u==
+    * ==nu-s==
+* semantic elements:
+    * ==nu-header==
+    * ==nu-footer==
+    * ==nu-article==
+    * ==nu-aside==
+    * ==nu-section==
+    * ==nu-main==
 
 ### New components
 

@@ -11,10 +11,10 @@
       transition="fill">
       <nu-block
         radius="round" fill="special-bg" border shadow=".5"
-        width="1.25 + 2b" height="1.75" place="inside" move=".5b 0">
+        width="1.25 + 2bw" height="1.75" place="inside" move=".5bw 0">
         <nu-attrs for="nu-icon" place="inside" color="special-text" scale="1 1.5"></nu-attrs>
-        <nu-icon name="chevron-left" move="-.5x 0"></nu-icon>
-        <nu-icon name="chevron-right" move=".5x 0"></nu-icon>
+        <nu-icon name="chevron-left" move="-.6x 0"></nu-icon>
+        <nu-icon name="chevron-right" move=".6x 0"></nu-icon>
       </nu-block>
     </nu-block>
     <nu-block v-if="dragging" place="fixed cover" width="100vw" height="100vh"></nu-block>

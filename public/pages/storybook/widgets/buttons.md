@@ -17,7 +17,7 @@
   <nu-btn disabled special>
     Disabled special button
   </nu-btn>
-  <nu-btn role="checkbox">
+  <nu-btn toggle>
     Checkbox button
   </nu-btn>
 </nu-flex>

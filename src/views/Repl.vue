@@ -1,10 +1,11 @@
 <template>
   <nu-flex
-    height="100%" responsive="760px|600px" place="relative"
-    :radius="markup ? '1r' : null" :border="markup ? '1bw' : null">
+    ref="root"
+    height="22 100% 100%" responsive="760px|600px" place="relative"
+    :radius="markup ? '1r' : null" :border="markup ? '1bw' : null" overflow="no">
     <nu-flex
       :show="mode === 'editor' ? 'y' : 'y|n'"
-      fill="bg" height="100%" flow="column" :width="`${split}%|100%`">
+      fill="bg" height="22 100% 100%" flow="column" :width="`${split}%|100%`">
       <nu-theme name="header" hue="#00f" mod="tint"></nu-theme>
       <nu-theme name="quote" hue="#090" mod="tint"></nu-theme>
       <nu-theme name="negative" hue="#d44" mod="tint"></nu-theme>
@@ -27,7 +28,9 @@
       <nu-theme name="link" hue="#00c" mod="tint"></nu-theme>
       <nu-theme name="error" hue="#f00" mod="tint"></nu-theme>
 
-      <nu-pane border="bottom" fill="subtle" padding="right" text="nowrap" height="min(2.5)">
+      <nu-pane
+        border="bottom" fill="subtle" padding="right" text="nowrap"
+        height="min(2.5)" content="space-between">
         <nu-attrs
           for="nu-tooltip" text="nowrap"
           place="outside-bottom"></nu-attrs>
@@ -82,12 +85,12 @@
       :width="`${100 - split}%|100%`"
       ref="preview" repl
       :markup="previewMarkup" fill="subtle" border="left color(special)|0"
-      place="right" height="100%"></Preview>
+      place="right"></Preview>
 
     <nu-btn
       show="n|y"
       @tap="toggleMode"
-      special size="xl" place="fixed left bottom 1" z="front" padding shadow=".5">
+      special size="xl" place="left bottom 2x" z="front" padding shadow=".5">
       <nu-icon :name="mode === 'editor' ? 'eye' : 'edit-2'"></nu-icon>
     </nu-btn>
 
@@ -155,7 +158,7 @@ export default {
       },
       valid: true,
       timerId: null,
-      previewMarkup: '',
+      previewMarkup: null,
       version: window.Nude.version,
       copied: false,
       saved: false,
@@ -222,6 +225,8 @@ export default {
     },
   },
   mounted() {
+    if (!this.$refs.root.parentNode) return;
+
     if (this.markup) {
       this.currentMarkup = this.markup;
       this.currentEmbed = !!this.embed;
@@ -252,7 +257,9 @@ export default {
     }
 
     setTimeout(() => {
-      this.$refs.editor.codemirror.refresh();
+      if (this.$refs.editor) {
+        this.$refs.editor.codemirror.refresh();
+      }
     }, 500);
   },
   components: {

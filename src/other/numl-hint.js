@@ -51,7 +51,6 @@ const data = {
   'nu-svg': { attrs: ['src'] },
   'nu-img': { attrs: ['src'] },
   'nu-code': { attrs: [] },
-  'nu-clamp': { attrs: ['lines', 'display'] },
   'nu-progressbar': { attrs: ['value', 'min', 'max'] },
   'nu-slider': { attrs: [] },
   'nu-markdown': { attrs: [] },

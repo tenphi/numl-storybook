@@ -47,7 +47,7 @@
                   border="0"
                   theme=":pressed[special]"
                   fill=":pressed[bg] clear"
-                  toggle="0 :active:focusable[.75em] :pressed[0]"
+                  inset="0 :active:focusable[y] :pressed[0]"
                 ></nu-attrs>
                 <nu-btn value="guide" to="/guide/what-is-numl">Guide</nu-btn>
                 <nu-btn value="storybook" to="/storybook">Storybook</nu-btn>
@@ -67,7 +67,7 @@
         </nu-block>
 
         <nu-flow
-          id="subnav" padding="0 2x||0 1x" gap="1x" border="right" overflow="auto" scrollbar>
+          id="subnav" padding="0 2x 6x||0 1x 6x" gap="1x" border="right" overflow="auto" scrollbar>
           <nu-attrs
             for="nu-heading" padding="1x 2x"
             level="4" place="sticky top" space="-2x 2x||-2x 1x" fill="subtle"
@@ -102,15 +102,42 @@
         padding="0 0 0 27|0" height="min 100vh" fill="bg" items="center start" flow="column"
         :opacity="showMenu ? '1|.66' : 1" transition="opacity" theme="content" overflow="no">
 
-        <nu-block
-          width="initial 100% 54" padding="2||1"
+        <nu-flow
+          responsive="1280px|980px|600px"
+          width="initial 100% 54" padding="2 2 6|2 1 6|2 2 6|2 1 6" gap="2x"
           :interactive="showMenu ? 'y|n' : 'y'">
           <router-view/>
-        </nu-block>
+
+          <nu-line></nu-line>
+
+          <nu-pane
+            v-if="navLinks"
+            content="space-between"
+            flow="row wrap">
+            <nu-btn
+              v-if="navLinks.prev"
+              :to="navLinks.prev.to"
+              special>
+              <nu-icon name="chevrons-left" space="left"></nu-icon>
+              {{navLinks.prev.heading}}:
+              {{navLinks.prev.label}}
+            </nu-btn>
+            <nu-el v-else></nu-el>
+
+            <nu-btn
+              v-if="navLinks.next"
+              :to="navLinks.next.to"
+              special>
+              {{navLinks.next.heading}}:
+              {{navLinks.next.label}}
+              <nu-icon name="chevrons-right" space="right"></nu-icon>
+            </nu-btn>
+          </nu-pane>
+        </nu-flow>
       </nu-flex>
 
       <nu-btn
-        role="checkbox"
+        toggle
         :checked="showMenu"
         show="n|y"
         @input="toggleMenu($event.detail)"
@@ -304,7 +331,7 @@
     </nu-block>
 
     <nu-btn
-      role="checkbox"
+      toggle
       :checked="showSettings"
       @input="toggleSettings($event.detail)"
       special place="fixed right bottom 1" z="front" padding shadow=".5">
@@ -319,253 +346,34 @@ import Numl from '@/services/numl';
 import { helpers } from '../public/numl/index';
 import GlobalEvents from './services/global-events';
 import Options, { DEFAULT_OPTIONS, setGlobalSettings } from './services/options';
+import { GUIDE_MENU } from './menu/guide';
+import { FRAMEWORK_MENU } from './menu/framework';
+import { STORYBOOK_MENU } from './menu/storybook';
+import { REFERENCE_MENU } from './menu/reference';
 // import Router from './router/index';
 
 const { resetScroll } = helpers;
 
-function handleElement(el) {
-  return {
-    type: 'link',
-    label: `<${el.tag}/>`,
-    to: `/reference/elements/${el.tag}`,
-  };
+function setLinkHeader(item, menu) {
+  if (!item) return;
+
+  const index = menu.indexOf(item);
+
+  let heading;
+
+  for (let i = index - 1; i >= 0; i -= 1) {
+    const el = menu[i];
+
+    if (el.type === 'heading') {
+      heading = el;
+      break;
+    }
+  }
+
+  if (heading) {
+    item.heading = heading.label;
+  }
 }
-
-function handleAttribute(attr) {
-  return {
-    type: 'link',
-    label: `[${attr}]`,
-    to: `/reference/attributes/${attr}`,
-  };
-}
-
-const GUIDE_MENU = [
-  {
-    type: 'heading',
-    label: 'Introduction',
-  },
-  {
-    type: 'link',
-    label: 'What is NuML?',
-    to: '/guide/what-is-numl',
-  },
-  {
-    type: 'link',
-    label: 'Getting started',
-    to: '/guide/getting-started',
-  },
-  {
-    type: 'heading',
-    label: 'Core features',
-  },
-  {
-    type: 'link',
-    label: 'Customization',
-    to: '/guide/features/customization',
-  },
-  {
-    type: 'link',
-    label: 'Responsiveness',
-    to: '/guide/features/responsiveness',
-  },
-  {
-    type: 'link',
-    label: 'Theming',
-    to: '/guide/features/themes',
-  },
-  {
-    type: 'link',
-    label: 'States',
-    to: '/guide/features/states',
-  },
-  {
-    type: 'heading',
-    label: 'Related information',
-  },
-  {
-    type: 'link',
-    label: 'Changelog',
-    to: '/guide/changelog',
-  },
-  {
-    type: 'link',
-    label: 'Solved problems',
-    to: '/guide/solved-problems',
-  },
-];
-
-const REFERENCE_MENU = [
-  {
-    type: 'heading',
-    label: 'Base Elements',
-  },
-  ...Numl.baseElements.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Formatter Elements',
-  },
-  ...Numl.formatterElements.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Layout Elements',
-  },
-  ...Numl.layoutElements.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Widget Elements',
-  },
-  ...Numl.widgetElements.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Converters',
-  },
-  ...Numl.converters.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Components',
-  },
-  ...Numl.components.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Definition Elements',
-  },
-  ...Numl.definitions.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Style Attributes',
-  },
-  ...Numl.styleAttributes.map(handleAttribute),
-  {
-    type: 'heading',
-    label: 'Utility Attributes',
-  },
-  ...Numl.utilityAttributes.map(handleAttribute),
-  {
-    type: 'heading',
-    label: 'Aria Attributes',
-  },
-  // ...Numl.ariaAttributes.map(handleAttribute),
-  {
-    type: 'text',
-    label: 'Coming soon',
-  },
-  {
-    type: 'heading',
-    label: 'Modifier Attributes',
-  },
-  ...Numl.modifierAttributes.map(handleAttribute),
-];
-
-const STORYBOOK_MENU = [
-  {
-    type: 'heading',
-    label: 'Welcome',
-  },
-  {
-    type: 'link',
-    label: 'Introduction',
-    to: '/storybook',
-  },
-  {
-    type: 'heading',
-    label: 'Markup system',
-  },
-  {
-    type: 'link',
-    label: 'Basic markup',
-    to: '/storybook/markup/basics',
-  },
-  {
-    type: 'link',
-    label: 'Typography',
-    to: '/storybook/markup/typography',
-  },
-  {
-    type: 'link',
-    label: 'Badges and Marks',
-    to: '/storybook/markup/badges-and-marks',
-  },
-  {
-    type: 'link',
-    label: 'Links',
-    to: '/storybook/markup/links',
-  },
-  {
-    type: 'link',
-    label: 'Layout',
-    to: '/storybook/markup/layout',
-  },
-  {
-    type: 'link',
-    label: 'Images & Icons',
-    to: '/storybook/markup/images-and-icons',
-  },
-  {
-    type: 'heading',
-    label: 'Widgets',
-  },
-  {
-    type: 'link',
-    label: 'Buttons',
-    to: '/storybook/widgets/buttons',
-  },
-  {
-    type: 'link',
-    label: 'Inputs',
-    to: '/storybook/widgets/inputs',
-  },
-  {
-    type: 'link',
-    label: 'Button groups and tabs',
-    to: '/storybook/widgets/button-groups-and-tabs',
-  },
-  {
-    type: 'link',
-    label: 'Popups & Dropdowns',
-    to: '/storybook/widgets/popups-and-dropdowns',
-  },
-  {
-    type: 'heading',
-    label: 'Formatting',
-  },
-  {
-    type: 'link',
-    label: 'Numbers',
-    to: '/storybook/formatting/numbers',
-  },
-  {
-    type: 'link',
-    label: 'Date and Time',
-    to: '/storybook/formatting/date-and-time',
-  },
-];
-
-const FRAMEWORK_MENU = [
-  {
-    type: 'heading',
-    label: 'Introduction',
-  },
-  {
-    type: 'link',
-    label: 'What is NUDE Framework?',
-    to: '/framework/what-is-nude',
-  },
-  {
-    type: 'link',
-    label: 'Creating element',
-    to: '/framework/creating-element',
-  },
-  {
-    type: 'link',
-    label: 'Shadow DOM',
-    to: '/framework/shadow-dom',
-  },
-  // {
-  //   type: 'link',
-  //   label: 'Getting started',
-  //   to: '/framework/getting-started',
-  // },
-];
 
 export default {
   name: 'app',
@@ -674,6 +482,48 @@ export default {
         }, {});
 
       return JSON.stringify(current) !== JSON.stringify(DEFAULT_OPTIONS);
+    },
+    navLinks() {
+      const { path } = this.$route;
+      const { subMenu } = this;
+
+      const currentLink = subMenu.find((item) => item.to === path);
+
+      let flag = false;
+
+      const nextLink = subMenu.find((item) => {
+        if (item === currentLink) {
+          flag = true;
+        } else if (flag && item.to) {
+          return item;
+        }
+
+        return false;
+      });
+
+      flag = false;
+
+      const prevLink = [...subMenu].reverse().find((item) => {
+        if (item === currentLink) {
+          flag = true;
+        } else if (flag && item.to) {
+          return item;
+        }
+
+        return false;
+      });
+
+      if (!prevLink && !nextLink) {
+        return null;
+      }
+
+      setLinkHeader(prevLink, subMenu);
+      setLinkHeader(nextLink, subMenu);
+
+      return {
+        next: nextLink,
+        prev: prevLink,
+      };
     },
     subMenu() {
       const { path } = this.$route;

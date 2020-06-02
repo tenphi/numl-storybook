@@ -90,7 +90,7 @@ You can change icon (with transition) depending on the element state like:
     Package
   </nu-btn>
 
-  <nu-btn padding role="checkbox">
+  <nu-btn padding toggle>
     Dropdown
     <nu-icon name="chevron-down ^:pressed[chevron-up]"></nu-icon>
   </nu-btn>

@@ -106,7 +106,6 @@ export const BASE_ELEMENTS = [
   'nu-icon',
   'nu-svg',
   'nu-img',
-  'nu-clamp',
   'nu-progressbar',
   'nu-list',
   'nu-listitem',
@@ -114,6 +113,17 @@ export const BASE_ELEMENTS = [
   'nu-triangle',
   'nu-tooltip',
   'nu-label',
+].sort();
+
+export const SEMANTIC_ELEMENTS = [
+  'nu-article',
+  'nu-main',
+  'nu-header',
+  'nu-footer',
+  'nu-aside',
+  'nu-region',
+  'nu-section',
+  'nu-navigation',
 ].sort();
 
 export const FORMATTER_ELEMENTS = [

@@ -25,7 +25,7 @@ Let's make dropdown-icon ;)
   customElements.define(MyDropdownIcon.nuTag, MyDropdownIcon);
 </script>
 
-<nu-btn role="checkbox">
+<nu-btn toggle>
   Dropdown
 	<my-dropdownicon></my-dropdownicon>
   <nu-popup>

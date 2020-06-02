@@ -1,4 +1,3 @@
-import LZString from 'lz-string';
 import Vue from 'vue';
 import Preview from '@/components/Preview.vue';
 import { Nude } from '../numl';
@@ -62,10 +61,6 @@ export default class NuPreview extends NuElement {
     this.nuComponent = new Vue({
       render: (h) => h(Preview, { props: { markup: this.nuContent } }),
     }).$mount(this.nuContainer);
-  }
-
-  get nuEncodedData() {
-    return LZString.compressToEncodedURIComponent(JSON.stringify(this.nuData));
   }
 }
 

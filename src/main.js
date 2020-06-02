@@ -5,6 +5,7 @@ import './registerServiceWorker';
 import router from './router';
 import './services/numl';
 import './elements/nu-preview';
+import './elements/nu-splitpreview';
 import './elements/nu-repl';
 
 Vue.config.productionTip = false;

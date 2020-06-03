@@ -1,6 +1,6 @@
 # What is NUDE Framework?
 
-**NUDE** is the heart of **NuML**. It's framework to create style-oriented **Custom Elements** with vast number of features like:
+**NUDE** is the heart of **Numl**. It's framework to create style-oriented **Custom Elements** with vast number of features like:
 
 * Real CSS inheritance between elements
 * Multiple options for flexible element customization

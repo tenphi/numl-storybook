@@ -1,6 +1,6 @@
 # Images and icons
 
-There are several elements in NuML that you can use to insert images and icons: [nu-img](/reference/elements/nu-img.md), [nu-svg](/reference/element/nu-svg) and [nu-icon](/reference/element/nu-icon).
+There are several elements in Numl that you can use to insert images and icons: [nu-img](/reference/elements/nu-img.md), [nu-svg](/reference/element/nu-svg) and [nu-icon](/reference/element/nu-icon).
 
 ## Images
 
@@ -66,7 +66,7 @@ It's useful if you want to use some colors from your application to color an SVG
 
 ## Icons
 
-By default NuML uses [Feather Icons](https://github.com/feathericons/feather) for icons.
+By default Numl uses [Feather Icons](https://github.com/feathericons/feather) for icons.
 
 ```html
 <preview/>

@@ -1,6 +1,6 @@
 # Solved problems
 
-NuML has huge list of solved problems related to interface creation in web.
+Numl has huge list of solved problems related to interface creation in web.
 
 It means you don't have to spend your time solving them. You don't even have to think about most of them. Focus on things that are really matter!
 

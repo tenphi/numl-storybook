@@ -1,6 +1,6 @@
 # Shadow DOM
 
-NuML makes usage of Shadow DOM transparent as possible. It means you can use any NuML elements in the Shadow DOM as you usually do it.
+Numl makes usage of Shadow DOM transparent as possible. It means you can use any Numl elements in the Shadow DOM as you usually do it.
 
 ```html
 <preview/>

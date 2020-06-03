@@ -1,6 +1,6 @@
 # Typography
 
-Currently there is only two attributes to handle typography in NuML: [size](../../reference/attributes/size.md) and [text](../../reference/attributes/text.md). It's because NuML is more focused on interface creation, not typography (as classic HTML). But don't worry, there are many options to style your text.
+Currently there is only two attributes to handle typography in Numl: [size](../../reference/attributes/size.md) and [text](../../reference/attributes/text.md). It's because Numl is more focused on interface creation, not typography (as classic HTML). But don't worry, there are many options to style your text.
 
 ## Heading
 

@@ -1,10 +1,10 @@
 # Base syntax
 
-**NuML** is based on the so-called **Atomic approach**. But instead of atomic classes (like in popular framework **Tailwind**) it uses attributes and allows ==any value== you provide. You can even use custom units like ==x== (default gap) for short.
+**Numl** is based on the so-called **Atomic approach**. But instead of atomic classes (like in popular framework **Tailwind**) it uses attributes and allows ==any value== you provide. You can even use custom units like ==x== (default gap) for short.
 
 ## Formulate a task
 
-Let's create a simple button from scratch. Of course, we can just use predefined element ==nu-btn==, but in **NuML** almost everything can be created using a single tag: [nu-el](../../reference/elements/nu-el.md). It's the base element that the other elements are inherited from, but with different defaults. So it's a good start to learn the basics:
+Let's create a simple button from scratch. Of course, we can just use predefined element ==nu-btn==, but in **Numl** almost everything can be created using a single tag: [nu-el](../../reference/elements/nu-el.md). It's the base element that the other elements are inherited from, but with different defaults. So it's a good start to learn the basics:
 
 ```html
 <split/>
@@ -35,7 +35,7 @@ Here are these defaults:
 * ==radius== – ==1r== (One default **r**adius `.5rem`).
 * ==padding== – ==1x== (One default gap `.5rem`).
 
-Values from the right are ==Custom Units==. It's built-in units that are used in **NuML**. We will learn about them later.
+Values from the right are ==Custom Units==. It's built-in units that are used in **Numl**. We will learn about them later.
 
 ## Customize styles
 
@@ -58,7 +58,7 @@ Well, now it looks great, but it isn't interactive. :(
 
 ## Make it active
 
-To be able to click on it we must inject ==active== behavior. To do so, we add an attribute whose name consists of the name of the behavior and suffix `nx-`. It's not what you will do often using **NuML**, but it's a great demonstration of the **Behavior System**.
+To be able to click on it we must inject ==active== behavior. To do so, we add an attribute whose name consists of the name of the behavior and suffix `nx-`. It's not what you will do often using **Numl**, but it's a great demonstration of the **Behavior System**.
 
 ```html
 <split/>
@@ -197,7 +197,7 @@ We removed ==active== and ==focusable== behaviors 'cause ==button== behavior wil
 
 ## Propagate styles
 
-Our button is ready, but what if we need to add more buttons to our application. It would be a mess to write so many attributes for each button. In **NuML** there is a definition element [nu-attrs](../../reference/elements/nu-attrs.md) that allows to propagate a set of attributes inside specific context. As definition is set we can use `as` attribute to use it:
+Our button is ready, but what if we need to add more buttons to our application. It would be a mess to write so many attributes for each button. In **Numl** there is a definition element [nu-attrs](../../reference/elements/nu-attrs.md) that allows to propagate a set of attributes inside specific context. As definition is set we can use `as` attribute to use it:
 
 ```html
 <split/>
@@ -229,7 +229,7 @@ In real application we suggest you use a built-in [nu-btn](../../reference/eleme
 <nu-btn>Button</nu-btn>
 ```
 
-Pretty easy, isn't it? And **NuML** has dozens of elements with different defaults for various scenarios.
+Pretty easy, isn't it? And **Numl** has dozens of elements with different defaults for various scenarios.
 
 If you want to change a look of default button you can use style attributes as we did it with **nu-el** element above.
 
@@ -237,7 +237,7 @@ You can always create a new custom element with different defaults using **JavaS
 
 ## Conclusion
 
-Our introduction is almost over. We hope you enjoyed it. It was a simple example of how **NuML** syntax looks like.
+Our introduction is almost over. We hope you enjoyed it. It was a simple example of how **Numl** syntax looks like.
 
 You can learn more about specific styling attribute by looking at the **Reference Section**. In the example above we used the following attributes:
 

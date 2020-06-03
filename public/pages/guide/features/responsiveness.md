@@ -1,6 +1,6 @@
 # Responsive system
 
-To make your site responsive with NuML is very simple. Any element has [responsive](../../reference/attributes/responsive.md) attribute that can be used to declare responsive points in its context. Every responsive point split a set of screen width values into two zones. So `N` responsive points will split that set into `N + 1` zones. Let's take a look at the example where we declare three values of attribute for each responsive zone:
+To make your site responsive with Numl is very simple. Any element has [responsive](../../reference/attributes/responsive.md) attribute that can be used to declare responsive points in its context. Every responsive point split a set of screen width values into two zones. So `N` responsive points will split that set into `N + 1` zones. Let's take a look at the example where we declare three values of attribute for each responsive zone:
 
 ```html
 <nu-block responsive="980px|640px">
@@ -26,7 +26,7 @@ So here we have three responsive zones and three corresponding value for the att
 </nu-gridtable>
 ```
 
-So just in few symbols we created element with responsive size. WOW! It would require a batch of lines in CSS and would be static while NuML implementation let you dynamically change responsive points which is **impossible in plain CSS**.
+So just in few symbols we created element with responsive size. WOW! It would require a batch of lines in CSS and would be static while Numl implementation let you dynamically change responsive points which is **impossible in plain CSS**.
 
 ### How to skip attribute values
 

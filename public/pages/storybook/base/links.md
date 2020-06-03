@@ -1,6 +1,6 @@
 # Links
 
-In NuML every active element can be a link.
+In Numl every active element can be a link.
 
 ## Simple links
 
@@ -28,4 +28,4 @@ In NuML every active element can be a link.
 
 ## Accessibility
 
-NuML creates real link inside element so right mouse click works as expected. Use [prerender](https://github.com/prerender/prerender) (or alternatives) to make sure your site will be parsed correctly by Search Bots.
+Numl creates real link inside element so right mouse click works as expected. Use [prerender](https://github.com/prerender/prerender) (or alternatives) to make sure your site will be parsed correctly by Search Bots.

@@ -5,7 +5,7 @@ export const GUIDE_MENU = [
   },
   {
     type: 'link',
-    label: 'What is NuML?',
+    label: 'What is Numl?',
     to: '/guide/what-is-numl',
   },
   {

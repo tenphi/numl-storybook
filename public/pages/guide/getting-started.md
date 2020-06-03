@@ -1,6 +1,6 @@
 # Getting started
 
-To start prototyping with **NuML** just add a single module to the page:
+To start prototyping with **Numl** just add a single module to the page:
 
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/npm/numl@0.11/dist/index.js"></script>
@@ -20,7 +20,7 @@ Make sure you are using `nu-root` tags on the top-level of your app:
 <body>
   <nu-root>
     <nu-card>
-      My first NuML application!
+      My first Numl application!
     </nu-card>
   </nu-root>
 </body>

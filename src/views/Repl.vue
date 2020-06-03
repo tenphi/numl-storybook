@@ -1,6 +1,6 @@
 <template>
   <nu-flex
-    ref="root"
+    ref="root" box="y"
     height="22 100% 100%" responsive="760px|600px" place="relative"
     :radius="markup ? '1r' : null" :border="markup ? '1bw' : null">
     <nu-flex

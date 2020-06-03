@@ -1,5 +1,5 @@
 <template>
-  <nu-flex :height="repl ? '20 100wh 100wh' : 'min(5)'" width="max" flow="column">
+  <nu-flex :height="repl ? '20 100% 100%' : 'min(5)'" width="max" flow="column">
     <nu-attrs
       for="nu-tooltip" text="nowrap"
       :place="repl ? 'outside-bottom' : null"></nu-attrs>
@@ -99,7 +99,7 @@
         :style="iframeStyles"></iframe>
     </nu-block>
 
-    <nu-block id="source" padding hidden overflow="auto" fill="main-subtle">
+    <nu-block id="source" padding hidden overflow="auto" fill="main-subtle" grow="1">
       <nu-code enumerate fill="main-subtle" shadow="0">
         <textarea v-html="repl ? '' : markup"></textarea>
       </nu-code>

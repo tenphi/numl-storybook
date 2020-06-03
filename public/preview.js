@@ -70,9 +70,9 @@ function setReducedMotion(type) {
 }
 
 function applyOptions(options = {}) {
-  theme.setAttribute('hue', options.hue);
+  theme.setAttribute('hue', 'hue' in options ? options.hue : 270);
 
-  if (options.saturationType === 'auto') {
+  if (!('saturation' in options) || options.saturationType === 'auto') {
     theme.removeAttribute('saturation');
   } else {
     theme.setAttribute('saturation', options.saturation);

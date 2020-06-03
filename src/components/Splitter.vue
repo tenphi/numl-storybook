@@ -18,7 +18,7 @@
         </nu-block>
       </nu-block>
     </nu-block>
-    <nu-block v-if="dragging" place="fixed cover" width="100vw" height="100wh"></nu-block>
+    <nu-block v-if="dragging" place="fixed cover" width="100vw" height="100vh"></nu-block>
   </nu-block>
 </template>
 

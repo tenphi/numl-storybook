@@ -72,6 +72,8 @@ router.afterEach((to) => {
     if (navItem) {
       navItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+
+    document.documentElement.scrollTop = 0;
   });
 });
 

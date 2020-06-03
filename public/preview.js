@@ -72,10 +72,10 @@ function setReducedMotion(type) {
 function applyOptions(options = {}) {
   theme.setAttribute('hue', 'hue' in options ? options.hue : 270);
 
-  if (!('saturation' in options) || options.saturationType === 'auto') {
+  if (options.saturationType === 'auto') {
     theme.removeAttribute('saturation');
   } else {
-    theme.setAttribute('saturation', options.saturation);
+    theme.setAttribute('saturation', options.saturation || 50);
   }
 
   if (options.themeType !== 'main') {

@@ -10,17 +10,41 @@ export const STORYBOOK_MENU = [
   },
   {
     type: 'heading',
+    label: 'Typography',
+  },
+  {
+    type: 'link',
+    label: 'Base formatting',
+    to: '/storybook/typography/base-formatting',
+  },
+  {
+    type: 'link',
+    label: 'Advanced formatting',
+    to: '/storybook/typography/advanced-formatting',
+  },
+  {
+    type: 'link',
+    label: 'Text size',
+    to: '/storybook/typography/text-size',
+  },
+  {
+    type: 'link',
+    label: 'Headings',
+    to: '/storybook/typography/headings',
+  },
+  {
+    type: 'link',
+    label: 'Lists',
+    to: '/storybook/typography/lists',
+  },
+  {
+    type: 'heading',
     label: 'Base elements',
   },
   {
     type: 'link',
     label: 'Basic markup',
     to: '/storybook/base/basics',
-  },
-  {
-    type: 'link',
-    label: 'Typography',
-    to: '/storybook/base/typography',
   },
   {
     type: 'link',

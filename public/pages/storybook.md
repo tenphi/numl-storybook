@@ -1,6 +1,13 @@
-# Welcome to Numl Storybook
+# Welcome to Numl Storybook!
 
-`@TODO`
+Nice to see you here! Let's learn more about **Numl**, look at the examples and try it by ourselves!
+
+## Sections
+
+* [Guide](/guide/what-is-numl.md) - Step-by-step learning course for **Numl**. Highly recommend to start here.
+* [Reference](/reference/elements/nu-el.md) - Description pages for elements, components, attributes, behaviors and more.
+* [Framework](/framework/what-is-nude.md) - Comprehensive knowledge base about the **NUDE** Framework that **Numl** is based on.
+* [REPL](/repl) - Interactive playground for **Numl** language where you can test your ideas and share them with your friends and colleagues.
 
 ## Links
 

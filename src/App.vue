@@ -2,7 +2,7 @@
   <nu-block
     responsive="980px|600px" display="flow-root"
     :style="previewProps" v-show="mounted" width="100%"
-    :overflow="$route.path.startsWith('/repl') ? 'no' : 'auto'"
+    :overflow="$route.path.startsWith('/repl') ? 'no' : 'visible'"
     :height="$route.path.startsWith('/repl') ? '100vh' : null">
     <nu-theme
       :hue="hue" :pastel="pastel"
@@ -49,8 +49,8 @@
                   fill=":pressed[bg] clear"
                   inset="0 :active:focusable[y] :pressed[0]"
                 ></nu-attrs>
-                <nu-btn value="guide" to="/guide/what-is-numl">Guide</nu-btn>
                 <nu-btn value="storybook" to="/storybook">Storybook</nu-btn>
+                <nu-btn value="guide" to="/guide/what-is-numl">Guide</nu-btn>
                 <nu-btn value="reference" to="/reference/elements/nu-el">Reference</nu-btn>
                 <nu-btn value="framework" to="/framework/what-is-nude">Framework</nu-btn>
                 <nu-btn value="repl" to="/repl">REPL</nu-btn>
@@ -100,7 +100,7 @@
         id="content"
         @click="focusContent"
         padding="0 0 0 27|0" height="min 100vh" fill="bg" items="center start" flow="column"
-        :opacity="showMenu ? '1|.66' : 1" transition="opacity" theme="content" overflow="no">
+        :opacity="showMenu ? '1|.66' : 1" transition="opacity" theme="content">
 
         <nu-flow
           responsive="1180px|980px|720px"
@@ -109,7 +109,7 @@
           <nu-flow padding="2 2 6|2 1 6|2 2 6|2 1 6" gap="2x">
             <router-view/>
 
-            <nu-line></nu-line>
+<!--            <nu-line></nu-line>-->
 
             <nu-pane
               v-if="navLinks"

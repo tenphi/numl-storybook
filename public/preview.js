@@ -69,7 +69,7 @@ function setReducedMotion(type) {
   }
 }
 
-function applyOptions(options) {
+function applyOptions(options = {}) {
   theme.setAttribute('hue', options.hue);
 
   if (options.saturationType === 'auto') {
@@ -90,14 +90,25 @@ function applyOptions(options) {
     theme.removeAttribute('pastel');
   }
 
-  props.setAttribute('gap', `${options.gap}rem`);
-  props.setAttribute('radius', `${options.radius}rem`);
-  props.setAttribute('border-width', `${options.borderWidth}px`);
-  props.setAttribute('transition-time', `${options.transitionTime}ms`);
+  if (options.gap) {
+    props.setAttribute('gap', `${options.gap}rem`);
+  }
 
-  setScheme(options.scheme);
-  setContrast(options.contrast);
-  setReducedMotion(options.reducedMotion);
+  if (options.radius) {
+    props.setAttribute('radius', `${options.radius}rem`);
+  }
+
+  if (options.borderWidth) {
+    props.setAttribute('border-width', `${options.borderWidth}px`);
+  }
+
+  if (options.transitionTime) {
+    props.setAttribute('transition-time', `${options.transitionTime}ms`);
+  }
+
+  setScheme(options.scheme || 'auto');
+  setContrast(options.contrast || 'auto');
+  setReducedMotion(options.reducedMotion || false);
 
   if (window.location === window.parent.location) {
     document.body.style.backgroundColor = 'var(--nu-main-bg-color)';
@@ -153,7 +164,7 @@ function preview() {
   }
 
   size = data.size || 'md';
-  scale = data.scale || 2;
+  scale = data.scale || 1;
   markup = data.markup || '';
 
   markup = markup
@@ -162,9 +173,9 @@ function preview() {
 
   const { body } = document;
 
-  body.style.width = `${100 / data.scale}%`;
-  body.style.height = `${100 / data.scale}%`;
-  body.style.transform = `scale(${data.scale}, ${data.scale})`;
+  body.style.width = `${100 / scale}%`;
+  body.style.height = `${100 / scale}%`;
+  body.style.transform = `scale(${scale}, ${scale})`;
   body.style.transformOrigin = 'left top';
 
   markup = markup

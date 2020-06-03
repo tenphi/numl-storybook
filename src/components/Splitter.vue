@@ -1,23 +1,24 @@
 <template>
-  <nu-block
-    ref="root"
-    show="y|n"
-    :place="`left (${value}% - 1x)`"
-    z="front" width="1" height="100%"
-    cursor="col-resize">
+  <nu-block ref="root">
     <nu-block
-      place="cover"
-      :fill="dragging ? 'hover' : ':hover[hover] clear'"
-      transition="fill">
+      show="y|n"
+      :place="`left (${value}% - 1x)`"
+      z="front" width="1" height="100%"
+      cursor="col-resize">
       <nu-block
-        radius="round" fill="special-bg" border shadow=".5"
-        width="1.25 + 2bw" height="1.75" place="inside" move=".5bw 0">
-        <nu-attrs for="nu-icon" place="inside" color="special-text" scale="1 1.5"></nu-attrs>
-        <nu-icon name="chevron-left" move="-.6x 0"></nu-icon>
-        <nu-icon name="chevron-right" move=".6x 0"></nu-icon>
+        place="cover"
+        :fill="dragging ? 'mark' : ':hover[mark] clear'"
+        transition="fill">
+        <nu-block
+          radius="round" fill="special-bg" border shadow=".5"
+          width="1.25 + 2bw" height="1.75" place="inside" move=".5bw 0">
+          <nu-attrs for="nu-icon" place="inside" color="special-text" scale="1 1.5"></nu-attrs>
+          <nu-icon name="chevron-left" move="-.6x 0"></nu-icon>
+          <nu-icon name="chevron-right" move=".6x 0"></nu-icon>
+        </nu-block>
       </nu-block>
     </nu-block>
-    <nu-block v-if="dragging" place="fixed cover" width="100vw" height="100vh"></nu-block>
+    <nu-block v-if="dragging" place="fixed cover" width="100vw" height="100wh"></nu-block>
   </nu-block>
 </template>
 

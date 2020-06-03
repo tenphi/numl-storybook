@@ -1,16 +1,17 @@
 <template>
-  <nu-block :height="repl ? '20 100% 100%' : 'min(5)'">
+  <nu-flex :height="repl ? '20 100wh 100wh' : 'min(5)'" width="max" flow="column">
     <nu-attrs
       for="nu-tooltip" text="nowrap"
       :place="repl ? 'outside-bottom' : null"></nu-attrs>
     <nu-pane
       border="bottom" padding="2x left right|1x left right"
-      content="space-between"
-      height="min(2.5)" responsive="500px">
+      content="space-between" items="center" responsive="500px" height="min 3">
       <nu-attrs for="icon" size="1em"></nu-attrs>
-      <nu-attrs for="btn" padding=".75x 1x"></nu-attrs>
+      <nu-attrs for="btn" padding="1x 1.5x"></nu-attrs>
 
-      <nu-tablist value="preview" v-if="!repl" gap="2x|1x" @input="tab = $event.detail">
+      <nu-tablist
+        value="preview" v-if="!repl"
+        gap="2x|1x" @input="tab = $event.detail" height="min 3 - 1bw">
         <nu-tab control="preview" value="preview" padding="1x 0|1x" trigger>
           <nu-el show="y|n">Preview</nu-el>
           <nu-icon name="eye" show="n|y" height="1.5"></nu-icon>
@@ -24,13 +25,7 @@
         <!--        </nu-tab>-->
       </nu-tablist>
       <nu-block v-else></nu-block>
-      <nu-flex gap items="center" size="xs" text="w7" padding="(.5x + 1bw) 1x">
-        <nu-props
-          gap="--preview-gap"
-          radius="--preview-radius"
-          border-width="--preview-border-width"
-          transition-time="--preview-transition-time"></nu-props>
-
+      <nu-flex gap items="center" size="xs" text="w7">
         <template v-if="tab === 'preview'">
           <nu-el id="scale" show="y|n">{{parseInt(scale * 100)}}%</nu-el>
           <nu-group radius border="0">
@@ -47,7 +42,7 @@
               <nu-icon name="zoom-in"></nu-icon>
             </nu-btn>
           </nu-group>
-          <nu-btn width="5x" text="center">
+          <nu-btn width="5x" text="center" content="center">
             {{ size }}
             <nu-popuplistbox
               padding="0"
@@ -89,10 +84,15 @@
       </nu-flex>
     </nu-pane>
 
-    <nu-block v-if="frame" id="preview" v-html="markup" padding="2x" hidden></nu-block>
+    <nu-block v-if="frame" id="preview" v-html="markup" padding="2x" hidden grow="1"></nu-block>
     <nu-block
       v-else id="preview" :hidden="tab !== 'preview'"
-      :height="repl ? '100% - 5x - 1bw' : null" fill="main-subtle">
+      grow="1" fill="main-subtle">
+      <nu-props
+        gap="--preview-gap"
+        radius="--preview-radius"
+        border-width="--preview-border-width"
+        transition-time="--preview-transition-time"></nu-props>
       <iframe
         ref="frame" :src="`/preview.html#${encodedData}`" frameborder="0"
         :scrolling="repl ? 'yes' : 'no'" width="100%" @load="resizeIframe(this)"
@@ -104,14 +104,14 @@
         <textarea v-html="repl ? '' : markup"></textarea>
       </nu-code>
     </nu-block>
-  </nu-block>
+  </nu-flex>
 </template>
 
 <script>
 import LZString from 'lz-string';
 import copy from 'clipboard-copy';
 import Lockr from 'lockr';
-import Options from '@/services/options';
+import Options, { DEFAULT_OPTIONS } from '@/services/options';
 import GlobalEvents from '../services/global-events';
 
 export default {
@@ -159,10 +159,10 @@ export default {
     },
     encodedData() {
       return LZString.compressToEncodedURIComponent(JSON.stringify({
-        scale: this.scale,
-        markup: this.markup,
-        options: this.options,
-        size: this.size,
+        scale: this.scale !== 1 ? this.scale : undefined,
+        markup: this.markup && this.markup.trim() ? this.markup : undefined,
+        options: this.preparedOptions,
+        size: this.size !== 'md' ? this.size : undefined,
       }));
     },
     iframeStyles() {
@@ -172,6 +172,21 @@ export default {
         'max-width': '100%',
         height: this.repl ? '100%' : '58px',
       };
+    },
+    preparedOptions() {
+      const { options } = this;
+
+      const prepared = Object.entries(options).reduce((opts, [key, value]) => {
+        if (value !== DEFAULT_OPTIONS[key]) {
+          opts[key] = value;
+        }
+
+        return opts;
+      }, {});
+
+      if (!Object.keys(prepared).length) return undefined;
+
+      return prepared;
     },
   },
   mounted() {

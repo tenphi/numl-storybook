@@ -1,10 +1,10 @@
 # Base syntax
 
-**NuML** is based on the so-called ==Atomic approach==. But instead of atomic classes (like in popular framework **Tailwind**) it uses attributes and allows ==any== value you provide. You can even use custom units like ==x== (default gap) for short.
+**NuML** is based on the so-called **Atomic approach**. But instead of atomic classes (like in popular framework **Tailwind**) it uses attributes and allows ==any value== you provide. You can even use custom units like ==x== (default gap) for short.
 
 ## Formulate a task
 
-Let's create a simple button from scratch. Of course, we can just use predefined element ==nu-btn==, but in **NuML** almost everything can be created using a single tag: [nu-el](../../reference/elements/nu-el.md). It's the base element that the other elements are inherited from with different defaults. So it's a good start to learn the basics:
+Let's create a simple button from scratch. Of course, we can just use predefined element ==nu-btn==, but in **NuML** almost everything can be created using a single tag: [nu-el](../../reference/elements/nu-el.md). It's the base element that the other elements are inherited from, but with different defaults. So it's a good start to learn the basics:
 
 ```html
 <split/>
@@ -27,15 +27,15 @@ A simple button should have a border, rounded corners, and sufficient padding in
 </nu-el>
 ```
 
-We add some required attributes without values. It means a default value should be used for each attribute.
+We added some required attributes without values. It means a default value should be used for each attribute.
 
 Here are these defaults:
 
-* ==border== – Border with ==1bw== width (One default border width `1px`) and default color ==#border==.
-* ==radius== – ==1r== (One default radius `.5rem`).
+* ==border== – Border with ==1bw== (One default **b**order **w**idth `1px`) width and default color ==#border==.
+* ==radius== – ==1r== (One default **r**adius `.5rem`).
 * ==padding== – ==1x== (One default gap `.5rem`).
 
-Values from the right are ==Custom Units==. We will learn about them later. It's built-in units that are used in **NuML**.
+Values from the right are ==Custom Units==. It's built-in units that are used in **NuML**. We will learn about them later.
 
 ## Customize styles
 
@@ -58,7 +58,7 @@ Well, now it looks great, but it isn't interactive. :(
 
 ## Make it active
 
-To be able to click on it we must inject ==active== behavior:
+To be able to click on it we must inject ==active== behavior. To do so, we add an attribute whose name consists of the name of the behavior and suffix `nx-`. It's not what you will do often using **NuML**, but it's a great demonstration of the **Behavior System**.
 
 ```html
 <split/>
@@ -72,13 +72,11 @@ To be able to click on it we must inject ==active== behavior:
 </nu-el>
 ```
 
-Still no interaction, huh?
+If you tried to click on the button you saw that there is no visual feedback. That's because **active** behavior just adds a new state to the button, and we didn't style it yet.
 
 ## Add styles for states
 
-We can't interact with the element, because ==active== behavior just added a new state to the button, and we didn't style it yet.
-
-To do so, we must use attribute ==inset== (which suitable for styling the ==pressed== state) and bind it to the state:
+For example, we can use attribute `inset` (that creates inner shadow and is suitable for styling the **active** state) and bind it to the state:
 
 ```html
 <split/>
@@ -97,12 +95,12 @@ Great! Now we can actually press the button! Try to click on the button to see t
 
 We used a definition `inset="n :active[y]"` that means:
 
-* If element is active use value `y`.
-* Otherwise, (if element is not active) use value `n`.
+* if element **isn't** in **active** state then `"n"` value is used.
+* Otherwise, if element **is** in **active** state then `"y"` value is used.
 
-For the attribute ==inset==: ==y== and ==n== are shorthands that indicate whether or not to use the pressing effect.
+For the attribute `inset`: `"y"` and `"n"` are shorthands that indicate whether or not to apply the inset effect.
 
-Also we forgot to add styles for ==hover== effect. Let's fill this gap:
+Also we forgot to add styles for **hover** state. To visualize it we will use `mark` attribute which highlights the element.
 
 ```html
 <split/>
@@ -120,9 +118,13 @@ Also we forgot to add styles for ==hover== effect. Let's fill this gap:
 
 Now we can hover over the button to see a background change.
 
+We used `mark` without explicit state binding. That's because `mark="hover"` is a shorthand for `mark="n :hover[y]"`. To learn more about available shorthands you have to read a documentation page of the attribute you use.
+
 ## Make it focusable
 
-We made an interactive button, but still missing something very important: our button can't be focused. Let's fix it by injecting a behavior called ==focusable==. Also we should add the ==outline== attribute to style the ==focus== state:
+We made an interactive button, but still missing something very important: our button can't be focused. It prevents the element from being selected or activated via the keyboard.
+
+Let's fix it by injecting a behavior called **focusable**. Also, we can add the `outline` attribute to style the **focus** state:
 
 ```html
 <split/>
@@ -140,13 +142,15 @@ We made an interactive button, but still missing something very important: our b
 </nu-el>
 ```
 
-Well done! Now we can select our button using keyboard! Try to click on button and then press ==Space== to click the button again with keyboard.
+Well done! Now we can select our button using keyboard! Try to click on button and then press ==␣ Space== to click the button again with keyboard.
 
-By default, if we use `outline="focus"` style it means we need _polite focus_ for outline. The ==focus== effect will be visible while using keyboard **only**.
+We use `outline` attribute with similar shorthand as we used `mark` attribute before. So **outline** style will be applied only if the element is in ==focus== state.
+
+By default, using an `outline="focus"` style means we need _polite focus_ for outline. The **focus** effect will be visible while **using keyboard only**.
 
 ## Add some motion
 
-Our button looks great but state change happens instantly. It would be nice to animate `inset` and `mark` styles, isn't it?
+Our button looks great, but if any state applies then styles change instantly. It would be nice to animate `inset` and `mark` styles, isn't it?
 
 ```html
 <split/>
@@ -165,9 +169,13 @@ Our button looks great but state change happens instantly. It would be nice to a
 </nu-el>
 ```
 
-## Make it better
+By default, the style transition takes **80 milliseconds**. We will learn how to change this option later.
 
-Great job! We have a great button now but there is still a room for improvements. The modern web requires a little more work to make a button usable. We have to add correct role, other ARIA attributes and make sure our button emits correct events. That's why we should add ==button== behavior to our element.
+_**If you still don't see the transition** it means it's disabled globally on your machine. Click the **Settings** button in the right bottom corner of the screen and set option **Reduce Motion** to **On**._
+
+## Make it accessible
+
+Great job! We have a great button now but there is still room for improvement. The modern web requires a little more work to make a button usable. We have to add the correct role, other ARIA attributes, and make sure our button emits correct events. That's why we should add ==button== behavior to our element.
 
 ```html
 <split/>
@@ -185,16 +193,16 @@ Great job! We have a great button now but there is still a room for improvements
 </nu-el>
 ```
 
-We removed ==active== and ==focusable== behaviors 'cause ==button== will inject them automatically as they required.
+We removed ==active== and ==focusable== behaviors 'cause ==button== behavior will inject them automatically as they required.
 
-## Propagate
+## Propagate styles
 
 Our button is ready, but what if we need to add more buttons to our application. It would be a mess to write so many attributes for each button. In **NuML** there is a definition element [nu-attrs](../../reference/elements/nu-attrs.md) that allows to propagate a set of attributes inside specific context. As definition is set we can use `as` attribute to use it:
 
 ```html
 <split/>
 <#[[nu-attrs]]#
-  for="btn"
+  #[[for="btn"]]#
   radius
   border
   padding="1x 2x"
@@ -205,18 +213,33 @@ Our button is ready, but what if we need to add more buttons to our application.
   mark="hover"
   transition="inset, mark">
 </nu-attrs>
-<nu-el #[[as="btn"]]#>
-  Button
-</nu-el>
+<nu-pane gap>
+  <nu-el #[[as="btn"]]#>Button</nu-el>
+
+  <nu-el #[[as="btn"]]#>Button</nu-el>
+</nu-pane>
 ```
 
-In real application we suggest you use a [nu-btn](../../reference/elements/nu-btn.md) element as it has all needed attributes by default and includes few more perks for accessibility.
+## Use built-ins instead!
+
+In real application we suggest you use a built-in [nu-btn](../../reference/elements/nu-btn.md) element as it has all needed attributes by default and includes few more perks for accessibility.
+
+```html
+<split/>
+<nu-btn>Button</nu-btn>
+```
+
+Pretty easy, isn't it? And **NuML** has dozens of elements with different defaults for various scenarios.
+
+If you want to change a look of default button you can use style attributes as we did it with **nu-el** element above.
+
+You can always create a new custom element with different defaults using **JavaScript API**.
 
 ## Conclusion
 
 Our introduction is almost over. We hope you enjoyed it. It was a simple example of how **NuML** syntax looks like.
 
-You can learn more about specific styling attribute by looking at the **Reference Section**. In the previous example we used the following attributes:
+You can learn more about specific styling attribute by looking at the **Reference Section**. In the example above we used the following attributes:
 
 * [radius](../../reference/attributes/radius.md)
 * [size](../../reference/attributes/size.md)
@@ -224,7 +247,9 @@ You can learn more about specific styling attribute by looking at the **Referenc
 * [outline](../../reference/attributes/outline.md)
 * [transition](../../reference/attributes/transition.md)
 * [cursor](../../reference/attributes/cursor.md)
-
-You can also open pages of elements like [nu-btn](../../reference/elements/nu-btn.md) and [nu-attrs](../../reference/elements/nu-attrs.md) to learn more about their default values, behaviors, and check out examples of their usage.
+* [mark](../../reference/attributes/mark.md)
+* [inset](../../reference/attributes/inset.md)
 
 Each page will give you detailed description of attribute, syntax overview, examples and links, where you can find more examples.
+
+You can also open pages of elements like [nu-btn](../../reference/elements/nu-btn.md) and [nu-attrs](../../reference/elements/nu-attrs.md) to learn more about their default values, behaviors, and check out examples of their usage.

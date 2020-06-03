@@ -2,7 +2,7 @@
   <nu-flex
     ref="root"
     height="22 100% 100%" responsive="760px|600px" place="relative"
-    :radius="markup ? '1r' : null" :border="markup ? '1bw' : null" overflow="no">
+    :radius="markup ? '1r' : null" :border="markup ? '1bw' : null">
     <nu-flex
       :show="mode === 'editor' ? 'y' : 'y|n'"
       fill="bg" height="22 100% 100%" flow="column" :width="`${split}%|100%`">
@@ -30,7 +30,7 @@
 
       <nu-pane
         border="bottom" fill="subtle" padding="right" text="nowrap"
-        height="min(2.5)" content="space-between">
+        height="min 3" content="space-between">
         <nu-attrs
           for="nu-tooltip" text="nowrap"
           place="outside-bottom"></nu-attrs>
@@ -38,12 +38,13 @@
           <nu-blocklink
             v-if="!currentEmbed" to="/" display="flex" theme="special">
             <nu-svg
-              fill="bg" src="/img/icon.svg" place="stretch" height="2.5" width="2.5"></nu-svg>
+              fill="bg" src="/img/icon.svg"
+              place="stretch" height="3 - 1bw" width="3 - 1bw"></nu-svg>
           </nu-blocklink>
           <nu-svg
             v-else fill theme="special"
             overflow="no" radius="1r 0 0 0"
-            src="/img/icon.svg" place="stretch" height="2.5" width="2.5"></nu-svg>
+            src="/img/icon.svg" place="stretch" height="3 - 1bw" width="3 - 1bw"></nu-svg>
           <nu-el text="w6 monospace" padding>REPL</nu-el>
         </nu-flex>
         <nu-flex size="xs" gap items="center">
@@ -53,7 +54,7 @@
             Saved
           </nu-el>
           <nu-btn v-if="!currentEmbed" padding @tap="save" special>
-            Save
+            SAVE
           </nu-btn>
           <nu-btn padding @tap="copyReplLink">
             <nu-tooltip>
@@ -82,8 +83,8 @@
     </nu-flex>
     <Preview
       :show="mode === 'preview' ? 'y' : 'y|n'"
-      :width="`${100 - split}%|100%`"
-      ref="preview" repl
+      :width="`${100 - split}% 100%|100% 100%`"
+      ref="preview" repl overflow="no"
       :markup="previewMarkup" fill="subtle" border="left color(special)|0"
       place="right"></Preview>
 
@@ -281,6 +282,11 @@ export default {
   background: var(--nu-main-bg-color);
   color: var(--nu-main-text-color);
   flex-grow: 1;
+}
+
+.CodeMirror-scroll {
+  box-sizing: content-box;
+  height: calc(100 * var(--nu-window-height) - 12.5 * var(--nu-gap) + var(--nu-border-width));
 }
 
 .cm-s-default .cm-header {

@@ -3,7 +3,7 @@
     responsive="980px|600px" display="flow-root"
     :style="previewProps" v-show="mounted" width="100%"
     :overflow="$route.path.startsWith('/repl') ? 'no' : 'auto'"
-    :height="$route.path.startsWith('/repl') ? '100vh' : null">
+    :height="$route.path.startsWith('/repl') ? '100wh' : null">
     <nu-theme
       :hue="hue" :pastel="pastel"
       :saturation="saturationType === 'auto' ? null : saturation"></nu-theme>
@@ -99,42 +99,42 @@
       <nu-flex
         id="content"
         @click="focusContent"
-        padding="0 0 0 27|0" height="min 100vh" fill="bg" items="center start" flow="column"
+        padding="0 0 0 27|0" height="min 100wh" fill="bg" items="center start" flow="column"
         :opacity="showMenu ? '1|.66' : 1" transition="opacity" theme="content" overflow="no">
 
         <nu-flow
-          responsive="1280px|980px|600px"
+          responsive="1180px|980px|720px"
           width="initial 100% 54" gap="2x"
           :interactive="showMenu ? 'y|n' : 'y'">
-          <nu-block padding="2 2 6|2 1 6|2 2 6|2 1 6">
+          <nu-flow padding="2 2 6|2 1 6|2 2 6|2 1 6" gap="2x">
             <router-view/>
-          </nu-block>
 
-          <nu-line></nu-line>
+            <nu-line></nu-line>
 
-          <nu-pane
-            v-if="navLinks"
-            content="space-between"
-            flow="row wrap">
-            <nu-btn
-              v-if="navLinks.prev"
-              :to="navLinks.prev.to"
-              special>
-              <nu-icon name="chevrons-left" space="left"></nu-icon>
-              {{navLinks.prev.heading}}:
-              {{navLinks.prev.label}}
-            </nu-btn>
-            <nu-el v-else></nu-el>
+            <nu-pane
+              v-if="navLinks"
+              content="space-between"
+              flow="row wrap">
+              <nu-btn
+                v-if="navLinks.prev"
+                :to="navLinks.prev.to"
+                special>
+                <nu-icon name="chevrons-left" space="left"></nu-icon>
+                {{navLinks.prev.heading}}:
+                {{navLinks.prev.label}}
+              </nu-btn>
+              <nu-el v-else></nu-el>
 
-            <nu-btn
-              v-if="navLinks.next"
-              :to="navLinks.next.to"
-              special>
-              {{navLinks.next.heading}}:
-              {{navLinks.next.label}}
-              <nu-icon name="chevrons-right" space="right"></nu-icon>
-            </nu-btn>
-          </nu-pane>
+              <nu-btn
+                v-if="navLinks.next"
+                :to="navLinks.next.to"
+                special>
+                {{navLinks.next.heading}}:
+                {{navLinks.next.label}}
+                <nu-icon name="chevrons-right" space="right"></nu-icon>
+              </nu-btn>
+            </nu-pane>
+          </nu-flow>
         </nu-flow>
       </nu-flex>
 

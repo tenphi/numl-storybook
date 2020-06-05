@@ -70,7 +70,7 @@
           id="subnav" padding="0 2x 6x||0 1x 6x" gap="1x" border="right" overflow="auto" scrollbar>
           <nu-attrs
             for="nu-heading" padding="1x 2x"
-            level="4" place="sticky top" space="-2x 2x||-2x 1x" fill="clear :sticky[subtle]"
+            level="4" place="sticky top" space="-2x 2x||-2x 1x" fill="subtle"
             z="above" border="bottom" fade="top" size="h4||h"></nu-attrs>
           <nu-attrs
             for="nu-link" display="block" text="w6" border="0"

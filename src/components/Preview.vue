@@ -99,7 +99,9 @@
         :style="iframeStyles"></iframe>
     </nu-block>
 
-    <nu-block id="source" padding hidden overflow="auto" fill="main-subtle" grow="1">
+    <nu-block
+      id="source" padding hidden overflow="auto"
+      fill="main-subtle" grow="1" height="max 30">
       <nu-code enumerate fill="main-subtle" shadow="0">
         <textarea v-html="repl ? '' : markup"></textarea>
       </nu-code>

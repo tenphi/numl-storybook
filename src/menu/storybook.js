@@ -63,31 +63,46 @@ export const STORYBOOK_MENU = [
   },
   {
     type: 'heading',
-    label: 'Base elements',
+    label: 'Layouts',
   },
   {
     type: 'link',
-    label: 'Basic markup',
-    to: '/storybook/base/basics',
+    label: 'Basic layouts',
+    to: '/storybook/layouts/basic-layouts',
   },
   {
     type: 'link',
-    label: 'Badges and Marks',
-    to: '/storybook/base/badges-and-marks',
+    label: 'Flex layouts',
+    to: '/storybook/layouts/flex-layouts',
   },
   {
     type: 'link',
-    label: 'Links',
-    to: '/storybook/base/links',
+    label: 'Flex playground',
+    to: '/storybook/layouts/flex-playground',
   },
   {
     type: 'link',
-    label: 'Layout',
-    to: '/storybook/base/layout',
+    label: 'Grid layouts',
+    to: '/storybook/layouts/grid-layouts',
+  },
+  {
+    type: 'link',
+    label: 'Grid playground',
+    to: '/storybook/layouts/grid-playground',
+  },
+  {
+    type: 'link',
+    label: 'Semantic markup',
+    to: '/storybook/layouts/semantic-markup',
   },
   {
     type: 'heading',
     label: 'Widgets',
+  },
+  {
+    type: 'link',
+    label: 'Links',
+    to: '/storybook/widgets/links',
   },
   {
     type: 'link',
@@ -96,19 +111,59 @@ export const STORYBOOK_MENU = [
   },
   {
     type: 'link',
-    label: 'Inputs',
-    to: '/storybook/widgets/inputs',
+    label: 'Button groups',
+    to: '/storybook/widgets/button-groups',
   },
   {
     type: 'link',
-    label: 'Button groups and tabs',
-    to: '/storybook/widgets/button-groups-and-tabs',
+    label: 'Switches',
+    to: '/storybook/widgets/switches',
   },
   {
     type: 'link',
-    label: 'Popups & Dropdowns',
-    to: '/storybook/widgets/popups-and-dropdowns',
+    label: 'Checkboxes',
+    to: '/storybook/widgets/checkboxes',
   },
+  {
+    type: 'link',
+    label: 'Radio buttons',
+    to: '/storybook/widgets/radio-buttons',
+  },
+  {
+    type: 'link',
+    label: 'List boxes',
+    to: '/storybook/widgets/listboxes',
+  },
+  {
+    type: 'link',
+    label: 'Tabs',
+    to: '/storybook/widgets/tabs',
+  },
+  {
+    type: 'link',
+    label: 'Text inputs',
+    to: '/storybook/widgets/text-inputs',
+  },
+  {
+    type: 'link',
+    label: 'Number inputs',
+    to: '/storybook/widgets/number-inputs',
+  },
+  {
+    type: 'link',
+    label: 'Sliders',
+    to: '/storybook/widgets/sliders',
+  },
+  // {
+  //   type: 'link',
+  //   label: 'Button groups and tabs',
+  //   to: '/storybook/widgets/button-groups-and-tabs',
+  // },
+  // {
+  //   type: 'link',
+  //   label: 'Popups & Dropdowns',
+  //   to: '/storybook/widgets/popups-and-dropdowns',
+  // },
   {
     type: 'heading',
     label: 'Formatting',

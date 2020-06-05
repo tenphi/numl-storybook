@@ -1,42 +1,67 @@
 # Buttons
 
-## Button types
+## Simple button
 
 ```html
-<preview/>
-<nu-flex flow="row wrap" gap>
+<split/>
+<nu-pane>
   <nu-btn>
-    Base button
-  </nu-btn>
-  <nu-btn special>
-    Special button
+    Button
   </nu-btn>
   <nu-btn disabled>
-    Disabled button
+    Button
   </nu-btn>
-  <nu-btn disabled special>
-    Disabled special button
-  </nu-btn>
-  <nu-btn toggle>
-    Checkbox button
-  </nu-btn>
-</nu-flex>
+</nu-pane>
 ```
 
-## Big buttons
+## Special button
+
+```html
+<split/>
+<nu-pane>
+  <nu-btn special>
+    Button
+  </nu-btn>
+  <nu-btn special disabled>
+    Button
+  </nu-btn>
+</nu-pane>
+```
+
+## Toggle button
+
+```html
+<split/>
+<nu-pane flow="row wrap">
+  <nu-btn toggle>
+    Button
+  </nu-btn>
+  <nu-btn disabled>
+    Button
+  </nu-btn>
+  <nu-btn toggle pressed>
+    Button
+  </nu-btn>
+  <nu-btn disabled pressed>
+    Button
+  </nu-btn>
+</nu-pane>
+```
+
+## Card buttons
 
 ```html
 <preview/>
 <nu-flex flow="row wrap" gap>
-  <nu-btn special flow="row">
-    <nu-heading level="4">Big Button</nu-heading>
+  <nu-cardbtn>
+    <nu-heading level="4">Card button</nu-heading>
     <nu-line></nu-line>
-    <nu-block>Paragraph</nu-block>
-  </nu-btn>
-  <nu-btn special flow="row">
-    <nu-heading level="4">Special Big Button</nu-heading>
+    <nu-block>Content</nu-block>
+  </nu-cardbtn>
+  <nu-cardbtn special>
+    <nu-heading level="4">Special card button</nu-heading>
     <nu-line></nu-line>
-    <nu-block>Paragraph</nu-block>
-  </nu-btn>
+    <nu-block>Content</nu-block>
+  </nu-cardbtn>
 </nu-flex>
 ```

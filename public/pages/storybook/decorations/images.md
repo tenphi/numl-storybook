@@ -1,11 +1,5 @@
 # Images and icons
 
-There are several elements in Numl that you can use to insert images and icons: [nu-img](/reference/elements/nu-img.md), [nu-svg](/reference/element/nu-svg) and [nu-icon](/reference/element/nu-icon).
-
-## Images
-
-### Usage
-
 Use ==src== attribute to specify URL to the image.
 
 ```html
@@ -63,38 +57,3 @@ It's useful if you want to use some colors from your application to color an SVG
   <nu-svg theme="special" src="/img/icon.svg"></nu-svg>
 </nu-flex>
 ```
-
-## Icons
-
-By default Numl uses [Feather Icons](https://github.com/feathericons/feather) for icons.
-
-```html
-<preview/>
-<nu-block>
-  <nu-icon name="user"></nu-icon>
-  <nu-icon name="dollar-sign"></nu-icon>
-  <nu-icon name="message-square"></nu-icon>
-  <nu-icon name="package"></nu-icon>
-  Text to align
-</nu-block>
-```
-
-You can change icon (with transition) depending on the element state like:
-
-```html
-<preview/>
-<nu-props transition-time=".2s"></nu-props>
-<nu-flex gap="2x" flow="row wrap">
-  <nu-btn padding>
-    <nu-icon name="box ^:hover[package]"></nu-icon>
-    Package
-  </nu-btn>
-
-  <nu-btn padding toggle>
-    Dropdown
-    <nu-icon name="chevron-down ^:pressed[chevron-up]"></nu-icon>
-  </nu-btn>
-</nu-flex>
-```
-
-As you see all icons are perfectly aligned with text in any context.

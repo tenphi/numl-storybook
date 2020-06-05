@@ -16,50 +16,29 @@ No formatting. `"inline"` display.
 <nu-in>No styles</nu-in>
 ```
 
-## Bold
+Other elements in this section have `"inline"` display style as well.
 
-`"b"` or `"bold"` modifier.
+## Strong
+
+**nu-strong** elements or **text** style with `"b"` (shorthand for `"bold"`) modifier.
 
 ```html
 <split/>
-<nu-b>Bold</nu-b> |
+<nu-strong>Bold</nu-strong> |
 <nu-el text="b">
   Styled as bold
 </nu-el>
 ```
 
-## Italic
+## Emphasis
 
-`"i"` or `"italic"` modifier.
+**nu-em** elements or **text** style with `"i"` (shorthand for `"italic"`) modifier.
 
 ```html
 <split/>
-<nu-i>Italic</nu-i> |
+<nu-em>Italic</nu-em> |
 <nu-el text="i">
   Styled as italic
-</nu-el>
-```
-
-## Underlined
-
-`"u"` or `"underline"` modifier.
-
-```html
-<split/>
-<nu-u>Underlined</nu-u> |
-<nu-el text="u">
-  Styled as underlined
-</nu-el>
-```
-
-## Сrossed out
-`"s"` or `"line-through"` modifier.
-
-```html
-<split/>
-<nu-s>Сrossed out</nu-s> |
-<nu-el text="s">
-  Styled as crossed out
 </nu-el>
 ```
 
@@ -70,7 +49,7 @@ No formatting. `"inline"` display.
 ```html
 <split/>
 <nu-sup>Superscript</nu-sup> |
-<nu-el text="sup b" size=".75em 1em">
+<nu-el text="sup" size=".75em 1em">
   Styled as superscript
 </nu-el>
 ```
@@ -82,18 +61,28 @@ No formatting. `"inline"` display.
 ```html
 <split/>
 <nu-sub>Subscript</nu-sub> |
-<nu-el text="sub b" size=".75em 1em">
+<nu-el text="sub" size=".75em 1em">
   Styled as subscript
 </nu-el>
 ```
 
-## Reset styles
+## Marks
 
-`"n"` or `"normal"` modifier.
+Normal and special marks.
 
 ```html
 <split/>
-<nu-el text="b i s">
+Text <nu-mark>Normal mark</nu-mark>,
+<nu-mark special>Special mark</nu-mark>.
+```
+
+## Reset styles
+
+`"n"` (shorthand for `"normal"`) modifier.
+
+```html
+<split/>
+<nu-el text="b i del">
   Text <nu-el text="n">reset</nu-el> text
 </nu-el>
 ```

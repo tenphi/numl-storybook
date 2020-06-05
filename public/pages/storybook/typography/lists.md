@@ -35,6 +35,17 @@ Possible values: `"disc"`, `"circle"`, `"square"`, `"decimal"`, `"georgian"`, `"
 </nu-list>
 ```
 
+Use `"none"` value to remove markers.
+
+```html
+<split/>
+<nu-list type="none">
+  <nu-listitem>Item 1</nu-listitem>
+  <nu-listitem>Item 2</nu-listitem>
+  <nu-listitem>Item 3</nu-listitem>
+</nu-list>
+```
+
 ## Custom markers
 
 ```html

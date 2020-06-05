@@ -47,10 +47,10 @@ Also, update introduces more semantic elements and combinations of elements with
 * ==nu-topbar==
 * ==nu-dropdownicon==
 * format elements:
-    * ==nu-b==
-    * ==nu-i==
-    * ==nu-u==
-    * ==nu-s==
+    * ==nu-strong==
+    * ==nu-em==
+    * ==nu-sup==
+    * ==nu-sub==
 * semantic elements:
     * ==nu-header==
     * ==nu-footer==
@@ -58,6 +58,12 @@ Also, update introduces more semantic elements and combinations of elements with
     * ==nu-aside==
     * ==nu-section==
     * ==nu-main==
+    * ==nu-h1==
+    * ==nu-h2==
+    * ==nu-h3==
+    * ==nu-h4==
+    * ==nu-h5==
+    * ==nu-h6==
 
 ### New components
 
@@ -137,7 +143,7 @@ Also, update introduces more semantic elements and combinations of elements with
 * [show](/reference/attributes/show) - to conditionally show elements. Hide them by default.
 * [hoverable](/reference/attributes/hoverable) - to activate hover effect on background for active elements.
 * [focusable](/reference/attributes/focusable) - to activate focus effect on active elements.
-* [toggle](/reference/attributes/toggle) - to activate toggle effect on active elements.
+* **toggle** - to activate toggle effect on active elements.
 * [expand](/reference/attributes/expand) - to increase active region.
 * [drop](/reference/attributes/drop) - to statically fix element position based on parent element (using `position: fixed`).
 * [place](/reference/attributes/place) now support sticky positioning with distance: `[place="sticky top 3"]`.

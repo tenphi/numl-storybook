@@ -7,12 +7,25 @@ Modifiers: `"left"`, `"right"`, `"center"`, `"justify"`.
 ```html
 <split/>
 <nu-flow gap>
-  <nu-attrs for="region" fill="subtle" padding></nu-attrs>
-  <nu-block as="region" text="left">Left</nu-block>
-  <nu-block as="region" text="right">Right</nu-block>
-  <nu-block as="region" text="center">Center</nu-block>
-  <nu-block as="region" text="justify">Justify</nu-block>
+  <nu-attrs for="nu-block" fill="subtle" padding></nu-attrs>
+  <nu-block text="left">Left</nu-block>
+  <nu-block text="right">Right</nu-block>
+  <nu-block text="center">Center</nu-block>
+  <nu-block text="justify">Justify</nu-block>
 </nu-flow>
+```
+
+## Decoration
+
+Modifiers: `"underline"`, `"del"`, `"dotted"`, `"wavy"`, `"dashed"`.
+
+```html
+<split/>
+<nu-block text="underline">Underline</nu-block>
+<nu-block text="del">Line-through or deleted</nu-block>
+<nu-block text="dotted">Dotted underline</nu-block>
+<nu-block text="wavy">Wavy underline</nu-block>
+<nu-block text="dashed">Dashed underline</nu-block>
 ```
 
 ## Transform
@@ -21,7 +34,7 @@ Modifiers: `"up"` (`"uppercase"`), `"low"` (`"lowercase"`), `"cap"` (`"capitaliz
 
 ```html
 <split/>
-<nu-block text="n">Normla</nu-block>
+<nu-block text="n">Normal</nu-block>
 <nu-block text="up">Upper-cased</nu-block>
 <nu-block text="low">Lower-cased</nu-block>
 <nu-block text="cap">capitalized</nu-block>
@@ -29,25 +42,26 @@ Modifiers: `"up"` (`"uppercase"`), `"low"` (`"lowercase"`), `"cap"` (`"capitaliz
 
 ## Vertical align
 
-Modifiers: `"baseline"`, `"middle"`, `"sup"`, `"sub"`, `"top"`, `"bottom"`, `"text-top"`, `"text-bottom"`, `"v-middle"`.
+Modifiers: `"baseline"`, `"middle"`, `"sup"`, `"sub"`, `"top"`, `"bottom"`, `"text-top"`, `"text-bottom"`, `"v-middle"` (custom vertical align modifier for inline-blocks).
 
 ```html
 <split/>
 <nu-block text="lowercase" size="xl">
+  <nu-attrs for="nu-el" size="xs"></nu-attrs>
   Baseline |
-  <nu-el text="baseline" size="xs">baseline</nu-el>
-  <nu-el text="middle" size="xs">middle</nu-el>
-  <nu-el text="sup" size="xs">super</nu-el>
-  <nu-el text="top" size="xs">top</nu-el>
-  <nu-el text="text-top" size="xs">text-top</nu-el>
-  <nu-el text="sub" size="xs">sub</nu-el>
-  <nu-el text="bottom" size="xs">bottom</nu-el>
-  <nu-el text="text-bottom" size="xs">text-bottom</nu-el>
-  <nu-el text="v-middle" size="xs">v-bottom (custom vertical align modifier for inline-blocks)</nu-el>
+  <nu-el text="baseline">baseline</nu-el>
+  <nu-el text="middle">middle</nu-el>
+  <nu-el text="sup">super</nu-el>
+  <nu-el text="top">top</nu-el>
+  <nu-el text="text-top">text-top</nu-el>
+  <nu-el text="sub">sub</nu-el>
+  <nu-el text="bottom">bottom</nu-el>
+  <nu-el text="text-bottom">text-bottom</nu-el>
+  <nu-el text="v-middle">v-middle</nu-el>
 </nu-block>
 ```
 
-## Bolder or ligher
+## Bolder or lighter
 
 Modifiers: `"normal"`, `"semi-bold"`, `"bold"`, `"light"`, `"heading"`:
 

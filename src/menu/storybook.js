@@ -19,11 +19,6 @@ export const STORYBOOK_MENU = [
   },
   {
     type: 'link',
-    label: 'Advanced formatting',
-    to: '/storybook/typography/advanced-formatting',
-  },
-  {
-    type: 'link',
     label: 'Text size',
     to: '/storybook/typography/text-size',
   },
@@ -34,8 +29,37 @@ export const STORYBOOK_MENU = [
   },
   {
     type: 'link',
+    label: 'Advanced formatting',
+    to: '/storybook/typography/advanced-formatting',
+  },
+  {
+    type: 'link',
     label: 'Lists',
     to: '/storybook/typography/lists',
+  },
+  {
+    type: 'heading',
+    label: 'Decorations',
+  },
+  {
+    type: 'link',
+    label: 'Borders',
+    to: '/storybook/decorations/borders',
+  },
+  {
+    type: 'link',
+    label: 'Shadows',
+    to: '/storybook/decorations/shadows',
+  },
+  {
+    type: 'link',
+    label: 'Icons',
+    to: '/storybook/decorations/icons',
+  },
+  {
+    type: 'link',
+    label: 'Images',
+    to: '/storybook/decorations/images',
   },
   {
     type: 'heading',
@@ -60,11 +84,6 @@ export const STORYBOOK_MENU = [
     type: 'link',
     label: 'Layout',
     to: '/storybook/base/layout',
-  },
-  {
-    type: 'link',
-    label: 'Images & Icons',
-    to: '/storybook/base/images-and-icons',
   },
   {
     type: 'heading',

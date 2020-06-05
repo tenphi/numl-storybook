@@ -1,8 +1,8 @@
 # Text size
 
-## Default sizes
+See [size](../../reference/elements/) style details page to learn more about default sizes and syntax.
 
-### Base sizes
+## Default base sizes
 
 ```html
 <split/>
@@ -15,7 +15,7 @@
 <nu-block size="xxl">XX large</nu-block>
 ```
 
-### Heading sizes
+## Default heading sizes
 
 ```html
 <split/>
@@ -42,10 +42,12 @@
 
 ## Define a size
 
+Define a `"my"` size preset.
+
 ```html
 <split/>
 <nu-props
   my-font-size="1.4rem"
-  my-line-height="1.6rem"></nu-props>
+  my-line-height="1.8rem"></nu-props>
 <nu-el size="my">font-size: 1.4rem; line-height: 1.8rem;</nu-el>
 ```

@@ -62,6 +62,7 @@ const router = new VueRouter({
 });
 
 router.afterEach((to) => {
+  /* eslint-disable-next-line */
   if (to.meta.title != null) {
     Window.setTitle(to.meta.title);
   }
@@ -71,6 +72,7 @@ router.afterEach((to) => {
 
     if (navItem) {
       navItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      Window.setTitle(navItem.innerText);
     }
 
     document.documentElement.scrollTop = 0;

@@ -165,6 +165,25 @@ export const STORYBOOK_MENU = [
   //   to: '/storybook/widgets/popups-and-dropdowns',
   // },
   {
+    type: 'link',
+    label: 'Forms',
+    to: '/storybook/widgets/forms',
+  },
+  {
+    type: 'heading',
+    label: 'Converters',
+  },
+  {
+    type: 'link',
+    label: 'Markdown to Numl',
+    to: '/storybook/converters/markdown',
+  },
+  {
+    type: 'link',
+    label: 'Code snippets',
+    to: '/storybook/converters/code',
+  },
+  {
     type: 'heading',
     label: 'Formatting',
   },
@@ -191,5 +210,24 @@ export const STORYBOOK_MENU = [
     type: 'link',
     label: 'Date input',
     to: '/storybook/components/dateinput',
+  },
+  {
+    type: 'heading',
+    label: 'Complex',
+  },
+  {
+    type: 'link',
+    label: 'Localization',
+    to: '/storybook/complex/localization',
+  },
+  {
+    type: 'link',
+    label: 'Before/after slider',
+    to: '/storybook/complex/before-after-slider',
+  },
+  {
+    type: 'link',
+    label: 'Login form',
+    to: '/storybook/complex/login-form',
   },
 ];

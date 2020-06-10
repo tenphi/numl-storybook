@@ -1,6 +1,8 @@
 <template>
   <nu-flow gap="2x">
     <nu-attrs for="code" padding radius fill="main-subtle" overflow="auto"></nu-attrs>
+    <nu-attrs for="rowheader" text="monospace h"></nu-attrs>
+    <nu-attrs for="columnheader" size="xs" text="up spacing"></nu-attrs>
 
     <nu-theme name="type-own" hue="type-own" mod="tint"></nu-theme>
     <nu-theme name="type-inherited" hue="type-inherited" mod="tint"></nu-theme>
@@ -15,10 +17,10 @@
 
       <nu-rowheader>Parent</nu-rowheader>
       <nu-cell>
-        <nu-el v-if="element.parent === 'nu-base'" text="w7">
+        <nu-el v-if="element.parent === 'nu-base'" text="w7 monospace">
           &lt;nu-base/&gt;
         </nu-el>
-        <nu-link v-else :to="`/reference/element/${element.parent}`">
+        <nu-link v-else :to="`/reference/element/${element.parent}`" text="monospace">
           &lt;{{ element.parent }}/&gt;
         </nu-link>
       </nu-cell>
@@ -53,7 +55,7 @@
 
       <nu-gridtable
         columns="auto auto" display="inline-grid" border radius>
-        <nu-columnheader fill="subtle">Attribute</nu-columnheader>
+        <nu-columnheader fill="subtle">Behavior</nu-columnheader>
         <nu-columnheader fill="subtle">Options</nu-columnheader>
         <template v-for="behavior in behaviors">
           <nu-rowheader :key="`${behavior.name}:name`">

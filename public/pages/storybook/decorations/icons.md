@@ -38,3 +38,16 @@ You can change icon (with transition) depending on the element state like:
 Hover on the first button and click on the second to see effect.
 
 As you see all icons are perfectly aligned with text in any context.
+
+## Dropdown icon
+
+There is the built-in element [nu-dropdownicon](../../reference/elements/nu-dropdownicon.md).
+
+```html
+<split/>
+<nu-btn toggle>
+  Dropdown
+  <nu-dropdownicon></nu-dropdownicon>
+  <nu-popup>Content</nu-popup>
+</nu-btn>
+```

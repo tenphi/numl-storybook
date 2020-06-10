@@ -24,6 +24,16 @@ export const REFERENCE_MENU = [
   ...Numl.baseElements.map(handleElement),
   {
     type: 'heading',
+    label: 'Inline Elements',
+  },
+  ...Numl.inlineElements.map(handleElement),
+  {
+    type: 'heading',
+    label: 'Semantic Elements',
+  },
+  ...Numl.semanticElements.map(handleElement),
+  {
+    type: 'heading',
     label: 'Formatter Elements',
   },
   ...Numl.formatterElements.map(handleElement),
@@ -49,7 +59,7 @@ export const REFERENCE_MENU = [
   ...Numl.components.map(handleElement),
   {
     type: 'heading',
-    label: 'Definition Elements',
+    label: 'Definitions',
   },
   ...Numl.definitions.map(handleElement),
   {

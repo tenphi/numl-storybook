@@ -1,7 +1,7 @@
 # Date and Time
 
 ```html
-<preview/>
+<split/>
 <nu-flow gap>
   <nu-block>
     <nu-datetime date value="2010-02-04"></nu-datetime>
@@ -17,10 +17,10 @@
 </nu-flow>
 ```
 
-## Time
+## Timer
 
 ```html
-<preview/>
+<split/>
 <nu-flow gap>
   <nu-block>
     <nu-datetime time value="now"></nu-datetime>
@@ -39,7 +39,7 @@
 ## Localized
 
 ```html
-<preview/>
+<split/>
 <nu-flow gap lang="ru">
   <nu-heading level="5">Russian locale</nu-heading>
 

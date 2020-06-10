@@ -99,10 +99,17 @@ LIST.forEach((el) => {
 export const BASE_ELEMENTS = [
   'nu-el',
   'nu-heading',
-  'nu-special',
+  'nu-h1',
+  'nu-h2',
+  'nu-h3',
+  'nu-h4',
+  'nu-h5',
+  'nu-h6',
   'nu-mark',
   'nu-badge',
   'nu-link',
+  'nu-blocklink',
+  'nu-blockquote',
   'nu-icon',
   'nu-svg',
   'nu-img',
@@ -113,6 +120,17 @@ export const BASE_ELEMENTS = [
   'nu-triangle',
   'nu-tooltip',
   'nu-label',
+  'nu-circle',
+  'nu-spacer',
+].sort();
+
+export const INLINE_ELEMENTS = [
+  'nu-in',
+  'nu-strong',
+  'nu-em',
+  'nu-sup',
+  'nu-sub',
+  'nu-special',
 ].sort();
 
 export const SEMANTIC_ELEMENTS = [
@@ -121,9 +139,9 @@ export const SEMANTIC_ELEMENTS = [
   'nu-header',
   'nu-footer',
   'nu-aside',
-  'nu-region',
+  // 'nu-region',
   'nu-section',
-  'nu-navigation',
+  'nu-nav',
 ].sort();
 
 export const FORMATTER_ELEMENTS = [
@@ -155,6 +173,10 @@ export const TABLE_ELEMENTS = [
 export const WIDGET_ELEMENTS = [
   'nu-link',
   'nu-btn',
+  'nu-cardbtn',
+  'nu-check',
+  'nu-form',
+  'nu-field',
   'nu-switch',
   'nu-slider',
   'nu-btngroup',
@@ -166,6 +188,9 @@ export const WIDGET_ELEMENTS = [
   'nu-checkbox',
   'nu-radio',
   'nu-input',
+  'nu-inputgroup',
+  'nu-textarea',
+  'nu-value',
   'nu-numinput',
   'nu-popuplistbox',
 ].sort();
@@ -186,6 +211,7 @@ export const CONVERTERS = [
 export const COMPONENTS = [
   'nu-dateinput',
   'nu-datepicker',
+  'nu-debug',
 ];
 
 export const STYLE_ATTRIBUTES = [
@@ -241,8 +267,8 @@ export const STYLE_ATTRIBUTES = [
   'before',
   'after',
   'toggle',
-  'focusable',
-  'hoverable',
+  'outline',
+  'mark',
   'expand',
   'fade',
   'display',
@@ -294,6 +320,12 @@ export default {
   },
   get baseElements() {
     return this.getElements(BASE_ELEMENTS);
+  },
+  get inlineElements() {
+    return this.getElements(INLINE_ELEMENTS);
+  },
+  get semanticElements() {
+    return this.getElements(SEMANTIC_ELEMENTS);
   },
   get formatterElements() {
     return this.getElements(FORMATTER_ELEMENTS);

@@ -1,7 +1,7 @@
 # Numbers
 
 ```html
-<preview/>
+<split/>
 <nu-flow gap>
   <nu-block>
     <nu-num
@@ -32,7 +32,7 @@
 
 ## Percents
 ```html
-<preview/>
+<split/>
 <nu-flow gap>
   <nu-block>
     <nu-num
@@ -45,7 +45,7 @@
 ## Currency
 
 ```html
-<preview/>
+<split/>
 <nu-flow gap>
   <nu-block>
     <nu-num
@@ -73,7 +73,7 @@
 ## Units
 
 ```html
-<preview/>
+<split/>
 <nu-flow gap>
   <nu-block>
     <nu-num
@@ -96,7 +96,7 @@
 ## Localized
 
 ```html
-<preview/>
+<split/>
 <nu-flow gap lang="ru">
   <nu-heading level="5">Russian locale</nu-heading>
   <nu-block>

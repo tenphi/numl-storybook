@@ -204,9 +204,13 @@ export default {
     }
 
     window.addEventListener('resize', this.onViewportChange, { passive: true });
+
+    this.timerId = setInterval(this.resizeIframe, 500);
   },
   destroyed() {
     window.removeEventListener('resize', this.onViewportChange);
+
+    clearInterval(this.timerId);
   },
   methods: {
     onViewportChange() {

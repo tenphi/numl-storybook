@@ -1,0 +1,24 @@
+# Forms
+
+## Basic form
+
+```html
+<preview/>
+<nu-card gap>
+  <nu-h3>Login</nu-h3>
+  <nu-form control="output[.value]" gap="1x">
+    <nu-field>
+      <nu-label>Email</nu-label>
+      <nu-input id="email" grow="1"></nu-input>
+    </nu-field>
+    <nu-field>
+      <nu-label>Password</nu-label>
+      <nu-input id="password" grow="1" mask></nu-input>
+    </nu-field>
+    <nu-btn special action="submit">Submit</nu-btn>
+  </nu-form>
+  <nu-block overflow="auto" scrollbar width="max 16">
+    <nu-value id="output"></nu-value>
+  </nu-block>
+</nu-card>
+```

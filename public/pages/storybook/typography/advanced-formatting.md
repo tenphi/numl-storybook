@@ -21,11 +21,16 @@ Modifiers: `"underline"`, `"del"`, `"dotted"`, `"wavy"`, `"dashed"`.
 
 ```html
 <split/>
-<nu-block text="underline">Underline</nu-block>
-<nu-block text="del">Line-through or deleted</nu-block>
-<nu-block text="dotted">Dotted underline</nu-block>
-<nu-block text="wavy">Wavy underline</nu-block>
-<nu-block text="dashed">Dashed underline</nu-block>
+<nu-flow gap>
+  <nu-block text="underline">Underline</nu-block>
+  <nu-block text="del">Line-through or deleted</nu-block>
+  <nu-block text="overline">Overline</nu-block>
+  <nu-block text="underover">Underover</nu-block>
+  <nu-block text="dotted">Dotted underline</nu-block>
+  <nu-block text="dashed">Dashed underline</nu-block>
+  <nu-block text="wavy">Wavy underline</nu-block>
+  <nu-block text="dashed underover">Dashed underover</nu-block>
+</nu-flow>
 ```
 
 ## Transform

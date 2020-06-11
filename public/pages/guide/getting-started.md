@@ -8,7 +8,7 @@ To start prototyping with **Numl** just add a single module to the page:
 
 That's it! No build step, no explicit function call to apply changes.
 
-If you want to prevent flash of unstyled content then add the following tag to the `head`:
+If you want to prevent flash of unstyled content then add the following tag to the `<head>`:
 
 ```html
 <style>nu-root { opacity: 0; }</style>

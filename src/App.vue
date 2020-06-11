@@ -107,9 +107,9 @@
           width="initial 100% 54" gap="2x"
           :interactive="showMenu ? 'y|n' : 'y'">
           <nu-flow padding="2 2 6|2 1 6|2 2 6|2 1 6" gap="2x">
-            <router-view/>
+            <router-view height="min (100vh - 16x)"/>
 
-<!--            <nu-line></nu-line>-->
+            <nu-line></nu-line>
 
             <nu-pane
               v-if="navLinks"

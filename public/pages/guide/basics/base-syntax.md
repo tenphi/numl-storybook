@@ -243,6 +243,7 @@ You can learn more about specific styling attribute by looking at the **Referenc
 
 * [radius](../../reference/attributes/radius.md)
 * [size](../../reference/attributes/size.md)
+* [border](../../reference/attributes/border.md)
 * [text](../../reference/attributes/text.md)
 * [outline](../../reference/attributes/outline.md)
 * [transition](../../reference/attributes/transition.md)

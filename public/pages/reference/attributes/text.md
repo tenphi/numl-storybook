@@ -56,8 +56,8 @@ Use this style to change text characteristics: font, weight, style, decoration, 
 
 ### Usage
 
-* [Storybook - Typography - Base formatting](../../storybook/typography/base-formatting.md).
-* [Storybook - Typography - Advanced formatting](../../storybook/typography/advanced-formatting.md).
+* [Typography - Base formatting](../../storybook/typography/base-formatting.md).
+* [Typography - Advanced formatting](../../storybook/typography/advanced-formatting.md).
 
 ### CSS References
 

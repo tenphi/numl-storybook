@@ -1,13 +1,21 @@
-Abstraction over `z-index` style. Accepts modifier or integer value.
+Use this style to change element Z index.
 
-## Modifiers
+### Syntax
 
-* **above** – place element above. (`z-index: 1`)
-* **below** – place element below.  (`z-index: 10`)
-* **front** – place element to the front of other elements including those with **above** modifier.  (`z-index: -1`)
-* **back** – place element to the back of other elements including those with **below** modifier. (`z-index: -10`)
+```
+auto | <integer> | inherit | above | below | front | back
+```
 
-## Example
+### Modifiers
+
+|Modifier|Description|
+|----|----|
+|`"above"`|Place element above. (`z-index: 1`)|
+|`"below"`|Place element below.  (`z-index: -1`)|
+|`"front"`|Place element to the front of other elements including those with **above** modifier.  (`z-index: 10`)|
+|`"back"`|Place element to the back of other elements including those with **below** modifier. (`z-index: -10`)|
+
+### Examples
 
 ```preview
 <nu-flex items="center">
@@ -20,3 +28,7 @@ Abstraction over `z-index` style. Accepts modifier or integer value.
     </nu-card>
 </nu-flex>
 ```
+
+### CSS References
+
+* [MDN: z-index](!https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)

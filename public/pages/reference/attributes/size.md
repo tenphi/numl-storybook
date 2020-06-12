@@ -3,7 +3,7 @@ Use this style to specify font-size and line-height. Many elements use this styl
 ### Syntax
 
 ```
-[ <length> | <preset> ]? || [ <length> | <preset> ]?
+[ <length> | <preset> ]{1,2}
 ```
 
 You can use preset names, values or mix.
@@ -49,7 +49,7 @@ So you can define your own preset with [nu-props](../elements/nu-props.md) defin
 
 ### Usage
 
-* [Storybook - Typography - Text size](../../storybook/typography/text-size.md)
+* [Typography - Text size](../../storybook/typography/text-size.md)
 
 ### CSS References
 

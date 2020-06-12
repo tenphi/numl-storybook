@@ -15,7 +15,7 @@ Use this style to specify border radius.
 
 ### Usage
 
-* [Storybook - Decorations - Borders](../../storybook/decorations/borders.md).
+* [Decorations - Borders](../../storybook/decorations/borders.md).
 
 ### CSS References
 

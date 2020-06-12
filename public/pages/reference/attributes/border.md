@@ -16,7 +16,7 @@ Use this style to specify size, color and type of element borders.
 
 ### Usage
 
-* [Storybook - Decorations - Borders](../../storybook/decorations/borders.md).
+* [Decorations - Borders](../../storybook/decorations/borders.md).
 
 ### CSS References
 

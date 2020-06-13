@@ -1,4 +1,4 @@
-Use this style to add transition effect for various styles.
+The **transition** style sets the transition effect for various styles.
 
 ### Syntax
 
@@ -10,9 +10,9 @@ Use this style to add transition effect for various styles.
 
 |Value|Description|
 |----|----|
-|`"opacity"`|Add transition for **opacity** style with **linear** timing and default transition time|
-|`"opacity .5s ease"`|Add transition for **opacity** style with **ease** timing and default transition time `"0.08s"`|
-|`"opacity, fill"`|Add transition for **opacity** and **fill** style with **ease** timing and default transition time `"0.08s"`|
+|`"opacity"`|Add transition for **opacity** style with **linear** timing and default transition time `"0.08s"`|
+|`"opacity .5s ease"`|Add transition for **opacity** style with **ease** timing and transition time `".5s"`|
+|`"opacity, fill"`|Add transition for **opacity** and **fill** styles with **linear** timing and default transition time `"0.08s"`|
 
 ### CSS Reference
 

@@ -227,6 +227,7 @@ export const STYLE_ATTRIBUTES = [
   'flow',
   'gap',
   'order',
+  'flex',
   'grow',
   'shrink',
   'basis',

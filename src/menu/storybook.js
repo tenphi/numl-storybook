@@ -92,6 +92,11 @@ export const STORYBOOK_MENU = [
   },
   {
     type: 'link',
+    label: 'Table layouts',
+    to: '/storybook/layouts/table-layouts',
+  },
+  {
+    type: 'link',
     label: 'Semantic markup',
     to: '/storybook/layouts/semantic-markup',
   },

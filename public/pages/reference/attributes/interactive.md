@@ -1,4 +1,4 @@
-Use this style to control over element's interactivity.
+Use this style to control over element's interactivity via pointer devices.
 
 ### Syntax
 

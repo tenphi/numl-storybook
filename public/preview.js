@@ -181,7 +181,11 @@ function preview() {
   markup = markup
     .replace(/<script>[^]+?<\/script>/gm,
       (s) => {
-        eval(s.slice(8, -9));
+        try {
+          eval(s.slice(8, -9));
+        } catch (e) {
+          console.log('preview:', e.toString());
+        }
 
         return '';
       });

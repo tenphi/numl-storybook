@@ -85,7 +85,7 @@
       :show="mode === 'preview' ? 'y' : 'y|n'"
       :width="`${100 - split}% 100%|100% 100%`"
       ref="preview" repl overflow="no"
-      :markup="previewMarkup" fill="subtle" border="left color(special)|0"
+      :markup="previewMarkup" fill="subtle" border="left #special|0"
       place="right"></Preview>
 
     <nu-btn

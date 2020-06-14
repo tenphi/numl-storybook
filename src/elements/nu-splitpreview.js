@@ -15,11 +15,13 @@ export default class NuSplitPreview extends NuElement {
   }
 
   static nuCSS({ tag, css }) {
-    return `
-      ${css}
-      ${tag} > pre, ${tag} > textarea {
+    return [
+      ...css,
+
+      `${tag} > pre, ${tag} > textarea {
         display: none;
-      }`;
+      }`,
+    ];
   }
 
   nuConnected() {
@@ -60,7 +62,7 @@ export default class NuSplitPreview extends NuElement {
     </nu-btn>` : ''}
     <nu-code radius shadow padding="1x 2x" overflow="auto" scrollbar grow="1" height="max 49.5x||max 35x|max 30x"><textarea>${this.nuContent}</textarea></nu-code>
   </nu-flow>
-  <nu-block padding="2x left" border="1sw left inside color(special-bg 50%)">${this.nuPreview}</nu-block>
+  <nu-block padding="2x left" border="1sw left inside #special-bg.50">${this.nuPreview}</nu-block>
 </nu-grid>`;
     });
   }

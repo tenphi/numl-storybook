@@ -39,11 +39,11 @@ Border with different color.
 <nu-attrs for="nu-block" height="3" width="3" fill="subtle"></nu-attrs>
 
 <nu-flex gap>
-  <nu-block border="2bw color(special)"></nu-block>
-  <nu-block border="2bw top color(special)"></nu-block>
-  <nu-block border="2bw right color(special)"></nu-block>
-  <nu-block border="2bw bottom color(special)"></nu-block>
-  <nu-block border="2bw left color(special)"></nu-block>
+  <nu-block border="2bw #special"></nu-block>
+  <nu-block border="2bw top #special"></nu-block>
+  <nu-block border="2bw right #special"></nu-block>
+  <nu-block border="2bw bottom #special"></nu-block>
+  <nu-block border="2bw left #special"></nu-block>
 </nu-flex>
 ```
 
@@ -54,7 +54,7 @@ Border on several sides.
 <nu-attrs for="nu-block" height="3" width="3" fill="subtle"></nu-attrs>
 
 <nu-flex gap>
-  <nu-block border="2bw top right color(special)"></nu-block>
+  <nu-block border="2bw top right #special"></nu-block>
 </nu-flex>
 ```
 
@@ -67,11 +67,11 @@ Border with default radius.
 <nu-attrs for="nu-block" height="3" width="3" fill="subtle"></nu-attrs>
 
 <nu-flex gap>
-  <nu-block radius="1r" border="2bw color(special)"></nu-block>
-  <nu-block radius="1r" border="2bw top color(special)"></nu-block>
-  <nu-block radius="1r" border="2bw right color(special)"></nu-block>
-  <nu-block radius="1r" border="2bw bottom color(special)"></nu-block>
-  <nu-block radius="1r" border="2bw left color(special)"></nu-block>
+  <nu-block radius="1r" border="2bw #special"></nu-block>
+  <nu-block radius="1r" border="2bw top #special"></nu-block>
+  <nu-block radius="1r" border="2bw right #special"></nu-block>
+  <nu-block radius="1r" border="2bw bottom #special"></nu-block>
+  <nu-block radius="1r" border="2bw left #special"></nu-block>
 </nu-flex>
 ```
 
@@ -82,11 +82,11 @@ Border with custom radius.
 <nu-attrs for="nu-block" height="3" width="3" fill="subtle"></nu-attrs>
 
 <nu-flex gap>
-  <nu-block radius=".5r" border="2bw color(special)"></nu-block>
-  <nu-block radius=".5r" border="2bw top color(special)"></nu-block>
-  <nu-block radius=".5r" border="2bw right color(special)"></nu-block>
-  <nu-block radius=".5r" border="2bw bottom color(special)"></nu-block>
-  <nu-block radius=".5r" border="2bw left color(special)"></nu-block>
+  <nu-block radius=".5r" border="2bw #special"></nu-block>
+  <nu-block radius=".5r" border="2bw top #special"></nu-block>
+  <nu-block radius=".5r" border="2bw right #special"></nu-block>
+  <nu-block radius=".5r" border="2bw bottom #special"></nu-block>
+  <nu-block radius=".5r" border="2bw left #special"></nu-block>
 </nu-flex>
 ```
 
@@ -98,20 +98,20 @@ Round blocks.
   <nu-flex gap>
     <nu-attrs for="nu-block" height="3" width="3" fill="subtle"></nu-attrs>
 
-    <nu-block radius="round" border="1x color(special)"></nu-block>
-    <nu-block radius="round" border="1x top color(special)"></nu-block>
-    <nu-block radius="round" border="1x right color(special)"></nu-block>
-    <nu-block radius="round" border="1x bottom color(special)"></nu-block>
-    <nu-block radius="round" border="1x left color(special)"></nu-block>
+    <nu-block radius="round" border="1x #special"></nu-block>
+    <nu-block radius="round" border="1x top #special"></nu-block>
+    <nu-block radius="round" border="1x right #special"></nu-block>
+    <nu-block radius="round" border="1x bottom #special"></nu-block>
+    <nu-block radius="round" border="1x left #special"></nu-block>
   </nu-flex>
 
   <nu-flex gap>
     <nu-attrs for="nu-block" height="5" width="3" fill="subtle"></nu-attrs>
-    <nu-block radius="round" border="1x color(special)"></nu-block>
-    <nu-block radius="round" border="1x top color(special)"></nu-block>
-    <nu-block radius="round" border="1x right color(special)"></nu-block>
-    <nu-block radius="round" border="1x bottom color(special)"></nu-block>
-    <nu-block radius="round" border="1x left color(special)"></nu-block>
+    <nu-block radius="round" border="1x #special"></nu-block>
+    <nu-block radius="round" border="1x top #special"></nu-block>
+    <nu-block radius="round" border="1x right #special"></nu-block>
+    <nu-block radius="round" border="1x bottom #special"></nu-block>
+    <nu-block radius="round" border="1x left #special"></nu-block>
   </nu-flex>
 </nu-flow>
 ```
@@ -123,11 +123,11 @@ Ellipse blocks.
 <nu-attrs for="nu-block" height="5" width="3" fill="subtle"></nu-attrs>
 
 <nu-flex gap>
-  <nu-block radius="ellipse" border="1x color(special)"></nu-block>
-  <nu-block radius="ellipse" border="1x top color(special)"></nu-block>
-  <nu-block radius="ellipse" border="1x right color(special)"></nu-block>
-  <nu-block radius="ellipse" border="1x bottom color(special)"></nu-block>
-  <nu-block radius="ellipse" border="1x left color(special)"></nu-block>
+  <nu-block radius="ellipse" border="1x #special"></nu-block>
+  <nu-block radius="ellipse" border="1x top #special"></nu-block>
+  <nu-block radius="ellipse" border="1x right #special"></nu-block>
+  <nu-block radius="ellipse" border="1x bottom #special"></nu-block>
+  <nu-block radius="ellipse" border="1x left #special"></nu-block>
 </nu-flex>
 ```
 

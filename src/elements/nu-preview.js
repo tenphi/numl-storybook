@@ -21,11 +21,13 @@ export default class NuPreview extends NuElement {
   }
 
   static nuCSS({ tag, css }) {
-    return `
-      ${css}
-      ${tag} > pre, ${tag} > textarea {
+    return [
+      ...css,
+
+      `${tag} > pre, ${tag} > textarea {
         display: none;
-      }`;
+      }`,
+    ];
   }
 
   nuConnected() {

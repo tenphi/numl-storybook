@@ -55,7 +55,7 @@
                   :key="option"
                   :size="option"
                   :value="option"
-                  border=":current[1sw bottom inside color(special)] 0">
+                  border=":current[1sw bottom inside #special] 0">
                   {{ option }}
                 </nu-option>
               </nu-flex>

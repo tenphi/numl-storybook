@@ -65,7 +65,7 @@
         </nu-flex>
       </nu-pane>
 
-      <nu-flex grow="1" overflow="no" scrollbar flow="column">
+      <nu-flex grow="1" overflow="no" flow="column">
         <codemirror
           ref="editor"
           v-model="currentMarkup"
@@ -460,4 +460,27 @@ export default {
   background: var(--nu-main-hover-color);
   border-left: 1px solid var(--nu-main-text-color);
 }
+.CodeMirror-hscrollbar::-webkit-scrollbar, .CodeMirror-vscrollbar::-webkit-scrollbar {
+  width: var(--nu-gap);
+  height: var(--nu-gap);
+}
+.CodeMirror-hscrollbar::-webkit-scrollbar-track, .CodeMirror-vscrollbar::-webkit-scrollbar-track {
+  background-color: var(--nu-local-bg-color, var(--nu-subtle-color));
+}
+.CodeMirror-hscrollbar::-webkit-scrollbar-thumb, .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--nu-text-color-rgb), .5);
+  border-radius: var(--nu-radius);
+  border: var(--nu-border-width) solid var(--nu-subtle-color);
+}
+.CodeMirror-hscrollbar::-webkit-scrollbar-corner, .CodeMirror-vscrollbar::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+.CodeMirror-hscrollbar, .CodeMirror-vscrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--nu-subtle-color) rgba(var(--nu-text-color-rgb), .5);
+}
+.CodeMirror-scrollbar-filler {
+  background-color: transparent;
+}
+
 </style>

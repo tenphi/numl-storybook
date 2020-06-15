@@ -25,7 +25,7 @@
         :move="showMenu ? '0 0' : '0 0|(-100% - 1x) 0'"
         transition="move ease-out">
         <nu-block
-          ref="nav" id="nav" padding="1x" border="right" text="center" overflow="auto" scrollbar>
+          ref="nav" id="nav" padding="1x" border="right" text="center" overflow="auto">
           <nu-flex gap height="100%| " flow="column" padding="0|4 bottom">
             <nu-blocklink
               to="/"
@@ -67,7 +67,7 @@
         </nu-block>
 
         <nu-flow
-          id="subnav" padding="0 2x 6x||0 1x 6x" gap="1x" border="right" overflow="auto" scrollbar>
+          id="subnav" padding="0 2x 6x||0 1x 6x" gap="1x" border="right" overflow="auto">
           <nu-attrs
             for="nu-heading" padding="1x 2x"
             level="4" place="sticky top" space="-2x 2x||-2x 1x" fill="subtle"

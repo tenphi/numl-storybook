@@ -119,7 +119,7 @@
       This block is for debugging purposes.
     </nu-block>
 
-    <nu-code v-if="showCSS" padding="1x 2x" shadow overflow="auto" scrollbar>
+    <nu-code v-if="showCSS" padding="1x 2x" shadow overflow="auto">
       <textarea v-html="element.css"></textarea>
     </nu-code>
 

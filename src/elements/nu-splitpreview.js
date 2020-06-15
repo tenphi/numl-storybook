@@ -60,7 +60,7 @@ export default class NuSplitPreview extends NuElement {
       <nu-tooltip text="nowrap" place="outside-top left" show="y|||n">Open snippet in REPL</nu-tooltip>
       <nu-el text="nowrap" color="special" show="n|y|n|y">Open in REPL</nu-el>
     </nu-btn>` : ''}
-    <nu-code radius shadow padding="1x 2x" overflow="auto" scrollbar grow="1" height="max 49.5x||max 35x|max 30x"><textarea>${this.nuContent}</textarea></nu-code>
+    <nu-code radius shadow padding="1x 2x" overflow="auto" grow="1" height="max 49.5x||max 35x|max 30x"><textarea>${this.nuContent}</textarea></nu-code>
   </nu-flow>
   <nu-block padding="2x left" border="1sw left inside #special-bg.50">${this.nuPreview}</nu-block>
 </nu-grid>`;

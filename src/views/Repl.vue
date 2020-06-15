@@ -36,7 +36,7 @@
           place="outside-bottom"></nu-attrs>
         <nu-flex>
           <nu-blocklink
-            v-if="!currentEmbed" to="/" display="flex" theme="special">
+            v-if="!currentEmbed" to="/storybook" display="flex" theme="special">
             <nu-svg
               fill="bg" src="/img/icon.svg"
               place="stretch" height="3 - 1bw" width="3 - 1bw"></nu-svg>

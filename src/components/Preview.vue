@@ -87,7 +87,7 @@
     <nu-block v-if="frame" id="preview" v-html="markup" padding="2x" hidden grow="1"></nu-block>
     <nu-block
       v-else id="preview" :hidden="tab !== 'preview'"
-      grow="1" fill="main-subtle">
+      grow="1" fill="main-subtle" overflow="no" radius="0 0 1r 1r">
       <nu-props
         gap="--preview-gap"
         radius="--preview-radius"
@@ -100,7 +100,7 @@
     </nu-block>
 
     <nu-block
-      id="source" padding hidden overflow="auto"
+      id="source" padding hidden overflow="auto" radius="0 0 1r 1r"
       fill="main-subtle" grow="1" height="max 30">
       <nu-code enumerate fill="main-subtle" shadow="0">
         <textarea v-html="repl ? '' : markup"></textarea>
@@ -162,7 +162,7 @@ export default {
     encodedData() {
       return LZString.compressToEncodedURIComponent(JSON.stringify({
         scale: this.scale !== 1 ? this.scale : undefined,
-        markup: this.markup && this.markup.trim() ? this.markup : undefined,
+        markup: this.markup && this.markup.trim() ? this.markup.replace(/#\[\[|!\[\[|]]#|]]!/g, '') : undefined,
         options: this.preparedOptions,
         size: this.size !== 'md' ? this.size : undefined,
       }));

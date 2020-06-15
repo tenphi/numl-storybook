@@ -39,6 +39,30 @@ export const STORYBOOK_MENU = [
   },
   {
     type: 'heading',
+    label: 'Colors',
+  },
+  {
+    type: 'link',
+    label: 'Basic themes',
+    to: '/storybook/colors/basic-themes',
+  },
+  {
+    type: 'link',
+    label: 'Color usage',
+    to: '/storybook/colors/color-usage',
+  },
+  {
+    type: 'link',
+    label: 'Color playground',
+    to: '/storybook/colors/color-playground',
+  },
+  // {
+  //   type: 'link',
+  //   label: 'Advanced theme usage',
+  //   to: '/storybook/colors/advanced-theme-usage',
+  // },
+  {
+    type: 'heading',
     label: 'Decorations',
   },
   {

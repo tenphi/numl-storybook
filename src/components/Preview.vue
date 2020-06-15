@@ -100,7 +100,7 @@
     </nu-block>
 
     <nu-block
-      id="source" padding hidden overflow="auto"
+      id="source" padding hidden overflow="auto" scrollbar
       fill="main-subtle" grow="1" height="max 30">
       <nu-code enumerate fill="main-subtle" shadow="0">
         <textarea v-html="repl ? '' : markup"></textarea>

@@ -90,21 +90,10 @@ function applyOptions(options = {}) {
     theme.removeAttribute('pastel');
   }
 
-  if (options.gap) {
-    props.setAttribute('gap', `${options.gap}rem`);
-  }
-
-  if (options.radius) {
-    props.setAttribute('radius', `${options.radius}rem`);
-  }
-
-  if (options.borderWidth) {
-    props.setAttribute('border-width', `${options.borderWidth}px`);
-  }
-
-  if (options.transitionTime) {
-    props.setAttribute('transition-time', `${options.transitionTime}ms`);
-  }
+  props.setAttribute('gap', `${options.gap || '.5'}rem`);
+  props.setAttribute('radius', `${options.radius || '.5'}rem`);
+  props.setAttribute('border-width', `${options.borderWidth || '1'}px`);
+  props.setAttribute('transition-time', `${options.transitionTime || '80'}ms`);
 
   setScheme(options.scheme || 'auto');
   setContrast(options.contrast || 'auto');

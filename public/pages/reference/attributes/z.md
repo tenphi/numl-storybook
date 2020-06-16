@@ -29,6 +29,10 @@ auto | <integer> | inherit | above | below | front | back
 </nu-flex>
 ```
 
+### See also
+
+* [Learn Z-Index Using a Visualization Tool](!https://thirumanikandan.com/posts/learn-z-index-using-a-visualization-tool)
+
 ### CSS References
 
 * [MDN: z-index](!https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)

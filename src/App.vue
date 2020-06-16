@@ -2,7 +2,7 @@
   <nu-block
     responsive="980px|600px" display="flow-root"
     :style="previewProps" v-show="mounted" width="100%"
-    :overflow="$route.path.startsWith('/repl') ? 'no' : 'visible'"
+    overflow="scroll-y"
     :height="$route.path.startsWith('/repl') ? '100vh' : null">
     <nu-theme
       :hue="hue" :pastel="pastel"

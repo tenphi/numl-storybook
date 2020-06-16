@@ -228,6 +228,20 @@ export const STORYBOOK_MENU = [
   },
   {
     type: 'heading',
+    label: 'Dynamic props',
+  },
+  {
+    type: 'link',
+    label: 'States',
+    to: '/storybook/dynamic-props/states',
+  },
+  {
+    type: 'link',
+    label: 'Control system',
+    to: '/storybook/dynamic-props/control-system',
+  },
+  {
+    type: 'heading',
     label: 'Components',
   },
   {

@@ -267,7 +267,6 @@ export const STYLE_ATTRIBUTES = [
   'scrollbar',
   'before',
   'after',
-  'toggle',
   'outline',
   'mark',
   'expand',
@@ -296,18 +295,23 @@ export const ARIA_ATTRIBUTES = [
 
 export const UTILITY_ATTRIBUTES = [
   'drop',
-  'direction',
+  // 'direction',
   'orient',
   'theme',
   'as',
   'id',
   'responsive',
   't',
+  'control',
+  'effect',
 ].sort();
 
 export const MODIFIER_ATTRIBUTES = [
   'disabled',
   'special',
+  'toggle',
+  'trigger',
+  'hidden',
 ].sort();
 
 export default {

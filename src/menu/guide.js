@@ -31,21 +31,21 @@ export const GUIDE_MENU = [
     label: 'Customization',
     to: '/guide/features/customization',
   },
-  {
-    type: 'link',
-    label: 'Responsiveness',
-    to: '/guide/features/responsiveness',
-  },
+  // {
+  //   type: 'link',
+  //   label: 'Responsiveness',
+  //   to: '/guide/features/responsiveness',
+  // },
   {
     type: 'link',
     label: 'Theming',
     to: '/guide/features/themes',
   },
-  {
-    type: 'link',
-    label: 'States',
-    to: '/guide/features/states',
-  },
+  // {
+  //   type: 'link',
+  //   label: 'States',
+  //   to: '/guide/features/states',
+  // },
   {
     type: 'heading',
     label: 'Related information',

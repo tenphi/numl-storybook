@@ -157,8 +157,8 @@ function preview() {
   markup = data.markup || '';
 
   markup = markup
-    .replace(/responsive="[^"]+?"/, (str) => str
-      .replace(/[\d.]+/, (n) => String(Number(n) * scale)));
+    .replace(/responsive="[^"]+?"/g, (str) => str
+      .replace(/[\d.]+/g, (n) => String(Number(n) * scale)));
 
   const { body } = document;
 

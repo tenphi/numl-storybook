@@ -23,24 +23,68 @@ export const GUIDE_MENU = [
     to: '/guide/basics/base-syntax',
   },
   {
-    type: 'heading',
-    label: 'Core features',
+    type: 'link',
+    label: 'Methodology',
+    to: '/guide/basics/methodology',
   },
   {
     type: 'link',
-    label: 'Customization',
-    to: '/guide/features/customization',
+    label: 'Color management',
+    to: '/guide/basics/color-management',
   },
+  {
+    type: 'link',
+    label: 'Layouts',
+    to: '/guide/basics/layouts',
+  },
+  {
+    type: 'heading',
+    label: 'Integration',
+  },
+  {
+    type: 'link',
+    label: 'Javascript API',
+    to: '/guide/integration/javascript',
+  },
+  {
+    type: 'link',
+    label: 'With Vue.js',
+    to: '/guide/integration/vue',
+  },
+  {
+    type: 'link',
+    label: 'With Svelte',
+    to: '/guide/integration/svelte',
+  },
+  {
+    type: 'link',
+    label: 'With React',
+    to: '/guide/integration/react',
+  },
+  {
+    type: 'link',
+    label: 'With Angular',
+    to: '/guide/integration/angular',
+  },
+  // {
+  //   type: 'heading',
+  //   label: 'Core features',
+  // },
+  // {
+  //   type: 'link',
+  //   label: 'Customization',
+  //   to: '/guide/features/customization',
+  // },
   // {
   //   type: 'link',
   //   label: 'Responsiveness',
   //   to: '/guide/features/responsiveness',
   // },
-  {
-    type: 'link',
-    label: 'Theming',
-    to: '/guide/features/themes',
-  },
+  // {
+  //   type: 'link',
+  //   label: 'Theming',
+  //   to: '/guide/features/themes',
+  // },
   // {
   //   type: 'link',
   //   label: 'States',

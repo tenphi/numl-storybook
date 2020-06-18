@@ -199,7 +199,6 @@ export const DEFINITIONS = [
   'nu-theme',
   'nu-attrs',
   'nu-props',
-  'nu-vars',
 ].sort();
 
 export const CONVERTERS = [

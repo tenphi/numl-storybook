@@ -86,6 +86,11 @@ export const STORYBOOK_MENU = [
     to: '/storybook/decorations/images',
   },
   {
+    type: 'link',
+    label: 'Gradient playground',
+    to: '/storybook/decorations/gradient-playground',
+  },
+  {
     type: 'heading',
     label: 'Layouts',
   },

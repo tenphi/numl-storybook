@@ -20,7 +20,7 @@
         columns="10 1fr"
         z="front"
         fill="subtle 70%"
-        filter="backdrop-blur(2x)"
+        backdrop="blur(2x)"
         shadow="0|1"
         overflow="no"
         :move="showMenu ? '0 0' : '0 0|(-100% - 1x) 0'"
@@ -159,7 +159,8 @@
       height="100% + 1bw"
       width="20"
       border="left"
-      fill="bg 70% backdrop-blur"
+      fill="bg 70%"
+      backdrop="blur(1)"
       z="front"
       shadow="1"
       :move="showSettings ? '0 0' : '(100% + 1x) 0'"
@@ -220,6 +221,8 @@
         </nu-card>
 
         <nu-card>
+          <nu-attrs for="btn" padding></nu-attrs>
+
           <nu-heading level="6" padding="bottom">Content theme type</nu-heading>
 
           <nu-btngroup

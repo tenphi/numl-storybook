@@ -151,6 +151,17 @@ export default {
         }, 100);
       }
     },
+    encodedData(data) {
+      if (this.tempData) {
+        const { frame } = this.$refs;
+
+        setTimeout(() => {
+          frame.contentWindow.location.reload();
+        }, 100);
+      }
+
+      this.tempData = data;
+    },
   },
   computed: {
     zoomOutEnabled() {

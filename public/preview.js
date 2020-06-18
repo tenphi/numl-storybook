@@ -188,7 +188,7 @@ function preview() {
   applyOptions(data.options);
 }
 
-window.addEventListener('hashchange', preview);
+// window.addEventListener('hashchange', preview);
 
 window.addEventListener('beforeunload', (event) => {
   const element = Nude.getElementById('redirect-url');

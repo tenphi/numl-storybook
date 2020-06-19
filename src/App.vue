@@ -19,7 +19,7 @@
         height="100%"
         columns="10 1fr"
         z="front"
-        fill="subtle 70%"
+        fill="subtle|subtle 70%"
         backdrop="blur(2x)"
         shadow="0|1"
         overflow="no"
@@ -108,6 +108,7 @@
           width="initial 100% 54" gap="2x"
           :interactive="showMenu ? 'y|n' : 'y'">
           <nu-flow padding="2 2 6|2 1 6|2 2 6|2 1 6" gap="2x">
+            <nu-attrs for="code" fill="main-subtle"></nu-attrs>
             <router-view height="min (100vh - 16x)"/>
 
             <nu-line></nu-line>

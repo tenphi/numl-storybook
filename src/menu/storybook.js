@@ -67,6 +67,11 @@ export const STORYBOOK_MENU = [
   },
   {
     type: 'link',
+    label: 'Cards',
+    to: '/storybook/decorations/cards',
+  },
+  {
+    type: 'link',
     label: 'Borders',
     to: '/storybook/decorations/borders',
   },

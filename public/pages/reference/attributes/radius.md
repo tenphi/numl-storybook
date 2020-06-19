@@ -6,6 +6,15 @@ Use this style to specify border radius.
 <length>{1,4} || [ round | ellipse ]
 ```
 
+### Usage
+
+```html
+<split/>
+<nu-card radius="4x">
+  Card with 4x "default gap" radius.
+</nu-card>
+```
+
 ### Modifiers
 
 |Modifier|Description|

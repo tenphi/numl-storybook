@@ -98,7 +98,7 @@
 <!--      <nu-columnheader fill="subtle">Type</nu-columnheader>-->
       <template v-for="style in styles">
         <nu-rowheader :key="`${style.name}:name`">
-          {{ style.name }}
+          <nu-link :to="`../attributes/${style.name}`">{{ style.name }}</nu-link>
         </nu-rowheader>
         <nu-cell :key="`${style.name}:value`" text="monospace">
           "{{ style.value }}"
@@ -111,19 +111,21 @@
       </template>
     </nu-gridtable>
 
-    <nu-heading level="2">
-      Generated CSS
-    </nu-heading>
+    <nu-block show="^root:dev[y]">
+      <nu-heading level="2">
+        Generated CSS
+      </nu-heading>
 
-    <nu-block>
-      This block is for debugging purposes.
+      <nu-block>
+        This block is for debugging purposes.
+      </nu-block>
+
+      <nu-code v-if="showCSS" padding="1x 2x" shadow overflow="auto">
+        <textarea v-html="element.css"></textarea>
+      </nu-code>
+
+      <nu-btn v-else special @tap="showCSS = true">Show CSS</nu-btn>
     </nu-block>
-
-    <nu-code v-if="showCSS" padding="1x 2x" shadow overflow="auto">
-      <textarea v-html="element.css"></textarea>
-    </nu-code>
-
-    <nu-btn v-else special @tap="showCSS = true">Show CSS</nu-btn>
   </nu-flow>
 </template>
 

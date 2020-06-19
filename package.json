@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "vue-cli-service build && scp -rv dist/* cloud:/usr/share/nginx/numl.design/"
+    "deploy": "vue-cli-service build && scp -rv dist/* cloud:/usr/share/nginx/numl.design/",
+    "build-preview": "parcel build --target browser --out-dir public/preview/ --out-file index.html --public-url . public/preview.html"
   },
   "dependencies": {
     "clipboard-copy": "^3.1.0",
@@ -32,6 +33,7 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-vue": "^6.1.2",
     "hosted-git-info": "^3.0.2",
+    "parcel": "^1.12.4",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {

@@ -75,7 +75,7 @@
             <nu-icon name="edit-2"></nu-icon>
           </nu-btn>
         </template>
-        <nu-btn :to="`!/preview.html#${encodedData}`">
+        <nu-btn :to="`!/preview/index.html#${encodedData}`">
           <nu-tooltip>
             {{ repl ? 'Open preview in separate tab' : 'Open in the new tab' }}
           </nu-tooltip>
@@ -94,7 +94,7 @@
         border-width="--preview-border-width"
         transition-time="--preview-transition-time"></nu-props>
       <iframe
-        ref="frame" :src="`/preview.html#${encodedData}`" frameborder="0"
+        ref="frame" :src="`/preview/index.html#${encodedData}`" frameborder="0"
         :scrolling="repl ? 'yes' : 'no'" width="100%" @load="resizeIframe(this)"
         :style="iframeStyles"></iframe>
     </nu-block>

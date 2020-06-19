@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="pragma" content="no-cache" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="/favicon.ico">
   <title>Numl Preview</title>
-  <script src="/lzstring/lzstring.js"></script>
-  <script language="JavaScript" type="module" src="/preview.js"></script>
+  <script language="JavaScript" async src="./preview.js"></script>
 </head>
 <body style="background-color: transparent">
-<nu-block>
+<nu-root>
   <nu-theme hue="272"></nu-theme>
   <nu-props></nu-props>
   <nu-block id="content" padding="2x" fill="subtle" size="md">
@@ -20,6 +21,6 @@
   <nu-card place="right bottom 1x" padding size="xs" hidden>
     Page redirected to: <nu-el id="redirect-url" text="monospace"></nu-el>
   </nu-card>
-</nu-block>
+</nu-root>
 </body>
 </html>

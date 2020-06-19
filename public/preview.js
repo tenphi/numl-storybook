@@ -1,206 +1,212 @@
-import { Nude } from './numl/index.js';
+import LZString from 'lz-string';
 
-let hash;
-let scale;
-let markup;
-let size;
+import('./numl/index').then((module) => {
+  console.log('NUDE is loaded', `v${module.default.version}`);
 
-const root = document.querySelector('[nu-id="content"]');
-const theme = document.querySelector('nu-theme');
-const props = document.querySelector('nu-props');
-const html = document.querySelector('html');
-const { dataset } = html;
-const LIGHT_SCHEME = 'nu-scheme-light';
-const DARK_SCHEME = 'nu-scheme-dark';
-const HIGH_CONTRAST = 'nu-contrast-high';
-const LOW_CONTRAST = 'nu-contrast-low';
-const REDUCE_MOTION = 'nu-reduce-motion';
+  let hash;
+  let scale;
+  let markup;
+  let size;
 
-function clearSchemeSwitch() {
-  [LIGHT_SCHEME, DARK_SCHEME]
-    .forEach((cls) => html.classList.remove(cls));
-}
+  const root = document.querySelector('#content');
+  const theme = document.querySelector('nu-theme');
+  const props = document.querySelector('nu-props');
+  const html = document.querySelector('html');
+  const { dataset } = html;
+  const LIGHT_SCHEME = 'nu-scheme-light';
+  const DARK_SCHEME = 'nu-scheme-dark';
+  const HIGH_CONTRAST = 'nu-contrast-high';
+  const LOW_CONTRAST = 'nu-contrast-low';
+  const REDUCE_MOTION = 'nu-reduce-motion';
 
-function clearContrastSwitch() {
-  [HIGH_CONTRAST, LOW_CONTRAST]
-    .forEach((cls) => html.classList.remove(cls));
-}
-
-function clearReducedMotionSwitch() {
-  [REDUCE_MOTION]
-    .forEach((cls) => html.classList.remove(cls));
-}
-
-function setScheme(type) {
-  clearSchemeSwitch();
-
-  switch (type) {
-    case 'light':
-    case 'dark':
-      dataset.nuScheme = type;
-      break;
-    default:
-      delete dataset.nuScheme;
-  }
-}
-
-function setContrast(type) {
-  clearContrastSwitch();
-
-  switch (type) {
-    case 'high':
-    case 'normal':
-      dataset.nuContrast = type;
-      break;
-    default:
-      delete dataset.nuContrast;
-  }
-}
-
-function setReducedMotion(type) {
-  clearReducedMotionSwitch();
-
-  switch (type) {
-    case 'yes':
-      dataset.nuReduceMotion = '';
-      break;
-    default:
-      delete dataset.nuReduceMotion;
-  }
-}
-
-function applyOptions(options = {}) {
-  theme.setAttribute('hue', 'hue' in options ? options.hue : 270);
-
-  if (options.saturationType === 'auto') {
-    theme.removeAttribute('saturation');
-  } else {
-    theme.setAttribute('saturation', options.saturation || 50);
+  function clearSchemeSwitch() {
+    [LIGHT_SCHEME, DARK_SCHEME]
+      .forEach((cls) => html.classList.remove(cls));
   }
 
-  if (options.themeType !== 'main') {
-    theme.setAttribute('mod', options.themeType);
-  } else {
-    theme.removeAttribute('mod');
+  function clearContrastSwitch() {
+    [HIGH_CONTRAST, LOW_CONTRAST]
+      .forEach((cls) => html.classList.remove(cls));
   }
 
-  if (options.pastel) {
-    theme.setAttribute('pastel', '');
-  } else {
-    theme.removeAttribute('pastel');
+  function clearReducedMotionSwitch() {
+    [REDUCE_MOTION]
+      .forEach((cls) => html.classList.remove(cls));
   }
 
-  props.setAttribute('gap', `${options.gap || '.5'}rem`);
-  props.setAttribute('radius', `${options.radius || '.5'}rem`);
-  props.setAttribute('border-width', `${options.borderWidth || '1'}px`);
-  props.setAttribute('transition-time', `${options.transitionTime || '80'}ms`);
+  function setScheme(type) {
+    clearSchemeSwitch();
 
-  setScheme(options.scheme || 'auto');
-  setContrast(options.contrast || 'auto');
-  setReducedMotion(options.reducedMotion || false);
-
-  if (window.location === window.parent.location) {
-    document.body.style.backgroundColor = 'var(--nu-main-bg-color)';
-  }
-}
-
-// const DEFAULT_OPTIONS = {
-//   themeType: 'main',
-//   hue: 272,
-//   pastel: false,
-//   saturation: 80,
-//   saturationType: 'auto',
-//   gap: 0.5,
-//   borderWidth: 1,
-//   radius: 0.5,
-//   transitionTime: 80,
-//   scheme: 'auto',
-//   contrast: 'auto',
-//   reducedMotion: 'auto',
-// };
-//
-// function getStored(key, defaults) {
-//   let data;
-//
-//   try {
-//     data = JSON.parse(localStorage.getItem(key)).data;
-//   } catch (e) {
-//     data = defaults;
-//   }
-//
-//   return data;
-// }
-
-function preview() {
-  const currentHash = window.location.hash.slice(1);
-
-  if (currentHash === hash) return;
-
-  let data = {};
-
-  try {
-    data = JSON.parse(decodeURIComponent(currentHash));
-  } catch (e) {
-    // do nothing
-
-    try {
-      data = JSON.parse(window.LZString.decompressFromEncodedURIComponent(currentHash));
-    } catch (e) {
-      // do nothing
-
-      return;
+    switch (type) {
+      case 'light':
+      case 'dark':
+        dataset.nuScheme = type;
+        break;
+      default:
+        delete dataset.nuScheme;
     }
   }
 
-  size = data.size || 'md';
-  scale = data.scale || 1;
-  markup = data.markup || '';
+  function setContrast(type) {
+    clearContrastSwitch();
 
-  markup = markup
-    .replace(/responsive="[^"]+?"/g, (str) => str
-      .replace(/[\d.]+/g, (n) => String(Number(n) * scale)));
+    switch (type) {
+      case 'high':
+      case 'normal':
+        dataset.nuContrast = type;
+        break;
+      default:
+        delete dataset.nuContrast;
+    }
+  }
 
-  const { body } = document;
+  function setReducedMotion(type) {
+    clearReducedMotionSwitch();
 
-  body.style.width = `${100 / scale}%`;
-  body.style.height = `${100 / scale}%`;
-  body.style.transform = `scale(${scale}, ${scale})`;
-  body.style.transformOrigin = 'left top';
+    switch (type) {
+      case 'yes':
+        dataset.nuReduceMotion = '';
+        break;
+      default:
+        delete dataset.nuReduceMotion;
+    }
+  }
 
-  markup = markup
-    .replace(/<script>[^]+?<\/script>/gm,
-      (s) => {
-        try {
-          eval(s.slice(8, -9));
-        } catch (e) {
-          console.log('preview:', e.toString());
-        }
+  function applyOptions(options = {}) {
+    theme.setAttribute('hue', 'hue' in options ? options.hue : 270);
 
-        return '';
-      });
+    if (options.saturationType === 'auto') {
+      theme.removeAttribute('saturation');
+    } else {
+      theme.setAttribute('saturation', options.saturation || 50);
+    }
 
-  root.innerHTML = markup;
+    if (options.themeType !== 'main') {
+      theme.setAttribute('mod', options.themeType);
+    } else {
+      theme.removeAttribute('mod');
+    }
 
-  root.setAttribute('size', size);
+    if (options.pastel) {
+      theme.setAttribute('pastel', '');
+    } else {
+      theme.removeAttribute('pastel');
+    }
 
-  hash = currentHash;
+    props.setAttribute('gap', `${options.gap || '.5'}rem`);
+    props.setAttribute('radius', `${options.radius || '.5'}rem`);
+    props.setAttribute('border-width', `${options.borderWidth || '1'}px`);
+    props.setAttribute('transition-time', `${options.transitionTime || '80'}ms`);
 
-  applyOptions(data.options);
-}
+    setScheme(options.scheme || 'auto');
+    setContrast(options.contrast || 'auto');
+    setReducedMotion(options.reducedMotion || false);
 
-// window.addEventListener('hashchange', preview);
+    if (window.location === window.parent.location) {
+      document.body.style.backgroundColor = 'var(--nu-main-bg-color)';
+    }
+  }
 
-window.addEventListener('beforeunload', (event) => {
-  const element = Nude.getElementById('redirect-url');
-  const { href } = document.activeElement;
+  // const DEFAULT_OPTIONS = {
+  //   themeType: 'main',
+  //   hue: 272,
+  //   pastel: false,
+  //   saturation: 80,
+  //   saturationType: 'auto',
+  //   gap: 0.5,
+  //   borderWidth: 1,
+  //   radius: 0.5,
+  //   transitionTime: 80,
+  //   scheme: 'auto',
+  //   contrast: 'auto',
+  //   reducedMotion: 'auto',
+  // };
+  //
+  // function getStored(key, defaults) {
+  //   let data;
+  //
+  //   try {
+  //     data = JSON.parse(localStorage.getItem(key)).data;
+  //   } catch (e) {
+  //     data = defaults;
+  //   }
+  //
+  //   return data;
+  // }
 
-  if (!element || !href) return;
+  function preview() {
+    const currentHash = window.location.hash.slice(1);
 
-  element.hidden = true;
-  element.innerText = href;
+    if (currentHash === hash) return;
 
-  event.preventDefault();
-  event.returnValue = '';
+    let data = {};
+
+    try {
+      data = JSON.parse(decodeURIComponent(currentHash));
+    } catch (e) {
+      // do nothing
+
+      try {
+        data = JSON.parse(LZString.decompressFromEncodedURIComponent(currentHash));
+      } catch (e) {
+        // do nothing
+
+        console.log('!', e);
+
+        return;
+      }
+    }
+
+    size = data.size || 'md';
+    scale = data.scale || 1;
+    markup = data.markup || '';
+
+    markup = markup
+      .replace(/responsive="[^"]+?"/g, (str) => str
+        .replace(/[\d.]+/g, (n) => String(Number(n) * scale)));
+
+    const { body } = document;
+
+    body.style.width = `${100 / scale}%`;
+    body.style.height = `${100 / scale}%`;
+    body.style.transform = `scale(${scale}, ${scale})`;
+    body.style.transformOrigin = 'left top';
+
+    markup = markup
+      .replace(/<script>[^]+?<\/script>/gm,
+        (s) => {
+          try {
+            eval(s.slice(8, -9));
+          } catch (e) {
+            console.log('preview:', e.toString());
+          }
+
+          return '';
+        });
+
+    root.innerHTML = markup;
+
+    root.setAttribute('size', size);
+
+    hash = currentHash;
+
+    applyOptions(data.options);
+  }
+
+  // window.addEventListener('hashchange', preview);
+
+  window.addEventListener('beforeunload', (event) => {
+    const element = document.querySelector('[nu-id="redirect-url"], #redirect-url');
+    const { href } = document.activeElement;
+
+    if (!element || !href) return;
+
+    element.hidden = true;
+    element.innerText = href;
+
+    event.preventDefault();
+    event.returnValue = '';
+  });
+
+  preview();
 });
-
-preview();

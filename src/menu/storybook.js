@@ -92,6 +92,11 @@ export const STORYBOOK_MENU = [
   },
   {
     type: 'link',
+    label: 'Transformations',
+    to: '/storybook/decorations/transformations',
+  },
+  {
+    type: 'link',
     label: 'Gradient playground',
     to: '/storybook/decorations/gradient-playground',
   },

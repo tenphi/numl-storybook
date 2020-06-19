@@ -5,12 +5,9 @@ Numl makes usage of Shadow DOM transparent as possible. It means you can use any
 ```html
 <preview/>
 <script>
-  class MyDropdown extends Nude.elements.NuBtn {
-    static get nuTag() {
-      return 'my-dropdown';
-    }
-    nuConnected() {
-      super.nuConnected();
+  Nude.define('my-dropdown', {
+    parent: Nude.elements.NuBtn,
+    connected() {
       const shadow = this.attachShadow({ mode: 'open' });
       shadow.innerHTML = `
 <slot name="name">NAME</slot>
@@ -23,8 +20,7 @@ Numl makes usage of Shadow DOM transparent as possible. It means you can use any
 	<slot></slot>
 </nu-popup>`;
     }
-  }
-  customElements.define('my-dropdown', MyDropdown);
+  });
 </script>
 <nu-block padding="3.5 bottom">
   <nu-attrs for="$icon" color="special"></nu-attrs>

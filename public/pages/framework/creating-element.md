@@ -5,24 +5,16 @@ Let's make dropdown-icon ;)
 ```html
 <preview/>
 <script>
-  class MyDropdownIcon extends Nude.elements.NuIcon {
-    static get nuTag() {
-      return 'my-dropdownicon';
-    }
-
-    static get nuDefaults() {
-      return {
-        scale: '^:pressed[flip-y]',
-        size: '2.5x',
-      };
-    }
-
-    nuConnected() {
-      this.setAttribute('name', 'chevron-down');
-    }
-  }
-
-  customElements.define(MyDropdownIcon.nuTag, MyDropdownIcon);
+  Nude.define('my-dropdownicon', {
+    parent: Nude.elements.NuIcon,
+    styles: {
+      scale: '^:pressed[flip-y]',
+      size: '2.5x',
+    },
+    attrs: {
+      name: 'chevron-down',
+    },
+  });
 </script>
 
 <nu-btn toggle>

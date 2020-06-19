@@ -1,8 +1,6 @@
 import LZString from 'lz-string';
 
-import('./numl/index').then((module) => {
-  console.log('NUDE is loaded', `v${module.default.version}`);
-
+import('./numl/index').then(() => {
   let hash;
   let scale;
   let markup;
@@ -151,7 +149,7 @@ import('./numl/index').then((module) => {
       } catch (e) {
         // do nothing
 
-        console.log('!', e);
+        console.log('parsing error', e);
 
         return;
       }

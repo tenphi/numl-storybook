@@ -1,5 +1,17 @@
 # Advanced formatting
 
+## Blockquotes
+
+Element [nu-blockquote](../../reference/elements/nu-blockquote.md).
+
+```html
+<split/>
+<nu-blockquote>
+  The greatest glory in living lies not in never falling, but in rising every time we fall.
+  <nu-block>– Nelson Mandela</nu-block>
+</nu-blockquote>
+```
+
 ## Text align
 
 Modifiers: `"left"`, `"right"`, `"center"`, `"justify"`.

@@ -6,7 +6,7 @@ The definition element that declares a theme in the context of its parent.
 |`"name"`|Name of the theme to apply it via [theme](../attributes/theme.md) attribute. If not specified, theme will be applied to the parent|
 |`"saturation"`|Saturation level (integer 0-100)|
 |`"pastel"`|If presented then use pastel color space [HPLuv](!https://www.hsluv.org/comparison/)|
-|`"mod"`|A list of modifiers|
+|`"mod"`|A list of modifiers separated by `Space`. See **below**.|
 
 |Modifier|Description|
 |-----|-----|
@@ -18,6 +18,25 @@ The definition element that declares a theme in the context of its parent.
 |`"strong"`|Opposite to `"soft"`. Increases contrast between background color and text color|
 |`"dim"`|Opposite to `"bold"`. Decreases contrast between main background color and theme background color|
 |`"bold"`|Opposite to `"dim"`. Increases contrast between main background color and theme background color|
+
+### Usage
+
+```html
+<split/>
+
+<nu-theme name="success" hue="130" mod="tone dim"></nu-theme>
+<nu-theme name="danger" hue="1" mod="special strong"></nu-theme>
+
+<nu-flow gap>
+  <nu-card theme="success">
+    Everything is ok!
+  </nu-card>
+
+  <nu-card theme="danger">
+    Something went dramatically wrong!
+  </nu-card>
+</nu-flow>
+```
 
 ### Examples
 

@@ -98,13 +98,6 @@ LIST.forEach((el) => {
 
 export const BASE_ELEMENTS = [
   'nu-el',
-  'nu-heading',
-  'nu-h1',
-  'nu-h2',
-  'nu-h3',
-  'nu-h4',
-  'nu-h5',
-  'nu-h6',
   'nu-mark',
   'nu-badge',
   'nu-link',
@@ -142,6 +135,15 @@ export const SEMANTIC_ELEMENTS = [
   // 'nu-region',
   'nu-section',
   'nu-nav',
+  'nu-status',
+  'nu-description',
+  'nu-heading',
+  'nu-h1',
+  'nu-h2',
+  'nu-h3',
+  'nu-h4',
+  'nu-h5',
+  'nu-h6',
 ].sort();
 
 export const FORMATTER_ELEMENTS = [

@@ -9,3 +9,7 @@ Element to describe headings of the site. The `level` attribute specifies the he
 <nu-heading level="5">Level 5 heading</nu-heading>
 <nu-heading level="6">Level 6 heading</nu-heading>
 ```
+
+## See also
+
+* [Typography – Headings](../../storybook/typography/headings.md).

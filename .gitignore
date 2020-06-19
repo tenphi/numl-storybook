@@ -2,6 +2,7 @@
 node_modules
 /dist
 .cache
+public/preview/*
 
 # local env files
 .env.local

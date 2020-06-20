@@ -10,7 +10,7 @@ Default step: `1`.
 
 ```html
 <split/>
-<nu-flow gap>
+<nu-flow gap="2x">
   <nu-slider
     value="20"></nu-slider>
   <nu-slider

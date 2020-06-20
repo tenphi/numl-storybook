@@ -137,30 +137,30 @@ export default {
     };
   },
   watch: {
-    scale() {
-      this.onViewportChange();
-    },
-    markup(val) {
-      if (!val) return;
-
+    // scale() {
+    //   this.onViewportChange();
+    // },
+    // markup(val) {
+    //   if (!val) return;
+    //
+    //   const { frame } = this.$refs;
+    //
+    //   if (frame && val.includes('<script')) {
+    //     setTimeout(() => {
+    //       frame.contentWindow.location.reload();
+    //     }, 100);
+    //   }
+    // },
+    encodedData() {
+      // if (this.tempData) {
       const { frame } = this.$refs;
 
-      if (frame && val.includes('<script')) {
-        setTimeout(() => {
-          frame.contentWindow.location.reload();
-        }, 100);
-      }
-    },
-    encodedData(data) {
-      if (this.tempData) {
-        const { frame } = this.$refs;
+      setTimeout(() => {
+        frame.contentWindow.location.reload();
+      }, 100);
+      // }
 
-        setTimeout(() => {
-          frame.contentWindow.location.reload();
-        }, 100);
-      }
-
-      this.tempData = data;
+      // this.tempData = data;
     },
   },
   computed: {

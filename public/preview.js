@@ -182,7 +182,9 @@ import('./numl/index').then(() => {
           return '';
         });
 
-    root.innerHTML = markup;
+    setTimeout(() => {
+      root.innerHTML = markup;
+    });
 
     root.setAttribute('size', size);
 

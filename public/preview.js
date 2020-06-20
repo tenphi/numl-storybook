@@ -6,7 +6,7 @@ import('./numl/index').then(() => {
   let markup;
   let size;
 
-  const root = document.querySelector('#content');
+  const root = document.getElementById('content');
   const theme = document.querySelector('nu-theme');
   const props = document.querySelector('nu-props');
   const html = document.querySelector('html');

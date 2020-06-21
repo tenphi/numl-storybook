@@ -5,7 +5,7 @@
 <nu-flow gap="2x" size="lg">
   <nu-attrs
     for="slider" width="15" min="0" max="359"
-    image="linear(to right, hsi(0, 90), hsi(90, 90), hsi(180, 90), hsi(270, 90), hsi(0, 90))"></nu-attrs>
+    image="linear(to right, hsi(0), hsi(90), hsi(180), hsi(270), hsi(0))"></nu-attrs>
   <nu-grid columns="auto 1fr" gap="1x" items="center start">
     <nu-el>From</nu-el>
     <nu-slider fill="--from" value="280" control="props[from=hsi(@)]"></nu-slider>

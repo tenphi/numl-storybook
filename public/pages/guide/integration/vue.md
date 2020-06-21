@@ -12,4 +12,23 @@ If you are using any other Web Components, just add them to the list.
 
 ## Event binding
 
-There is no difference between Custom Elements
+Bind event handlers as you do it with other Vue Components.
+
+**tap** event binding:
+
+```html
+<nu-btn
+  @tap="onTap">
+  Button
+</nu-btn>
+```
+
+**input** event binding:
+
+```html
+<nu-switch @input="onInput($event.detail)"></nu-switch>
+```
+
+## Real-world examples
+
+* [This Storybook Repository](!https://github.com/tenphi/numl-storybook)

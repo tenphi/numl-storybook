@@ -260,20 +260,20 @@ export const STORYBOOK_MENU = [
     label: 'Control system',
     to: '/storybook/dynamic-props/control-system',
   },
-  {
-    type: 'heading',
-    label: 'Components',
-  },
-  {
-    type: 'link',
-    label: 'Date picker',
-    to: '/storybook/components/datepicker',
-  },
-  {
-    type: 'link',
-    label: 'Date input',
-    to: '/storybook/components/dateinput',
-  },
+  // {
+  //   type: 'heading',
+  //   label: 'Components',
+  // },
+  // {
+  //   type: 'link',
+  //   label: 'Date picker',
+  //   to: '/storybook/components/datepicker',
+  // },
+  // {
+  //   type: 'link',
+  //   label: 'Date input',
+  //   to: '/storybook/components/dateinput',
+  // },
   {
     type: 'heading',
     label: 'Complex',

@@ -54,6 +54,9 @@
     }
   },
   "browserslist": [
-    "> 3%"
+    "iOS 10",
+    "last 10 Chrome versions",
+    "last 5 Firefox versions",
+    "last 3 Safari versions"
   ]
 }

@@ -160,6 +160,11 @@ export const STORYBOOK_MENU = [
   },
   {
     type: 'link',
+    label: 'Menus',
+    to: '/storybook/widgets/menus',
+  },
+  {
+    type: 'link',
     label: 'Switches',
     to: '/storybook/widgets/switches',
   },

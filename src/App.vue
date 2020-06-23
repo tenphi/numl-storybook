@@ -193,7 +193,9 @@
               <nu-el place="center end">Hue</nu-el>
               <nu-slider
                 :value="hue" @input="hue = $event.detail" type="int"
-                min="0" max="359"></nu-slider>
+                min="0" max="359"
+                image="linear(to right, hue(0 s), hue(90 s), hue(180 s), hue(270 s), hue(0 s))">
+              </nu-slider>
               <nu-el>{{ hue }}</nu-el>
 
               <nu-el place="center end">Saturation</nu-el>

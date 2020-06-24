@@ -6,27 +6,27 @@
     <nu-flex
       :show="mode === 'editor' ? 'y' : 'y|n'"
       fill="bg" height="22 100% 100%" flow="column" :width="`${split}%|100%`">
-      <nu-theme name="header" hue="#00f" mod="tint"></nu-theme>
-      <nu-theme name="quote" hue="#090" mod="tint"></nu-theme>
-      <nu-theme name="negative" hue="#d44" mod="tint"></nu-theme>
-      <nu-theme name="positive" hue="#292" mod="tint"></nu-theme>
-      <nu-theme name="keyword" hue="#708" mod="tint"></nu-theme>
-      <nu-theme name="atom" hue="#219" mod="tint"></nu-theme>
-      <nu-theme name="number" hue="#164" mod="tint"></nu-theme>
-      <nu-theme name="def" hue="#00f" mod="tint"></nu-theme>
-      <nu-theme name="variable" hue="#05a" mod="tint"></nu-theme>
-      <nu-theme name="type" hue="#085" mod="tint"></nu-theme>
-      <nu-theme name="comment" hue="#a50" mod="tint"></nu-theme>
-      <nu-theme name="string" hue="#a11" mod="tint"></nu-theme>
-      <nu-theme name="string-2" hue="#f50" mod="tint"></nu-theme>
-      <nu-theme name="meta" hue="#555" mod="tint"></nu-theme>
-      <nu-theme name="builtin" hue="#30a" mod="tint"></nu-theme>
-      <nu-theme name="bracket" hue="#997" mod="tint"></nu-theme>
-      <nu-theme name="tag" hue="#170" mod="tint"></nu-theme>
-      <nu-theme name="attribute" hue="#00c" mod="tint"></nu-theme>
-      <nu-theme name="hr" hue="#999" mod="tint soft"></nu-theme>
-      <nu-theme name="link" hue="#00c" mod="tint"></nu-theme>
-      <nu-theme name="error" hue="#f00" mod="tint"></nu-theme>
+      <nu-props header-color="hue(266 70)"></nu-props>
+      <nu-props quote-color="hue(128 70)"></nu-props>
+      <nu-props negative-color="hue(12 70)"></nu-props>
+      <nu-props positive-color="hue(128 70)"></nu-props>
+      <nu-props keyword-color="hue(298 70)"></nu-props>
+      <nu-props atom-color="hue(267 70)"></nu-props>
+      <nu-props number-color="hue(148 70)"></nu-props>
+      <nu-props def-color="hue(266 70)"></nu-props>
+      <nu-props variable-color="hue(255 70)"></nu-props>
+      <nu-props type-color="hue(145 70)"></nu-props>
+      <nu-props comment-color="hue(31 70)"></nu-props>
+      <nu-props string-color="hue(12 70)"></nu-props>
+      <nu-props string-2-color="hue(19 70)"></nu-props>
+      <nu-props meta-color="hue(0 70)"></nu-props>
+      <nu-props builtin-color="hue(269 70)"></nu-props>
+      <nu-props bracket-color="hue(86 70)"></nu-props>
+      <nu-props tag-color="hue(127 70)"></nu-props>
+      <nu-props attribute-color="hue(266 70)"></nu-props>
+      <nu-props hr-color="hue(0 70 low)"></nu-props>
+      <nu-props link-color="hue(266 70)"></nu-props>
+      <nu-props error-color="hue(12 70)"></nu-props>
 
       <nu-pane
         border="bottom" fill="subtle" padding="right" text="nowrap"
@@ -322,19 +322,19 @@ export default {
 }
 
 .cm-s-default .cm-keyword {
-  color: var(--nu-keyword-text-color);
+  color: var(--nu-keyword-color);
 }
 
 .cm-s-default .cm-atom {
-  color: var(--nu-atom-text-color);
+  color: var(--nu-atom-color);
 }
 
 .cm-s-default .cm-number {
-  color: var(--nu-number-text-color);
+  color: var(--nu-number-color);
 }
 
 .cm-s-default .cm-def {
-  color: var(--nu-def-text-color);
+  color: var(--nu-def-color);
 }
 
 .cm-s-default .cm-variable,
@@ -344,63 +344,63 @@ export default {
 }
 
 .cm-s-default .cm-variable-2 {
-  color: var(--nu-variable-text-color);
+  color: var(--nu-variable-color);
 }
 
 .cm-s-default .cm-variable-3, .cm-s-default .cm-type {
-  color: var(--nu-type-text-color);
+  color: var(--nu-type-color);
 }
 
 .cm-s-default .cm-comment {
-  color: var(--nu-comment-text-color);
+  color: var(--nu-comment-color);
 }
 
 .cm-s-default .cm-string {
-  color: var(--nu-string-text-color);
+  color: var(--nu-string-color);
 }
 
 .cm-s-default .cm-string-2 {
-  color: var(--nu-string-2-text-color);
+  color: var(--nu-string-2-color);
 }
 
 .cm-s-default .cm-meta {
-  color: var(--nu-meta-text-color);
+  color: var(--nu-meta-color);
 }
 
 .cm-s-default .cm-qualifier {
-  color: var(-meta-nu--text-color);
+  color: var(--nu-meta-color);
 }
 
 .cm-s-default .cm-builtin {
-  color: var(--nu-builtin-text-color);
+  color: var(--nu-builtin-color);
 }
 
 .cm-s-default .cm-bracket {
-  color: var(--nu-bracket-text-color);
+  color: var(--nu-bracket-color);
 }
 
 .cm-s-default .cm-tag {
-  color: var(--nu-tag-text-color);
+  color: var(--nu-tag-color);
 }
 
 .cm-s-default .cm-attribute {
-  color: var(--nu-attribute-text-color);
+  color: var(--nu-attribute-color);
 }
 
 .cm-s-default .cm-hr {
-  color: var(--nu-hr-text-color);
+  color: var(--nu-hr-color);
 }
 
 .cm-s-default .cm-link {
-  color: var(--nu-link-text-color);
+  color: var(--nu-link-color);
 }
 
 .cm-s-default .cm-error {
-  color: var(--nu-cm-error-text-color);
+  color: var(--nu-cm-error-color);
 }
 
 .cm-invalidchar {
-  color: var(--nu-cm-error-text-color);
+  color: var(--nu-cm-error-color);
 }
 
 .CodeMirror-composing {

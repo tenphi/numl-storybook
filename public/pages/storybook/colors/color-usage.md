@@ -65,4 +65,17 @@ Shadow with custom color.
 </nu-card>
 ```
 
-> It is possible to use **CSS** color definitions to set the colors. But we strongly recommend you to use `hue()` definitions only. It creates adaptive color that will look great in **Dark Scheme** and **High Contrast Mode**. See the [hue() reference page](../../reference/functions/hue.md) to learn more.
+> It is possible to use **CSS** color definitions to set the colors. But we strongly recommend you to use `hue()` definitions only. It creates an adaptive color that will look great in **Dark Scheme** and **High Contrast Mode**. See the [hue() reference page](../../reference/functions/hue.md) to learn more.
+
+## Declare named colors
+
+Use [nu-props](../../reference/elements/nu-props.md) definition element to declare custom color with name.
+
+```html
+<split/>
+<nu-props fancy-color="hue(320 100 low special)"></nu-props>
+
+<nu-card fill="fancy" color="special-text" text="b">Fancy card</nu-card>
+<nu-spacer></nu-spacer>
+<nu-card border="#fancy" color="fancy" text="b">Fancy card</nu-card>
+```

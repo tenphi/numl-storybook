@@ -46,3 +46,10 @@ Change various modifiers:
 Use `"dim"` and `"bold"` modifiers to change contrast between main background color and theme background color.
 
 Use `"soft"` and `"strong"` modifiers to change contrast between background and foreground colors.
+
+### See also
+
+* [nu-theme](../elements/nu-theme.md)
+* [color](./color.md)
+* [fill](./fill.md)
+* [hue()](../functions/hue.md)

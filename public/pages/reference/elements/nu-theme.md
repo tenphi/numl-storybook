@@ -44,9 +44,10 @@ The definition element that declares a theme in the context of its parent.
 
 ### See also
 
-* [theme](./theme.md)
-* [color](./color.md)
-* [fill](./fill.md)
+* [theme](../attributes/theme.md)
+* [color](../attributes/color.md)
+* [fill](../attributes/fill.md)
+* [hue()](../functions/hue.md)
 
 ### CSS Reference
 

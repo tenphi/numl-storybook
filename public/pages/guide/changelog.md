@@ -22,8 +22,9 @@ Also, update introduces more semantic elements and combinations of elements with
 * Global locale inheritance
 * Forms
 * Form validation
+* Adaptive colors
 * Improved support for Shadow DOM
-* Listbox ARIA compliance
+* Improved ARIA support
 * Rich components
 * Real ==flex gap== detection
 * Style selections
@@ -32,43 +33,48 @@ Also, update introduces more semantic elements and combinations of elements with
 * Outline mode
 * Strict-size columns for Grid with `pr` unit.
 
-### Attributes
-* ==focus==: inside & outside modifiers
+### New standalone behaviors
+* ==offset==
+* ==appear==
+
+### New Attributes
+* [outline](../reference/attributes/outline.md)
+* [mark](../reference/attributes/mark.md)
 
 ### New elements
 
-* ==nu-listbox==
-* ==nu-popuplistbox==
-* ==nu-option==
-* ==nu-field==
-* ==nu-check==
-* ==nu-form==
-* ==nu-debug==
-* ==nu-topbar==
-* ==nu-dropdownicon==
+* [nu-listbox](../reference/elements/nu-listbox.md)
+* [nu-popuplistbox](../reference/elements/nu-popuplistbox.md)
+* [nu-option](../reference/elements/nu-option.md)
+* [nu-field](../reference/elements/nu-field.md)
+* [nu-check](../reference/elements/nu-check.md)
+* [nu-form](../reference/elements/nu-form.md)
+* [nu-debug](../reference/elements/nu-debug.md)
+* [nu-cd](../reference/elements/nu-cd.md)
+* [nu-dropdownicon](../reference/elements/nu-dropdownicon.md)
 * format elements:
-    * ==nu-strong==
-    * ==nu-em==
-    * ==nu-sup==
-    * ==nu-sub==
+    * [nu-strong](../reference/elements/nu-strong.md)
+    * [nu-em](../reference/elements/nu-em.md)
+    * [nu-sup](../reference/elements/nu-sup.md)
+    * [nu-sub](../reference/elements/nu-sub.md)
 * semantic elements:
-    * ==nu-header==
-    * ==nu-footer==
-    * ==nu-article==
-    * ==nu-aside==
-    * ==nu-section==
-    * ==nu-main==
-    * ==nu-h1==
-    * ==nu-h2==
-    * ==nu-h3==
-    * ==nu-h4==
-    * ==nu-h5==
-    * ==nu-h6==
+    * [nu-header](../reference/elements/nu-header.md)
+    * [nu-footer](../reference/elements/nu-footer.md)
+    * [nu-article](../reference/elements/nu-article.md)
+    * [nu-aside](../reference/elements/nu-aside.md)
+    * [nu-section](../reference/elements/nu-section.md)
+    * [nu-main](../reference/elements/nu-main.md)
+    * [nu-h1](../reference/elements/nu-h1.md)
+    * [nu-h2](../reference/elements/nu-h2.md)
+    * [nu-h3](../reference/elements/nu-h3.md)
+    * [nu-h4](../reference/elements/nu-h4.md)
+    * [nu-h5](../reference/elements/nu-h5.md)
+    * [nu-h6](../reference/elements/nu-h6.md)
 
-### New components
+### New components (experimental)
 
-* ==nu-dateinput==
-* ==nu-datepicker==
+* [nu-dateinput](../reference/elements/nu-dateinput.md)
+* [nu-datepicker](../reference/elements/nu-datepicker.md)
 
 ### Breaking change
 
@@ -90,6 +96,7 @@ Also, update introduces more semantic elements and combinations of elements with
 ### Minor or internal features
 
 * [nu-popup](/reference/elements/nu-popup) - linking rework
+* ==focus==: inside & outside modifiers
 * Add $suffix and $prefix splitting via `,` symbol
 * Optimize theme generation
 * Set polite focus via CP
@@ -99,11 +106,11 @@ Also, update introduces more semantic elements and combinations of elements with
 
 ### Bug fixes
 
-* ==nu-popup== linking is not working in Shadow DOM
+* [nu-popup](../reference/elements/nu-popup.md) linking is not working in Shadow DOM
 * Focus is not working in Shadow DOM
 * Fix scroll corner for Dark Scheme
-* ==nu-tooltip== fix margins in layouts
-* Incorrect styling of `font-weight` in ==text== attribute.
+* [nu-tooltip](../reference/elements/nu-tooltip.md)== fix margins in layouts
+* Incorrect styling of `font-weight` in [text](../reference/attributes/text.md) attribute.
 
 ## v0.10
 

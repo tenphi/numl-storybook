@@ -24,7 +24,7 @@
 <split/>
 <nu-card
   clear text="b" size="xl" color="special-text" shadow="special"
-  image="linear(-15deg, hsi(280), hsi(320))">
+  image="linear(-15deg, hue(280 special), hue(320 special))">
   Fancy card
 </nu-card>
 ```

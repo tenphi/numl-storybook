@@ -1,5 +1,7 @@
 # Lists
 
+Use [nu-list](../../reference/elements/nu-list.md) and [nu-listitem](../../reference/elements/nu-listitem.md) elements.
+
 ## Basic list
 
 ```html

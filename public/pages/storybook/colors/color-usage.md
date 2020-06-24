@@ -2,7 +2,7 @@
 
 ## Change text color
 
-Use `"color"` property to set text (base) color.
+Use [color](../../reference/attributes/color.md) property to set text (base) color.
 
 ```html
 <split/>
@@ -18,7 +18,7 @@ Set transparency for the color using the following syntax:
 
 ## Fill element with color
 
-Use `"fill"` property to fill element with color.
+Use [fill](../../reference/attributes/fill.md) property to fill element with color.
 
 ```html
 <split/>
@@ -46,3 +46,23 @@ Set transparency for the border color using the following syntax:
   Special card
 </nu-card>
 ```
+
+Set custom color (red).
+
+```html
+<split/>
+<nu-card border="1x hue(1)" radius="2x">
+  Special card
+</nu-card>
+```
+
+Shadow with custom color.
+
+```html
+<split/>
+<nu-card shadow="1x 1x 3x hue(320 70 high 50)">
+
+</nu-card>
+```
+
+> It is possible to use **CSS** color definitions to set the colors. But we strongly recommend you to use `hue()` definitions only. It creates adaptive color that will look great in **Dark Scheme** and **High Contrast Mode**. See the [hue() reference page](../../reference/functions/hue.md) to learn more.

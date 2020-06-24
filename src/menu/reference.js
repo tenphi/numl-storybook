@@ -1,6 +1,13 @@
 import Numl from '@/services/numl';
 
-function handleElement(el) {
+function heading(label) {
+  return {
+    type: 'heading',
+    label,
+  };
+}
+
+function elementItem(el) {
   return {
     type: 'link',
     label: `<${el.tag}/>`,
@@ -8,7 +15,7 @@ function handleElement(el) {
   };
 }
 
-function handleAttribute(attr) {
+function attrItem(attr) {
   return {
     type: 'link',
     label: `[${attr}]`,
@@ -16,74 +23,45 @@ function handleAttribute(attr) {
   };
 }
 
+function funcItem(attr) {
+  return {
+    type: 'link',
+    label: `${attr}()`,
+    to: `/reference/functions/${attr}`,
+  };
+}
+
 export const REFERENCE_MENU = [
-  {
-    type: 'heading',
-    label: 'Base Elements',
-  },
-  ...Numl.baseElements.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Inline Elements',
-  },
-  ...Numl.inlineElements.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Semantic Elements',
-  },
-  ...Numl.semanticElements.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Formatter Elements',
-  },
-  ...Numl.formatterElements.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Layout Elements',
-  },
-  ...Numl.layoutElements.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Widget Elements',
-  },
-  ...Numl.widgetElements.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Converters',
-  },
-  ...Numl.converters.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Components',
-  },
-  ...Numl.components.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Definitions',
-  },
-  ...Numl.definitions.map(handleElement),
-  {
-    type: 'heading',
-    label: 'Style Attributes',
-  },
-  ...Numl.styleAttributes.map(handleAttribute),
-  {
-    type: 'heading',
-    label: 'Utility Attributes',
-  },
-  ...Numl.utilityAttributes.map(handleAttribute),
-  {
-    type: 'heading',
-    label: 'Aria Attributes',
-  },
+  heading('Base Elements'),
+  ...Numl.baseElements.map(elementItem),
+  heading('Inline Elements'),
+  ...Numl.inlineElements.map(elementItem),
+  heading('Semantic Elements'),
+  ...Numl.semanticElements.map(elementItem),
+  heading('Formatter Elements'),
+  ...Numl.formatterElements.map(elementItem),
+  heading('Layout Elements'),
+  ...Numl.layoutElements.map(elementItem),
+  heading('Widget Elements'),
+  ...Numl.widgetElements.map(elementItem),
+  heading('Converters'),
+  ...Numl.converters.map(elementItem),
+  heading('Components'),
+  ...Numl.components.map(elementItem),
+  heading('Definitions'),
+  ...Numl.definitions.map(elementItem),
+  heading('Style Attributes'),
+  ...Numl.styleAttributes.map(attrItem),
+  heading('Utility Attributes'),
+  ...Numl.utilityAttributes.map(attrItem),
+  heading('Aria Attributes'),
   // ...Numl.ariaAttributes.map(handleAttribute),
   {
     type: 'text',
     label: 'Coming soon',
   },
-  {
-    type: 'heading',
-    label: 'Modifier Attributes',
-  },
-  ...Numl.modifierAttributes.map(handleAttribute),
+  heading('Modifier Attributes'),
+  ...Numl.modifierAttributes.map(attrItem),
+  heading('Color functions'),
+  funcItem('hue'),
 ];

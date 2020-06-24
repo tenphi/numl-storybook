@@ -67,16 +67,16 @@ router.afterEach((to) => {
     Window.setTitle(to.meta.title);
   }
 
+  document.documentElement.scrollTop = 0;
+
   setTimeout(() => {
     const navItem = document.querySelector('#subnav nu-link[theme="special"]');
 
     if (navItem) {
-      navItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
       Window.setTitle(navItem.innerText);
+      navItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-
-    document.documentElement.scrollTop = 0;
-  });
+  }, 100);
 });
 
 export default router;

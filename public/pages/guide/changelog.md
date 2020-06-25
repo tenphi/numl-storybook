@@ -130,7 +130,7 @@ Also, update introduces more semantic elements and combinations of elements with
 
 ### Breaking changes
 * New simplified syntax for state declaration: `0 #btn:pressed[1] #btn:hover[1]` -> `^#btn :pressed[1] :hover[1] 0`.
-* Built-in custom units changes: **br** -> **r**, **bw** -> **b**, **x** is equal **var(--nu-gap) now
+* Built-in custom units changes: **br** -> **r**, **bw** -> **b**, **x** is equal `var(--nu-gap)` now
 * Remove custom properties declarations from [nu-theme](/reference/elements/nu-theme) decorator! Use brand new [nu-props](/reference/elements/nu-props) decorator.
 * Theme type **toned** renamed to **tone**.
 * **nu-triangle**: remove direction attribute, use **rotate** instead.

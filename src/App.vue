@@ -120,8 +120,8 @@
               <nu-btn
                 v-if="navLinks.prev"
                 :to="navLinks.prev.to"
-                special>
-                <nu-icon name="chevrons-left" space="left"></nu-icon>
+                clear text="sb">
+                <nu-icon name="arrow-left" space="left"></nu-icon>
                 {{navLinks.prev.heading}}:
                 {{navLinks.prev.label}}
               </nu-btn>
@@ -130,10 +130,10 @@
               <nu-btn
                 v-if="navLinks.next"
                 :to="navLinks.next.to"
-                special>
+                clear text="sb">
                 {{navLinks.next.heading}}:
                 {{navLinks.next.label}}
-                <nu-icon name="chevrons-right" space="right"></nu-icon>
+                <nu-icon name="arrow-right" space="right"></nu-icon>
               </nu-btn>
             </nu-pane>
           </nu-flow>

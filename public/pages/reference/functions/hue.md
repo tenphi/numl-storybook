@@ -97,3 +97,38 @@ Normal and special hues. Use `"special"` modifier for backgrounds with special (
 ```
 
 > Use **Dark Scheme** to see the difference in the last example.
+
+## Predefined colors
+
+There are few predefined colors. They all are **adaptive** and have **special** modifier.
+
+```html
+<split/>
+<nu-gridtable columns="auto auto 1fr" border>
+  <nu-attrs for="cell" padding></nu-attrs>
+  <nu-columnheader>Name</nu-columnheader>
+  <nu-columnheader>Contrast</nu-columnheader>
+  <nu-columnheader></nu-columnheader>
+  <nu-cell>black</nu-cell>
+  <nu-cell>100</nu-cell>
+  <nu-cell fill="black"></nu-cell>
+  <nu-cell>dark</nu-cell>
+  <nu-cell>85</nu-cell>
+  <nu-cell fill="dark"></nu-cell>
+  <nu-cell>darkgrey</nu-cell>
+  <nu-cell>high</nu-cell>
+  <nu-cell fill="darkgrey"></nu-cell>
+  <nu-cell>grey</nu-cell>
+  <nu-cell>auto</nu-cell>
+  <nu-cell fill="grey"></nu-cell>
+  <nu-cell>lightgrey</nu-cell>
+  <nu-cell>low</nu-cell>
+  <nu-cell fill="lightgrey"></nu-cell>
+  <nu-cell>light</nu-cell>
+  <nu-cell>5</nu-cell>
+  <nu-cell fill="light"></nu-cell>
+  <nu-cell>white</nu-cell>
+  <nu-cell>0</nu-cell>
+  <nu-cell fill="white"></nu-cell>
+</nu-gridtable>
+```

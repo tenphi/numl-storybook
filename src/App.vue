@@ -202,7 +202,10 @@
               <nu-slider
                 :disabled="saturationType === 'auto'"
                 :value="saturation" @input="saturation = $event.detail" type="int"
-                min="0" max="100"></nu-slider>
+                min="0" max="100"
+                :image="`linear(to right, hue(${hue} 0 ${
+                  pastel ? 'pastel' : ''}), hue(${hue} 100 ${
+                  pastel ? 'pastel' : ''}))`"></nu-slider>
               <nu-el>{{ saturation }}</nu-el>
               <nu-el></nu-el>
               <nu-block column="auto / span 2">

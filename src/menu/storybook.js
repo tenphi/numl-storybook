@@ -293,4 +293,9 @@ export const STORYBOOK_MENU = [
     label: 'Login form',
     to: '/storybook/complex/login-form',
   },
+  {
+    type: 'link',
+    label: 'Collapsed messages',
+    to: '/storybook/complex/notifications',
+  },
 ];

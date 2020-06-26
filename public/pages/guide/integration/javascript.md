@@ -48,7 +48,7 @@ import router from './router'; // Your router
 
 routing.setRouter((url, openNewTab) => {
   // skip outside links and links that open in new tabs
-  if (url === '/' || openNewTab || url.startsWith('https://') || url.includes('//') || url.startsWith('mailto:') || url.includes('/api/')) {
+  if (openNewTab || url.startsWith('https://') || url.includes('//') || url.startsWith('mailto:') || url.includes('/api/')) {
     return true;
   }
 

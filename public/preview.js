@@ -94,7 +94,7 @@ import('./numl/index').then(() => {
     props.setAttribute('gap', `${options.gap || '.5'}rem`);
     props.setAttribute('radius', `${options.radius || '.5'}rem`);
     props.setAttribute('border-width', `${options.borderWidth || '1'}px`);
-    props.setAttribute('transition-time', `${options.transitionTime || '80'}ms`);
+    props.setAttribute('transition', `${options.transitionTime || '80'}ms`);
 
     setScheme(options.scheme || 'auto');
     setContrast(options.contrast || 'auto');

@@ -21,7 +21,7 @@ You can change icon (with transition) depending on the element state like:
 
 ```html
 <split/>
-<nu-props transition-time=".2s"></nu-props>
+<nu-props transition=".2s"></nu-props>
 <nu-flex gap="2x" flow="row wrap">
   <nu-btn padding>
     <nu-icon name="box ^:hover[package]"></nu-icon>

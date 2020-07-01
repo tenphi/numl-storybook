@@ -92,7 +92,7 @@
         gap="--preview-gap"
         radius="--preview-radius"
         border-width="--preview-border-width"
-        transition-time="--preview-transition-time"></nu-props>
+        transition-time="--preview-transition"></nu-props>
       <iframe
         ref="frame" :src="`/preview/index.html#${encodedData}`" frameborder="0"
         :scrolling="repl ? 'yes' : 'no'" width="100%" @load="resizeIframe(this)"
@@ -181,7 +181,7 @@ export default {
     iframeStyles() {
       return {
         display: 'block',
-        transition: 'height var(--nu-transition-time) linear',
+        transition: 'height var(--nu-transition) linear',
         'max-width': '100%',
         height: this.repl ? '100%' : '58px',
       };

@@ -262,7 +262,7 @@
               min="0.0625" max="1.5" step="0.0625" precision="3" type="float"></nu-slider>
             <nu-el>{{ radius }}rem</nu-el>
 
-            <nu-el place="center end">Trans. time</nu-el>
+            <nu-el place="center end">Transition</nu-el>
             <nu-slider
               :value="transitionTime" @input="transitionTime = $event.detail"
               min="10" max="250" step="10" precision="0" type="int"></nu-slider>
@@ -563,7 +563,7 @@ export default {
         '--nu-preview-gap': `${this.gap}rem`,
         '--nu-preview-radius': `${this.radius}rem`,
         '--nu-preview-border-width': `${this.borderWidth}px`,
-        '--nu-preview-transition-time': `${this.transitionTime}ms`,
+        '--nu-preview-transition': `${this.transitionTime}ms`,
       };
     },
   },

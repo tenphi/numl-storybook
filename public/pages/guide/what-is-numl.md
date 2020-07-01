@@ -6,7 +6,7 @@
 >
 > This documentation is a **work-in-progress**. If you get stuck, reach out for help in one of our chats: [Telegram](!https://t.me/numldesign) and [Gitter](!https://gitter.im/tenphi/numl).
 
-**Numl** is the **alternative markup language** for the modern and future web whose goal is to create a future-proof abstraction over modern web-technology with simplified **API** based on web standards (**HTML**, **CSS**, **ARIA** specifications) and predictable unified behavior across all the modern browsers, platforms and devices.
+**Numl** is a markup language to create modern high-quality web-interfaces with any look using HTML-based syntax. It utilizes the power of Web Components and creates all the CSS needed right in runtime as it requires, which makes it much more flexible than any other markup solution. Built-in elements will allow you to make gorgeous interfaces and accessible components without inventing your own Design System or UI library.
 
 You can consider this a replacement (at least partial) for **HTML**, **CSS** and even **JavaScript** in some cases.
 

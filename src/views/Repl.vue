@@ -170,14 +170,7 @@ export default {
   },
   watch: {
     currentMarkup() {
-      clearTimeout(this.timerId);
-
-      this.timerId = setTimeout(() => {
-        if (!this.checkMarkup()) return;
-
-        this.previewMarkup = this.currentMarkup;
-        GlobalEvents.$emit('options:change', Options.get());
-      }, 1000);
+      this.updatePreview();
     },
   },
   computed: {
@@ -190,6 +183,24 @@ export default {
     },
   },
   methods: {
+    updatePreview(force) {
+      clearTimeout(this.timerId);
+
+      if (force) {
+        if (!this.checkMarkup()) return;
+
+        this.previewMarkup = this.currentMarkup;
+
+        return;
+      }
+
+      this.timerId = setTimeout(() => {
+        if (!this.checkMarkup()) return;
+
+        this.previewMarkup = this.currentMarkup;
+        GlobalEvents.$emit('options:change', Options.get());
+      }, 1000);
+    },
     toggleMode() {
       this.mode = (this.mode === 'editor' ? 'preview' : 'editor');
     },
@@ -216,6 +227,8 @@ export default {
       }, 2000);
     },
     save() {
+      this.updatePreview(true);
+
       window.location.hash = this.encodedData;
 
       this.saved = true;

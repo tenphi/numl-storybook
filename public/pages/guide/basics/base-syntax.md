@@ -175,7 +175,7 @@ _**If you still don't see the transition** it means it's disabled globally on yo
 
 ## Make it accessible
 
-Great job! We have a great button now but there is still room for improvement. The modern web requires a little more work to make a button usable. We have to add the correct role, other ARIA attributes, and make sure our button emits correct events. That's why we should add ==button== behavior to our element.
+Great job! We have a great button now but there is still room for improvement. The modern web requires a little more work to make a button usable. We have to add the correct role, other ARIA attributes, and make sure our button emits correct events. That's why we should add ==action== behavior to our element.
 
 ```html
 <split/>
@@ -184,7 +184,7 @@ Great job! We have a great button now but there is still room for improvement. T
   border
   padding="1x 2x"
   cursor="pointer"
-  #[[nx-button]]#
+  #[[nx-action]]#
   outline="focus"
   inset="n :active[y]"
   mark="hover"
@@ -193,7 +193,7 @@ Great job! We have a great button now but there is still room for improvement. T
 </nu-el>
 ```
 
-We removed ==active== and ==focusable== behaviors 'cause ==button== behavior will inject them automatically as they required.
+We removed ==active== and ==focusable== behaviors 'cause ==action== behavior will inject them automatically as they required.
 
 ## Propagate styles
 
@@ -207,7 +207,7 @@ Our button is ready, but what if we need to add more buttons to our application.
   border
   padding="1x 2x"
   cursor="pointer"
-  nx-button
+  nx-action
   outline="focus"
   inset="n :active[y]"
   mark="hover"

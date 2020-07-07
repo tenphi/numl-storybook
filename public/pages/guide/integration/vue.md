@@ -29,6 +29,8 @@ Bind event handlers as you do it with other Vue Components.
 <nu-switch @input="onInput($event.detail)"></nu-switch>
 ```
 
-## Real-world examples
+## Real-world examples (repositories)
 
-* [This Storybook Repository](!https://github.com/tenphi/numl-storybook)
+* [This Storybook](!https://github.com/tenphi/numl-storybook)
+* [Tenphi's homepage](!https://github.com/tenphi/tenphi.me)
+* [Web Standards Calendar](!https://github.com/katrinLuna/frontend-events-numl)

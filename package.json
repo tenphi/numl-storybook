@@ -10,6 +10,7 @@
     "build-preview": "parcel build --target browser --out-dir public/preview/ --out-file index.html --public-url . public/preview.html"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "clipboard-copy": "^3.1.0",
     "codemirror": "^5.54.0",
     "core-js": "^3.6.4",

@@ -116,6 +116,11 @@ import Preview from '../components/Preview.vue';
 import GlobalEvents from '../services/global-events';
 import Options from '../services/options';
 import Splitter from '../components/Splitter.vue';
+import Snippets from '../services/snippets';
+
+window.API = {
+  Snippets,
+};
 
 Vue.use(codemirror);
 
@@ -226,10 +231,14 @@ export default {
         this.copied = false;
       }, 2000);
     },
-    save() {
+    async save() {
       this.updatePreview(true);
 
-      window.location.hash = this.encodedData;
+      try {
+        window.location.hash = await Snippets.save(this.currentMarkup);
+      } catch (e) {
+        window.location.hash = this.encodedData;
+      }
 
       this.saved = true;
 
@@ -238,7 +247,7 @@ export default {
       }, 2000);
     },
   },
-  mounted() {
+  async mounted() {
     if (!this.$refs.root.parentNode) return;
 
     if (this.markup) {
@@ -247,27 +256,36 @@ export default {
     } else {
       const hash = window.location.hash.slice(1);
 
-      let data;
+      if (hash.length === 24) {
+        this.currentMarkup = (await Snippets.get(hash)) || '';
+        this.currentEmbed = false;
+      } else {
+        let data;
 
-      if (hash) {
-        try {
-          data = JSON.parse(decodeURIComponent(hash));
-        } catch (e) {
+        if (hash) {
           try {
-            data = JSON.parse(LZString.decompressFromEncodedURIComponent(hash));
-          } catch (e2) {
+            data = JSON.parse(decodeURIComponent(hash));
+          } catch (e) {
+            try {
+              data = JSON.parse(LZString.decompressFromEncodedURIComponent(hash));
+            } catch (e2) {
+              // do nothing
+            }
             // do nothing
           }
-          // do nothing
-        }
 
-        this.currentMarkup = data.markup;
-        this.currentEmbed = data.embed || false;
+          this.currentMarkup = data.markup;
+          this.currentEmbed = data.embed || false;
+
+          setTimeout(() => {
+            this.save();
+          }, 100);
+        }
       }
 
       if (!this.checkMarkup()) return;
 
-      this.previewMarkup = this.markup;
+      this.previewMarkup = this.currentMarkup;
     }
 
     setTimeout(() => {
@@ -457,15 +475,15 @@ export default {
   cursor: crosshair;
 }
 
-.CodeMirror-line::selection
-, .CodeMirror-line > span::selection
-, .CodeMirror-line > span > span::selection {
+.CodeMirror-line::selection,
+.CodeMirror-line > span::selection,
+.CodeMirror-line > span > span::selection {
   background: var(--nu-main-focus-color);
 }
 
-.CodeMirror-line::-moz-selection
-, .CodeMirror-line > span::-moz-selection
-, .CodeMirror-line > span > span::-moz-selection {
+.CodeMirror-line::-moz-selection,
+.CodeMirror-line > span::-moz-selection,
+.CodeMirror-line > span > span::-moz-selection {
   background: var(--nu-main-focus-color);
 }
 
@@ -473,25 +491,34 @@ export default {
   background: var(--nu-main-hover-color);
   border-left: 1px solid var(--nu-main-text-color);
 }
+
 .CodeMirror-hscrollbar::-webkit-scrollbar, .CodeMirror-vscrollbar::-webkit-scrollbar {
   width: var(--nu-gap);
   height: var(--nu-gap);
 }
-.CodeMirror-hscrollbar::-webkit-scrollbar-track, .CodeMirror-vscrollbar::-webkit-scrollbar-track {
+
+.CodeMirror-hscrollbar::-webkit-scrollbar-track,
+.CodeMirror-vscrollbar::-webkit-scrollbar-track {
   background-color: var(--nu-local-bg-color, var(--nu-subtle-color));
 }
-.CodeMirror-hscrollbar::-webkit-scrollbar-thumb, .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
+
+.CodeMirror-hscrollbar::-webkit-scrollbar-thumb,
+.CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
   background-color: rgba(var(--nu-text-color-rgb), .5);
   border-radius: var(--nu-radius);
   border: var(--nu-border-width) solid var(--nu-subtle-color);
 }
-.CodeMirror-hscrollbar::-webkit-scrollbar-corner, .CodeMirror-vscrollbar::-webkit-scrollbar-corner {
+
+.CodeMirror-hscrollbar::-webkit-scrollbar-corner,
+.CodeMirror-vscrollbar::-webkit-scrollbar-corner {
   background-color: transparent;
 }
+
 .CodeMirror-hscrollbar, .CodeMirror-vscrollbar {
   scrollbar-width: thin;
   scrollbar-color: var(--nu-subtle-color) rgba(var(--nu-text-color-rgb), .5);
 }
+
 .CodeMirror-scrollbar-filler {
   background-color: transparent;
 }

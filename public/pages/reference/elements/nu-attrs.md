@@ -48,3 +48,26 @@ Use multiple `<nu-attrs>` elements. The closer definition to the element the mor
   </nu-block>
 </nu-flow>
 ```
+
+### Dynamic change
+
+You can dynamically change attributes on `<nu-attrs>`. All changes will be tranferred to the corresponding elements.
+
+```html
+<split/>
+<nu-flow gap>
+  <nu-block>
+    <nu-btn
+      toggle
+      control="attrs[color]" trigger
+      value="special" off-value="text">
+      Toggle color
+    </nu-btn>
+  </nu-block>
+  <nu-pane>
+    <nu-attrs id="attrs" for="btn"></nu-attrs>
+    <nu-btn>Button</nu-btn>
+    <nu-btn>Button</nu-btn>
+  </nu-pane>
+</nu-flow>
+```

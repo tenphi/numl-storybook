@@ -63,6 +63,10 @@
           </nu-btn>
         </template>
 
+        <nu-btn :to="`!/preview/index.html#${encodedData}`">
+          <nu-tooltip>Open preview in separate tab</nu-tooltip>
+          <nu-icon name="external-link"></nu-icon>
+        </nu-btn>
         <template v-if="!repl">
           <nu-btn @tap="copySourceCode">
             <nu-tooltip>
@@ -70,17 +74,11 @@
             </nu-tooltip>
             <nu-icon name="copy"></nu-icon>
           </nu-btn>
-          <nu-btn :to="`!/repl#${encodedData}`">
+          <nu-btn :to="`!/repl#${encodedData}`" special>
             <nu-tooltip>Open in REPL</nu-tooltip>
             <nu-icon name="edit-2"></nu-icon>
           </nu-btn>
         </template>
-        <nu-btn :to="`!/preview/index.html#${encodedData}`">
-          <nu-tooltip>
-            {{ repl ? 'Open preview in separate tab' : 'Open in the new tab' }}
-          </nu-tooltip>
-          <nu-icon name="external-link"></nu-icon>
-        </nu-btn>
       </nu-flex>
     </nu-pane>
 

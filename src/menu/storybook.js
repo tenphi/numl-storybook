@@ -276,6 +276,15 @@ export const STORYBOOK_MENU = [
   // },
   {
     type: 'heading',
+    label: 'Standalone behaviors',
+  },
+  {
+    type: 'link',
+    label: 'Offset',
+    to: '/storybook/behaviors/offset',
+  },
+  {
+    type: 'heading',
     label: 'Complex',
   },
   {

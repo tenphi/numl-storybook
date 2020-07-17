@@ -1,6 +1,6 @@
 <template>
   <nu-flow gap="2x">
-    <nu-attrs for="code" padding radius fill="main-subtle" overflow="auto"></nu-attrs>
+    <nu-attrs for="code" padding radius overflow="auto"></nu-attrs>
     <nu-attrs for="rowheader" text="monospace h"></nu-attrs>
     <nu-attrs for="columnheader" size="xs" text="up spacing"></nu-attrs>
 

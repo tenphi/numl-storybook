@@ -11,7 +11,7 @@ That's it! No build step, no explicit function call to apply changes.
 If you want to prevent flash of unstyled content then add the following tag to the `<head>`:
 
 ```html
-<style>nu-root { opacity: 0; }</style>
+<style>*:not(:defined) { visibility: hidden; }</style>
 ```
 
 Make sure you are using `nu-root` tags on the top-level of your app:

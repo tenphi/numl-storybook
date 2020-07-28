@@ -1,6 +1,6 @@
 Use **special** property to highlight the element with special color. This property don't accepts values and can be bind to screen width or element state.
 
-### Usage
+## Usage
 
 ```html
 <split/>

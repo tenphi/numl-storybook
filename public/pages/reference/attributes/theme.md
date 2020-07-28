@@ -1,6 +1,6 @@
 The **theme** utility property sets the theme (declared via [nu-theme](../elements/nu-theme.md)) to the element by the name. Also, you can add some modifiers to customize the theme. This utility property behaves like style.
 
-### Usage
+## Usage
 
 Basic syntax:
 
@@ -47,7 +47,7 @@ Use `"dim"` and `"bold"` modifiers to change contrast between main background co
 
 Use `"soft"` and `"strong"` modifiers to change contrast between background and foreground colors.
 
-### See also
+## See also
 
 * [nu-theme](../elements/nu-theme.md)
 * [color](./color.md)

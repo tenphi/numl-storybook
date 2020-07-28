@@ -1,12 +1,12 @@
 Use this style to position the element inside the parent element. It's the most complex style attribute in **Numl**.
 
-### Syntax
+## Syntax
 
 ```
 [ <'align-self'> <'justify-self'>? ] || [ [ fixed || sticky || absolute || inside || cover ] || <direction>{1,2} || <length>{1,2} ]
 ```
 
-### Modifiers
+## Modifiers
 
 |Modifier|Description|
 |----|----|
@@ -16,7 +16,7 @@ Use this style to position the element inside the parent element. It's the most 
 |`"inside"`|Use ==absolute== positioning and place element in the center of the offset parent element|
 |`"cover"`|Use ==absolute== positioning and place element over the offset parent covering it|
 
-### CSS References
+## CSS References
 
 * [MDN: place-self](!https://developer.mozilla.org/en-US/docs/Web/CSS/place-self)
 * [MDN: position](!https://developer.mozilla.org/en-US/docs/Web/CSS/position)

@@ -4,7 +4,7 @@ You can use non-unique identifiers for elements. NUML will guarantee internally 
 
 You can refer to the elements using initial ID value. It will be stored in `nu-id` attribute.
 
-### Usage
+## Usage
 
 ```html
 <split/>

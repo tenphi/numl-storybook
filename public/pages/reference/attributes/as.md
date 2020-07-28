@@ -1,6 +1,6 @@
 The **as** property sets the additional "name" to the element that can be used when you declare styles in context via [nu-attrs](../elements/nu-attrs.md).
 
-### Usage
+## Usage
 
 ```html
 <split/>

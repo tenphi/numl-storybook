@@ -1,6 +1,6 @@
 Use **orient** utility property to set orientation for some widgets.
 
-### Usage
+## Usage
 
 ```html
 <split/>

@@ -1,6 +1,6 @@
 Use this style to define the line names and track sizing functions of the grid rows.
 
-### Syntax
+## Syntax
 
 ```
 none | <track-list> | <auto-track-list> | subgrid <line-name-list>?
@@ -27,10 +27,10 @@ where
 <length-percentage> = <length> | <percentage>
 ```
 
-### Examples
+## Examples
 
 * [Layouts - Grid layouts](../../storybook/layouts/grid-layouts.md)
 
-### CSS References
+## CSS References
 
 * [MDN: grid-template-rows](!https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows)

@@ -6,12 +6,12 @@ It's basic attribute to tell what layout element has.
 
 Attribute inherits all possible values from `display`. But to hide element use [hide](./hide.md) style instead or add [hidden] attribute.
 
-### Syntax
+## Syntax
 
 ```
 <display>
 ```
 
-### CSS References
+## CSS References
 
 * [MDN: display](!https://developer.mozilla.org/en-US/docs/Web/CSS/display)

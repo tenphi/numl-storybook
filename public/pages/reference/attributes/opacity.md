@@ -1,11 +1,11 @@
 Use this style to change element's opacity.
 
-### Syntax
+## Syntax
 
 ```
 <alpha-value>
 ```
 
-### CSS Reference
+## CSS Reference
 
 * [MDN: opacity](!https://developer.mozilla.org/en-US/docs/Web/CSS/opacity)

@@ -11,8 +11,8 @@
         transition="fill">
         <nu-block
           radius="round" fill="special-bg" border shadow=".5"
-          width="1.25 + 2bw" height="1.75" place="inside" move=".5bw 0">
-          <nu-attrs for="nu-icon" place="inside" color="special-text" scale="1 1.5"></nu-attrs>
+          width="1.25 + 2bw" height="1.5" place="inside" move=".5bw 0">
+          <nu-attrs for="nu-icon" place="inside" color="special-text" scale=".75 1"></nu-attrs>
           <nu-icon name="chevron-left" move="-.6x 0"></nu-icon>
           <nu-icon name="chevron-right" move=".6x 0"></nu-icon>
         </nu-block>

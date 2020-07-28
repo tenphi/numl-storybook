@@ -1,12 +1,12 @@
 Use this style to change text characteristics: font, weight, style, decoration, transform, vertical and horizontal alignment and more.
 
-### Syntax
+## Syntax
 
 ```
 <mod>*
 ```
 
-### Modifiers
+## Modifiers
 
 |Modifier|Description|
 |----|----|
@@ -54,12 +54,12 @@ Use this style to change text characteristics: font, weight, style, decoration, 
 |`"middle"`|Middle vertical alignment|
 |`"v-middle"`|Custom vertical alignment for inline-block elements|
 
-### Usage
+## Usage
 
 * [Typography - Base formatting](../../storybook/typography/base-formatting.md).
 * [Typography - Advanced formatting](../../storybook/typography/advanced-formatting.md).
 
-### CSS References
+## CSS References
 
 * [MDN: font-weight](!https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight)
 * [MDN: font-style](!https://developer.mozilla.org/en-US/docs/Web/CSS/font-style)

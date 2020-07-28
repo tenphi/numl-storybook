@@ -19,7 +19,7 @@ The definition element that declares a theme in the context of its parent.
 |`"dim"`|Opposite to `"bold"`. Decreases contrast between main background color and theme background color|
 |`"bold"`|Opposite to `"dim"`. Increases contrast between main background color and theme background color|
 
-### Usage
+## Usage
 
 ```html
 <split/>
@@ -38,18 +38,18 @@ The definition element that declares a theme in the context of its parent.
 </nu-flow>
 ```
 
-### Examples
+## Examples
 
 * [Colors - Basics themes](../../storybook/colors/basic-themes.md)
 
-### See also
+## See also
 
 * [theme](../attributes/theme.md)
 * [color](../attributes/color.md)
 * [fill](../attributes/fill.md)
 * [hue()](../functions/hue.md)
 
-### CSS Reference
+## CSS Reference
 
 * [MDN: color](!https://developer.mozilla.org/en-US/docs/Web/CSS/color)
 * [MDN: background-color](!https://developer.mozilla.org/en-US/docs/Web/CSS/background-color)

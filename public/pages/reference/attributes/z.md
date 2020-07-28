@@ -1,12 +1,12 @@
 Use this style to change element Z index.
 
-### Syntax
+## Syntax
 
 ```
 auto | <integer> | inherit | above | below | front | back
 ```
 
-### Modifiers
+## Modifiers
 
 |Modifier|Description|
 |----|----|
@@ -15,7 +15,7 @@ auto | <integer> | inherit | above | below | front | back
 |`"front"`|Place element to the front of other elements including those with **above** modifier.  (`z-index: 10`)|
 |`"back"`|Place element to the back of other elements including those with **below** modifier. (`z-index: -10`)|
 
-### Examples
+## Examples
 
 ```preview
 <nu-flex items="center">
@@ -29,10 +29,10 @@ auto | <integer> | inherit | above | below | front | back
 </nu-flex>
 ```
 
-### See also
+## See also
 
 * [Learn Z-Index Using a Visualization Tool](!https://thirumanikandan.com/posts/learn-z-index-using-a-visualization-tool)
 
-### CSS References
+## CSS References
 
 * [MDN: z-index](!https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)

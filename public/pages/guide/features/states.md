@@ -31,27 +31,25 @@ Framework automatically generates CSS based on states without style overlapping.
 
 ```html
 <preview/>
-<nu-block padding="5 bottom">
-  <nu-btn
-    id="tile"
-    width="12"
-    flow="row"
-    toggle
-    content="stretch">
-    <nu-pane>
-      <nu-heading level="6">Total sales</nu-heading>
-      <nu-icon
-        name="chevron-down"
-        scale="^#tile :pressed[flip-y]"
-        size="2.5x"></nu-icon>
-    </nu-pane>
-    <nu-line></nu-line>
-    <nu-block text="w7 h4">
-      $92,439
-    </nu-block>
-    <nu-popup>
-      Additional information
-    </nu-popup>
-  </nu-btn>
-</nu-block>
+<nu-btn
+  id="tile"
+  width="12"
+  flow="row"
+  toggle
+  content="stretch">
+  <nu-pane>
+    <nu-heading level="6">Total sales</nu-heading>
+    <nu-icon
+      name="chevron-down"
+      scale="^#tile :pressed[flip-y]"
+      size="2.5x"></nu-icon>
+  </nu-pane>
+  <nu-line></nu-line>
+  <nu-block text="w7 h4">
+    $92,439
+  </nu-block>
+  <nu-popup>
+    Additional information
+  </nu-popup>
+</nu-btn>
 ```

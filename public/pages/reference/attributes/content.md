@@ -1,11 +1,11 @@
 Use this style to place content inside **Flex** or **Grid** layouts.
 
-### Syntax
+## Syntax
 
 ```
 <'align-content'> <'justify-content'>?
 ```
 
-### CSS Reference
+## CSS Reference
 
 * [MDN: place-content](!https://developer.mozilla.org/en-US/docs/Web/CSS/place-content)

@@ -1,12 +1,12 @@
 Use this style to specify size, color and type of element borders.
 
-### Syntax
+## Syntax
 
 ```
 <length>? || <color>? || [ inside | outside | center ]? || [ top || right || bottom || left ]?
 ```
 
-### Modifiers
+## Modifiers
 
 |Modifier|Description|
 |----|----|
@@ -14,11 +14,11 @@ Use this style to specify size, color and type of element borders.
 |`"outside"`|Visual border outside the element|
 |`"center"`|Visual border on edges of the element|
 
-### Usage
+## Usage
 
 * [Decorations - Borders](../../storybook/decorations/borders.md).
 
-### CSS References
+## CSS References
 
 * [MDN: border](!https://developer.mozilla.org/en-US/docs/Web/CSS/border)
 * [MDN: box-shadow](!https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow)

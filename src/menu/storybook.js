@@ -77,6 +77,11 @@ export const STORYBOOK_MENU = [
   },
   {
     type: 'link',
+    label: 'Outline and focus',
+    to: '/storybook/decorations/outline-and-focus',
+  },
+  {
+    type: 'link',
     label: 'Shadows',
     to: '/storybook/decorations/shadows',
   },

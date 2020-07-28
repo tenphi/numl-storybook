@@ -1,6 +1,6 @@
 Use this style to define the line names and track sizing functions of the grid columns.
 
-### Syntax
+## Syntax
 
 ```
 none | <track-list> | <auto-track-list> | subgrid <line-name-list>?
@@ -29,10 +29,10 @@ where
 
 Style has custom unit called `"pr"` that is equal to `minmax(0, 1fr)`. It is used to create equally-sized columns. For example: `"1pr 1pr"` for two columns.
 
-### Examples
+## Examples
 
 * [Layouts - Grid layouts](../../storybook/layouts/grid-layouts.md)
 
-### CSS References
+## CSS References
 
 * [MDN: grid-template-columns](!https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns)

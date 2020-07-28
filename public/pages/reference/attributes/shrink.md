@@ -2,19 +2,19 @@ The **grow** property sets the flex shrink factor of a flex item. If the size of
 
 In use, flex-shrink is used alongside the other flex properties [grow](./grow.md) and [basis](./basis.md), and normally defined using the [flex](./flex.md) shorthand.
 
-### Syntax
+## Syntax
 
 ```
 <number>
 ```
 
-### See also
+## See also
 
 * [nu-flex](../elements/nu-flex.md)
 * [flex](./flex.md)
 * [basis](./basis.md)
 * [shrink](./shrink.md)
 
-### CSS Reference
+## CSS Reference
 
 * [MDN: flex-shrink](!https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)

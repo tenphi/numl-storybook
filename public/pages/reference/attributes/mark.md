@@ -1,12 +1,12 @@
 The **mark** property highlights the element with overlay background.
 
-### Syntax
+## Syntax
 
 ```
 [ y | yes | n | no | hover ] || <length>
 ```
 
-### Modifiers
+## Modifiers
 
 |Modifier|Description|
 |----|----|
@@ -14,6 +14,6 @@ The **mark** property highlights the element with overlay background.
 |no|Hide highlighting|
 |hover|Highlight the element if it's in **hover** state|
 
-### CSS Reference
+## CSS Reference
 
 * [MDN: box-shadow](!https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow)

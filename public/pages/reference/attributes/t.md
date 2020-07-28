@@ -9,6 +9,6 @@ The **t** utility property sets the inner text content of the element but it wor
 
 Click the button to change its text.
 
-### CSS Reference
+## CSS Reference
 
 * [MDN: Element.innerText](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText)

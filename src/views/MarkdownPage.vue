@@ -1,7 +1,9 @@
 <template>
-  <nu-markdown ref="root" padding="4 bottom">
-    <textarea v-html="content"></textarea>
-  </nu-markdown>
+  <nu-block>
+    <nu-markdown ref="root" padding="4 bottom">
+      <textarea v-html="content"></textarea>
+    </nu-markdown>
+  </nu-block>
 </template>
 
 <script>
@@ -45,7 +47,7 @@ export default {
   methods: {
     updateTitle() {
       setTimeout(() => {
-        const header = this.$refs.root.querySelector('nu-heading[aria-level="1"]');
+        const header = this.$refs.root.querySelector('nu-h1');
 
         if (header) {
           Window.setTitle(header.innerText);

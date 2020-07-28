@@ -1,6 +1,6 @@
 The **responsive** property declares style responsive breakpoints in the context of the element. Values must go from greater to less.
 
-### Usage
+## Usage
 
 **Three** breakpoints create **four** zones in which we can declare individual style value:
 

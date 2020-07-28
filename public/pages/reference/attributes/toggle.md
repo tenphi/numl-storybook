@@ -1,6 +1,6 @@
 Use **toggle** property to make the button a toggle button.
 
-### Usage
+## Usage
 
 ```html
 <split/>

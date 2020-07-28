@@ -1,12 +1,12 @@
 The **selectable** style specifies whether the contents of the element can be selected.
 
-### Syntax
+## Syntax
 
 ```html
 y | yes | n | no
 ```
 
-### Usage
+## Usage
 
 ```html
 <split/>
@@ -19,6 +19,6 @@ y | yes | n | no
 </nu-card>
 ```
 
-### CSS References
+## CSS References
 
 * [MDN: user-select](!https://developer.mozilla.org/en-US/docs/Web/CSS/user-select)

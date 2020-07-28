@@ -1,6 +1,6 @@
 Use this style to set height of the element. Also you can set minimum and maximum height.
 
-### Syntax
+## Syntax
 
 ```
 auto | <value>{1,3} | min-content | max-content | fit-content(<value>) | min <value> | max <value>
@@ -9,7 +9,7 @@ where
 <value> = <length> | <percentage>
 ```
 
-### Example values
+## Example values
 
 |Value|Description|
 |----|----|
@@ -20,7 +20,7 @@ where
 |`"10x 20x"`|Set minimum height to 10rem and maximum height to 20rem|
 |`"10x 20x 100%"`|Set minimum height to 10rem, base height to 20x, and maximum height to 100%|
 
-### CSS References
+## CSS References
 
 * [MDN: height](!https://developer.mozilla.org/en-US/docs/Web/CSS/height)
 * [MDN: min-height](!https://developer.mozilla.org/en-US/docs/Web/CSS/min-height)

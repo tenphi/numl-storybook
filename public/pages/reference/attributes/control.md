@@ -1,6 +1,6 @@
 Use **control** utility property to active *Control System*. This allows widgets to control other elements.
 
-### Syntax
+## Syntax
 
 The control action is triggered each time the widget changes its value unless the `trigger` modifier is specified. In that case action will be triggered on initial assignment of the value.
 

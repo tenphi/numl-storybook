@@ -1,6 +1,6 @@
 Use this style to specify font-size and line-height. Many elements use this styles to calculate their size.
 
-### Syntax
+## Syntax
 
 ```
 [ <length> | <preset> ]{1,2}
@@ -27,7 +27,7 @@ So you can define your own preset with [nu-props](../elements/nu-props.md) defin
 </nu-block>
 ```
 
-### Presets
+## Presets
 
 *All units are in rem.*
 
@@ -47,11 +47,11 @@ So you can define your own preset with [nu-props](../elements/nu-props.md) defin
 |==h5==   |1.2  |1.5  |
 |==h6==   |1    |1.5  |
 
-### Usage
+## Usage
 
 * [Typography - Text size](../../storybook/typography/text-size.md)
 
-### CSS References
+## CSS References
 
 * [MDN: font-size](!https://developer.mozilla.org/en-US/docs/Web/CSS/font-size)
 * [MDN: line-height](!https://developer.mozilla.org/en-US/docs/Web/CSS/line-height)

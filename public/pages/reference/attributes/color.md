@@ -1,21 +1,21 @@
 Use **color** property to set text color of the element.
 
-### Syntax
+## Syntax
 
 ```
 <color> || <percentage>
 ```
 
-### Examples
+## Examples
 
 * [Colors - Color usage](../../storybook/colors/color-usage.md)
 * [Colors - Color playground](../../storybook/colors/color-playground.md)
 
-### See also
+## See also
 
 * [fill](./fill.md)
 * [theme](./theme.md)
 
-### CSS Reference
+## CSS Reference
 
 * [MDN: color](!https://developer.mozilla.org/en-US/docs/Web/CSS/color)

@@ -1,6 +1,6 @@
 Use **trigger** property to change behavior of *Control System*. If the widget has this property then whenever its value is changed (or set) it will trigger control action.
 
-### Usage
+## Usage
 
 Control without trigger:
 

@@ -2,7 +2,7 @@ Definition element to declare attributes for elements by name in parent context.
 
 ## Usage
 
-### Basic example
+## Basic example
 
 Using `<nu-attrs>` we declare that in parent `<nu-pane>` all child elements should have attribute `color="special"` in case they don't have `color` attribute initially.
 
@@ -16,7 +16,7 @@ Using `<nu-attrs>` we declare that in parent `<nu-pane>` all child elements shou
 </nu-pane>
 ```
 
-### Rewrite attribute value
+## Rewrite attribute value
 
 Use `!` symbol at the start of the attribute value to rewrite existing attributes.
 
@@ -30,7 +30,7 @@ Use `!` symbol at the start of the attribute value to rewrite existing attribute
 </nu-pane>
 ```
 
-### Cascade
+## Cascade
 
 Use multiple `<nu-attrs>` elements. The closer definition to the element the more priority its attributes have.
 
@@ -49,7 +49,7 @@ Use multiple `<nu-attrs>` elements. The closer definition to the element the mor
 </nu-flow>
 ```
 
-### Dynamic change
+## Dynamic change
 
 You can dynamically change attributes on `<nu-attrs>`. All changes will be tranferred to the corresponding elements.
 

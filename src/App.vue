@@ -1,9 +1,27 @@
 <template>
   <nu-block
-    responsive="980px|600px" display="flow-root"
+    responsive="980px|600px" display="flow-root" font="Baloo 2"
     :style="previewProps" v-show="mounted" width="100%"
-    overflow="scroll-y"
+    overflow="scroll-y" text="n" size="md"
     :height="$route.path.startsWith('/repl') ? '100vh' : null">
+    <nu-attrs for="blockquote" size="md"></nu-attrs>
+    <nu-attrs for="code" size="sm" font="Roboto Mono"></nu-attrs>
+    <nu-attrs for="cd" size="sm" font="Roboto Mono"></nu-attrs>
+    <nu-props
+      xxl-font-size="23rp"
+      xxl-line-height="33rp"
+      xl-font-size="21rp"
+      xl-line-height="29rp"
+      lg-font-size="19rp"
+      lg-line-height="27rp"
+      md-font-size="17rp"
+      md-line-height="25rp"
+      sm-font-size="15rp"
+      sm-line-height="23rp"
+      xs-font-size="13rp"
+      xs-line-height="19rp"
+      xxs-font-size="11rp"
+      xxs-line-height="17rp"></nu-props>
     <nu-theme
       :hue="hue" :pastel="pastel"
       :saturation="saturationType === 'auto' ? null : saturation"></nu-theme>
@@ -35,27 +53,47 @@
               transition="shadow">
               <nu-svg width="100%" height src="/img/icon.svg"></nu-svg>
             </nu-blocklink>
-            <nu-block text="nowrap monospace w7" size="xs">
+            <nu-block text="nowrap monospace w7" size="xxs">
               numl@{{ version }}
             </nu-block>
             <nu-line></nu-line>
             <nu-block grow="1">
-              <nu-btngroup
-                text="w7" size="md" flow="column" gap
-                :value="$route.path.match(/[a-z-]+/i) && $route.path.match(/[a-z-]+/i)[0]">
+              <nu-flow
+                text="b" size="md" flow="column" gap=".5x">
                 <nu-attrs
                   for="nu-btn"
                   border="0"
-                  theme=":pressed[special]"
-                  fill=":pressed[bg] clear"
+                  width="100%"
+                  theme=":current[special]"
+                  fill=":current[bg] clear"
                   inset="0 :active:focusable[y] :pressed[0]"
                 ></nu-attrs>
-                <nu-btn value="storybook" to="/storybook">Storybook</nu-btn>
-                <nu-btn value="guide" to="/guide/what-is-numl">Guide</nu-btn>
-                <nu-btn value="reference" to="/reference/elements/nu-el">Reference</nu-btn>
-                <nu-btn value="framework" to="/framework/what-is-nude">Framework</nu-btn>
-                <nu-btn value="repl" to="/repl">REPL</nu-btn>
-              </nu-btngroup>
+                <nu-btn
+                  value="storybook" to="/storybook"
+                  :is-current="isCurrentSection('storybook')">
+                  Storybook
+                </nu-btn>
+                <nu-btn
+                  value="guide" to="/guide/what-is-numl"
+                  :is-current="isCurrentSection('guide')">
+                  Guide
+                </nu-btn>
+                <nu-btn
+                  value="reference" to="/reference/elements/nu-el"
+                  :is-current="isCurrentSection('reference')">
+                  Reference
+                </nu-btn>
+                <nu-btn
+                  value="framework" to="/framework/what-is-nude"
+                  :is-current="isCurrentSection('framework')">
+                  Framework
+                </nu-btn>
+                <nu-btn
+                  value="repl" to="/repl"
+                  :is-current="isCurrentSection('repl')">
+                  REPL
+                </nu-btn>
+              </nu-flow>
             </nu-block>
             <nu-line></nu-line>
             <nu-btn
@@ -68,14 +106,14 @@
         </nu-block>
 
         <nu-flow
-          id="subnav" padding="0 2x 6x||0 1x 6x" gap="1x" border="right" overflow="auto">
+          id="subnav" padding="0 2x 6x||0 1x 6x" gap="0" border="right" overflow="auto">
           <nu-attrs
             for="nu-heading" padding="1x 2x"
             level="4" place="sticky top" space="-2x 2x||-2x 1x" fill="subtle"
             z="above" border="bottom" fade="top" size="h4||h"></nu-attrs>
           <nu-attrs
-            for="nu-link" display="block" text="w6" border="0"
-            padding=".25x 1x"></nu-attrs>
+            for="nu-link" display="block" border="0"
+            padding=".5x 1x" mark="hover"></nu-attrs>
           <template
             v-for="(item, i) in subMenu">
             <nu-link
@@ -84,12 +122,13 @@
               :to="item.to"
               :theme="item.to === $route.path ? 'special' : null"
               :fill="item.to === $route.path ? 'bg' : 'clear'"
-              :text="`w6 no-decoration ellipsis`">
+              text="n sb ellipsis">
               {{ item.label }}
             </nu-link>
             <nu-heading v-if="item.type === 'heading'" :key="item.label">
               {{ item.label }}
             </nu-heading>
+            <nu-spacer v-if="item.type === 'heading'" :key="item.label + 'spacer'"></nu-spacer>
             <nu-block v-if="item.type === 'text'" :key="item.label">
               {{ item.label }}
             </nu-block>
@@ -481,6 +520,11 @@ export default {
     },
     resetOptions() {
       Object.assign(this, DEFAULT_OPTIONS);
+    },
+    isCurrentSection(section) {
+      const current = this.$route.path.match(/[a-z-]+/i) && this.$route.path.match(/[a-z-]+/i)[0];
+
+      return current === section;
     },
   },
   computed: {

@@ -478,13 +478,13 @@ export default {
 .CodeMirror-line::selection,
 .CodeMirror-line > span::selection,
 .CodeMirror-line > span > span::selection {
-  background: var(--nu-main-focus-color);
+  background: rgba(var(--nu-main-outline-color-rgb, var(--nu-outline-color-rgb)), .5) !important;
 }
 
 .CodeMirror-line::-moz-selection,
 .CodeMirror-line > span::-moz-selection,
 .CodeMirror-line > span > span::-moz-selection {
-  background: var(--nu-main-focus-color);
+  background: rgba(var(--nu-main-outline-color-rgb, var(--nu-outline-color-rgb)), .5) !important;
 }
 
 .CodeMirror-cursor {

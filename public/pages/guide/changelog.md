@@ -1,10 +1,48 @@
 # Changelog
 
-## v0.12 UPCOMING
+## v0.12 BETA
 
-### New features
+Update is focused on improved theme color calculation.
 
-* RTL support
+- Themes
+	- new formula for colored shadows.
+	- Add **shadow** and **special-shadow** colors.
+	- Remove **intensity** and **special-intensity** CP.
+	- **focus** -> **outline** color.
+	- Fix **text** and **text-soft** colors for **main** type.
+	- Fix saturation for dark scheme. (prevent hue shift)
+	- Optimize binding. Now it doesn't use media queries.
+- **theme** style: Fix `color` declaration. Fix **special** styles.
+- **props**: color definitions now support opacity. Example:
+```
+<nu-props my-color="hue(1)"></nu-props>
+<nu-block color="my 50%">...
+```
+- **nu-btn**: Make inset style more subtle on **active** state. Fix **special** styles.
+- **nu-input**: Add **special** modifier. Fix **focus** behavior.
+- **border**, **radius**, **shadow** styles: add **<yes>/<no>**  modifier.
+- **shadow** style: fix color definition.
+- **outline** style: new **focus** syntax. Example:
+```
+outline="focus visible"
+```
+* Add **font** style property. Example:
+```
+<nu-block font="Cera Pro"></nu-block>
+```
+- Add **dark**, **light**, **high-contrast**, **low-contrast** and **focus** `:root` modifiers. Style your markup depending on scheme, contrast mode or both! Example:
+```
+<nu-props
+   some-color="^root :dark[hsl(1, 80%, 50%)] :light[hsl(180, 80%, 50%)]"></nu-props>
+```
+- Custom units: `sw` ->  `ow` . (outline width)
+- Redefine `focus()` method of elements to support `nuRef`. (<NuInput>.focus() triggers focus on inner `input` element).
+- Fix *`parseAttr()`*case sensivity.
+- *`computeStyles`*bug fix for immutable style sources.
+- States: support for an empty value for the state. Example: `val1 :hover[]` - the default value will be applied to the **hover** state.
+- States: support for **OR** syntax. `val1 :hover.focus[val2]` instead of `val1 :hover[val2] :focus[val2] :hover:focus[val2]`.
+- `init()` refactoring.
+- Add `--nu-disabled-opacity` custom property.
 
 ## v0.11 STABLE RELEASE
 

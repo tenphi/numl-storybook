@@ -7,7 +7,8 @@
 <nu-flex flow="column" gap items="start" theme="tint">
   <nu-btn>Button</nu-btn>
   <nu-btn mark="y">Hover</nu-btn>
-  <nu-btn inset="#special.40">Pressed</nu-btn>
+  <nu-btn inset="#shadow.50">Pressed</nu-btn>
+  <nu-btn inset="#shadow">Toggled</nu-btn>
   <nu-btn outline>Focus</nu-btn>
   <nu-btn disabled>Disabled</nu-btn>
 </nu-flex>

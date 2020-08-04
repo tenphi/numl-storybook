@@ -464,11 +464,11 @@ export default {
 }
 
 .CodeMirror-selected {
-  background: rgba(var(--nu-main-outline-color-rgb, var(--nu-outline-color-rgb)), .5);
+  background: rgba(var(--nu-main-outline-color-rgb, var(--nu-outline-color-rgb)), .3);
 }
 
 .CodeMirror-focused .CodeMirror-selected {
-  background: rgba(var(--nu-main-outline-color-rgb, var(--nu-outline-color-rgb)), .5);
+  background: rgba(var(--nu-main-outline-color-rgb, var(--nu-outline-color-rgb)), .3);
 }
 
 .CodeMirror-crosshair {
@@ -478,13 +478,13 @@ export default {
 .CodeMirror-line::selection,
 .CodeMirror-line > span::selection,
 .CodeMirror-line > span > span::selection {
-  background: rgba(var(--nu-main-outline-color-rgb, var(--nu-outline-color-rgb)), .5);
+  background: rgba(var(--nu-main-outline-color-rgb, var(--nu-outline-color-rgb)), .3);
 }
 
 .CodeMirror-line::-moz-selection,
 .CodeMirror-line > span::-moz-selection,
 .CodeMirror-line > span > span::-moz-selection {
-  background: rgba(var(--nu-main-outline-color-rgb, var(--nu-outline-color-rgb)), .5);
+  background: rgba(var(--nu-main-outline-color-rgb, var(--nu-outline-color-rgb)), .3);
 }
 
 .CodeMirror-cursor {

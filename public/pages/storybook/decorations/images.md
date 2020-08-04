@@ -4,12 +4,14 @@ Use ==src== attribute to specify URL to the image.
 
 ```html
 <preview/>
-<nu-img src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/san-francisco-bay-area_web-f17b1f60e6.jpg"></nu-img>
+<nu-img
+  src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/san-francisco-bay-area_web-f17b1f60e6.jpg"
+  width="100%"></nu-img>
 ```
 
 ### Image fit
 
-Using ==fit== attribute you can specify fit strategy of the image. This attribute has the same specification as `object-fit` CSS style. If `fit="none"` which is default value then the image is trying to take as much space as needed for full size but no more than container width.
+Using ==fit== attribute you can specify fit strategy of the image. This attribute has the same specification as `object-fit` CSS style.
 
 ```html
 <preview/>
@@ -25,12 +27,14 @@ Using ==fit== attribute you can specify fit strategy of the image. This attribut
     <nu-block>fit="fill"</nu-block>
     <nu-img
       src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/san-francisco-bay-area_web-f17b1f60e6.jpg"
+      width="100%"
       fit="fill"></nu-img>
   </nu-card>
   <nu-card>
     <nu-block>fit="none"</nu-block>
     <nu-img
       src="https://d13k13wj6adfdf.cloudfront.net/urban_areas/san-francisco-bay-area_web-f17b1f60e6.jpg"
+      width="100%"
       fit="none"></nu-img>
   </nu-card>
 </nu-flow>

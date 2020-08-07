@@ -4,10 +4,11 @@
 <preview/>
 <nu-card padding="0" overflow="no" selectable="no">
   <nu-attrs for="$slider-cap" show="n"></nu-attrs>
-  <nu-img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1457119/after.jpg"></nu-img>
+  <nu-img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1457119/after.jpg" width="100%"></nu-img>
   <nu-img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1457119/before.jpg"
           id="overlay"
           place="cover"
+          width="100%"
           height="100%"
           fit="cover left"
           border="2bw right color(special)"></nu-img>

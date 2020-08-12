@@ -13,7 +13,7 @@
     </nu-field>
     <nu-field>
       <nu-label>Password</nu-label>
-      <nu-input id="password" grow="1" mask></nu-input>
+      <nu-password id="password" grow="1"></nu-password>
     </nu-field>
     <nu-btn special action="submit">Submit</nu-btn>
   </nu-form>

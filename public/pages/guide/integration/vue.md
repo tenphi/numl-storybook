@@ -41,6 +41,8 @@ Bind event handlers as you do it with other Vue Components.
 
 ```html
 <nu-switch @input="onInput($event.detail)"></nu-switch>
+
+<nu-input @input="onInput($event.detail)"></nu-input>
 ```
 
 ## Real-world examples (repositories)

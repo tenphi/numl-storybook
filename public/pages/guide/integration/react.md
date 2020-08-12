@@ -60,6 +60,8 @@ Use the following syntax to bind handlers.
 
 ```html
 <nu-switch onEventInput={(event) => onInput(event.detail)}></nu-switch>
+
+<nu-input onEventInput={(event) => onInput(event.detail)}></nu-input>
 ```
 
 ## Real-world examples (repositories)

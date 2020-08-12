@@ -27,7 +27,7 @@
     <nu-field>
       <nu-inputgroup height="8x" padding="2.5x 1x 1x 1x">
         <nu-label>Password</nu-label>
-        <nu-input id="password" placeholder="" grow="1" mask></nu-input>
+        <nu-password id="password" placeholder="" grow="1"></nu-password>
       </nu-inputgroup>
       <nu-check for="password" assert="required">
         Password is required

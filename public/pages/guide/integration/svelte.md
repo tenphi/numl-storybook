@@ -33,6 +33,8 @@ Bind event handlers as you do it with other Svelte Components.
 
 ```html
 <nu-switch on:input={(event) => onInput(event.detail)}></nu-switch>
+
+<nu-input on:input={(event) => onInput(event.detail)}></nu-input>
 ```
 
 ## Real-world examples (repositories)

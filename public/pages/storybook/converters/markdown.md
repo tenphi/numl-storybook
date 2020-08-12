@@ -2,7 +2,7 @@
 
 This whole Storybook is rendering in runtime using this converter.
 
-It's required to use tag `pre` or `textarea` inside [nu-markdown](../../reference/elements/nu-markdown.md). This prevents the rendering of content by the browser.
+It's required to use tag `<pre>` or `<textarea>` inside [nu-markdown](../../reference/elements/nu-markdown.md). This prevents the rendering of content by the browser.
 
 ## Base syntax
 

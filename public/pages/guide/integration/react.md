@@ -66,4 +66,4 @@ Use the following syntax to bind handlers.
 
 ## Real-world examples (repositories)
 
-No public examples yet.
+* [Cube.js UIKit](!https://github.com/cube-js/cubejs-ui-kit)

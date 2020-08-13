@@ -113,11 +113,12 @@ Props: `"normal-font-weight"`, `"semi-bold-font-weight"`, `"bold-font-weight"`, 
 
 ```html
 <split/>
-<nu-props semi-bold-font-weight="600"></nu-props>
-<nu-props semi-bold-font-weight="700"></nu-props>
-<nu-props light-font-weight="200"></nu-props>
-<nu-props normal-font-weight="500"></nu-props>
-<nu-props heading-font-weight="900"></nu-props>
+<nu-props
+  semi-bold-font-weight="600"
+  semi-bold-font-weight="700"
+  light-font-weight="200"
+  normal-font-weight="500"
+  heading-font-weight="900"></nu-props>
 <nu-block text="n">
   <nu-block text="n">
     Normal

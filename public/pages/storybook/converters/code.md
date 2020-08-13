@@ -1,6 +1,6 @@
 # Code snippets
 
-All code snippets in this Storybook are rendering in runtime using this converter.
+All code snippets in this Storybook are rendered in runtime using this converter.
 
 It's required to use `<pre>` or `<textarea>` tag inside [nu-markdown](../../reference/elements/nu-markdown.md). This prevents the rendering of content by the browser.
 

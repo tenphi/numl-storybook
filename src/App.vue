@@ -1,27 +1,12 @@
 <template>
   <nu-block
-    responsive="980px|600px" display="flow-root" font="Baloo 2"
+    responsive="980px|600px" display="flow-root" font="Quicksand"
     :style="previewProps" v-show="mounted" width="100%"
     overflow="scroll-y" text="n" size="md"
     :height="$route.path.startsWith('/repl') ? '100vh' : null">
-    <nu-attrs for="blockquote" size="md"></nu-attrs>
-    <nu-attrs for="code" size="sm" font="Roboto Mono"></nu-attrs>
-    <nu-attrs for="cd" size="sm" font="Roboto Mono"></nu-attrs>
-    <nu-props
-      xxl-font-size="23rp"
-      xxl-line-height="33rp"
-      xl-font-size="21rp"
-      xl-line-height="29rp"
-      lg-font-size="19rp"
-      lg-line-height="27rp"
-      md-font-size="17rp"
-      md-line-height="25rp"
-      sm-font-size="15rp"
-      sm-line-height="23rp"
-      xs-font-size="13rp"
-      xs-line-height="19rp"
-      xxs-font-size="11rp"
-      xxs-line-height="17rp"></nu-props>
+    <nu-attrs for="blockquote"></nu-attrs>
+    <nu-attrs for="code" font="Roboto Mono"></nu-attrs>
+    <nu-attrs for="cd" font="Roboto Mono"></nu-attrs>
     <nu-theme
       :hue="hue" :pastel="pastel"
       :saturation="saturationType === 'auto' ? null : saturation"></nu-theme>
@@ -53,13 +38,13 @@
               transition="shadow">
               <nu-svg width="100%" height src="/img/icon.svg"></nu-svg>
             </nu-blocklink>
-            <nu-block text="nowrap monospace w7" size="xxs">
+            <nu-block text="nowrap monospace w7" size="xs">
               numl@{{ version }}
             </nu-block>
             <nu-line></nu-line>
             <nu-block grow="1">
               <nu-flow
-                text="b" size="md" flow="column" gap=".5x">
+                text="h" size="md" flow="column" gap=".5x">
                 <nu-attrs
                   for="nu-btn"
                   border="0"

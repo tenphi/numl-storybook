@@ -4,16 +4,28 @@
     :style="previewProps" v-show="mounted" width="100%"
     overflow="scroll-y" text="n" size="md"
     :height="$route.path.startsWith('/repl') ? '100vh' : null">
-    <nu-attrs for="blockquote"></nu-attrs>
-    <nu-attrs for="code" font="Roboto Mono"></nu-attrs>
-    <nu-attrs for="cd" font="Roboto Mono"></nu-attrs>
+    <nu-attrs for="blockquote"/>
+    <nu-attrs for="code" font="Roboto Mono"/>
+    <nu-attrs for="cd" font="Roboto Mono"/>
+    <nu-props
+      xxs-line-height="20rp"
+      xs-line-height="20rp"
+      sm-line-height="26rp"
+      md-line-height="26rp"
+      lg-line-height="30rp"
+      xl-line-height="34rp"
+      xxl-line-height="38rp"
+      normal-font-weight="500"
+      semi-bold-font-weight="600"
+      bold-font-weight="700"
+      heading-font-weight="700"/>
     <nu-theme
       :hue="hue" :pastel="pastel"
-      :saturation="saturationType === 'auto' ? null : saturation"></nu-theme>
+      :saturation="saturationType === 'auto' ? null : saturation"/>
     <nu-theme
       name="content" :hue="hue" :pastel="pastel"
       :saturation="saturationType === 'auto' ? null : saturation"
-      :mod="themeType === 'main' ? '' : themeType"></nu-theme>
+      :mod="themeType === 'main' ? '' : themeType"/>
 
     <template v-if="$route.path !== '/repl'">
       <nu-grid

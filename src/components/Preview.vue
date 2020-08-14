@@ -83,7 +83,7 @@
     </nu-pane>
 
     <nu-block v-if="frame" id="preview" v-html="markup" padding="2x" hidden grow="1"></nu-block>
-    <nu-block
+    <nu-grid
       v-else id="preview" :hidden="tab !== 'preview'"
       grow="1" fill="main-subtle" overflow="no" radius="0 0 1r 1r">
       <nu-props
@@ -93,9 +93,9 @@
         transition-time="--preview-transition"></nu-props>
       <iframe
         ref="frame" :src="`/preview/index.html#${encodedData}`" frameborder="0"
-        :scrolling="repl ? 'yes' : 'no'" width="100%" @load="resizeIframe(this)"
+        :scrolling="repl ? 'yes' : 'no'" width="100%" height="100%" @load="resizeIframe(this)"
         :style="iframeStyles"></iframe>
-    </nu-block>
+    </nu-grid>
 
     <nu-block
       id="source" padding hidden overflow="auto" radius="0 0 1r 1r"

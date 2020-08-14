@@ -4,7 +4,7 @@
     :style="previewProps" v-show="mounted" width="100%"
     overflow="scroll-y" text="n" size="md"
     :height="$route.path.startsWith('/repl') ? '100vh' : null">
-    <nu-attrs for="blockquote"/>
+    <nu-attrs for="blockquote" size="md"/>
     <nu-attrs for="code" font="Roboto Mono"/>
     <nu-attrs for="cd" font="Roboto Mono"/>
     <nu-props

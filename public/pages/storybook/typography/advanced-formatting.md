@@ -93,7 +93,7 @@ Modifiers: `"normal"`, `"semi-bold"`, `"bold"`, `"light"`, `"heading"`:
 <nu-block text="h" size="h1">
   Heading
 </nu-block>
-<nu-block text="bold">
+<nu-block text="semi-bold">
   Bold
   <nu-el text="bolder">
     and bolder
@@ -114,11 +114,11 @@ Props: `"normal-font-weight"`, `"semi-bold-font-weight"`, `"bold-font-weight"`, 
 ```html
 <preview/>
 <nu-props
-  semi-bold-font-weight="600"
-  semi-bold-font-weight="700"
-  light-font-weight="200"
-  normal-font-weight="500"
-  heading-font-weight="900"></nu-props>
+  semi-bold-font-weight="500"
+  bold-font-weight="600"
+  light-font-weight="300"
+  normal-font-weight="400"
+  heading-font-weight="700"></nu-props>
 <nu-block text="n">
   <nu-block text="n">
     Normal
@@ -129,7 +129,7 @@ Props: `"normal-font-weight"`, `"semi-bold-font-weight"`, `"bold-font-weight"`, 
   <nu-block text="h" size="h1">
     Heading
   </nu-block>
-  <nu-block text="bold">
+  <nu-block text="semi-bold">
     Bold
     <nu-el text="bolder">
       and bolder

@@ -61,6 +61,7 @@ window.addEventListener('nudeReady', (event) => {
 - **nu-inline** -> **nu-in**.
 - **space**: Add modifiers: **left** & **right**
 - **place**: Remove **space-around** modifier.
+- **height** & **width** styles: fix parsing.
 
 ## v0.11 STABLE RELEASE
 

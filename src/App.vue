@@ -9,6 +9,7 @@
       for="code" font="Roboto Mono"/>
     <nu-attrs
       for="cd" font="Roboto Mono"/>
+    <nu-attrs for="list" position="inside"/>
 <!--    :code-bg-color="`hue(${hue} ${saturation / 3} 80 special)`"-->
     <nu-props
       xxs-line-height="20rp"

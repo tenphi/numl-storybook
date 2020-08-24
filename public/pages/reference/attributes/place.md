@@ -15,6 +15,8 @@ Use this style to position the element inside the parent element. It's the most 
 |`"absolute"`|Use ==absolute== positioning|
 |`"inside"`|Use ==absolute== positioning and place element in the center of the offset parent element|
 |`"cover"`|Use ==absolute== positioning and place element over the offset parent covering it|
+|`"float-left"`|Use ==static== positioning and float the element to the left|
+|`"float-right"`|Use ==static== positioning and float the element to the right|
 
 ## CSS References
 

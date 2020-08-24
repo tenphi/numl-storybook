@@ -62,7 +62,7 @@ routing.setRouter((url, openNewTab) => {
 
 You can integrate **Numl** with any SVG-based icon library.
 
-Import `icons` instance and replace the **Icon-loader**. It's an async function that accepts the icon name and returns a string that contains SVG.
+Import `icons` instance and replace the **Icon-loader**. It's an async function that accepts the icon name and returns an SVG as a string.
 
 ```javascript
 import { icons } from 'numl';

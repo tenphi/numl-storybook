@@ -5,28 +5,30 @@
 Update is focused on improved theme color calculation.
 
 - Themes
-	- new formula for colored shadows.
+	- New formula for colored shadows.
 	- Add **shadow** and **special-shadow** colors.
 	- Remove **intensity** and **special-intensity** CP.
 	- **focus** -> **outline** color.
 	- Fix **text** and **text-soft** colors for **main** type.
 	- Fix saturation for dark scheme. (prevent hue shift)
 	- Optimize binding. Now it doesn't use media queries.
+    - Fix **subtle** color for **tint** themes.
 - **theme** style: Fix `color` declaration. Fix **special** styles.
-- **props**: color definitions now support opacity. Example:
+- Add a new `nuContext` property for **Base** element that allows to set default context variables and inject **nu-attrs** definition into an element. Elements now can control how children should be styled.
+- **props**: color definitions now support opacity and transparent assignment of **rgb** version of the color. Example:
 ```
 <nu-props my-color="hue(1)"></nu-props>
 <nu-block color="my 50%">...
 ```
 - **nu-btn**: Make inset style more subtle on **active** state. Fix **special** styles.
-- **nu-input**: Add **special** modifier. Fix **focus** behavior.
+- **nu-input**: Add **special** modifier. Fix **focus** behavior. Fix **disabled** state styles. Remove **mask** attribute. (replaced with **nu-password** element)
 - **border**, **radius**, **shadow** styles: add **<yes>/<no>**  modifier.
-- **shadow** style: fix color definition.
-- **outline** style: new **focus** syntax. Example:
+- **shadow** style: Fix color definition.
+- **outline** style: Support for color and size. New **focus** syntax. Example:
 ```
 outline="focus visible"
 ```
-* Add **font** style property. Example:
+* Add **font** style property. Use Google Fonts or other solution to add fonts to your website. Use **font** style to apply font to the element. Example:
 ```
 <nu-block font="Cera Pro"></nu-block>
 ```
@@ -35,7 +37,14 @@ outline="focus visible"
 <nu-props
    some-color="^root :dark[hsl(1, 80%, 50%)] :light[hsl(180, 80%, 50%)]"></nu-props>
 ```
+- Add new global events to control over **Nude** initialization and **Numl** state: `nudeReady` and `numlReady` . The first one is fired when framework is ready, and the second one is fired when all custom elements are defined. Example:
+```
+window.addEventListener('nudeReady', (event) => {
+	// do something before custom elements are initialized
+});
+```
 - Custom units: `sw` ->  `ow` . (outline width)
+- API to create Custom Units: `Nude.units.define(unitName, converter)`. The converter can be either a string or a function.
 - Redefine `focus()` method of elements to support `nuRef`. (<NuInput>.focus() triggers focus on inner `input` element).
 - Fix *`parseAttr()`*case sensivity.
 - *`computeStyles`*bug fix for immutable style sources.
@@ -43,6 +52,15 @@ outline="focus visible"
 - States: support for **OR** syntax. `val1 :hover.focus[val2]` instead of `val1 :hover[val2] :focus[val2] :hover:focus[val2]`.
 - `init()` refactoring.
 - Add `--nu-disabled-opacity` custom property.
+- New elements added: **nu-password**, **nu-search**, **nu-telinput**, **nu-emailinput**, **nu-fileinput**.
+- Settings: add **data-nu-scrollbar** to activate global scrollbar styling. (preferable if you allow dark scheme).
+- Convert `100vh` value in **height** property to `-webkit-fill-available` on iOS devices.
+- **nu-code**: Add classic dark mode via **special** modifier.
+- **scrollbar** style: Allow external styling, support for **special** modifier.
+- Add style property **clip**.
+- **nu-inline** -> **nu-in**.
+- **space**: Add modifiers: **left** & **right**
+- **place**: Remove **space-around** modifier.
 
 ## v0.11 STABLE RELEASE
 

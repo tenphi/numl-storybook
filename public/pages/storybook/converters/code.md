@@ -10,7 +10,7 @@ By default, there is no decoration styles for code blocks.
 
 ```html
 <split/>
-<nu-code>
+<nu-code padding="1x 2x">
   <pre>
     var str = 'Code snippet';
 
@@ -23,7 +23,7 @@ By default, there is no decoration styles for code blocks.
 
 ```html
 <split/>
-Inline <nu-code inline><pre>var str = 'Code snippet';</pre></nu-code> works!
+Inline <nu-cd><pre>var str = 'Code snippet';</pre></nu-cd> works!
 ```
 
 ## Highlight some parts
@@ -52,6 +52,23 @@ Use `![[` and `]]!` sequences for the most important parts.
     #[[var str2 = 'Attention here';]]#
 
     render(str1, ![[str2]]!);
+  </pre>
+</nu-code>
+```
+
+## Dark mode
+
+Add **special** modifier for the classic dark mode.
+
+```html
+<preview/>
+<nu-code special padding="1x 2x">
+  <pre>
+    var str = 'Code snippet';
+    var num = 123;
+    var rex = /\.(js|jsx)$/g;
+
+    render(str);
   </pre>
 </nu-code>
 ```

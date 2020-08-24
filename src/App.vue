@@ -5,8 +5,11 @@
     overflow="scroll-y" text="n" size="md"
     :height="$route.path.startsWith('/repl') ? '100vh' : null">
     <nu-attrs for="blockquote" size="md"/>
-    <nu-attrs for="code" font="Roboto Mono"/>
-    <nu-attrs for="cd" font="Roboto Mono"/>
+    <nu-attrs
+      for="code" font="Roboto Mono"/>
+    <nu-attrs
+      for="cd" font="Roboto Mono"/>
+<!--    :code-bg-color="`hue(${hue} ${saturation / 3} 80 special)`"-->
     <nu-props
       xxs-line-height="20rp"
       xs-line-height="20rp"

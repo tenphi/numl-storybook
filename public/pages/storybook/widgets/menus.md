@@ -24,7 +24,7 @@ Only a single item is focusable at a single moment. Use arrows to navigate betwe
     Item 3
     <nu-dropdownicon></nu-dropdownicon>
     <nu-popup
-      nx-menu
+      use-menu
       display="flex" padding="1x 0" flow="column">
       <nu-menuitem>Item 3.1</nu-menuitem>
       <nu-menuitem>Item 3.2</nu-menuitem>

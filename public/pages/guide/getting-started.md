@@ -3,7 +3,7 @@
 To start prototyping with **Numl** just add a single module to the page:
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/numl@0.11/dist/index.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/numl@1.0.0-beta.1/dist/index.js"></script>
 ```
 
 That's it! No build step, no explicit function call to apply changes.

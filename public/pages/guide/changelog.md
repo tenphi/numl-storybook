@@ -5,14 +5,14 @@
 Update is focused on improved theme color calculation.
 
 - Themes
-	- New formula for colored shadows.
+	- new formula for colored shadows.
 	- Add **shadow** and **special-shadow** colors.
 	- Remove **intensity** and **special-intensity** CP.
 	- **focus** -> **outline** color.
 	- Fix **text** and **text-soft** colors for **main** type.
 	- Fix saturation for dark scheme. (prevent hue shift)
 	- Optimize binding. Now it doesn't use media queries.
-    - Fix **subtle** color for **tint** themes.
+	- Fix **subtle** color for **tint** themes.
 - **theme** style: Fix `color` declaration. Fix **special** styles.
 - Add a new `nuContext` property for **Base** element that allows to set default context variables and inject **nu-attrs** definition into an element. Elements now can control how children should be styled.
 - **props**: color definitions now support opacity and transparent assignment of **rgb** version of the color. Example:
@@ -62,8 +62,18 @@ window.addEventListener('nudeReady', (event) => {
 - **space**: Add modifiers: **left** & **right**
 - **place**: Remove **space-around** modifier.
 - **height** & **width** styles: fix parsing.
+- **text** style: Support for text decoration color via `text="u #any-color"`.
+- **nu-option**: Don't trigger **close** action.
+- **nu-input**: Fix placeholder color (remove opacity).
+- Fix input selection bug in Firefox.
+- **nu-search**: Remove native **cancel** button.
+- **nu-svg** & **nu-img**: Fix limit width by default.
+- **color** & **fill** styles support for **hash** color syntax `fill="#special-bg"`.
+- **shadow** support for named shadow via properties. Example: `shadow="custom"` will use `--custom-shadow` to apply shadow.
+- **nu-menuitem**: fix nested behavior when combined with **nu-popup**.
+- **validator**: support for custom validators. Example: `<nu-check for="name" assert={customValidator}>Name should pass custom validator<nu-check>`.
 
-## v0.11 STABLE RELEASE
+## v0.11 STABLE
 
 A major update focused on brand new Behavior System that allows simplifying development of complex compositions and rich components. It adds dynamic imports that reduces base bundle size.
 

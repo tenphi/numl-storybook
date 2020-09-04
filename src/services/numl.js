@@ -226,6 +226,7 @@ export const STYLE_ATTRIBUTES = [
   'border',
   'shadow',
   'flow',
+  'font',
   'gap',
   'order',
   'flex',

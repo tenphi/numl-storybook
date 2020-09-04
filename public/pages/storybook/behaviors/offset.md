@@ -7,7 +7,7 @@
 <nu-nav
   label="Social links" flow="row" size="xl" gap="2x" padding="8x">
   <nu-attrs for="btn" padding radius="2x" clear
-            nx-offset transition="move :offset[no]"
+            use-offset transition="move :offset[no]"
             move="(--offset-x * 1x) (--offset-y * 1x)"></nu-attrs>
   <nu-btn to="!https://github.com/tenphi" label="Github">
     <nu-icon name="github"></nu-icon>

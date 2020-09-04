@@ -110,8 +110,8 @@
           id="subnav" padding="0 2x 6x||0 1x 6x" gap="0" border="right" overflow="auto">
           <nu-attrs
             for="nu-heading" padding="1x 2x"
-            level="4" place="sticky top" space="-2x 2x||-2x 1x" fill="subtle"
-            z="above" border="bottom" fade="top" size="h4||h"></nu-attrs>
+            level="5" place="sticky top" space="-2x 2x||-2x 1x" fill="subtle"
+            z="above" border="bottom" fade="top" size="h5||h5"></nu-attrs>
           <nu-attrs
             for="nu-link" display="block" border="0"
             padding=".5x 1x" mark="hover"></nu-attrs>
@@ -161,8 +161,7 @@
                 :to="navLinks.prev.to"
                 clear text="sb">
                 <nu-icon name="arrow-left" space="left"></nu-icon>
-                {{navLinks.prev.heading}}:
-                {{navLinks.prev.label}}
+                {{navLinks.prev.heading}} – {{navLinks.prev.label}}
               </nu-btn>
               <nu-el v-else></nu-el>
 
@@ -170,8 +169,7 @@
                 v-if="navLinks.next"
                 :to="navLinks.next.to"
                 clear text="sb">
-                {{navLinks.next.heading}}:
-                {{navLinks.next.label}}
+                {{navLinks.next.heading}} – {{navLinks.next.label}}
                 <nu-icon name="arrow-right" space="right"></nu-icon>
               </nu-btn>
             </nu-pane>

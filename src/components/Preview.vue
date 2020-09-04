@@ -42,20 +42,19 @@
               <nu-icon name="zoom-in"></nu-icon>
             </nu-btn>
           </nu-group>
-          <nu-btn width="5x" text="center" content="center">
+          <nu-btn width="5x" text="center" content="center" padding=".5x 1.5x">
             {{ size }}
             <nu-popuplistbox
               padding="0"
               @input="(e) => setSize(e.detail)" :value="size">
               <nu-flex>
                 <nu-el padding="1x 1x" text="w7 center">ROOT SIZE</nu-el>
-                <nu-line orient="y" height="3"></nu-line>
+                <nu-line orient="v" height="3.5"></nu-line>
                 <nu-option
                   v-for="option in sizes"
                   :key="option"
                   :size="option"
-                  :value="option"
-                  border=":current[1ow bottom inside #special] 0">
+                  :value="option">
                   {{ option }}
                 </nu-option>
               </nu-flex>

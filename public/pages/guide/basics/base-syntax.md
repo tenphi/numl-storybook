@@ -58,7 +58,7 @@ Well, now it looks great, but it isn't interactive. :(
 
 ## Make it active
 
-To be able to click on it we must inject ==active== behavior. To do so, we add an attribute whose name consists of the name of the behavior and suffix `nx-`. It's not what you will do often using **Numl**, but it's a great demonstration of the **Behavior System**.
+To be able to click on it we must inject ==active== behavior. To do so, we add an attribute whose name consists of the name of the behavior and suffix `use-`. It's not what you will do often using **Numl**, but it's a great demonstration of the **Behavior System**.
 
 ```html
 <split/>
@@ -67,7 +67,7 @@ To be able to click on it we must inject ==active== behavior. To do so, we add a
   border
   padding="1x 2x"
   cursor="pointer"
-  #[[nx-active]]#>
+  #[[use-active]]#>
   Button
 </nu-el>
 ```
@@ -85,7 +85,7 @@ For example, we can use attribute `inset` (that creates inner shadow and is suit
   border
   padding="1x 2x"
   cursor="pointer"
-  nx-active
+  use-active
   #[[inset="n :active[y]"]]#>
   Button
 </nu-el>
@@ -100,7 +100,7 @@ We used a definition `inset="n :active[y]"` that means:
 
 For the attribute `inset`: `"y"` and `"n"` are shorthands that indicate whether or not to apply the inset effect.
 
-Also we forgot to add styles for **hover** state. To visualize it we will use `mark` attribute which highlights the element.
+Also, we forgot to add **hover** state and styles for it. Let's inject ==hover== behavior that controls **hover** state. To visualize it we will use `mark` attribute which highlights the element.
 
 ```html
 <split/>
@@ -109,7 +109,8 @@ Also we forgot to add styles for **hover** state. To visualize it we will use `m
   border
   padding="1x 2x"
   cursor="pointer"
-  nx-active
+  use-active
+  use-hover
   inset="n :active[y]"
   #[[mark="hover"]]#>
   Button
@@ -133,8 +134,9 @@ Let's fix it by injecting a behavior called **focusable**. Also, we can add the 
   border
   padding="1x 2x"
   cursor="pointer"
-  nx-active
-  #[[nx-focusable]]#
+  use-active
+  use-hover
+  #[[use-focus]]#
   #[[outline="focus"]]#
   inset="n :active[y]"
   mark="hover">
@@ -159,8 +161,9 @@ Our button looks great, but if any state applies then styles change instantly. I
   border
   padding="1x 2x"
   cursor="pointer"
-  nx-active
-  nx-focusable
+  use-active
+  use-hover
+  use-focus
   outline="focus"
   inset="n :active[y]"
   mark="hover"
@@ -184,7 +187,7 @@ Great job! We have a great button now but there is still room for improvement. T
   border
   padding="1x 2x"
   cursor="pointer"
-  #[[nx-action]]#
+  #[[use-action]]#
   outline="focus"
   inset="n :active[y]"
   mark="hover"
@@ -193,11 +196,11 @@ Great job! We have a great button now but there is still room for improvement. T
 </nu-el>
 ```
 
-We removed ==active== and ==focusable== behaviors 'cause ==action== behavior will inject them automatically as they required.
+We removed ==active==, ==hover==, and ==focus== behaviors 'cause ==action== behavior will inject them automatically as they required.
 
 ## Propagate styles
 
-Our button is ready, but what if we need to add more buttons to our application. It would be a mess to write so many attributes for each button. In **Numl** there is a definition element [nu-attrs](../../reference/elements/nu-attrs.md) that allows to propagate a set of attributes inside specific context. As definition is set we can use `as` attribute to use it:
+Our button is ready, but what if we need to add more buttons to our application. It would be a mess to write so many attributes for each button. In **Numl** there is a definition element [nu-attrs](../../reference/elements/nu-attrs.md) that allows to propagate a set of attributes inside specific context. As definition is set we can declare `as` attribute to use it:
 
 ```html
 <split/>
@@ -207,7 +210,7 @@ Our button is ready, but what if we need to add more buttons to our application.
   border
   padding="1x 2x"
   cursor="pointer"
-  nx-action
+  use-action
   outline="focus"
   inset="n :active[y]"
   mark="hover"

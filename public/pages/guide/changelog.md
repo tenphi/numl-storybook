@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.12 BETA
+## v1.0.0 BETA
 
 Update is focused on improved theme color calculation.
 
@@ -14,6 +14,10 @@ Update is focused on improved theme color calculation.
 	- Optimize binding. Now it doesn't use media queries.
 	- Fix **subtle** color for **tint** themes.
 - **theme** style: Fix `color` declaration. Fix **special** styles.
+- **nu-listbox**: Add **multiple** option. Change styles and behavior.
+- **markdown** behavior: Migrate to **remarkable** processing with **remarkable-numl** plugin.
+- Syntax to inject behaviors is changed: `nx-` -> `use-`.
+- New **hover** behavior to normalize **hover** state across browsers and platforms.
 - Add a new `nuContext` property for **Base** element that allows to set default context variables and inject **nu-attrs** definition into an element. Elements now can control how children should be styled.
 - **props**: color definitions now support opacity and transparent assignment of **rgb** version of the color. Example:
 ```
@@ -52,7 +56,7 @@ window.addEventListener('nudeReady', (event) => {
 - States: support for **OR** syntax. `val1 :hover.focus[val2]` instead of `val1 :hover[val2] :focus[val2] :hover:focus[val2]`.
 - `init()` refactoring.
 - Add `--nu-disabled-opacity` custom property.
-- New elements added: **nu-password**, **nu-search**, **nu-telinput**, **nu-emailinput**, **nu-fileinput**.
+- New elements added: **nu-password**, **nu-search**, **nu-telinput**, **nu-emailinput**, **nu-fileinput**, **nu-onetimecode**.
 - Settings: add **data-nu-scrollbar** to activate global scrollbar styling. (preferable if you allow dark scheme).
 - Convert `100vh` value in **height** property to `-webkit-fill-available` on iOS devices.
 - **nu-code**: Add classic dark mode via **special** modifier.
@@ -71,9 +75,9 @@ window.addEventListener('nudeReady', (event) => {
 - **color** & **fill** styles support for **hash** color syntax `fill="#special-bg"`.
 - **shadow** support for named shadow via properties. Example: `shadow="custom"` will use `--custom-shadow` to apply shadow.
 - **nu-menuitem**: fix nested behavior when combined with **nu-popup**.
-- **validator**: support for custom validators. Example: `<nu-check for="name" assert={customValidator}>Name should pass custom validator<nu-check>`.
+- **validator**: support for custom validators. Example `<nu-check for="name" assert={customValidator}>Name should pass custom validator<nu-check>`.
 
-## v0.11 STABLE
+## v0.11
 
 A major update focused on brand new Behavior System that allows simplifying development of complex compositions and rich components. It adds dynamic imports that reduces base bundle size.
 
